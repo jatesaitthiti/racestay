@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-th="ATM 2026 — ที่พักใกล้จุดปล่อยตัว | RaceStay" data-en="ATM 2026 — Hotels Near the Start | RaceStay">ATM 2026 — RaceStay</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta name="description" content="ที่พักใกล้จุดปล่อยตัว/เส้นชัย Amazing Thailand Marathon 2026 (สนามหลวง · 28–29 พ.ย.) — จองแล้วเดินถึงเส้นสตาร์ทได้ | RaceStay">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ATM 2026 — ที่พักใกล้จุดปล่อยตัว | RaceStay">
+<meta property="og:description" content="ที่พักใกล้จุดปล่อยตัว/เส้นชัย สำหรับนักวิ่งที่เดินทางมาแข่ง — Amazing Thailand Marathon 2026">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  :root{
+    --paper:#f4f4ee; --paper-2:#eeede6; --ink:#15160f; --muted:#7a7c70; --line:#e5e4db;
+    --lime:#d9ef2f; --lime-pale:#effcb6; --green:#1f9a58; --warn:#c8630f;
+    --charcoal:#181818; --charcoal-2:#2b2b2b;
+    --sans:'IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    --disp:'Space Grotesk','IBM Plex Sans Thai',sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;border-radius:0}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.72;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .band{width:100%}
+  .in{max-width:1000px;margin:0 auto;padding:0 24px}
+  .mono{font-family:var(--mono)}
+  .kick{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+  .protobar{background:var(--charcoal);color:var(--lime-pale);text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:6px 12px}
+
+  .nav{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+  .nav .in{display:flex;align-items:center;gap:22px;height:56px}
+  .brand{display:inline-flex;align-items:center;color:var(--ink)}
+  .brand .logo{height:18px;width:auto;display:block;fill:currentColor}
+  .nav nav{display:flex;gap:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .nav nav a{cursor:pointer}.nav nav a:hover{color:var(--ink)}
+  .nav .sp{flex:1}
+  .lang{display:inline-flex;border:1px solid var(--ink);font-family:var(--mono);font-size:12px}
+  .lang button{border:0;background:var(--paper);color:var(--muted);padding:6px 12px;cursor:pointer;font-family:var(--mono)}
+  .lang button.on{background:var(--charcoal);color:var(--lime-pale)}
+  @media(max-width:640px){.nav nav{display:none}}
+
+  .hero{padding-top:64px;padding-bottom:44px}
+  .hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(32px,6vw,64px);line-height:1.02;letter-spacing:-.02em;margin:12px 0 10px}
+  .hero .sub{color:var(--muted);font-size:16px;max-width:560px;margin:0}
+
+  .databand{background:var(--charcoal);color:#fff}
+  .databand .in{display:flex;flex-wrap:wrap;gap:7px 24px;padding-top:13px;padding-bottom:13px;font-family:var(--mono);font-size:13px}
+  .databand .hl{background:var(--lime);color:var(--ink);padding:1px 7px;font-weight:700}
+  .databand .times{color:var(--lime-pale)}
+
+  .stats{display:grid;grid-template-columns:1.15fr 1fr 1fr;grid-auto-rows:1fr;gap:12px;margin-top:20px}
+  .stat{background:#fff;border:1px solid var(--line);box-shadow:0 2px 14px rgba(21,22,15,.06);padding:20px 18px;text-align:left;display:flex;flex-direction:column}
+  .stat.big{grid-column:1;grid-row:1 / span 2}
+  .stat .sub{margin-top:auto}
+  .stat .gun{display:grid;grid-template-columns:1fr auto;gap:9px 14px;font-family:var(--mono);font-size:15px;margin-top:14px}
+  .stat.big .gun{flex:1;align-content:space-between;gap:16px 14px;font-size:18px;margin-top:18px}
+  .stat .gun .d{color:var(--muted);letter-spacing:.04em}
+  .stat .gun .t{font-weight:500;text-align:right}
+  .stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-family:var(--mono);font-weight:700;font-size:26px;margin-top:12px}
+  .stat .sub{font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:12px;line-height:1.7;letter-spacing:.02em}
+  .stat .v small{font-size:12px;color:var(--muted);font-weight:500}
+  @media(max-width:760px){.stats{grid-template-columns:1fr 1fr}.stat.big{grid-column:1 / -1;grid-row:auto}.stat.big .gun{flex:none;align-content:start}}
+  @media(max-width:420px){.stats{grid-template-columns:1fr}.stat.big{grid-column:auto}}
+
+  .jump{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;padding:22px 0;font-family:var(--mono);font-size:12px}
+  .jump .lbl{letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .jump a{color:var(--ink);border-bottom:2px solid transparent}
+  .jump a:hover{border-bottom-color:var(--lime)}
+
+  .sec{padding-top:12px;padding-bottom:52px}
+  .seclabel{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding:44px 0 16px}
+  .seclabel .n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .seclabel h2{font-size:23px;font-weight:600;margin:0;letter-spacing:-.01em}
+  .lead{font-size:16px;color:#3a3c31;margin:24px 0 0;line-height:1.8;max-width:720px}
+  .callout{border-left:3px solid var(--lime);padding:6px 0 6px 15px;margin-top:16px;font-size:14.5px}
+  .callout .h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px;color:#5c6416}
+  .logi{border-left:3px solid var(--warn);padding:6px 0 6px 15px;margin:2px 0 16px;font-size:14px}
+  .logi .h{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--warn);display:block;margin-bottom:3px}
+
+  .table-wrap{overflow-x:auto;margin-top:16px}
+  table{width:100%;border-collapse:collapse;min-width:520px}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px 12px 13px 0;border-bottom:1px solid var(--line)}
+  td{padding:18px 12px 18px 0;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle}
+  td .d{font-weight:600;font-size:15px}
+  td .num{font-family:var(--mono);font-weight:500}
+  td .dim{font-family:var(--mono);color:var(--muted);font-size:12px}
+
+  /* STAY tinted band */
+  .stay{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* tabs — sharp */
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:26px 0 0;border:1px solid var(--line)}
+  .tab{text-align:left;background:transparent;border:0;border-left:1px solid var(--line);border-top:3px solid transparent;padding:13px 15px;cursor:pointer;font-family:var(--sans)}
+  .tab:first-child{border-left:0}
+  .tab.on{background:var(--paper);border-top-color:var(--lime)}
+  .tab .t1{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .tab.on .t1{color:var(--ink)}
+  .tab .t2{font-family:var(--disp);font-weight:600;font-size:18px;margin:3px 0 2px}
+  .tab .t3{font-size:12.5px;color:var(--muted)}
+  .tab .pill{display:inline-block;background:var(--lime);font-family:var(--mono);font-size:10px;font-weight:700;padding:2px 7px;margin-top:8px}
+  .tab .pill.diff{background:#f4d7bd;color:var(--warn)}
+  @media(max-width:560px){.tabs{grid-template-columns:1fr}.tab{border-left:0;border-top:1px solid var(--line)}.tab:first-child{border-top:0}.tab.on{border-top:3px solid var(--lime)}}
+  .pane{display:none}.pane.on{display:block}
+
+  /* sub toggle — sharp */
+  .subtabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:16px 0;border:1px solid var(--line)}
+  .subtab{text-align:left;background:transparent;border:0;border-left:1px solid var(--line);padding:11px 14px;cursor:pointer;font-family:var(--sans)}
+  .subtab:first-child{border-left:0}
+  .subtab.on{background:var(--paper);box-shadow:inset 0 -3px 0 var(--lime)}
+  .subtab .a{font-weight:600;font-size:14px;display:block}
+  .subtab .b{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em;text-transform:uppercase}
+  .subtab.on .b{color:var(--ink)}
+  @media(max-width:560px){.subtabs{grid-template-columns:1fr}.subtab{border-left:0;border-top:1px solid var(--line)}.subtab:first-child{border-top:0}}
+  .subpane{display:none}.subpane.on{display:block}
+
+  .sf{display:flex;align-items:center;gap:14px;padding:18px 0;margin:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono);flex-wrap:wrap}
+  .sf .node{display:flex;flex-direction:column;gap:2px}
+  .sf .node .lb{font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .sf .node .v{font-weight:700;font-size:14px}
+  .sf .arrow{color:var(--muted);font-size:18px}
+  .sf .same{background:var(--lime);padding:2px 8px;font-size:11px;font-weight:700}
+  .sf .diff{background:#f4d7bd;color:var(--warn);padding:2px 8px;font-size:11px;font-weight:700}
+
+  .zonelabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .zone h4{margin:5px 0 4px;font-size:16px;font-weight:600}
+  .zone p{margin:0 0 8px;font-size:13.5px;color:var(--muted)}
+
+  .maplabel{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--line);padding:22px 0 10px}
+  .mapframe{border:0;width:100%;height:400px;display:block;background:var(--paper)}
+  .mapfoot{font-family:var(--mono);font-size:11px;color:var(--muted);border-bottom:1px solid var(--line);padding:10px 0 6px}
+  .pricebar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:16px 0 6px}
+  .pricebar .plabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  .pchip{font-family:var(--mono);font-size:12px;background:transparent;border:1px solid var(--line);color:var(--muted);padding:6px 11px;cursor:pointer}
+  .pchip:hover{border-color:var(--ink);color:var(--ink)}
+  .pchip.on{background:var(--lime);border-color:var(--lime);color:var(--ink);font-weight:700}
+
+  .row{display:grid;grid-template-columns:1fr auto;gap:5px 20px;padding:30px 0;border-bottom:1px solid var(--line)}
+  .row:first-of-type{border-top:1px solid var(--line)}
+  .row h3{grid-column:1;margin:0;font-size:18px;font-weight:600}
+  .row .price{grid-column:2;grid-row:1;text-align:right;font-family:var(--mono);font-weight:700;font-size:20px}
+  .row .ty{grid-column:1;font-size:12.5px;color:var(--muted)}
+  .row .meta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:6px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .row .dist{color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:1px}
+  .row .rt b{color:var(--ink)}
+  .row .note{grid-column:1/-1;font-size:13px;color:#3a3c31;margin-top:8px;max-width:660px}
+  .row .note b{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--warn)}
+  .row .act{grid-column:2;grid-row:2/5;align-self:center;text-align:right}
+  .btn{font-family:var(--sans);font-weight:600;font-size:13px;background:var(--lime);color:var(--ink);border:0;padding:10px 18px;cursor:pointer}
+  .btn:hover{background:var(--ink);color:var(--lime-pale)}
+  .allrow{font-family:var(--mono);font-size:12px;color:var(--green);padding:16px 0 0}
+  @media(max-width:560px){.row .act{grid-column:1;grid-row:auto;text-align:left;margin-top:10px}.row .price{font-size:18px}}
+
+  .faqwrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:52px;margin-top:16px}
+  @media(max-width:820px){.faqwrap{grid-template-columns:1fr;gap:14px}}
+  .faqhead .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .faqhead h2{font-family:var(--disp);font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.08;letter-spacing:-.01em;margin:14px 0 0}
+  .faq2{border-bottom:1px solid var(--line)}
+  .faqcat{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:16px;margin:30px 0 0}
+  .faqcat:first-child{margin-top:0}
+  .faq2 details{border-top:1px solid var(--line);padding:24px 2px}
+  .faq2 summary{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:16px;font-weight:500;cursor:pointer;list-style:none}
+  .faq2 summary::-webkit-details-marker{display:none}
+  .faq2 summary:after{content:"+";font-family:var(--mono);font-size:20px;color:var(--muted);line-height:1;flex:none}
+  .faq2 details[open] summary:after{content:"–";color:var(--ink)}
+  .faq2 p{margin:14px 0 0;font-size:14.5px;color:var(--muted);max-width:600px}
+
+  .official{border-top:1px solid var(--line);padding-top:24px;margin-top:34px}
+  .official .h{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .official a{color:var(--green);font-weight:600}
+  .official .mono{font-size:13px;margin-top:6px}
+
+  .news{background:var(--charcoal);color:#fff}
+  .news .in{padding:34px 24px;text-align:center}
+  .news h3{margin:0 0 6px;font-size:21px;color:var(--lime-pale)}
+  .news p{margin:0 0 16px;color:#b8bab0;font-size:14px}
+  .news form{display:flex;gap:0;max-width:420px;margin:0 auto;border:1px solid var(--lime-pale)}
+  .news input{flex:1;border:0;padding:12px 14px;font-size:14px;font-family:var(--sans);background:transparent;color:#fff}
+  .news input::placeholder{color:#8a8c80}
+  .news button{background:var(--lime);color:var(--ink);border:0;padding:12px 20px;font-weight:600;font-family:var(--sans);cursor:pointer}
+  @media(max-width:480px){.news form{flex-direction:column;border:0}.news input{border:1px solid var(--lime-pale);margin-bottom:8px}.news button{border:0}}
+
+  .foot{border-top:1px solid var(--line)}
+  .foot .in{padding:28px 24px 48px;font-family:var(--mono);font-size:11px;color:#9a9c90;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="protobar" data-th="RACESTAY · EDITORIAL (RULES + TINT) · ข้อมูลโรงแรมเป็นตัวอย่างสาธิต" data-en="RACESTAY · EDITORIAL (RULES + TINT) · HOTEL DATA ILLUSTRATIVE">RACESTAY · EDITORIAL (RULES + TINT)</div>
+
+<div class="band nav"><div class="in">
+  <span class="brand"><svg class="logo" viewBox="0 0 641.22 82" role="img" aria-label="RaceStay" xmlns="http://www.w3.org/2000/svg"><path d="M63.75,13.14c4.9,0,9.08.89,12.52,2.67,3.44,1.78,6.04,4.12,7.79,7.01,1.75,2.89,2.63,6,2.63,9.33,0,3.5-.95,6.8-2.85,9.9-1.9,3.1-4.73,5.61-8.49,7.53-3.77,1.93-8.31,2.89-13.62,2.89h-6.48v.35h21.63l13.92,26.01h-43.79c-1.17-2.98-2.32-5.96-3.46-8.93-1.14-2.98-2.28-5.96-3.42-8.93-1.14-2.98-2.26-5.96-3.37-8.93h10.16c1.52,0,2.8-.29,3.85-.88,1.05-.58,1.85-1.34,2.41-2.28.55-.93.83-1.93.83-2.98s-.28-2.04-.83-2.98c-.56-.93-1.36-1.69-2.41-2.28-1.05-.58-2.34-.88-3.85-.88h-9.98c-.06,0-.09.01-.09.04s-.02.04-.04.04c-.03,0-.04.03-.04.09v11.43c0,.56,0,.8,0,.74v26.71H1.75V13.14h62Z"/><path d="M172.43,13.14c1.28,3.97,2.57,7.96,3.85,11.95,1.28,4,2.55,7.98,3.81,11.95,1.25,3.97,2.52,7.94,3.81,11.91,1.58,4.96,3.17,9.94,4.77,14.93,1.6,4.99,3.2,9.97,4.77,14.93h-44.66l-1.49-8.58h-11.91l-1.49,8.58h-42.91c1.75-5.49,3.49-10.96,5.21-16.42,1.72-5.46,3.46-10.93,5.21-16.42,1.17-3.62,2.33-7.25,3.5-10.9,1.17-3.65,2.32-7.3,3.46-10.95,1.14-3.65,2.29-7.31,3.46-10.99h60.6ZM136.53,64.1h9.63c.06,0,.09-.03.09-.09-.23-1.46-.7-4.26-1.4-8.41-.7-4.14-1.39-8.28-2.06-12.39-.67-4.12-1.15-6.9-1.44-8.36h-.09c-.29,1.4-.77,4.13-1.44,8.19-.67,4.06-1.34,8.16-2.01,12.3-.67,4.15-1.12,7.04-1.36,8.67,0,.06.03.09.09.09Z"/><path d="M235.66,81.88c-7.47,0-14.13-.79-19.97-2.37-5.84-1.58-10.77-3.81-14.8-6.7-4.03-2.89-7.15-6.35-9.37-10.38-1.34-2.39-2.35-4.96-3.02-7.71-.67-2.74-1.01-5.63-1.01-8.67,0-7.76,1.98-14.32,5.95-19.66,3.97-5.34,9.43-9.35,16.38-12.04,6.95-2.69,14.94-4.12,24-4.29h1.84c14.42.29,25.67,2.98,33.76,8.06,8.09,5.08,12.89,12.38,14.41,21.89l-37.22,6.04v-.61c-.12-1.58-.67-2.88-1.66-3.9-.99-1.02-2.29-1.78-3.9-2.28-1.61-.5-3.4-.75-5.39-.75-3.27,0-5.91.63-7.92,1.88-2.02,1.26-3.02,3.08-3.02,5.47,0,1.63.47,3.02,1.4,4.16.93,1.14,2.22,1.99,3.85,2.54,1.63.56,3.53.83,5.69.83,3.21,0,5.84-.64,7.88-1.93,2.04-1.28,3.06-3.09,3.06-5.43l37.22,3.77c-.88,6.13-3.17,11.59-6.88,16.38s-9.02,8.6-15.94,11.43-15.37,4.25-25.35,4.25Z"/><path d="M321.57,35.55h-.09v4.6s.03.04.09.04h36.78v12.35h-36.78c-.06,0-.09.02-.09.04v5.04h38.71v21.19h-74.17V13.14h73.65v22.42h-38.09Z"/><path d="M363.87,52.46h21.37c16.03,22.59,49.92,20.49,49.92,6.57,0-19.44-70.23-8.67-70.23-31.17,0-11.65,14.45-20.32,33.71-20.32,17.95,0,34.68,11.3,38.97,26.45h-19.62c-27.06-28.02-48.69-21.02-48.69-6.13,0,19,70.23,8.23,70.23,30.74,0,12.35-15.15,21.63-36.52,21.63-18.13,0-35.55-11.03-39.14-27.76Z"/><path d="M442.16,8.67h64.8v12.26h-64.8v-12.26ZM482.44,20.93v57.8h-15.76v-42.03c0-10.51,5.25-15.76,15.76-15.76Z"/><path d="M550.22,47.73c-1.66,18.83-12,32.49-25.48,32.49-21.63,0-26.8-17.51-12-40.9l19-30.56h16.64l33.28,70.06h-16.64l-14.8-31.09ZM527.02,63.58c11.82,0,20.67-8.93,20.84-20.93l-14.36-30.21-15.94,26.88c-7.53,13.84-3.5,24.26,9.46,24.26Z"/><path d="M569.41,8.76h16.64l24.78,41.86,25.13-41.86h4.38l-27.32,45.54v24.52h-15.76v-24.52l-27.85-45.54Z"/></svg></span>
+  <nav>
+    <a data-th="งานวิ่ง" data-en="Races">งานวิ่ง</a>
+    <a data-th="ตามเมือง" data-en="By city">ตามเมือง</a>
+    <a data-th="คู่มือ" data-en="Guides">คู่มือ</a>
+  </nav>
+  <span class="sp"></span>
+  <span class="lang"><button id="btn-th" class="on" onclick="setLang('th')">TH</button><button id="btn-en" onclick="setLang('en')">EN</button></span>
+</div></div>
+
+<!-- HERO -->
+<div class="band"><div class="in hero">
+  <div class="kick">Bangkok · Thailand · Road Marathon</div>
+  <h1>Amazing Thailand<br>Marathon 2026</h1>
+  <p class="sub" data-th="ที่พักใกล้จุดปล่อยตัว สำหรับนักวิ่งที่เดินทางมาแข่ง — จองแล้วเดินถึงเส้นสตาร์ทได้" data-en="Where to stay near the start line — for runners traveling to the race. Book and walk to the start.">ที่พักใกล้จุดปล่อยตัว สำหรับนักวิ่งที่เดินทางมาแข่ง — จองแล้วเดินถึงเส้นสตาร์ทได้</p>
+</div></div>
+
+<!-- DATA BAND (charcoal full-bleed) -->
+<div class="band databand"><div class="in">
+  <span><b>28–29 NOV 2026</b></span><span>SANAM LUANG</span><span>PRESENTED BY TOYOTA</span><span class="times">FULL 02:00 · HALF 04:00 · 10K 06:00 · FUN 06:45</span><span class="hl">T-125 DAYS</span>
+</div></div>
+
+<!-- STATS -->
+<div class="band"><div class="in"><div class="stats">
+  <div class="stat big"><div class="l" data-th="เวลาปล่อยตัว" data-en="GUN TIMES">เวลาปล่อยตัว</div><div class="gun"><span class="d">FULL</span><span class="t">02:00</span><span class="d">HALF</span><span class="t">04:00</span><span class="d">10K</span><span class="t">06:00</span><span class="d">FUN</span><span class="t">06:45</span></div></div>
+  <div class="stat"><div class="l" data-th="ใกล้สุด" data-en="NEAREST">ใกล้สุด</div><div class="v">190M</div><div class="sub" data-th="เดิน 3 นาที ถึงจุดสตาร์ท" data-en="3-min walk to the start">เดิน 3 นาที ถึงจุดสตาร์ท</div></div>
+  <div class="stat"><div class="l" data-th="ช่วงราคา/คืน" data-en="PRICE / NIGHT">ช่วงราคา/คืน</div><div class="v">฿990–3,600</div><div class="sub" data-th="ต่อคืน · สกุล THB" data-en="per night · THB">ต่อคืน · สกุล THB</div></div>
+  <div class="stat"><div class="l" data-th="ที่พักใกล้สตาร์ท" data-en="HOTELS NEAR START">ที่พักใกล้สตาร์ท</div><div class="v">28</div><div class="sub" data-th="ในระยะเดิน 1.5 กม." data-en="within a 1.5 km walk">ในระยะเดิน 1.5 กม.</div></div>
+  <div class="stat"><div class="l" data-th="เหลืออีก" data-en="COUNTDOWN">เหลืออีก</div><div class="v">125<small data-th=" วัน" data-en=" days"> วัน</small></div><div class="sub" data-th="ถึงวันแข่ง · 28 พ.ย." data-en="to race day · 28 Nov">ถึงวันแข่ง · 28 พ.ย.</div></div>
+</div></div></div>
+
+<!-- QUICK LINKS -->
+<div class="band"><div class="in"><div class="jump">
+  <span class="lbl" data-th="ไปที่" data-en="Jump to">ไปที่</span>
+  <a href="#stay" data-th="เลือกที่พัก" data-en="Where to stay">เลือกที่พัก</a>
+  <a href="#distances" data-th="ทุกระยะ" data-en="Distances">ทุกระยะ</a>
+  <a href="#getting-there" data-th="การเดินทาง" data-en="Getting there">การเดินทาง</a>
+  <a href="#schedule" data-th="ตารางแข่ง" data-en="Schedule">ตารางแข่ง</a>
+  <a href="#faq" data-th="คำถามบ่อย" data-en="FAQ">คำถามบ่อย</a>
+</div></div></div>
+
+<!-- WHY -->
+<div class="band"><div class="in sec">
+  <div class="seclabel"><span class="n">01 / Why</span><h2 data-th="ทำไมทำเลที่พักงานนี้สำคัญเป็นพิเศษ" data-en="Why location matters more">ทำไมทำเลที่พักงานนี้สำคัญเป็นพิเศษ</h2></div>
+  <p class="lead" data-th="Full Marathon ปล่อยตัวตี 2 ของวันอาทิตย์ ช่วงที่รถสาธารณะหยุดและถนนรอบสนามหลวงปิด การพักในระยะเดิน 5–10 นาทีจึงเป็นประกันว่าจะไม่พลาดปล่อยตัว" data-en="The Full starts at 2 AM Sunday when public transport has stopped and roads around Sanam Luang are closed. Staying within a 5–10 min walk is your insurance against missing the gun.">Full Marathon ปล่อยตัวตี 2 ของวันอาทิตย์ ช่วงที่รถสาธารณะหยุดและถนนรอบสนามหลวงปิด การพักในระยะเดิน 5–10 นาทีจึงเป็นประกันว่าจะไม่พลาดปล่อยตัว</p>
+  <div class="callout">
+    <span class="h" data-th="Insight · จากสนามจริง" data-en="Insight · from race day">Insight · จากสนามจริง</span>
+    <span data-th="ปีก่อนถนนราชดำเนิน–สนามหลวงเริ่มปิดตั้งแต่ราวเที่ยงคืน ถ้านั่งรถมาให้ลงฝั่ง MRT สนามไชยแล้วเดินเข้า จะเลี่ยงจุดปิดถนนได้" data-en="Last year roads around Ratchadamnoen–Sanam Luang started closing around midnight. If you take a car, get dropped at MRT Sanam Chai and walk in.">ปีก่อนถนนเริ่มปิดตั้งแต่เที่ยงคืน ถ้านั่งรถมาให้ลงฝั่ง MRT สนามไชยแล้วเดินเข้า</span>
+  </div>
+</div></div>
+
+<!-- DISTANCES -->
+<div class="band"><div class="in sec" id="distances">
+  <div class="seclabel"><span class="n">02 / Distances</span><h2 data-th="รายละเอียดการแข่ง — ทุกระยะ" data-en="Race details — every distance">รายละเอียดการแข่ง — ทุกระยะ</h2></div>
+  <div class="table-wrap"><table>
+    <tr><th data-th="ระยะ" data-en="Distance">ระยะ</th><th>Gun</th><th data-th="จุดสตาร์ท" data-en="Start">จุดสตาร์ท</th><th data-th="เส้นชัย" data-en="Finish">เส้นชัย</th><th data-th="พักโซน" data-en="Stay zone">พักโซน</th></tr>
+    <tr><td><span class="d">Full Marathon</span> <span class="dim">42.195KM</span></td><td class="num">SUN 02:00</td><td>Sanam Luang</td><td>Sanam Luang</td><td data-th="รัตนโกสินทร์" data-en="Rattanakosin">รัตนโกสินทร์</td></tr>
+    <tr><td><span class="d">Half Marathon</span> <span class="dim">21.1KM</span></td><td class="num">SAT 04:00</td><td><b class="num" style="color:var(--green)">MBK Center</b></td><td>Sanam Luang</td><td data-th="สยาม/ปทุมวัน" data-en="Siam/Pathumwan">สยาม/ปทุมวัน</td></tr>
+    <tr><td><span class="d">10K</span> <span class="dim">10.0KM</span></td><td class="num">SUN 06:00</td><td>Sanam Luang</td><td>Sanam Luang</td><td data-th="รัตนโกสินทร์" data-en="Rattanakosin">รัตนโกสินทร์</td></tr>
+    <tr><td><span class="d">Family Fun Run</span> <span class="dim">~4.5KM</span></td><td class="num">SUN 06:45</td><td>Sanam Luang</td><td>Sanam Luang</td><td data-th="รัตนโกสินทร์" data-en="Rattanakosin">รัตนโกสินทร์</td></tr>
+  </table></div>
+</div></div>
+
+<!-- STAY (tint band) -->
+<div class="band stay"><div class="in sec" id="stay">
+  <div class="seclabel"><span class="n">03 / Stay</span><h2 data-th="เลือกที่พักตามจุดปล่อยตัวของคุณ" data-en="Where to stay — by your start point">เลือกที่พักตามจุดปล่อยตัวของคุณ</h2></div>
+  <p class="lead" data-th="งานนี้แข่ง 2 วัน ปล่อยตัวคนละที่ตามระยะ — เลือกจุดสตาร์ทของคุณ เราแนะนำโซน/ที่พัก/การเดินทางให้ตรงจุด" data-en="This is a 2-day event with different start points by distance — pick your start and we'll tailor the zone, hotels and logistics.">งานนี้แข่ง 2 วัน ปล่อยตัวคนละที่ตามระยะ — เลือกจุดสตาร์ทของคุณ เราแนะนำโซน/ที่พัก/การเดินทางให้ตรงจุด</p>
+
+  <div class="tabs">
+    <button class="tab on" id="tab-a" onclick="setTab('a')">
+      <div class="t1" data-th="อาทิตย์ · ปล่อยตัว" data-en="Sunday · Start">อาทิตย์ · ปล่อยตัว</div>
+      <div class="t2" data-th="สนามหลวง" data-en="Sanam Luang">สนามหลวง</div>
+      <div class="t3">Full Marathon · 10K · Fun Run</div>
+      <span class="pill">START = FINISH</span>
+    </button>
+    <button class="tab" id="tab-b" onclick="setTab('b')">
+      <div class="t1" data-th="เสาร์ · ปล่อยตัว" data-en="Saturday · Start">เสาร์ · ปล่อยตัว</div>
+      <div class="t2">MBK Center</div>
+      <div class="t3">Half Marathon</div>
+      <span class="pill diff">START ≠ FINISH</span>
+    </button>
+  </div>
+
+  <!-- PANE A -->
+  <div class="pane on" id="pane-a">
+    <div class="sf">
+      <div class="node"><span class="lb">Start</span><span class="v" data-th="สนามหลวง" data-en="Sanam Luang">สนามหลวง</span></div>
+      <span class="arrow">→</span>
+      <div class="node"><span class="lb">Finish</span><span class="v" data-th="สนามหลวง" data-en="Sanam Luang">สนามหลวง</span></div>
+      <span class="same" data-th="จุดเดียวกัน · พักที่เดียวจบ" data-en="Same spot · one base">จุดเดียวกัน · พักที่เดียวจบ</span>
+    </div>
+    <div class="zone">
+      <div class="zonelabel">Stay zone</div>
+      <h4 data-th="โซนรัตนโกสินทร์ / ริมเจ้าพระยา" data-en="Rattanakosin / Riverside">โซนรัตนโกสินทร์ / ริมเจ้าพระยา</h4>
+      <p data-th="สตาร์ทและเส้นชัยอยู่สนามหลวงที่เดียว พักในระยะเดินได้เลย ตื่นมาเดินไปปล่อยตัว จบแล้วเดินกลับห้องอาบน้ำ" data-en="Start and finish are both at Sanam Luang — stay within walking distance, walk to the gun, and walk back to shower after finishing.">สตาร์ทและเส้นชัยอยู่สนามหลวงที่เดียว พักในระยะเดินได้เลย ตื่นมาเดินไปปล่อยตัว จบแล้วเดินกลับห้องอาบน้ำ</p>
+    </div>
+    <div class="maplabel"><span data-th="Map · รอบสนามหลวง · 1.5km" data-en="Map · around Sanam Luang · 1.5km">Map · รอบสนามหลวง · 1.5km</span><span>Stay22</span></div>
+    <div class="pricebar" data-map="map-a">
+      <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span>
+      <button class="pchip on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+      <button class="pchip" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
+      <button class="pchip" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
+      <button class="pchip" onclick="setPrice(this,'3000','')">฿3,000+</button>
+    </div>
+    <iframe class="mapframe" id="map-a" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near Sanam Luang"
+      data-base="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%2C%20Bangkok&checkin=2026-11-28&checkout=2026-11-29&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-a"
+      src="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%2C%20Bangkok&checkin=2026-11-28&checkout=2026-11-29&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-a"></iframe>
+    <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · maincolor = ไลม์ · ไร้กรอบ" data-en="Live Stay22 widget · maincolor = lime · borderless">วิดเจ็ต Stay22 จริง · maincolor = ไลม์ · ไร้กรอบ</div>
+
+    <div class="row">
+      <h3>Riverside Grand Bangkok</h3><div class="price">฿2,400</div>
+      <div class="ty" data-th="โรงแรม 4 ดาว · ริมเจ้าพระยา" data-en="4-star · Chao Phraya riverside">โรงแรม 4 ดาว · ริมเจ้าพระยา</div>
+      <div class="meta"><span class="dist" data-th="190M · เดิน 3 นาที" data-en="190M · 3-MIN WALK">190M · เดิน 3 นาที</span><span class="rt"><b>9.1</b> <span data-th="ยอดเยี่ยม" data-en="EXCELLENT">ยอดเยี่ยม</span></span><span>VIA AGODA</span></div>
+      <div class="note"><b>RUNNER NOTE</b> — <span data-th="ใกล้สุดในลิสต์ · ขอกล่องอาหารเช้าก่อนตี 2 ได้ · เช็คเอาต์ 14:00 ฝากของหลังวิ่งได้" data-en="Closest on the list · pre-arrange a breakfast box before the 2 AM start · checkout 14:00, luggage hold after finishing">ใกล้สุดในลิสต์ · ขอกล่องอาหารเช้าก่อนตี 2 ได้ · เช็คเอาต์ 14:00 ฝากของหลังวิ่งได้</span></div>
+      <div class="act"><button class="btn" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</button></div>
+    </div>
+    <div class="row">
+      <h3>The Old Town Hostel</h3><div class="price">฿990</div>
+      <div class="ty" data-th="โฮสเทล · ห้องรวม/ส่วนตัว" data-en="Hostel · dorm & private">โฮสเทล · ห้องรวม/ส่วนตัว</div>
+      <div class="meta"><span class="dist" data-th="340M · เดิน 5 นาที" data-en="340M · 5-MIN WALK">340M · เดิน 5 นาที</span><span class="rt"><b>8.6</b> <span data-th="ดีมาก" data-en="VERY GOOD">ดีมาก</span></span><span>VIA BOOKING</span></div>
+      <div class="note"><b>RUNNER NOTE</b> — <span data-th="ถูกสุดที่ยังเดินได้ · ล็อบบี้ 24 ชม. ออกไปสตาร์ทตี 2 ได้ · เหมาะนักวิ่งเดี่ยว/งบจำกัด" data-en="Cheapest that's still walkable · 24-hr lobby for the 2 AM start · great for solo/budget runners">ถูกสุดที่ยังเดินได้ · ล็อบบี้ 24 ชม. ออกไปสตาร์ทตี 2 ได้ · เหมาะนักวิ่งเดี่ยว/งบจำกัด</span></div>
+      <div class="act"><button class="btn" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</button></div>
+    </div>
+    <div class="allrow" data-th="ดูที่พักรอบสนามหลวงทั้งหมด 28 แห่ง →" data-en="See all 28 hotels near Sanam Luang →">ดูที่พักรอบสนามหลวงทั้งหมด 28 แห่ง →</div>
+  </div>
+
+  <!-- PANE B -->
+  <div class="pane" id="pane-b">
+    <div class="sf">
+      <div class="node"><span class="lb">Start</span><span class="v">MBK Center</span></div>
+      <span class="arrow">→</span>
+      <div class="node"><span class="lb">Finish</span><span class="v" data-th="สนามหลวง" data-en="Sanam Luang">สนามหลวง</span></div>
+      <span class="diff" data-th="คนละที่ · ระวังโลจิสติกส์" data-en="Different · mind the logistics">คนละที่ · ระวังโลจิสติกส์</span>
+    </div>
+
+    <div class="subtabs">
+      <button class="subtab on" id="st-start" onclick="setStay('start')">
+        <span class="a" data-th="🔫 พักใกล้จุดสตาร์ท" data-en="🔫 Stay near the start">🔫 พักใกล้จุดสตาร์ท</span>
+        <span class="b" data-th="ไม่พลาดปล่อยตัว" data-en="Don't miss the gun">ไม่พลาดปล่อยตัว</span>
+      </button>
+      <button class="subtab" id="st-finish" onclick="setStay('finish')">
+        <span class="a" data-th="🏁 พักใกล้เส้นชัย" data-en="🏁 Stay near the finish">🏁 พักใกล้เส้นชัย</span>
+        <span class="b" data-th="พักได้ทันทีหลังวิ่ง" data-en="Rest right after finishing">พักได้ทันทีหลังวิ่ง</span>
+      </button>
+    </div>
+
+    <!-- B: near START -->
+    <div class="subpane on" id="bstay-start">
+      <div class="logi">
+        <span class="h">Logistics · Finish ≠ Start</span>
+        <span data-th="พักใกล้ MBK ปล่อยตัวตี 4 (เดินไปสตาร์ทได้) — เข้าเส้นชัยที่สนามหลวง แล้วกลับที่พักด้วย shuttle ของงาน / MRT สนามไชย→สยาม / Grab ระยะสั้น" data-en="Stay near MBK for the 4 AM start (walk to the gun) — you finish at Sanam Luang, then get back by the event shuttle / MRT Sanam Chai→Siam / a short Grab.">พักใกล้ MBK ปล่อยตัวตี 4 (เดินไปสตาร์ทได้) — เข้าเส้นชัยที่สนามหลวง แล้วกลับที่พักด้วย shuttle ของงาน / MRT สนามไชย→สยาม / Grab ระยะสั้น</span>
+      </div>
+      <div class="zone">
+        <div class="zonelabel">Stay zone</div>
+        <h4 data-th="โซนสยาม / ปทุมวัน (ใกล้ MBK)" data-en="Siam / Pathumwan (near MBK)">โซนสยาม / ปทุมวัน (ใกล้ MBK)</h4>
+        <p data-th="ปล่อยตัว Half ที่ MBK ตี 4 ของวันเสาร์ พักแถวสยามเดินถึงจุดสตาร์ทสบาย ตัวเลือกโรงแรม + BTS เยอะสุดในกรุงเทพ" data-en="The Half starts at MBK at 4 AM Saturday — stay around Siam to walk to the start easily.">ปล่อยตัว Half ที่ MBK ตี 4 ของวันเสาร์ พักแถวสยามเดินถึงจุดสตาร์ทสบาย ตัวเลือกโรงแรม + BTS เยอะสุดในกรุงเทพ</p>
+      </div>
+      <div class="maplabel"><span data-th="Map · รอบ MBK / สยาม" data-en="Map · around MBK / Siam">Map · รอบ MBK / สยาม</span><span>Stay22</span></div>
+      <div class="pricebar" data-map="map-bstart">
+        <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span>
+        <button class="pchip on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+        <button class="pchip" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
+        <button class="pchip" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
+        <button class="pchip" onclick="setPrice(this,'3000','')">฿3,000+</button>
+      </div>
+      <iframe class="mapframe" id="map-bstart" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near MBK"
+        data-base="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7447&lng=100.5299&venue=MBK%20Center%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-start"
+        src="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7447&lng=100.5299&venue=MBK%20Center%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-start"></iframe>
+      <div class="mapfoot" data-th="รอบจุดสตาร์ท MBK · เช็คอิน FRI 27 → เช็คเอาต์ SAT 28" data-en="Around the MBK start · check-in FRI 27 → out SAT 28">รอบจุดสตาร์ท MBK · เช็คอิน FRI 27 → เช็คเอาต์ SAT 28</div>
+
+      <div class="row">
+        <h3>Siam Boutique Residence</h3><div class="price">฿1,900</div>
+        <div class="ty" data-th="บูทีค 3 ดาว · ติด BTS สยาม" data-en="3-star boutique · by BTS Siam">บูทีค 3 ดาว · ติด BTS สยาม</div>
+        <div class="meta"><span class="dist" data-th="220M · เดิน 3 นาที ถึง MBK" data-en="220M · 3-MIN TO MBK">220M · เดิน 3 นาที ถึง MBK</span><span class="rt"><b>9.0</b> <span data-th="ยอดเยี่ยม" data-en="EXCELLENT">ยอดเยี่ยม</span></span><span>VIA AGODA</span></div>
+        <div class="note"><b>RUNNER NOTE</b> — <span data-th="เดินถึงสตาร์ท MBK 3 นาที · ติด BTS กลับจากเส้นชัยสนามหลวงง่าย" data-en="3-min walk to the MBK start · on BTS so returning from the finish is easy">เดินถึงสตาร์ท MBK 3 นาที · ติด BTS กลับจากเส้นชัยสนามหลวงง่าย</span></div>
+        <div class="act"><button class="btn" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</button></div>
+      </div>
+      <div class="row">
+        <h3>Pathumwan Pod Hostel</h3><div class="price">฿850</div>
+        <div class="ty" data-th="โฮสเทล · แคปซูล" data-en="Hostel · capsule">โฮสเทล · แคปซูล</div>
+        <div class="meta"><span class="dist" data-th="400M · เดิน 5 นาที ถึง MBK" data-en="400M · 5-MIN TO MBK">400M · เดิน 5 นาที ถึง MBK</span><span class="rt"><b>8.4</b> <span data-th="ดีมาก" data-en="VERY GOOD">ดีมาก</span></span><span>VIA BOOKING</span></div>
+        <div class="note"><b>RUNNER NOTE</b> — <span data-th="ประหยัดสุดในโซนสยาม · ล็อบบี้ 24 ชม. ออกไปสตาร์ทตี 4 ได้" data-en="Cheapest in the Siam zone · 24-hr lobby for the 4 AM start">ประหยัดสุดในโซนสยาม · ล็อบบี้ 24 ชม. ออกไปสตาร์ทตี 4 ได้</span></div>
+        <div class="act"><button class="btn" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</button></div>
+      </div>
+      <div class="allrow" data-th="ดูที่พักรอบ MBK ทั้งหมด →" data-en="See all hotels near MBK →">ดูที่พักรอบ MBK ทั้งหมด →</div>
+    </div>
+
+    <!-- B: near FINISH -->
+    <div class="subpane" id="bstay-finish">
+      <div class="logi">
+        <span class="h" data-th="Logistics · ก่อนแข่งต้องไปสตาร์ท" data-en="Logistics · getting to the start">Logistics · ก่อนแข่งต้องไปสตาร์ท</span>
+        <span data-th="พักใกล้เส้นชัยสนามหลวง = วิ่งจบเดินกลับห้องอาบน้ำได้ทันที แต่เช้ามืดวันเสาร์ต้องไปสตาร์ทที่ MBK ตอนตี 3–4 → นั่ง MRT สนามไชย→สยาม (เช็ครอบแรก) หรือ Grab เผื่อเวลา" data-en="Stay near the Sanam Luang finish = walk back to shower the moment you're done. But you'll need to reach the MBK start at 3–4 AM Saturday → MRT Sanam Chai→Siam or a Grab with time to spare.">พักใกล้เส้นชัยสนามหลวง = วิ่งจบเดินกลับห้องอาบน้ำได้ทันที แต่เช้ามืดวันเสาร์ต้องไปสตาร์ทที่ MBK ตอนตี 3–4 → นั่ง MRT สนามไชย→สยาม (เช็ครอบแรก) หรือ Grab เผื่อเวลา</span>
+      </div>
+      <div class="zone">
+        <div class="zonelabel">Stay zone</div>
+        <h4 data-th="โซนรัตนโกสินทร์ (ใกล้เส้นชัย)" data-en="Rattanakosin (near finish)">โซนรัตนโกสินทร์ (ใกล้เส้นชัย)</h4>
+        <p data-th="วิ่งจบที่สนามหลวงแล้วเดินกลับห้องได้ทันที เหมาะถ้าให้ความสำคัญกับการพักหลังวิ่งมากกว่าความสะดวกตอนไปสตาร์ท" data-en="Finish at Sanam Luang and walk straight back to rest — best if you value post-race recovery over an easy trip to the start.">วิ่งจบที่สนามหลวงแล้วเดินกลับห้องได้ทันที เหมาะถ้าให้ความสำคัญกับการพักหลังวิ่งมากกว่าความสะดวกตอนไปสตาร์ท</p>
+      </div>
+      <div class="maplabel"><span data-th="Map · รอบสนามหลวง (เส้นชัย)" data-en="Map · around Sanam Luang (finish)">Map · รอบสนามหลวง (เส้นชัย)</span><span>Stay22</span></div>
+      <div class="pricebar" data-map="map-bfinish">
+        <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span>
+        <button class="pchip on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+        <button class="pchip" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
+        <button class="pchip" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
+        <button class="pchip" onclick="setPrice(this,'3000','')">฿3,000+</button>
+      </div>
+      <iframe class="mapframe" id="map-bfinish" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near finish"
+        data-base="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%20Finish%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-finish"
+        src="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%20Finish%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-finish"></iframe>
+      <div class="mapfoot" data-th="รอบเส้นชัยสนามหลวง · เช็คอิน FRI 27 → เช็คเอาต์ SAT 28" data-en="Around the Sanam Luang finish · check-in FRI 27 → out SAT 28">รอบเส้นชัยสนามหลวง · เช็คอิน FRI 27 → เช็คเอาต์ SAT 28</div>
+
+      <div class="row">
+        <h3>Riverside Grand Bangkok</h3><div class="price">฿2,400</div>
+        <div class="ty" data-th="โรงแรม 4 ดาว · ริมเจ้าพระยา" data-en="4-star · Chao Phraya riverside">โรงแรม 4 ดาว · ริมเจ้าพระยา</div>
+        <div class="meta"><span class="dist" data-th="190M · เดิน 3 นาที ถึงเส้นชัย" data-en="190M · 3-MIN TO FINISH">190M · เดิน 3 นาที ถึงเส้นชัย</span><span class="rt"><b>9.1</b> <span data-th="ยอดเยี่ยม" data-en="EXCELLENT">ยอดเยี่ยม</span></span><span>VIA AGODA</span></div>
+        <div class="note"><b>RUNNER NOTE</b> — <span data-th="วิ่งจบเดินกลับห้อง 3 นาที · เช็คเอาต์สายไว้อาบน้ำหลังวิ่ง · สปาฟื้นกล้ามเนื้อ" data-en="3-min walk back after finishing · late checkout to shower · recovery spa on site">วิ่งจบเดินกลับห้อง 3 นาที · เช็คเอาต์สายไว้อาบน้ำหลังวิ่ง · สปาฟื้นกล้ามเนื้อ</span></div>
+        <div class="act"><button class="btn" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</button></div>
+      </div>
+      <div class="row">
+        <h3>The Old Town Hostel</h3><div class="price">฿990</div>
+        <div class="ty" data-th="โฮสเทล · ห้องรวม/ส่วนตัว" data-en="Hostel · dorm & private">โฮสเทล · ห้องรวม/ส่วนตัว</div>
+        <div class="meta"><span class="dist" data-th="340M · เดิน 5 นาที ถึงเส้นชัย" data-en="340M · 5-MIN TO FINISH">340M · เดิน 5 นาที ถึงเส้นชัย</span><span class="rt"><b>8.6</b> <span data-th="ดีมาก" data-en="VERY GOOD">ดีมาก</span></span><span>VIA BOOKING</span></div>
+        <div class="note"><b>RUNNER NOTE</b> — <span data-th="ประหยัด + วิ่งจบเดินกลับสั้น · ล็อบบี้ 24 ชม. ออกไปสตาร์ท MBK เช้ามืดได้" data-en="Budget + short walk back · 24-hr lobby to head to the MBK start early">ประหยัด + วิ่งจบเดินกลับสั้น · ล็อบบี้ 24 ชม. ออกไปสตาร์ท MBK เช้ามืดได้</span></div>
+        <div class="act"><button class="btn" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</button></div>
+      </div>
+      <div class="allrow" data-th="ดูที่พักรอบเส้นชัยทั้งหมด →" data-en="See all hotels near the finish →">ดูที่พักรอบเส้นชัยทั้งหมด →</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- GETTING THERE -->
+<div class="band"><div class="in sec" id="getting-there">
+  <div class="seclabel"><span class="n">04 / Transit</span><h2 data-th="การเดินทางไปจุดปล่อยตัว (ตี 2)" data-en="Getting to the start (2 AM)">การเดินทางไปจุดปล่อยตัว (ตี 2)</h2></div>
+  <div class="table-wrap"><table>
+    <tr><th data-th="วิธี" data-en="Option">วิธี</th><th data-th="รายละเอียด" data-en="Details">รายละเอียด</th><th data-th="เหมาะกับ" data-en="Best for">เหมาะกับ</th></tr>
+    <tr><td class="d" data-th="เดินจากที่พัก" data-en="Walk">เดินจากที่พัก</td><td data-th="ชัวร์สุดตอนตี 2 ไม่ต้องลุ้นถนนปิด" data-en="Surest at 2 AM; no road-closure risk">ชัวร์สุด ไม่ลุ้นถนนปิด</td><td data-th="พักโซนรัตนโกสินทร์" data-en="Rattanakosin stays">พักโซนรัตนโกสินทร์</td></tr>
+    <tr><td class="d">Grab / <span data-th="แท็กซี่" data-en="Taxi">แท็กซี่</span></td><td data-th="หายากช่วงดึก · ลงฝั่ง MRT สนามไชยแล้วเดินเข้า" data-en="Scarce late night · get dropped at MRT Sanam Chai, walk in">หายากช่วงดึก · ลง MRT สนามไชย</td><td data-th="คนพักไกล" data-en="Farther stays">คนพักไกล</td></tr>
+    <tr><td class="d">MRT</td><td data-th="สถานีสนามไชย (เดิน ~6 นาที) · เช็ครอบรถเที่ยวเช้า" data-en="Sanam Chai (~6-min walk) · check early trains">สถานีสนามไชย · เช็ครอบเช้า</td><td data-th="คน 10K / Fun Run" data-en="10K / Fun Run">คน 10K / Fun Run</td></tr>
+  </table></div>
+</div></div>
+
+<!-- SCHEDULE -->
+<div class="band"><div class="in sec" id="schedule">
+  <div class="seclabel"><span class="n">05 / Schedule</span><h2 data-th="ตารางสุดสัปดาห์แข่ง" data-en="Race weekend schedule">ตารางสุดสัปดาห์แข่ง</h2></div>
+  <div class="table-wrap"><table>
+    <tr><th>When</th><th data-th="รายการ" data-en="Event">รายการ</th><th data-th="ผลต่อการจอง" data-en="Impact on stay">ผลต่อการจอง</th></tr>
+    <tr><td class="num" data-th="ศ.–ส." data-en="FRI–SAT">ศ.–ส.</td><td data-th="Race Expo + รับ BIB" data-en="Race Expo + BIB pickup">Race Expo + รับ BIB</td><td data-th="พักตั้งแต่คืนศุกร์/เสาร์" data-en="Stay from Fri/Sat night">พักตั้งแต่คืนศุกร์/เสาร์</td></tr>
+    <tr><td class="num">SAT 04:00</td><td data-th="Half (เริ่ม MBK)" data-en="Half (start MBK)">Half (เริ่ม MBK)</td><td data-th="คน Half พักโซนสยาม" data-en="Half runners: Siam">คน Half พักโซนสยาม</td></tr>
+    <tr><td class="num">SUN 02:00</td><td data-th="Full (สนามหลวง)" data-en="Full (Sanam Luang)">Full (สนามหลวง)</td><td data-th="ต้องพักเดินถึง" data-en="Must be walkable">ต้องพักเดินถึง</td></tr>
+    <tr><td class="num">SUN 06:00 / 06:45</td><td>10K / Fun Run</td><td data-th="พาครอบครัวพักใกล้" data-en="Family: stay nearby">พาครอบครัวพักใกล้</td></tr>
+  </table></div>
+</div></div>
+
+<!-- FAQ -->
+<div class="band"><div class="in sec" id="faq">
+  <div class="seclabel"><span class="n">06 / FAQ</span><h2 data-th="คำถามที่นักวิ่งถามบ่อย" data-en="Answers to runners' questions">คำถามที่นักวิ่งถามบ่อย</h2></div>
+    <div class="faq2">
+      <div class="faqcat">🏨 <span data-th="ที่พัก & การจอง" data-en="Stay & booking">ที่พัก & การจอง</span></div>
+      <details open><summary data-th="ควรจองที่พักกี่คืน?" data-en="How many nights should I book?">ควรจองที่พักกี่คืน?</summary><p data-th="ขึ้นกับระยะ: ลง Half (เสาร์) พักศุกร์–เสาร์ / ลง Full/10K (อาทิตย์) พักเสาร์–อาทิตย์ · ถ้าลงหลายวันจองคร่อมได้" data-en="Depends on your distance: Half (Sat) → Fri–Sat / Full/10K (Sun) → Sat–Sun. Racing multiple days? Book across both.">ขึ้นกับระยะ: Half พักศุกร์–เสาร์ / Full/10K พักเสาร์–อาทิตย์</p></details>
+      <details><summary data-th="ลง Half ควรพักที่ไหน?" data-en="Where to stay for the Half?">ลง Half ควรพักที่ไหน?</summary><p data-th="Half ปล่อยตัวที่ MBK (ไม่ใช่สนามหลวง) พักโซนสยาม/ปทุมวันเดินถึงจุดสตาร์ท แล้วกลับจากเส้นชัยสนามหลวงด้วย shuttle/MRT" data-en="The Half starts at MBK (not Sanam Luang). Stay in Siam/Pathumwan, then return from the Sanam Luang finish by shuttle/MRT.">Half เริ่มที่ MBK — พักโซนสยาม/ปทุมวัน แล้วกลับจากเส้นชัยด้วย shuttle/MRT</p></details>
+      <details><summary data-th="พักใกล้จุดสตาร์ทหรือเส้นชัยดีกว่า?" data-en="Stay near the start or the finish?">พักใกล้จุดสตาร์ทหรือเส้นชัยดีกว่า?</summary><p data-th="งานที่จบคนละที่ (เช่น Half) เลือกได้ตามความชอบ: ใกล้สตาร์ท = ไม่พลาดปล่อยตัว, ใกล้เส้นชัย = พักได้ทันทีหลังวิ่ง · ค่าเริ่มต้นแนะนำใกล้สตาร์ทเพราะพลาดปล่อยตัวแก้ยากกว่า" data-en="For point-to-point races (e.g. the Half) it's your call: near the start = don't miss the gun; near the finish = rest right after. We default to the start since missing the gun is harder to recover from.">งานที่จบคนละที่เลือกได้: ใกล้สตาร์ท=ไม่พลาดปล่อยตัว · ใกล้เส้นชัย=พักได้ทันที</p></details>
+
+      <div class="faqcat">⏱ <span data-th="วันแข่ง & โลจิสติกส์" data-en="Race day & logistics">วันแข่ง & โลจิสติกส์</span></div>
+      <details><summary data-th="ปล่อยตัวตี 2 อาหารเช้าทำยังไง?" data-en="2 AM start — what about breakfast?">ปล่อยตัวตี 2 อาหารเช้าทำยังไง?</summary><p data-th="เลือกโรงแรมที่ขอกล่องอาหารเช้าล่วงหน้าได้ หรือเตรียมของกินเบาๆ ร้านสะดวกซื้อรอบสนามหลวงเปิด 24 ชม." data-en="Pick a hotel that offers a pre-arranged breakfast box, or bring light snacks. 24/7 convenience stores nearby.">ขอกล่องอาหารเช้าล่วงหน้า หรือเตรียมของเบาๆ</p></details>
+      <details><summary data-th="ไปจุดสตาร์ทตอนดึกยังไง?" data-en="How do I get to the start at night?">ไปจุดสตาร์ทตอนดึกยังไง?</summary><p data-th="พักเดินถึงดีสุด ถ้าไกลใช้ Grab เผื่อเวลา · ถนนรอบสนามหลวงปิดตั้งแต่เที่ยงคืน ให้ลงฝั่ง MRT สนามไชยแล้วเดินเข้า" data-en="Walking is best. If you're farther, take a Grab with time to spare — roads around Sanam Luang close from midnight, so get dropped at MRT Sanam Chai and walk in.">พักเดินถึงดีสุด · ถ้าไกลใช้ Grab เผื่อเวลา ลงฝั่ง MRT สนามไชย</p></details>
+      <details><summary data-th="ฝากกระเป๋าตอนเช็คเอาต์ได้ไหม?" data-en="Can I store luggage after checkout?">ฝากกระเป๋าตอนเช็คเอาต์ได้ไหม?</summary><p data-th="ได้เกือบทุกที่ แต่ควรเลือกที่เช็คเอาต์สาย (14:00+) จะได้กลับมาอาบน้ำพักหลังเข้าเส้นชัย" data-en="Almost everywhere — but pick a late checkout (14:00+) to shower after finishing.">ได้เกือบทุกที่ · เลือกเช็คเอาต์สายจะดีสุด</p></details>
+    </div>
+  <div class="official">
+    <span class="h" data-th="ข้อมูลทางการของงาน — Tri-League" data-en="Official race info — Tri-League">ข้อมูลทางการของงาน — Tri-League</span>
+    <p class="mono">🌐 <a href="https://amazingthailandmarathon.com/" target="_blank" rel="noopener">amazingthailandmarathon.com ↗</a> · 📝 <a href="https://thailandtrileagueonline.com/atmb26/Registrations" target="_blank" rel="noopener" data-th="สมัคร ↗" data-en="Register ↗">สมัคร ↗</a></p>
+  </div>
+</div></div>
+
+<!-- NEWSLETTER -->
+<div class="band news"><div class="in">
+  <h3 data-th="งานวิ่งเดือนหน้า ส่งตรงถึงอีเมล" data-en="Next month's races in your inbox">งานวิ่งเดือนหน้า ส่งตรงถึงอีเมล</h3>
+  <p data-th="รับปฏิทินงานวิ่ง + ที่พักใกล้เส้นสตาร์ท ก่อนห้องเต็ม (ฟรี)" data-en="Get the race calendar + hotels near the start before rooms sell out (free)">รับปฏิทินงานวิ่ง + ที่พักใกล้เส้นสตาร์ท ก่อนห้องเต็ม</p>
+  <form onsubmit="return false"><input type="email" data-th-ph="อีเมลของคุณ" data-en-ph="Your email" placeholder="อีเมลของคุณ"><button data-th="สมัคร" data-en="Subscribe">สมัคร</button></form>
+</div></div>
+
+<div class="band foot"><div class="in" data-th="RACESTAY · EDITORIAL STYLE · STAY22 EMBED · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์ · ราคา/ข้อมูลโรงแรมเป็นตัวอย่างสาธิต · ข้อมูลงานอิงประกาศทางการ ณ ก.ค. 2026" data-en="RACESTAY · EDITORIAL STYLE · STAY22 EMBED · MAY EARN A COMMISSION ON BOOKINGS · HOTEL DATA ILLUSTRATIVE · RACE INFO AS OF JUL 2026">RACESTAY · EDITORIAL STYLE · STAY22 EMBED · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์ · ราคา/ข้อมูลโรงแรมเป็นตัวอย่างสาธิต · ข้อมูลงานอิงประกาศทางการ ณ ก.ค. 2026</div></div>
+
+<script>
+  function setLang(l){
+    document.querySelectorAll('[data-th]').forEach(function(el){
+      var v=(l==='en')?el.getAttribute('data-en'):el.getAttribute('data-th');
+      if(v===null)return; if(el.tagName==='TITLE'){document.title=v;return;}
+      if(el.children.length===0) el.innerHTML=v;
+    });
+    document.querySelectorAll('[data-th-ph]').forEach(function(el){
+      el.setAttribute('placeholder',(l==='en')?el.getAttribute('data-en-ph'):el.getAttribute('data-th-ph'));
+    });
+    document.documentElement.lang=l;
+    document.getElementById('btn-th').classList.toggle('on',l==='th');
+    document.getElementById('btn-en').classList.toggle('on',l==='en');
+  }
+  function setTab(t){
+    document.getElementById('tab-a').classList.toggle('on',t==='a');
+    document.getElementById('tab-b').classList.toggle('on',t==='b');
+    document.getElementById('pane-a').classList.toggle('on',t==='a');
+    document.getElementById('pane-b').classList.toggle('on',t==='b');
+  }
+  function setStay(s){
+    document.getElementById('st-start').classList.toggle('on',s==='start');
+    document.getElementById('st-finish').classList.toggle('on',s==='finish');
+    document.getElementById('bstay-start').classList.toggle('on',s==='start');
+    document.getElementById('bstay-finish').classList.toggle('on',s==='finish');
+  }
+  function setPrice(btn,min,max){
+    var bar=btn.closest('.pricebar');
+    bar.querySelectorAll('.pchip').forEach(function(c){c.classList.toggle('on',c===btn)});
+    var f=document.getElementById(bar.getAttribute('data-map'));
+    var src=f.getAttribute('data-base');
+    if(min) src+='&min='+min;
+    if(max) src+='&max='+max;
+    f.src=src;
+  }
+</script>
+</body>
+</html>
