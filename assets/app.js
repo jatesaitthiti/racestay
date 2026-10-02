@@ -4,7 +4,8 @@ function setLang(l){
     var v=(l==='en')?el.getAttribute('data-en'):el.getAttribute('data-th');
     if(v===null)return;
     if(el.tagName==='TITLE'){document.title=v;return;}
-    if(el.children.length===0) el.innerHTML=v;
+    var onlyBr=el.children.length>0&&Array.prototype.every.call(el.children,function(c){return c.tagName==='BR';});
+    if(el.children.length===0||onlyBr) el.innerHTML=v;
   });
   document.querySelectorAll('[data-th-ph]').forEach(function(el){
     el.setAttribute('placeholder',(l==='en')?el.getAttribute('data-en-ph'):el.getAttribute('data-th-ph'));
