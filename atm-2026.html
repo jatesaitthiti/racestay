@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="ATM 2026 — ที่พักใกล้จุดปล่อยตัว | RaceStay">
 <meta property="og:description" content="ที่พักใกล้จุดปล่อยตัว/เส้นชัย สำหรับนักกีฬาที่เดินทางมาแข่ง — Amazing Thailand Marathon 2026">
-<link rel="stylesheet" href="assets/style.css?v=24">
+<link rel="stylesheet" href="assets/style.css?v=25">
 </head>
 <body>
 <div class="band nav"><div class="in">
@@ -94,19 +94,9 @@
   <div class="seclabel"><span class="n">03 / Stay</span><h2 data-th="เลือกที่พักตามจุดปล่อยตัวของคุณ" data-en="Where to stay — by your start point">เลือกที่พักตามจุดปล่อยตัวของคุณ</h2></div>
   <p class="lead" data-th="งานนี้แข่ง 2 วัน ปล่อยตัวคนละที่ตามระยะ — เลือกจุดสตาร์ทของคุณ เราแนะนำโซน/ที่พัก/การเดินทางให้ตรงจุด" data-en="This is a 2-day event with different start points by distance — pick your start and we'll tailor the zone, hotels and logistics.">งานนี้แข่ง 2 วัน ปล่อยตัวคนละที่ตามระยะ — เลือกจุดสตาร์ทของคุณ เราแนะนำโซน/ที่พัก/การเดินทางให้ตรงจุด</p>
 
-  <div class="tabs">
-    <button class="tab on" id="tab-a" onclick="setTab('a')">
-      <div class="t1" data-th="อาทิตย์ · ปล่อยตัว" data-en="Sunday · Start">อาทิตย์ · ปล่อยตัว</div>
-      <div class="t2" data-th="สนามหลวง" data-en="Sanam Luang">สนามหลวง</div>
-      <div class="t3">Full Marathon · 10K · Fun Run</div>
-      <span class="pill">START = FINISH</span>
-    </button>
-    <button class="tab" id="tab-b" onclick="setTab('b')">
-      <div class="t1" data-th="เสาร์ · ปล่อยตัว" data-en="Saturday · Start">เสาร์ · ปล่อยตัว</div>
-      <div class="t2">MBK Center</div>
-      <div class="t3">Half Marathon</div>
-      <span class="pill diff">START ≠ FINISH</span>
-    </button>
+  <div class="seg startseg">
+    <button class="seg-item on" id="tab-a" onclick="setTab('a')" data-th="อาทิตย์ · สนามหลวง" data-en="Sunday · Sanam Luang">อาทิตย์ · สนามหลวง</button>
+    <button class="seg-item" id="tab-b" onclick="setTab('b')" data-th="เสาร์ · MBK Center" data-en="Saturday · MBK Center">เสาร์ · MBK Center</button>
   </div>
 
   <!-- PANE A -->
