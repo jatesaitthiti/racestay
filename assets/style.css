@@ -221,3 +221,25 @@ a.card.disabled{pointer-events:none}
 .feature .fr .rowx b{color:#fff;font-weight:500}
 @media(max-width:700px){.feature{grid-template-columns:1fr;padding:26px 22px}.feature .fr{border-left:0;border-top:1px solid #3a3a3a;padding-left:0;padding-top:18px;margin-top:4px}}
 
+
+/* ===== footer nav + b2b pages ===== */
+.footnav{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;padding:26px 24px;font-family:var(--mono);font-size:12px;border-top:1px solid var(--line)}
+.footnav a{color:var(--muted)}
+.footnav a:hover{color:var(--ink)}
+.footnav .sp{flex:1}
+@media(max-width:560px){.footnav .sp{display:none;width:100%}}
+
+.prose{max-width:680px;margin-top:18px}
+.prose p{font-size:15px;color:#3a3c31;line-height:1.85;margin:0 0 14px}
+
+.form{display:grid;gap:12px;max-width:520px;margin-top:22px}
+.form label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:-6px}
+.form input,.form select,.form textarea{border:1px solid var(--line);background:#fff;padding:11px 13px;font-size:14px;font-family:var(--sans);color:var(--ink);width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--lime);border-color:var(--lime)}
+.form .btn{justify-self:start;margin-top:4px}
+.formnote{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+
+.stat-inline{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.stat-inline .b{background:#fff;border:1px solid var(--line);box-shadow:0 2px 14px rgba(21,22,15,.06);padding:16px 18px;flex:1;min-width:150px}
+.stat-inline .b .v{font-family:var(--mono);font-weight:700;font-size:24px}
+.stat-inline .b .l{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
