@@ -43,7 +43,7 @@ function setPrice(btn,min,max){
 function filterSport(btn, sport){
   var bar=btn.closest('.sportbar');
   if(bar) bar.querySelectorAll('.pchip').forEach(function(c){c.classList.toggle('on',c===btn)});
-  document.querySelectorAll('#races [data-sport]').forEach(function(el){
+  document.querySelectorAll('#races .grid [data-sport]').forEach(function(el){
     el.style.display=(sport==='all'||el.getAttribute('data-sport')===sport)?'':'none';
   });
 }

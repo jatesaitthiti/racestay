@@ -337,3 +337,9 @@ a.card.disabled{pointer-events:none}
 .foot .in{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 20px;flex-wrap:wrap;text-align:left}
 .foot .fright{white-space:nowrap}
 @media(max-width:560px){.foot .in{align-items:flex-start}}
+
+/* ad label spacing + GDN-standard slot sizes */
+.ad .lbl{letter-spacing:.2em;padding:0 6px}
+.ad.leader,.ad.infeed{height:90px;min-height:90px;max-width:970px;margin-left:auto;margin-right:auto}
+@media(max-width:760px){.ad.leader,.ad.infeed{height:100px}}
+.ad.sticky{min-height:56px}
