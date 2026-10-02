@@ -224,11 +224,9 @@ a.card.disabled{pointer-events:none}
 
 
 /* ===== footer nav + b2b pages ===== */
-.footnav{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;padding:26px 24px;font-family:var(--mono);font-size:12px;border-top:1px solid var(--line)}
+.footnav{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 24px;align-items:center;padding:26px 24px;font-family:var(--mono);font-size:12px;border-top:1px solid var(--line)}
 .footnav a{color:var(--muted)}
 .footnav a:hover{color:var(--ink)}
-.footnav .sp{flex:1}
-@media(max-width:560px){.footnav .sp{display:none;width:100%}}
 
 .prose{max-width:680px;margin-top:18px}
 .prose p{font-size:15px;color:#3a3c31;line-height:1.85;margin:0 0 14px}
