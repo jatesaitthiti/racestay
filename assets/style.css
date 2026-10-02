@@ -171,7 +171,7 @@
   @media(max-width:480px){.news form{flex-direction:column;border:0}.news input{border:1px solid var(--lime-pale);margin-bottom:8px}.news button{border:0}}
 
   .foot{border-top:1px solid var(--line)}
-  .foot .in{padding:28px 24px 48px;font-family:var(--mono);font-size:11px;color:#9a9c90;line-height:1.8}
+  .foot .in{padding:28px 24px 48px;font-family:var(--mono);font-size:11px;color:#9a9c90;line-height:1.8;text-align:center}
 
   /* curated partner hotel + facilities */
   .curatedlabel{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:20px 0 0}
