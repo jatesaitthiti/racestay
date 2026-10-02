@@ -242,3 +242,16 @@ a.card.disabled{pointer-events:none}
 .stat-inline .b{background:#fff;border:1px solid var(--line);box-shadow:0 2px 14px rgba(21,22,15,.06);padding:16px 18px;flex:1;min-width:150px}
 .stat-inline .b .v{font-family:var(--mono);font-weight:700;font-size:24px}
 .stat-inline .b .l{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* ===== mobbin-style rounded corners ===== */
+.card{border-radius:16px}
+.stat{border-radius:16px}
+.feature{border-radius:20px}
+.mapframe{border-radius:14px}
+.btn,.fbtn{border-radius:10px}
+.pchip{border-radius:999px}
+.lang{border-radius:10px;overflow:hidden}
+.form input,.form select,.form textarea{border-radius:10px}
+.news form{border-radius:12px;overflow:hidden}
+.tabs,.subtabs{border-radius:14px;overflow:hidden}
+.row.partner{border-radius:16px}
