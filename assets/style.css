@@ -333,3 +333,7 @@ a.card.disabled{pointer-events:none}
 .foot .credit{margin-top:10px;letter-spacing:.04em}
 .foot .credit a{color:var(--green);font-weight:700}
 .foot .credit a:hover{color:var(--ink);text-decoration:underline}
+
+.foot .in{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 20px;flex-wrap:wrap;text-align:left}
+.foot .fright{white-space:nowrap}
+@media(max-width:560px){.foot .in{align-items:flex-start}}
