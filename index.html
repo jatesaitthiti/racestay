@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="RaceStay — ที่พักใกล้จุดปล่อยตัว ทุกงานกีฬา">
 <meta property="og:description" content="หาที่พักใกล้จุดปล่อยตัว — วิ่งถนน วิ่งเทรล ไตรกีฬา HYROX">
-<link rel="stylesheet" href="assets/style.css?v=15">
-<script src="assets/app.js?v=4" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=16">
+<script src="assets/app.js?v=5" defer></script>
 </head>
 <body>
 <div class="band nav"><div class="in">
@@ -24,7 +24,7 @@
     <a href="guides.html" data-th="คู่มือ" data-en="Guides">คู่มือ</a>
     </nav>
     <div class="navright">
-      <span class="lang"><button data-setlang="th" class="on" onclick="setLang('th')">TH</button><button data-setlang="en" onclick="setLang('en')">EN</button></span>
+      <span class="lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
       <button class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 16" width="20" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="2" x2="23" y2="2"/><line x1="1" y1="8" x2="23" y2="8"/><line x1="1" y1="14" x2="23" y2="14"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
     </div>
   </div>
@@ -33,7 +33,7 @@
     <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
     <a href="index.html?sport=tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</a>
     <a href="index.html?sport=hyrox">HYROX</a>
-    <span class="lang menu-lang"><button data-setlang="th" class="on" onclick="setLang('th')">TH</button><button data-setlang="en" onclick="setLang('en')">EN</button></span>
+    <span class="lang menu-lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
   </div>
 </div></div>
 
@@ -66,12 +66,12 @@
 <div class="band"><div class="in sec" id="races">
   <div class="seclabel"><span class="n">01 / Events</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2></div>
 
-  <div class="sportbar" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
-    <button class="pchip on" onclick="filterSport(this,'all')" data-sport="all" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
-    <button class="pchip" onclick="filterSport(this,'road')" data-sport="road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</button>
-    <button class="pchip" onclick="filterSport(this,'trail')" data-sport="trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</button>
-    <button class="pchip" onclick="filterSport(this,'tri')" data-sport="tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</button>
-    <button class="pchip" onclick="filterSport(this,'hyrox')" data-sport="hyrox">HYROX</button>
+  <div class="sportbar seg" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+    <button class="pchip seg-item on" onclick="filterSport(this,'all')" data-sport="all" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+    <button class="pchip seg-item" onclick="filterSport(this,'road')" data-sport="road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</button>
+    <button class="pchip seg-item" onclick="filterSport(this,'trail')" data-sport="trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</button>
+    <button class="pchip seg-item" onclick="filterSport(this,'tri')" data-sport="tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</button>
+    <button class="pchip seg-item" onclick="filterSport(this,'hyrox')" data-sport="hyrox">HYROX</button>
   </div>
 
   <div class="grid c3" style="margin-top:16px">

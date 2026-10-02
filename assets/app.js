@@ -64,6 +64,32 @@ document.addEventListener('click',function(e){
   var b=document.querySelector('.menubtn'); if(b) b.setAttribute('aria-expanded','false');
 });
 
+/* ----- unified segmented control (sliding thumb) ----- */
+function segSyncAll(){
+  document.querySelectorAll('.seg').forEach(function(seg){
+    var th=seg.querySelector('.seg-thumb'); if(!th) return;
+    var act=seg.querySelector('.seg-item.on,.seg-item.active');
+    if(!act){ th.style.opacity='0'; return; }
+    th.style.opacity='1';
+    th.style.width=act.offsetWidth+'px';
+    th.style.height=act.offsetHeight+'px';
+    th.style.transform='translate('+act.offsetLeft+'px,'+act.offsetTop+'px)';
+  });
+}
+function initSegments(){
+  document.querySelectorAll('.seg').forEach(function(seg){
+    if(!seg.querySelector('.seg-thumb')){
+      var th=document.createElement('span'); th.className='seg-thumb';
+      seg.insertBefore(th, seg.firstChild);
+    }
+    seg.querySelectorAll('.seg-item').forEach(function(it){
+      it.addEventListener('click', function(){ requestAnimationFrame(segSyncAll); });
+    });
+  });
+  segSyncAll();
+}
+window.addEventListener('resize', function(){ segSyncAll(); });
+
 /* apply saved language on every page load */
 document.addEventListener('DOMContentLoaded',function(){
   var l='th';
@@ -75,4 +101,6 @@ document.addEventListener('DOMContentLoaded',function(){
     var chip=document.querySelector('.sportbar .pchip[data-sport="'+sp+'"]');
     if(chip){ filterSport(chip,sp); var r=document.getElementById('races'); if(r) r.scrollIntoView(); }
   }
+
+  initSegments();
 });
