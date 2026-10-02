@@ -357,3 +357,9 @@ a.card.disabled{pointer-events:none}
 .row.partner{align-items:start}
 .row.partner .price{grid-row:2}
 .row.partner .act{grid-row:3;align-self:start;margin-top:4px}
+
+/* ad slots fill width (fix margin-auto shrink) */
+.ad.leader,.ad.infeed{width:100%}
+.ad.infeed{justify-self:center}
+/* center jump links */
+.jump{justify-content:center}
