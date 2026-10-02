@@ -6,20 +6,32 @@
 <title data-th="ลงโฆษณา | RaceStay" data-en="Advertise | RaceStay">ลงโฆษณา — RaceStay</title>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="description" content="โปรโมทโรงแรมหรือแบรนด์ของคุณกับนักกีฬาที่กำลังจะจองทริปแข่ง — RaceStay">
-<link rel="stylesheet" href="assets/style.css?v=10">
+<link rel="stylesheet" href="assets/style.css?v=11">
 <script src="assets/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="band nav"><div class="in">
-  <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay"></a>
-  <nav>
+  <div class="navbar">
+    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay"></a>
+    <nav class="navlinks">
     <a href="index.html?sport=road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</a>
     <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
     <a href="index.html?sport=tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</a>
     <a href="index.html?sport=hyrox">HYROX</a>
     <a href="guides.html" data-th="คู่มือ" data-en="Guides">คู่มือ</a>
-  </nav>
-  <span class="lang"><button id="btn-th" class="on" onclick="setLang('th')">TH</button><button id="btn-en" onclick="setLang('en')">EN</button></span>
+    </nav>
+    <div class="navright">
+      <span class="lang"><button id="btn-th" class="on" onclick="setLang('th')">TH</button><button id="btn-en" onclick="setLang('en')">EN</button></span>
+      <button class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg viewBox="0 0 24 16" width="20" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="2" x2="23" y2="2"/><line x1="1" y1="8" x2="23" y2="8"/><line x1="1" y1="14" x2="23" y2="14"/></svg></button>
+    </div>
+  </div>
+  <div class="menu" id="menu">
+    <a href="index.html?sport=road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</a>
+    <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
+    <a href="index.html?sport=tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</a>
+    <a href="index.html?sport=hyrox">HYROX</a>
+    <a href="guides.html" data-th="คู่มือ" data-en="Guides">คู่มือ</a>
+  </div>
 </div></div>
 
 <!-- HERO -->
