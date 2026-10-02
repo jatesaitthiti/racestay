@@ -311,3 +311,9 @@ a.card.disabled{pointer-events:none}
 .menu-lang{display:flex !important;width:100%;margin-top:16px;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
 .menu-lang button{flex:1;min-height:50px;font-size:15px;border-radius:0}
 @media(max-width:760px){ .navright .lang{display:none} }
+
+/* ===== unified corner-radius system (card / control / pill) ===== */
+:root{--r-card:16px;--r-ctl:10px;--r-pill:999px}
+.card,.stat,.feature,.mapframe,.tabs,.subtabs,.menu,.news form,.row.partner,.ad,.ad.infeed{border-radius:var(--r-card)}
+.btn,.fbtn,.form input,.form select,.form textarea{border-radius:var(--r-ctl)}
+.pchip,.lang,.menu-lang,.navbar,.menubtn,.menu .cta{border-radius:var(--r-pill)}
