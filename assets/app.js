@@ -55,4 +55,10 @@ document.addEventListener('DOMContentLoaded',function(){
   var l='th';
   try{ l=localStorage.getItem('rs-lang')||'th'; }catch(e){}
   setLang(l);
+
+  var sp=null; try{ sp=new URLSearchParams(location.search).get('sport'); }catch(e){}
+  if(sp){
+    var chip=document.querySelector('.sportbar .pchip[data-sport="'+sp+'"]');
+    if(chip){ filterSport(chip,sp); var r=document.getElementById('races'); if(r) r.scrollIntoView(); }
+  }
 });
