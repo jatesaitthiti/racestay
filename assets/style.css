@@ -343,3 +343,12 @@ a.card.disabled{pointer-events:none}
 .ad.leader,.ad.infeed{height:90px;min-height:90px;max-width:970px;margin-left:auto;margin-right:auto}
 @media(max-width:760px){.ad.leader,.ad.infeed{height:100px}}
 .ad.sticky{min-height:56px}
+
+.facil span{border-radius:999px}
+
+.foot .fleft a{color:var(--green);font-weight:700}
+.foot .fleft a:hover{color:var(--ink);text-decoration:underline}
+
+/* center home hero */
+.hero{text-align:center}
+.hero .sub{margin-left:auto;margin-right:auto}

@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="ATM 2026 — ที่พักใกล้จุดปล่อยตัว | RaceStay">
 <meta property="og:description" content="ที่พักใกล้จุดปล่อยตัว/เส้นชัย สำหรับนักกีฬาที่เดินทางมาแข่ง — Amazing Thailand Marathon 2026">
-<link rel="stylesheet" href="assets/style.css?v=19">
+<link rel="stylesheet" href="assets/style.css?v=21">
 </head>
 <body>
 <div class="band nav"><div class="in">
@@ -124,12 +124,12 @@
     </div>
     <div class="maplabel"><span data-th="Map · รอบสนามหลวง · 1.5km" data-en="Map · around Sanam Luang · 1.5km">Map · รอบสนามหลวง · 1.5km</span><span>Stay22</span></div>
     <div class="pricebar" data-map="map-a">
-      <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span>
-      <button class="pchip on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
-      <button class="pchip" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
-      <button class="pchip" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
-      <button class="pchip" onclick="setPrice(this,'3000','')">฿3,000+</button>
-    </div>
+      <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span><div class="seg">
+      <button class="pchip seg-item on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+      <button class="pchip seg-item" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
+      <button class="pchip seg-item" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
+      <button class="pchip seg-item" onclick="setPrice(this,'3000','')">฿3,000+</button>
+    </div></div>
     <iframe class="mapframe" id="map-a" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near Sanam Luang"
       data-base="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%2C%20Bangkok&checkin=2026-11-28&checkout=2026-11-29&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-a"
       src="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%2C%20Bangkok&checkin=2026-11-28&checkout=2026-11-29&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-a"></iframe>
@@ -188,12 +188,12 @@
       </div>
       <div class="maplabel"><span data-th="Map · รอบ MBK / สยาม" data-en="Map · around MBK / Siam">Map · รอบ MBK / สยาม</span><span>Stay22</span></div>
       <div class="pricebar" data-map="map-bstart">
-        <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span>
-        <button class="pchip on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
-        <button class="pchip" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
-        <button class="pchip" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
-        <button class="pchip" onclick="setPrice(this,'3000','')">฿3,000+</button>
-      </div>
+        <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span><div class="seg">
+        <button class="pchip seg-item on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+        <button class="pchip seg-item" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
+        <button class="pchip seg-item" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
+        <button class="pchip seg-item" onclick="setPrice(this,'3000','')">฿3,000+</button>
+      </div></div>
       <iframe class="mapframe" id="map-bstart" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near MBK"
         data-base="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7447&lng=100.5299&venue=MBK%20Center%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-start"
         src="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7447&lng=100.5299&venue=MBK%20Center%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-start"></iframe>
@@ -229,12 +229,12 @@
       </div>
       <div class="maplabel"><span data-th="Map · รอบสนามหลวง (เส้นชัย)" data-en="Map · around Sanam Luang (finish)">Map · รอบสนามหลวง (เส้นชัย)</span><span>Stay22</span></div>
       <div class="pricebar" data-map="map-bfinish">
-        <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span>
-        <button class="pchip on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
-        <button class="pchip" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
-        <button class="pchip" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
-        <button class="pchip" onclick="setPrice(this,'3000','')">฿3,000+</button>
-      </div>
+        <span class="plabel" data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span><div class="seg">
+        <button class="pchip seg-item on" onclick="setPrice(this,'','')" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
+        <button class="pchip seg-item" onclick="setPrice(this,'0','1000')">฿0–1,000</button>
+        <button class="pchip seg-item" onclick="setPrice(this,'1000','3000')">฿1,000–3,000</button>
+        <button class="pchip seg-item" onclick="setPrice(this,'3000','')">฿3,000+</button>
+      </div></div>
       <iframe class="mapframe" id="map-bfinish" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near finish"
         data-base="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%20Finish%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-finish"
         src="https://www.stay22.com/embed/gm?aid=affiliateid&lat=13.7554&lng=100.4922&venue=Sanam%20Luang%20Finish%2C%20Bangkok&checkin=2026-11-27&checkout=2026-11-28&maincolor=d9ef2f&currency=THB&priceper=nightly&campaign=atm-b-finish"></iframe>
@@ -307,9 +307,9 @@
 
 <!-- NEWSLETTER -->
 <div class="band news"><div class="in">
-  <h3 data-th="งานวิ่งเดือนหน้า ส่งตรงถึงอีเมล" data-en="Next month's races in your inbox">งานวิ่งเดือนหน้า ส่งตรงถึงอีเมล</h3>
-  <p data-th="รับปฏิทินงานวิ่ง + ที่พักใกล้เส้นสตาร์ท ก่อนห้องเต็ม (ฟรี)" data-en="Get the race calendar + hotels near the start before rooms sell out (free)">รับปฏิทินงานวิ่ง + ที่พักใกล้เส้นสตาร์ท ก่อนห้องเต็ม</p>
-  <form onsubmit="return false"><input type="email" data-th-ph="อีเมลของคุณ" data-en-ph="Your email" placeholder="อีเมลของคุณ"><button data-th="สมัคร" data-en="Subscribe">สมัคร</button></form>
+  <h3 data-th="งานกีฬาเดือนหน้า ส่งตรงถึงอีเมล" data-en="Next month's events in your inbox">งานกีฬาเดือนหน้า ส่งตรงถึงอีเมล</h3>
+  <p data-th="รับปฏิทินงานวิ่ง เทรล ไตรกีฬา HYROX + ที่พักใกล้จุดปล่อยตัว ก่อนห้องเต็ม (ฟรี)" data-en="Get the calendar for running, trail, tri &amp; HYROX + hotels near the start before rooms sell out (free)">รับปฏิทินงานวิ่ง เทรล ไตรกีฬา HYROX + ที่พักใกล้จุดปล่อยตัว ก่อนห้องเต็ม</p>
+  <form onsubmit="return false"><input type="email" aria-label="email" data-th-ph="อีเมลของคุณ" data-en-ph="Your email" placeholder="อีเมลของคุณ"><button data-th="รับอีเมล" data-en="Subscribe">รับอีเมล</button></form>
 </div></div>
 
 <div class="band"><div class="in" style="padding:6px 24px 44px"><a href="cities.html" class="allrow" data-th="ดูงานอื่นใน Bangkok →" data-en="See other events in Bangkok →">ดูงานอื่นใน Bangkok →</a></div></div>
@@ -324,7 +324,7 @@
   <a href="advertise.html" data-th="ลงโฆษณา" data-en="Advertise">ลงโฆษณา</a>
 </div></div>
 
-<div class="band foot"><div class="in"><div class="fleft"><div data-th="RaceStay · ข้อมูลเป็นตัวอย่างสาธิต · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์" data-en="RaceStay · Demo data · May earn a commission on bookings">RaceStay · ข้อมูลเป็นตัวอย่างสาธิต · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์</div><div class="credit">Design &amp; Development by <a href="https://suffix.works/en" target="_blank" rel="noopener">SUFFIX</a></div></div><div class="fright">© SUFFIX</div></div></div>
+<div class="band foot"><div class="in"><div class="fleft"><span data-th="RaceStay · ข้อมูลเป็นตัวอย่างสาธิต · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์ · ออกแบบและพัฒนาโดย" data-en="RaceStay · Demo data · May earn a commission on bookings · Design &amp; Development by">RaceStay · ข้อมูลเป็นตัวอย่างสาธิต · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์ · ออกแบบและพัฒนาโดย</span> <a href="https://suffix.works/en" target="_blank" rel="noopener">SUFFIX</a></div><div class="fright">© SUFFIX</div></div></div>
 
 <script src="assets/app.js?v=6" defer></script>
 <div class="ad sticky"><span class="lbl">Advertisement · โฆษณา</span><button class="x" aria-label="close" onclick="this.parentNode.style.display='none'">×</button></div>
