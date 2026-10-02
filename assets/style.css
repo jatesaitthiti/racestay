@@ -255,3 +255,14 @@ a.card.disabled{pointer-events:none}
 .news form{border-radius:12px;overflow:hidden}
 .tabs,.subtabs{border-radius:14px;overflow:hidden}
 .row.partner{border-radius:16px}
+
+/* ===== ad slots (reserved placeholders) ===== */
+.ad{display:flex;align-items:center;justify-content:center;text-align:center;background:var(--paper-2);border:1px dashed #c6c5ba;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-radius:14px}
+.ad.infeed{grid-column:1/-1;min-height:120px;border-radius:16px}
+.ad.leader{width:100%;min-height:clamp(96px,13vw,120px)}
+.ad.sticky{display:none}
+@media(max-width:640px){
+  .ad.sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;min-height:62px;border-radius:0;border:0;border-top:1px solid var(--line);background:var(--paper)}
+  .ad.sticky .x{position:absolute;top:3px;right:10px;font-size:16px;line-height:1;color:var(--muted);background:transparent;border:0;cursor:pointer}
+  body{padding-bottom:70px}
+}
