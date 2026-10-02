@@ -9,185 +9,31 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="RaceStay — ที่พักใกล้จุดปล่อยตัว ทุกงานกีฬา">
 <meta property="og:description" content="หาที่พักใกล้จุดปล่อยตัว — วิ่งถนน วิ่งเทรล ไตรกีฬา HYROX">
-<link rel="stylesheet" href="assets/style.css?v=8">
-<script src="assets/app.js?v=2" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=9">
+<script src="assets/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="band nav"><div class="in">
   <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay"></a>
-  <nav>
+  <div class="navright">
+    <span class="lang"><button id="btn-th" class="on" onclick="setLang('th')">TH</button><button id="btn-en" onclick="setLang('en')">EN</button></span>
+    <button class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg viewBox="0 0 24 16" width="22" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="1" y1="2" x2="23" y2="2"/><line x1="1" y1="8" x2="23" y2="8"/><line x1="1" y1="14" x2="23" y2="14"/></svg></button>
+  </div>
+</div>
+<div class="menu" id="menu"><div class="in menu-in">
+    <div class="grp" data-th="งานกีฬา" data-en="Events">งานกีฬา</div>
     <a href="index.html?sport=road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</a>
     <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
     <a href="index.html?sport=tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</a>
     <a href="index.html?sport=hyrox">HYROX</a>
+    <div class="grp" data-th="เพิ่มเติม" data-en="More">เพิ่มเติม</div>
+    <a href="cities.html" data-th="ตามเมือง" data-en="By city">ตามเมือง</a>
+    <a href="hotels.html" data-th="โรงแรม" data-en="Hotels">โรงแรม</a>
     <a href="guides.html" data-th="คู่มือ" data-en="Guides">คู่มือ</a>
-  </nav>
-  <span class="lang"><button id="btn-th" class="on" onclick="setLang('th')">TH</button><button id="btn-en" onclick="setLang('en')">EN</button></span>
+    <a href="organizers.html" data-th="สำหรับผู้จัดงาน" data-en="For organizers">สำหรับผู้จัดงาน</a>
+    <a href="advertise.html" data-th="ลงโฆษณา" data-en="Advertise">ลงโฆษณา</a>
 </div></div>
-
-<!-- HERO -->
-<div class="band"><div class="in hero">
-  <div class="kick">Run · Trail · Tri · HYROX</div>
-  <h1 data-th="RaceStay คือ <span class='ital'>ผู้ช่วยหาที่พักที่เข้าใจวันแข่ง</span> ตั้งแต่คืนก่อนลงสนาม จนถึง <span class='ital'>เส้นชัย</span>" data-en="RaceStay is a <span class='ital'>stay finder that gets race day</span> — from the night before to the <span class='ital'>finish line</span>">RaceStay คือ <span class="ital">ผู้ช่วยหาที่พักที่เข้าใจวันแข่ง</span> ตั้งแต่คืนก่อนลงสนาม จนถึง <span class="ital">เส้นชัย</span></h1>
-  <p class="sub" data-th="รวมที่พักเดินถึงจุดปล่อยตัว ของงานวิ่งถนน วิ่งเทรล ไตรกีฬา และ HYROX — เลือกงาน แล้วจองได้เลย" data-en="Hotels within walking distance of the start — for road, trail, triathlon and HYROX. Pick an event and book.">รวมที่พักเดินถึงจุดปล่อยตัว ของงานวิ่งถนน วิ่งเทรล ไตรกีฬา และ HYROX — เลือกงาน แล้วจองได้เลย</p>
-</div></div>
-
-<!-- FEATURED RACE -->
-<div class="band"><div class="in sec" style="padding-bottom:0">
-  <a class="feature" href="atm-2026.html">
-    <div class="fl">
-      <div class="k" data-th="งานเด่นประจำเดือน · วิ่งถนน" data-en="Featured · Road race">งานเด่นประจำเดือน · วิ่งถนน</div>
-      <h2>Amazing Thailand Marathon 2026</h2>
-      <p data-th="สนามหลวง · 28–29 พ.ย. 2026 · ปล่อยตัวตี 2 ถนนปิด — ทำเลที่พักสำคัญเป็นพิเศษ ดูที่พักเดินถึงสตาร์ท + แผนที่ Stay22" data-en="Sanam Luang · 28–29 Nov 2026 · 2 AM start with road closures — where you stay really matters. See walkable hotels + the Stay22 map.">สนามหลวง · 28–29 พ.ย. 2026 · ปล่อยตัวตี 2 ถนนปิด — ทำเลที่พักสำคัญเป็นพิเศษ ดูที่พักเดินถึงสตาร์ท + แผนที่ Stay22</p>
-      <span class="fbtn" data-th="ดูรายละเอียดงาน →" data-en="View race details →">ดูรายละเอียดงาน →</span>
-    </div>
-    <div class="fr">
-      <div class="rowx"><span data-th="วันแข่ง" data-en="Date">วันแข่ง</span><b>28–29 NOV 2026</b></div>
-      <div class="rowx"><span data-th="สถานที่" data-en="Venue">สถานที่</span><b>Sanam Luang</b></div>
-      <div class="rowx"><span data-th="ระยะ" data-en="Distances">ระยะ</span><b>42.195 / 21.1 / 10 / ~4.5 km</b></div>
-      <div class="rowx"><span data-th="ที่พักใกล้สุด" data-en="Nearest stay">ที่พักใกล้สุด</span><b>190 m · เดิน 3 นาที</b></div>
-      <div class="rowx"><span data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span><b>฿990–3,600</b></div>
-    </div>
-  </a>
-</div></div>
-
-<!-- ALL EVENTS -->
-<div class="band"><div class="in sec" id="races">
-  <div class="seclabel"><span class="n">01 / Events</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2></div>
-
-  <div class="sportbar" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
-    <button class="pchip on" onclick="filterSport(this,'all')" data-sport="all" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
-    <button class="pchip" onclick="filterSport(this,'road')" data-sport="road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</button>
-    <button class="pchip" onclick="filterSport(this,'trail')" data-sport="trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</button>
-    <button class="pchip" onclick="filterSport(this,'tri')" data-sport="tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</button>
-    <button class="pchip" onclick="filterSport(this,'hyrox')" data-sport="hyrox">HYROX</button>
-  </div>
-
-  <div class="grid c3" style="margin-top:16px">
-
-    <a class="card" href="atm-2026.html" data-sport="road">
-      <span class="tag live" data-th="● เปิดดูแล้ว" data-en="● Live">● เปิดดูแล้ว</span>
-      <h3>Amazing Thailand Marathon</h3>
-      <div class="when"><span data-th="วิ่งถนน" data-en="Road">วิ่งถนน</span> · 28–29 NOV 2026 · Bangkok</div>
-      <div class="desc" data-th="สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22" data-en="Sanam Luang · 2 AM start · walkable hotels + Stay22 map">สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22</div>
-      <div class="metrow"><span><b>4</b> <span data-th="ระยะ" data-en="distances">ระยะ</span></span><span><b>28</b> <span data-th="ที่พักใกล้" data-en="hotels">ที่พักใกล้</span></span><span>฿990+</span></div>
-      <span class="go" data-th="ดูรายละเอียด →" data-en="View details →">ดูรายละเอียด →</span>
-    </a>
-
-    <span class="card disabled" data-sport="road">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Chiang Mai Marathon</h3>
-      <div class="when"><span data-th="วิ่งถนน" data-en="Road">วิ่งถนน</span> · DEC 2026 · Chiang Mai</div>
-      <div class="desc" data-th="รอบคูเมือง · อากาศเย็น · ที่พักย่านเมืองเก่า" data-en="Old-city moat route · cool weather · old-town stays">รอบคูเมือง · อากาศเย็น · ที่พักย่านเมืองเก่า</div>
-    </span>
-
-    <span class="card disabled" data-sport="road">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Buriram Marathon</h3>
-      <div class="when"><span data-th="วิ่งถนน" data-en="Road">วิ่งถนน</span> · JAN 2027 · Buriram</div>
-      <div class="desc" data-th="สตาร์ทที่สนามช้าง · ที่พักใกล้สนาม" data-en="Start at Chang Arena · hotels near the stadium">สตาร์ทที่สนามช้าง · ที่พักใกล้สนาม</div>
-    </span>
-
-    <div class="ad infeed"><span class="lbl">Advertisement · โฆษณา</span></div>
-
-    <span class="card disabled" data-sport="road">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Pattaya Marathon</h3>
-      <div class="when"><span data-th="วิ่งถนน" data-en="Road">วิ่งถนน</span> · JUL 2027 · Chonburi</div>
-      <div class="desc" data-th="วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือ" data-en="Beach-road course · stays in North Pattaya">วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือ</div>
-    </span>
-
-    <span class="card disabled" data-sport="trail">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Khao Yai Trail</h3>
-      <div class="when"><span data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</span> · MAR 2027 · Nakhon Ratchasima</div>
-      <div class="desc" data-th="เทรลเขาใหญ่ · ที่พักรีสอร์ทรอบอุทยาน" data-en="Khao Yai trail · resorts around the park">เทรลเขาใหญ่ · ที่พักรีสอร์ทรอบอุทยาน</div>
-    </span>
-
-    <span class="card disabled" data-sport="trail">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Doi Inthanon Trail</h3>
-      <div class="when"><span data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</span> · NOV 2026 · Chiang Mai</div>
-      <div class="desc" data-th="เทรลยอดดอยสูงสุดของไทย · ที่พักย่านจอมทอง" data-en="Thailand's highest-peak trail · stays near Chom Thong">เทรลยอดดอยสูงสุดของไทย · ที่พักย่านจอมทอง</div>
-    </span>
-
-    <span class="card disabled" data-sport="tri">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Bangsaen Triathlon</h3>
-      <div class="when"><span data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</span> · DEC 2026 · Chonburi</div>
-      <div class="desc" data-th="ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้" data-en="Swim–bike–run at Bangsaen · beachfront stays near transition">ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้</div>
-    </span>
-
-    <span class="card disabled" data-sport="tri">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Laguna Phuket Triathlon</h3>
-      <div class="when"><span data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</span> · NOV 2026 · Phuket</div>
-      <div class="desc" data-th="ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่า" data-en="Phuket's legendary triathlon · stays inside Laguna">ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่า</div>
-    </span>
-
-    <span class="card disabled" data-sport="hyrox">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>HYROX Bangkok</h3>
-      <div class="when">HYROX · FEB 2027 · Bangkok</div>
-      <div class="desc" data-th="ฟังก์ชันฟิตเนส 8 สเตชัน · จัดในฮอลล์ · ที่พักใกล้ศูนย์ประชุม" data-en="8-station functional fitness · indoor hall · hotels near the convention centre">ฟังก์ชันฟิตเนส 8 สเตชัน · จัดในฮอลล์ · ที่พักใกล้ศูนย์ประชุม</div>
-    </span>
-
-  </div>
-</div></div>
-
-<!-- BY CITY TEASER -->
-<div class="band stay"><div class="in sec">
-  <div class="seclabel"><span class="n">02 / By city</span><h2 data-th="เลือกตามเมือง" data-en="Browse by city">เลือกตามเมือง</h2></div>
-  <p class="lead" data-th="เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน" data-en="See which events each city hosts, and which neighbourhoods to stay in.">เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน</p>
-  <div class="grid c3" style="margin-top:22px">
-    <a class="card" href="cities.html">
-      <span class="tag live" data-th="● 1 งาน" data-en="● 1 event">● 1 งาน</span>
-      <h3>Bangkok</h3>
-      <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
-      <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
-    </a>
-    <a class="card" href="cities.html">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Chiang Mai</h3>
-      <div class="desc" data-th="เมืองเก่า · นิมมาน · วิ่งถนน + เทรล" data-en="Old town · Nimman · road + trail">เมืองเก่า · นิมมาน · วิ่งถนน + เทรล</div>
-      <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
-    </a>
-    <a class="card" href="cities.html">
-      <span class="tag soon" data-th="เร็ว ๆ นี้" data-en="Coming soon">เร็ว ๆ นี้</span>
-      <h3>Phuket</h3>
-      <div class="desc" data-th="ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง" data-en="Patong · Laguna · triathlon + running">ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง</div>
-      <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
-    </a>
-  </div>
-</div></div>
-
-<!-- GUIDES TEASER -->
-<div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">03 / Guides</span><h2 data-th="คู่มือนักกีฬา" data-en="Athlete's guides">คู่มือนักกีฬา</h2></div>
-  <div class="grid c3" style="margin-top:22px">
-    <a class="card" href="guides.html">
-      <span class="tag" data-th="คู่มือ" data-en="Guide">คู่มือ</span>
-      <h3 data-th="จองที่พักงานกีฬายังไงให้เดินถึงสตาร์ท" data-en="How to book a hotel you can walk to the start from">จองที่พักงานกีฬายังไงให้เดินถึงสตาร์ท</h3>
-      <div class="desc" data-th="5 ข้อควรเช็คก่อนกดจอง — ระยะเดิน เช็คเอาต์ อาหารเช้า" data-en="5 things to check before booking — distance, checkout, breakfast">5 ข้อควรเช็คก่อนกดจอง — ระยะเดิน เช็คเอาต์ อาหารเช้า</div>
-      <span class="go" data-th="อ่านต่อ →" data-en="Read →">อ่านต่อ →</span>
-    </a>
-    <a class="card" href="guides.html">
-      <span class="tag" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</span>
-      <h3 data-th="ไตรกีฬา: พักใกล้ transition หรือเส้นชัยดี" data-en="Triathlon: stay near transition or the finish?">ไตรกีฬา: พักใกล้ transition หรือเส้นชัยดี</h3>
-      <div class="desc" data-th="ขนจักรยาน จัดของ 3 กีฬา และเวลาเช็คอิน transition" data-en="Moving your bike, 3-sport gear and transition check-in timing">ขนจักรยาน จัดของ 3 กีฬา และเวลาเช็คอิน transition</div>
-      <span class="go" data-th="อ่านต่อ →" data-en="Read →">อ่านต่อ →</span>
-    </a>
-    <a class="card" href="guides.html">
-      <span class="tag">HYROX</span>
-      <h3 data-th="HYROX: พักใกล้ฮอลล์ จัดเวลา heat ยังไง" data-en="HYROX: stay near the hall, plan your heat">HYROX: พักใกล้ฮอลล์ จัดเวลา heat ยังไง</h3>
-      <div class="desc" data-th="งานจัดในร่ม รอบ heat หลายรอบ — เลือกที่พักเดินถึงเพื่อพักระหว่างรอ" data-en="Indoor event with many heats — stay walkable to rest between waves">งานจัดในร่ม รอบ heat หลายรอบ — เลือกที่พักเดินถึงเพื่อพักระหว่างรอ</div>
-      <span class="go" data-th="อ่านต่อ →" data-en="Read →">อ่านต่อ →</span>
-    </a>
-  </div>
-</div></div>
-
-<!-- AD: end of content -->
-<div class="band"><div class="in"><div class="ad leader"><span class="lbl">Advertisement · โฆษณา</span></div></div></div>
+</div>
 
 <!-- NEWSLETTER -->
 <div class="band news"><div class="in">

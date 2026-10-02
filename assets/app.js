@@ -50,6 +50,22 @@ function filterSport(btn, sport){
   });
 }
 
+/* ----- header hamburger menu ----- */
+function toggleMenu(btn){
+  var m=document.getElementById('menu'); if(!m) return;
+  var open=m.classList.toggle('open');
+  if(btn) btn.setAttribute('aria-expanded', open?'true':'false');
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){ var m=document.getElementById('menu'); if(m){ m.classList.remove('open'); var b=document.querySelector('.menubtn'); if(b) b.setAttribute('aria-expanded','false'); } }
+});
+document.addEventListener('click',function(e){
+  var m=document.getElementById('menu'); if(!m||!m.classList.contains('open')) return;
+  if(e.target.closest('#menu')||e.target.closest('.menubtn')) return;
+  m.classList.remove('open');
+  var b=document.querySelector('.menubtn'); if(b) b.setAttribute('aria-expanded','false');
+});
+
 /* apply saved language on every page load */
 document.addEventListener('DOMContentLoaded',function(){
   var l='th';
