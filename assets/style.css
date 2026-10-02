@@ -352,3 +352,8 @@ a.card.disabled{pointer-events:none}
 /* center home hero */
 .hero{text-align:center}
 .hero .sub{margin-left:auto;margin-right:auto}
+
+/* partner card: align price/button with the name row (pin sits above) */
+.row.partner{align-items:start}
+.row.partner .price{grid-row:2}
+.row.partner .act{grid-row:3;align-self:start;margin-top:4px}
