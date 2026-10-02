@@ -363,3 +363,6 @@ a.card.disabled{pointer-events:none}
 .ad.infeed{justify-self:center}
 /* center jump links */
 .jump{justify-content:center}
+
+/* breathing room around end-of-content ad */
+.ad.leader{margin:40px auto 64px}
