@@ -10,9 +10,7 @@ function setLang(l){
     el.setAttribute('placeholder',(l==='en')?el.getAttribute('data-en-ph'):el.getAttribute('data-th-ph'));
   });
   document.documentElement.lang=l;
-  var bt=document.getElementById('btn-th'), be=document.getElementById('btn-en');
-  if(bt) bt.classList.toggle('on',l==='th');
-  if(be) be.classList.toggle('on',l==='en');
+  document.querySelectorAll('[data-setlang]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-setlang')===l); });
   try{ localStorage.setItem('rs-lang',l); }catch(e){}
 }
 

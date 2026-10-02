@@ -306,3 +306,8 @@ a.card.disabled{pointer-events:none}
 .menubtn .ic-x{display:none}
 .menubtn[aria-expanded="true"] .ic{display:none}
 .menubtn[aria-expanded="true"] .ic-x{display:block}
+
+/* ===== mobile menu language toggle ===== */
+.menu-lang{display:flex !important;width:100%;margin-top:16px;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
+.menu-lang button{flex:1;min-height:50px;font-size:15px;border-radius:0}
+@media(max-width:760px){ .navright .lang{display:none} }
