@@ -349,9 +349,9 @@ a.card.disabled{pointer-events:none}
 .foot .fleft a{color:var(--green);font-weight:700}
 .foot .fleft a:hover{color:var(--ink);text-decoration:underline}
 
-/* center home hero */
-.hero{text-align:center}
-.hero .sub{margin-left:auto;margin-right:auto}
+/* center home hero (home only — detail hero stays left) */
+.hero.home{text-align:center}
+.hero.home .sub{margin-left:auto;margin-right:auto}
 
 /* partner card: align price/button with the name row (pin sits above) */
 .row.partner{align-items:start}
