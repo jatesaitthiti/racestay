@@ -43,9 +43,12 @@ function setPrice(btn,min,max){
 function filterSport(btn, sport){
   var bar=btn.closest('.sportbar');
   if(bar) bar.querySelectorAll('.pchip').forEach(function(c){c.classList.toggle('on',c===btn)});
+  var shown=0;
   document.querySelectorAll('#races .grid [data-sport]').forEach(function(el){
-    el.style.display=(sport==='all'||el.getAttribute('data-sport')===sport)?'':'none';
+    var ok=(sport==='all'||el.getAttribute('data-sport')===sport);
+    el.style.display=ok?'':'none'; if(ok) shown++;
   });
+  var ec=document.getElementById('evcount'); if(ec) ec.textContent=shown;
 }
 
 /* ----- header hamburger menu ----- */
@@ -103,4 +106,5 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   initSegments();
+  var ec=document.getElementById('evcount'); if(ec) ec.textContent=document.querySelectorAll('#races .grid .card').length;
 });
