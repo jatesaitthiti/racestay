@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 840" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract running motion background">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eeede6"/>
+      <stop offset="0.55" stop-color="#f4f4ee"/>
+      <stop offset="1" stop-color="#f4f4ee"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="60%">
+      <stop offset="0" stop-color="#f6f6f0" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f6f6f0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="840" fill="url(#fade)"/>
+
+  <!-- sweeping motion streaks (speed / stride) -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-60 170 C 360 70, 900 250, 1700 120" stroke="#15160f" stroke-opacity="0.05" stroke-width="2"/>
+    <path d="M-60 250 C 420 150, 980 330, 1700 210" stroke="#15160f" stroke-opacity="0.06" stroke-width="2"/>
+    <path d="M-60 520 C 400 430, 980 610, 1700 470" stroke="#15160f" stroke-opacity="0.05" stroke-width="2"/>
+    <path d="M-60 620 C 460 540, 1000 700, 1700 560" stroke="#15160f" stroke-opacity="0.045" stroke-width="2"/>
+    <path d="M-60 300 C 500 210, 1050 360, 1700 250" stroke="#1f9a58" stroke-opacity="0.10" stroke-width="2.5"/>
+    <path d="M-60 470 C 520 380, 1080 540, 1700 420" stroke="#9aa82a" stroke-opacity="0.18" stroke-width="3"/>
+    <path d="M-60 395 C 540 300, 1120 470, 1700 340" stroke="#d9ef2f" stroke-opacity="0.55" stroke-width="4"/>
+  </g>
+
+  <!-- abstract running-track arcs, lower-left -->
+  <g fill="none" stroke="#15160f" stroke-opacity="0.06">
+    <ellipse cx="140" cy="760" rx="320" ry="150" stroke-width="2"/>
+    <ellipse cx="140" cy="760" rx="240" ry="112" stroke-width="2"/>
+    <ellipse cx="140" cy="760" rx="160" ry="74" stroke-width="2"/>
+  </g>
+  <!-- track arcs, upper-right -->
+  <g fill="none" stroke="#15160f" stroke-opacity="0.05">
+    <ellipse cx="1480" cy="60" rx="300" ry="140" stroke-width="2"/>
+    <ellipse cx="1480" cy="60" rx="210" ry="98" stroke-width="2"/>
+  </g>
+
+  <!-- stride dots / distance markers -->
+  <g fill="#15160f" fill-opacity="0.10">
+    <circle cx="300" cy="150" r="4"/><circle cx="470" cy="135" r="3"/><circle cx="640" cy="155" r="5"/>
+    <circle cx="1180" cy="640" r="4"/><circle cx="1320" cy="610" r="3"/><circle cx="1050" cy="660" r="5"/>
+  </g>
+  <g fill="#d9ef2f" fill-opacity="0.85">
+    <circle cx="815" cy="372" r="6"/>
+    <circle cx="1120" cy="470" r="5"/>
+    <circle cx="520" cy="300" r="4"/>
+  </g>
+
+  <!-- soft light to keep centred hero text readable -->
+  <rect width="1600" height="840" fill="url(#glow)"/>
+</svg>

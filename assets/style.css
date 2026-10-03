@@ -401,7 +401,7 @@ a.card.disabled{pointer-events:none}
 
 /* ===== home top background slot (top of page → before 01/Events) ===== */
 body{position:relative}
-.topbg{position:absolute;top:0;left:0;right:0;height:720px;z-index:-1;background:var(--paper-2) center center/cover no-repeat}
+.topbg{position:absolute;top:0;left:0;right:0;height:720px;z-index:-1;background:var(--paper) url('hero-bg.svg') center top/cover no-repeat}
 /* To use an image: set --hero-img, e.g. .topbg{background-image:var(--hero-img)} with url('assets/hero-bg.jpg');
    add an overlay for text contrast if the image is busy:
    .topbg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,244,238,.2),rgba(244,244,238,.85))} */
