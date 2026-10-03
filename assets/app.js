@@ -106,5 +106,6 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   initSegments();
-  var ec=document.getElementById('evcount'); if(ec) ec.textContent=document.querySelectorAll('#races .grid .card').length;
+  var ec=document.getElementById('evcount');
+  if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .grid .card'),function(c){return c.style.display!=='none';}).length;
 });
