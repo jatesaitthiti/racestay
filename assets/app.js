@@ -91,7 +91,14 @@ function initSegments(){
   });
   segSyncAll();
 }
-window.addEventListener('resize', function(){ segSyncAll(); });
+function sizeTopBg(){
+  var b=document.querySelector('.topbg'); if(!b) return;
+  var r=document.getElementById('races'); if(!r) return;
+  var band=r.closest('.band')||r;
+  b.style.height=Math.round(band.getBoundingClientRect().top+window.pageYOffset)+'px';
+}
+window.addEventListener('resize', function(){ segSyncAll(); sizeTopBg(); });
+window.addEventListener('load', sizeTopBg);
 
 /* apply saved language on every page load */
 document.addEventListener('DOMContentLoaded',function(){
@@ -108,4 +115,5 @@ document.addEventListener('DOMContentLoaded',function(){
   initSegments();
   var ec=document.getElementById('evcount');
   if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .grid .card'),function(c){return c.style.display!=='none';}).length;
+  sizeTopBg();
 });

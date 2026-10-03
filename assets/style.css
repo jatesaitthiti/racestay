@@ -398,3 +398,10 @@ a.card.disabled{pointer-events:none}
 /* events list at scale: sticky filter + count */
 .sportbar.seg{position:sticky;top:74px;z-index:30}
 .evcount-row{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+
+/* ===== home top background slot (top of page → before 01/Events) ===== */
+body{position:relative}
+.topbg{position:absolute;top:0;left:0;right:0;height:720px;z-index:-1;background:var(--paper-2) center center/cover no-repeat}
+/* To use an image: set --hero-img, e.g. .topbg{background-image:var(--hero-img)} with url('assets/hero-bg.jpg');
+   add an overlay for text contrast if the image is busy:
+   .topbg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,244,238,.2),rgba(244,244,238,.85))} */
