@@ -408,3 +408,11 @@ body{position:relative}
    .topbg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,244,238,.2),rgba(244,244,238,.85))} */
 
 .hero.home .sub{color:var(--ink)}
+
+/* ===== Thai letter-spacing fix (Thai wants no artificial tracking) ===== */
+html[lang="th"] h1, html[lang="th"] h2{letter-spacing:normal}
+html[lang="th"] .stat .l, html[lang="th"] .stat .sub, html[lang="th"] .maplabel, html[lang="th"] .mapfoot,
+html[lang="th"] .plabel, html[lang="th"] .logi .h, html[lang="th"] .callout .h, html[lang="th"] .official .h,
+html[lang="th"] th, html[lang="th"] .tag, html[lang="th"] .menu .grp, html[lang="th"] .curatedlabel,
+html[lang="th"] .evcount-row, html[lang="th"] .ad .lbl, html[lang="th"] .foot .in, html[lang="th"] .jump .lbl,
+html[lang="th"] .zone p, html[lang="th"] .lead, html[lang="th"] .hero .sub{letter-spacing:normal}
