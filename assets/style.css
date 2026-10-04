@@ -406,3 +406,5 @@ body{position:relative}
 /* To use an image: set --hero-img, e.g. .topbg{background-image:var(--hero-img)} with url('assets/hero-bg.jpg');
    add an overlay for text contrast if the image is busy:
    .topbg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,244,238,.2),rgba(244,244,238,.85))} */
+
+.hero.home .sub{color:var(--ink)}
