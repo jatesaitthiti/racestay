@@ -1,4 +1,20 @@
 /* RaceStay — shared behaviour across all pages */
+var EN2TH={JAN:'ม.ค.',FEB:'ก.พ.',MAR:'มี.ค.',APR:'เม.ย.',MAY:'พ.ค.',JUN:'มิ.ย.',JUL:'ก.ค.',AUG:'ส.ค.',SEP:'ก.ย.',OCT:'ต.ค.',NOV:'พ.ย.',DEC:'ธ.ค.'};
+var TH2EN={}; (function(){for(var k in EN2TH)TH2EN[EN2TH[k]]=k;})();
+var RE_EN=/\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\b/g;
+var RE_TH=/(ม\.ค\.|ก\.พ\.|มี\.ค\.|เม\.ย\.|พ\.ค\.|มิ\.ย\.|ก\.ค\.|ส\.ค\.|ก\.ย\.|ต\.ค\.|พ\.ย\.|ธ\.ค\.)/g;
+function localizeDates(l){
+  var roots=document.querySelectorAll('.when, .databand, .feature, table');
+  for(var i=0;i<roots.length;i++){
+    var w=document.createTreeWalker(roots[i], NodeFilter.SHOW_TEXT, null);
+    var n;
+    while(n=w.nextNode()){
+      var t=n.nodeValue;
+      if(l==='th'){ if(t.indexOf('/')===-1 && RE_EN.test(t)){ RE_EN.lastIndex=0; n.nodeValue=t.replace(RE_EN,function(m){return EN2TH[m];}); } }
+      else { if(RE_TH.test(t)){ RE_TH.lastIndex=0; n.nodeValue=t.replace(RE_TH,function(m){return TH2EN[m];}); } }
+    }
+  }
+}
 function setLang(l){
   document.querySelectorAll('[data-th]').forEach(function(el){
     var v=(l==='en')?el.getAttribute('data-en'):el.getAttribute('data-th');
@@ -10,6 +26,7 @@ function setLang(l){
     el.setAttribute('placeholder',(l==='en')?el.getAttribute('data-en-ph'):el.getAttribute('data-th-ph'));
   });
   document.documentElement.lang=l;
+  localizeDates(l);
   document.querySelectorAll('[data-setlang]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-setlang')===l); });
   try{ localStorage.setItem('rs-lang',l); }catch(e){}
 }
