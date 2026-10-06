@@ -416,3 +416,9 @@ html[lang="th"] .plabel, html[lang="th"] .logi .h, html[lang="th"] .callout .h, 
 html[lang="th"] th, html[lang="th"] .tag, html[lang="th"] .menu .grp, html[lang="th"] .curatedlabel,
 html[lang="th"] .evcount-row, html[lang="th"] .ad .lbl, html[lang="th"] .foot .in, html[lang="th"] .jump .lbl,
 html[lang="th"] .zone p, html[lang="th"] .lead, html[lang="th"] .hero .sub{letter-spacing:normal}
+
+/* ===== every hotel row as a card ===== */
+.row{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 14px rgba(21,22,15,.06);padding:22px 24px;margin:14px 0 0}
+.row:first-of-type{margin-top:16px}
+.row.partner{margin:14px 0 0;padding:22px 24px}
+.allrow{margin-top:20px;display:inline-block}
