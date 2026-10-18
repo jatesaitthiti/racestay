@@ -11,6 +11,30 @@ publish เป็นเว็บสาธิตบน **GitHub Pages**
 
 ---
 
+## Data layer — จัดการงาน (events)
+
+หน้าแรกไม่ต้องแก้ HTML มือแล้ว รายการงานทั้งหมดอยู่ในไฟล์เดียว:
+
+- `data/events.json` — **แหล่งข้อมูลเดียว (single source of truth)** ของงานทั้งหมด
+- `build/build.py` — อ่าน `events.json` แล้วสร้างกริดการ์ดในหน้าแรก (แทรกโฆษณา in-feed ให้เอง)
+
+**เพิ่ม/แก้งาน:**
+
+```bash
+# 1) แก้ data/events.json  (เพิ่ม object ใหม่ หรือแก้ field ที่มีอยู่)
+# 2) rebuild หน้าแรก
+python3 build/build.py
+```
+
+field ของแต่ละงาน: `slug` (= ชื่อไฟล์ `{slug}.html`), `name`, `sport` (`road|trail|tri|bike|hyrox`),
+`date` (ISO `YYYY-MM-DD` ไว้เรียงลำดับ), `dateLabel` (ข้อความที่โชว์บนการ์ด — JS แปลงเดือนเป็นไทยตอน runtime เอง),
+`city`, `blurbTh`, `blurbEn`, และ `featured` (ไม่บังคับ)
+
+> build แก้เฉพาะโซนกริดในหน้าแรก (ระหว่าง anchor ที่สคริปต์กำหนด) ส่วน hero / teaser / newsletter และหน้าอื่น ไม่ถูกแตะ
+> ยังไม่รวมการสร้าง**หน้ารายละเอียดงาน** (`{slug}.html`) — อยู่ใน Phase 2
+
+---
+
 ## Publish ขึ้น GitHub Pages (สำหรับ Claude Code)
 
 **ต้องมีก่อน:** `git` + `gh` (GitHub CLI) และล็อกอินแล้ว (`gh auth login` — ต้องมีสิทธิ์ scope `repo` และ `workflow`)

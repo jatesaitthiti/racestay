@@ -1,0 +1,186 @@
+{
+  "_comment": "RaceStay single source of truth for events. Edit this file, then run: python3 build/build.py  — it regenerates the event grid on index.html. 'date' is ISO (YYYY-MM-DD) for future sorting; 'dateLabel' is what shows on the card (JS localizes month names to Thai at runtime). sport: road|trail|tri|bike|hyrox.",
+  "events": [
+    {
+      "slug": "atm-2026",
+      "name": "Amazing Thailand Marathon",
+      "sport": "road",
+      "date": "2026-11-29",
+      "dateLabel": "28–29 NOV 2026",
+      "city": "Bangkok",
+      "featured": true,
+      "blurbTh": "สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22",
+      "blurbEn": "Sanam Luang · 2 AM start · walkable hotels + Stay22 map"
+    },
+    {
+      "slug": "buriram-marathon",
+      "name": "Buriram Marathon",
+      "sport": "road",
+      "date": "2026-01-24",
+      "dateLabel": "24 JAN 2026",
+      "city": "Buriram",
+      "blurbTh": "สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม",
+      "blurbEn": "Start at Chang International Circuit · hotels clustered nearby"
+    },
+    {
+      "slug": "chiang-mai-marathon",
+      "name": "Chiang Mai Marathon",
+      "sport": "road",
+      "date": "2026-12-01",
+      "dateLabel": "DEC 2026",
+      "city": "Chiang Mai",
+      "blurbTh": "รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท",
+      "blurbEn": "Old-city moat route · old-town stays walkable to the start"
+    },
+    {
+      "slug": "pattaya-marathon",
+      "name": "Pattaya Marathon",
+      "sport": "road",
+      "date": "2026-07-01",
+      "dateLabel": "JUL 2026",
+      "city": "Chonburi",
+      "blurbTh": "วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท",
+      "blurbEn": "Beach-road course · stays in North Pattaya near the start"
+    },
+    {
+      "slug": "laguna-phuket-marathon",
+      "name": "Laguna Phuket Marathon",
+      "sport": "road",
+      "date": "2026-06-01",
+      "dateLabel": "JUN 2026",
+      "city": "Phuket",
+      "blurbTh": "วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท",
+      "blurbEn": "Andaman seaside run · stays inside Laguna, walkable to the start"
+    },
+    {
+      "slug": "khonkaen-marathon",
+      "name": "Khon Kaen Marathon",
+      "sport": "road",
+      "date": "2026-01-01",
+      "dateLabel": "JAN 2026",
+      "city": "Khon Kaen",
+      "blurbTh": "มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น",
+      "blurbEn": "Isan’s international marathon · stays in central Khon Kaen"
+    },
+    {
+      "slug": "bangkok-midnight-marathon",
+      "name": "Bangkok Midnight Marathon",
+      "sport": "road",
+      "date": "2026-05-01",
+      "dateLabel": "MAY 2026",
+      "city": "Bangkok",
+      "blurbTh": "ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง",
+      "blurbEn": "Midnight start, cooler air · riverside stays within walking distance"
+    },
+    {
+      "slug": "doi-inthanon-utmb",
+      "name": "Doi Inthanon Thailand by UTMB",
+      "sport": "trail",
+      "date": "2026-12-01",
+      "dateLabel": "DEC 2026",
+      "city": "Chiang Mai",
+      "blurbTh": "เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง",
+      "blurbEn": "World-series trail on the highest peak · stays near Chom Thong"
+    },
+    {
+      "slug": "khao-yai-trail",
+      "name": "Khao Yai Trail",
+      "sport": "trail",
+      "date": "2026-03-01",
+      "dateLabel": "MAR 2026",
+      "city": "Nakhon Ratchasima",
+      "blurbTh": "เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง",
+      "blurbEn": "Khao Yai trail · resort stays around Pak Chong"
+    },
+    {
+      "slug": "chiangdao-trail",
+      "name": "Chiang Dao Trail",
+      "sport": "trail",
+      "date": "2026-11-01",
+      "dateLabel": "NOV 2026",
+      "city": "Chiang Mai",
+      "blurbTh": "เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว",
+      "blurbEn": "Doi Luang Chiang Dao trail · homestays around Chiang Dao"
+    },
+    {
+      "slug": "laguna-phuket-triathlon",
+      "name": "Laguna Phuket Triathlon",
+      "sport": "tri",
+      "date": "2026-11-15",
+      "dateLabel": "15 NOV 2026",
+      "city": "Phuket",
+      "blurbTh": "ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition",
+      "blurbEn": "Phuket’s legendary triathlon · stays inside Laguna, walkable to transition"
+    },
+    {
+      "slug": "bangsaen-triathlon",
+      "name": "Bangsaen Triathlon",
+      "sport": "tri",
+      "date": "2026-12-01",
+      "dateLabel": "DEC 2026",
+      "city": "Chonburi",
+      "blurbTh": "ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้",
+      "blurbEn": "Swim–bike–run at Bangsaen · beachfront stays near transition"
+    },
+    {
+      "slug": "ironman-703-bangsaen",
+      "name": "IRONMAN 70.3 Bangsaen",
+      "sport": "tri",
+      "date": "2026-11-01",
+      "dateLabel": "NOV 2026",
+      "city": "Chonburi",
+      "blurbTh": "ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition",
+      "blurbEn": "Half-distance Ironman at Bangsaen · beachfront stays near transition"
+    },
+    {
+      "slug": "chiang-mai-gran-fondo",
+      "name": "Chiang Mai Gran Fondo",
+      "sport": "bike",
+      "date": "2026-12-13",
+      "dateLabel": "13 DEC 2026",
+      "city": "Chiang Mai",
+      "blurbTh": "แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน",
+      "blurbEn": "Gran fondo around Chiang Mai · stays in the old town/Nimman"
+    },
+    {
+      "slug": "letape-thailand",
+      "name": "L’Étape Thailand",
+      "sport": "bike",
+      "date": "2026-11-01",
+      "dateLabel": "NOV 2026",
+      "city": "Udon Thani",
+      "blurbTh": "แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท",
+      "blurbEn": "Tour de France-style gran fondo · central Udon stays near the start"
+    },
+    {
+      "slug": "amazing-bike-tour-khaoyai",
+      "name": "Amazing Bike Tour Khao Yai",
+      "sport": "bike",
+      "date": "2026-04-01",
+      "dateLabel": "APR 2026",
+      "city": "Nakhon Ratchasima",
+      "blurbTh": "ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง",
+      "blurbEn": "Ride around Khao Yai · resort stays in Pak Chong"
+    },
+    {
+      "slug": "tour-of-chiangrai",
+      "name": "Tour of Chiang Rai",
+      "sport": "bike",
+      "date": "2026-02-01",
+      "dateLabel": "FEB 2026",
+      "city": "Chiang Rai",
+      "blurbTh": "ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท",
+      "blurbEn": "Scenic Chiang Rai ride · central stays near the start"
+    },
+    {
+      "slug": "hyrox-bangkok",
+      "name": "HYROX Bangkok",
+      "sport": "hyrox",
+      "date": "2026-08-15",
+      "dateLabel": "14–16 AUG 2026",
+      "city": "Bangkok",
+      "blurbTh": "ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง",
+      "blurbEn": "8-station functional fitness at QSNCC · central city stays"
+    }
+  ]
+}
