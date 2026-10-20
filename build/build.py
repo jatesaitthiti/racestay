@@ -43,11 +43,15 @@ def card_html(ev: dict) -> str:
         raise SystemExit(f"Unknown sport '{sport}' for event '{ev['slug']}'")
     th, en = SPORT[sport]
     return (
-        f'    <a class="card" href="{ev["slug"]}.html" data-sport="{sport}">\n'
-        f'      <h3>{ev["name"]}</h3>\n'
-        f'      <div class="when"><span data-th="{th}" data-en="{en}">{th}</span> · {ev["dateLabel"]} · {ev["city"]}</div>\n'
-        f'      <div class="desc" data-th="{ev["blurbTh"]}" data-en="{ev["blurbEn"]}">{ev["blurbTh"]}</div>\n'
-        f'      <span class="go" data-th="ดูรายละเอียด →" data-en="View details →">ดูรายละเอียด →</span>\n'
+        f'    <a class="evcard" href="{ev["slug"]}.html" data-sport="{sport}">\n'
+        f'      <div class="dcover s-{sport}">\n'
+        f'        <span class="sp" data-th="{th}" data-en="{en}">{th}</span>\n'
+        f'        <span class="dd">{ev["dateLabel"]}</span>\n'
+        f'      </div>\n'
+        f'      <div class="dbody">\n'
+        f'        <h3>{ev["name"]}</h3>\n'
+        f'        <div class="desc" data-th="{ev["blurbTh"]}" data-en="{ev["blurbEn"]}">{ev["blurbTh"]}</div>\n'
+        f'      </div>\n'
         f'    </a>'
     )
 

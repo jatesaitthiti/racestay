@@ -422,3 +422,25 @@ html[lang="th"] .zone p, html[lang="th"] .lead, html[lang="th"] .hero .sub{lette
 .row:first-of-type{margin-top:16px}
 .row.partner{margin:14px 0 0;padding:22px 24px}
 .allrow{margin-top:20px;display:inline-block}
+
+/* ===== home events: cover card (Option D) ===== */
+.evcard{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r-card,16px);overflow:hidden;color:inherit;text-decoration:none;box-shadow:0 2px 14px rgba(21,22,15,.06)}
+a.evcard:hover{box-shadow:0 12px 28px rgba(21,22,15,.12)}
+.evcard .dcover{height:94px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:13px 16px}
+.evcard .dcover .sp{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.1em;white-space:nowrap;flex-shrink:0}
+.evcard .dcover .dd{font-family:var(--mono);font-size:11px;font-weight:700;opacity:.85;white-space:nowrap}
+.evcard .dbody{padding:16px 18px 18px}
+.evcard .dbody h3{font-family:var(--disp);font-weight:600;font-size:16.5px;line-height:1.3;margin:0;color:var(--ink)}
+.evcard .dbody .desc{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.5}
+.dcover.s-road{background:var(--lime);color:#3a4206}
+.dcover.s-trail{background:var(--green);color:#fff}
+.dcover.s-tri{background:#2f7dd1;color:#fff}
+.dcover.s-bike{background:#b4720f;color:#fff}
+.dcover.s-hyrox{background:var(--charcoal);color:var(--lime)}
+html[lang="th"] .evcard .dcover .sp{letter-spacing:normal}
+
+/* ===== home events: scroll-reveal — rows slide in from alternating sides ===== */
+html.anim #races .grid > *{opacity:0;transform:translateX(var(--rvx,0)) translateY(var(--rvy,0));transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
+html.anim #races .grid > *.in{opacity:1}
+html.anim #races .grid > a.evcard:hover{--rvy:-3px}
+@media (prefers-reduced-motion:reduce){html.anim #races .grid > *{opacity:1!important;transform:none!important;transition:none!important}}

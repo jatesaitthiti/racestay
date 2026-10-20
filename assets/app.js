@@ -4,7 +4,7 @@ var TH2EN={}; (function(){for(var k in EN2TH)TH2EN[EN2TH[k]]=k;})();
 var RE_EN=/\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\b/g;
 var RE_TH=/(ม\.ค\.|ก\.พ\.|มี\.ค\.|เม\.ย\.|พ\.ค\.|มิ\.ย\.|ก\.ค\.|ส\.ค\.|ก\.ย\.|ต\.ค\.|พ\.ย\.|ธ\.ค\.)/g;
 function localizeDates(l){
-  var roots=document.querySelectorAll('.when, .databand, .feature, table');
+  var roots=document.querySelectorAll('.when, .databand, .feature, table, .dcover');
   for(var i=0;i<roots.length;i++){
     var w=document.createTreeWalker(roots[i], NodeFilter.SHOW_TEXT, null);
     var n;
@@ -108,6 +108,34 @@ function initSegments(){
   });
   segSyncAll();
 }
+/* ----- home events: scroll-reveal, rows slide in from alternating sides ----- */
+function initReveal(){
+  var grid=document.querySelector('#races .grid'); if(!grid) return;
+  if(!('IntersectionObserver' in window)){ document.documentElement.classList.remove('anim'); return; }
+  var items=[].slice.call(grid.children);
+  function assign(){
+    var rows={}, i, el, top;
+    for(i=0;i<items.length;i++){ el=items[i];
+      if(el.classList.contains('in')||el.style.display==='none') continue;
+      top=el.offsetTop; (rows[top]=rows[top]||[]).push(el);
+    }
+    var tops=Object.keys(rows).map(Number).sort(function(a,b){return a-b;});
+    var c=0;
+    for(i=0;i<tops.length;i++){
+      var group=rows[tops[i]];
+      var isAd=group.length===1 && !group[0].classList.contains('evcard');
+      var dx=isAd?0:((c%2===0?-1:1)*64);
+      if(!isAd) c++;
+      group.forEach(function(e){ e.style.setProperty('--rvx', dx+'px'); });
+    }
+  }
+  assign();
+  var io=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ if(e.isIntersecting){ e.target.style.setProperty('--rvx','0px'); e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+  items.forEach(function(el){ io.observe(el); });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(assign,150); });
+}
 function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
   var r=document.getElementById('races'); if(!r) return;
@@ -131,6 +159,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   initSegments();
   var ec=document.getElementById('evcount');
-  if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .grid .card'),function(c){return c.style.display!=='none';}).length;
+  if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .grid .evcard'),function(c){return c.style.display!=='none';}).length;
   sizeTopBg();
+  initReveal();
 });
