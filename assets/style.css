@@ -441,6 +441,6 @@ html[lang="th"] .evcard .dcover .sp{letter-spacing:normal}
 
 /* ===== home events: scroll-reveal — rows slide in from alternating sides ===== */
 html.anim #races .grid > *{opacity:0;transform:translateX(var(--rvx,0)) translateY(var(--rvy,0));transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
-html.anim #races .grid > *.in{opacity:1}
+html.anim #races .grid > *.rvshow{opacity:1}
 html.anim #races .grid > a.evcard:hover{--rvy:-3px}
 @media (prefers-reduced-motion:reduce){html.anim #races .grid > *{opacity:1!important;transform:none!important;transition:none!important}}

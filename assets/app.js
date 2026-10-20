@@ -116,7 +116,7 @@ function initReveal(){
   function assign(){
     var rows={}, i, el, top;
     for(i=0;i<items.length;i++){ el=items[i];
-      if(el.classList.contains('in')||el.style.display==='none') continue;
+      if(el.classList.contains('rvshow')||el.style.display==='none') continue;
       top=el.offsetTop; (rows[top]=rows[top]||[]).push(el);
     }
     var tops=Object.keys(rows).map(Number).sort(function(a,b){return a-b;});
@@ -131,7 +131,7 @@ function initReveal(){
   }
   assign();
   var io=new IntersectionObserver(function(ents){
-    ents.forEach(function(e){ if(e.isIntersecting){ e.target.style.setProperty('--rvx','0px'); e.target.classList.add('in'); io.unobserve(e.target); } });
+    ents.forEach(function(e){ if(e.isIntersecting){ e.target.style.setProperty('--rvx','0px'); e.target.classList.add('rvshow'); io.unobserve(e.target); } });
   },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
   items.forEach(function(el){ io.observe(el); });
   var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(assign,150); });
