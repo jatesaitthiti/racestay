@@ -28,6 +28,14 @@ SPORT = {
     "hyrox": ("HYROX", "HYROX"),
 }
 
+# Short uppercase category tag shown in the colored cover header (matches mockup).
+SPORT_CODE = {"road": "ROAD", "trail": "TRAIL", "tri": "TRI", "bike": "BIKE", "hyrox": "HYROX"}
+
+
+def short_date(label: str) -> str:
+    """Drop the trailing year so the cover shows a compact date (e.g. '28–29 NOV')."""
+    return re.sub(r"\s*\d{4}\s*$", "", label).strip()
+
 # In-feed ad after the Nth rendered card (1-based) — matches current layout.
 AD_AFTER = [3, 11]
 AD_BLOCK = '    <div class="ad infeed"><span class="lbl">Advertisement · โฆษณา</span></div>'
@@ -41,12 +49,12 @@ def card_html(ev: dict) -> str:
     sport = ev["sport"]
     if sport not in SPORT:
         raise SystemExit(f"Unknown sport '{sport}' for event '{ev['slug']}'")
-    th, en = SPORT[sport]
+    code = SPORT_CODE[sport]
     return (
         f'    <a class="evcard" href="{ev["slug"]}.html" data-sport="{sport}">\n'
         f'      <div class="dcover s-{sport}">\n'
-        f'        <span class="sp" data-th="{th}" data-en="{en}">{th}</span>\n'
-        f'        <span class="dd">{ev["dateLabel"]}</span>\n'
+        f'        <span class="sp">{code}</span>\n'
+        f'        <span class="dd">{short_date(ev["dateLabel"])}</span>\n'
         f'      </div>\n'
         f'      <div class="dbody">\n'
         f'        <h3>{ev["name"]}</h3>\n'
