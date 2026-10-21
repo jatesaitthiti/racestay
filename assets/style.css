@@ -400,7 +400,7 @@ a.card.disabled{pointer-events:none}
 .evcount-row{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
 
 /* ===== home top background slot (top of page → before 01/Events) ===== */
-body{position:relative}
+body{position:relative;overflow-x:clip}
 .topbg{position:absolute;top:0;left:0;right:0;height:720px;z-index:-1;overflow:hidden;background:var(--paper) url('hero-bg.jpg') center 30%/cover no-repeat}
 .topbg:after{content:"";position:absolute;inset:0;background:radial-gradient(62% 56% at 50% 32%, rgba(244,244,238,.58), rgba(244,244,238,.22) 60%, rgba(244,244,238,0) 82%), linear-gradient(180deg, rgba(244,244,238,.34) 0%, rgba(244,244,238,.30) 42%, rgba(244,244,238,.97) 100%)}
 /* To use an image: set --hero-img, e.g. .topbg{background-image:var(--hero-img)} with url('assets/hero-bg.jpg');
@@ -440,7 +440,7 @@ a.evcard:hover{box-shadow:0 0 0 1px rgba(21,22,15,.3)}
 html[lang="th"] .evcard .dcover .sp{letter-spacing:normal}
 
 /* ===== home marquees: auto-scrolling event & city rows ===== */
-.mq{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.mq{overflow:hidden;position:relative;width:100vw;margin-left:calc(50% - 50vw)}
 .mq-track{display:flex;width:max-content}
 .mq-group{display:flex;gap:16px;padding-right:16px;flex:0 0 auto}
 .mq-events .mq-track{animation:mq-right 80s linear infinite}
@@ -454,5 +454,5 @@ a.mqcity:hover{box-shadow:0 0 0 1px rgba(21,22,15,.3)}
 .mqcity h3{font-family:var(--disp);font-weight:600;font-size:17px;margin:0;color:var(--ink)}
 .mqcity .desc{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
 .mqcity .go{margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:12px;color:var(--green);font-weight:700}
-@media (prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mq{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mq{overflow-x:auto}}
 @media (max-width:640px){.mq-events .evcard{flex:0 0 80vw}.mqcity{flex:0 0 70vw}}
