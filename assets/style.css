@@ -456,3 +456,12 @@ a.mqcity:hover{box-shadow:0 0 0 1px rgba(21,22,15,.3)}
 .mqcity .go{margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:12px;color:var(--green);font-weight:700}
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mq{overflow-x:auto}}
 @media (max-width:640px){.mq-events .evcard{flex:0 0 80vw}.mqcity{flex:0 0 70vw}}
+/* filtered mode: events become a static, non-animated grid in the content column */
+.freset{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green);text-decoration:none;margin-left:14px;white-space:nowrap}
+.mq-events.filtering{width:auto;margin-left:0;overflow:visible}
+.mq-events.filtering .mq-track{animation:none;display:block;width:auto}
+.mq-events.filtering .mq-group{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;padding-right:0}
+.mq-events.filtering .mq-group[aria-hidden]{display:none}
+.mq-events.filtering .evcard{flex:none;width:auto}
+@media(max-width:900px){.mq-events.filtering .mq-group{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.mq-events.filtering .mq-group{grid-template-columns:1fr}}

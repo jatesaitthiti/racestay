@@ -56,16 +56,26 @@ function setPrice(btn,min,max){
   f.src=src;
 }
 
-/* ----- home page: filter races by sport ----- */
-function filterSport(btn, sport){
-  var bar=btn.closest('.sportbar');
-  if(bar) bar.querySelectorAll('.pchip').forEach(function(c){c.classList.toggle('on',c===btn)});
-  var shown=0;
-  document.querySelectorAll('#races .grid [data-sport]').forEach(function(el){
-    var ok=(sport==='all'||el.getAttribute('data-sport')===sport);
-    el.style.display=ok?'':'none'; if(ok) shown++;
+/* ----- home page: filter the events marquee into a static grid by sport ----- */
+function applyFilter(sport){
+  var mq=document.querySelector('.mq-events'); if(!mq) return;
+  var reset=document.getElementById('filterReset');
+  if(!sport || sport==='all'){
+    mq.classList.remove('filtering');
+    mq.querySelectorAll('.evcard').forEach(function(c){ c.style.display=''; });
+    if(reset) reset.style.display='none';
+    return;
+  }
+  mq.classList.add('filtering');                 // CSS: stop animation, grid layout, hide duplicate group
+  var first=mq.querySelector('.mq-group');
+  if(first) first.querySelectorAll('.evcard').forEach(function(c){
+    c.style.display=(c.getAttribute('data-sport')===sport)?'':'none';
   });
-  var ec=document.getElementById('evcount'); if(ec) ec.textContent=shown;
+  if(reset) reset.style.display='';
+}
+function clearFilter(){
+  applyFilter('all');
+  try{ history.replaceState(null,'','index.html#races'); }catch(e){}
 }
 
 /* ----- header hamburger menu ----- */
@@ -124,9 +134,9 @@ document.addEventListener('DOMContentLoaded',function(){
   setLang(l);
 
   var sp=null; try{ sp=new URLSearchParams(location.search).get('sport'); }catch(e){}
-  if(sp){
-    var chip=document.querySelector('.sportbar .pchip[data-sport="'+sp+'"]');
-    if(chip){ filterSport(chip,sp); var r=document.getElementById('races'); if(r) r.scrollIntoView(); }
+  if(sp && sp!=='all'){
+    applyFilter(sp);
+    var r=document.getElementById('races'); if(r) r.scrollIntoView();
   }
 
   initSegments();
