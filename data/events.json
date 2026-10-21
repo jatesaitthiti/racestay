@@ -182,5 +182,16 @@
       "blurbTh": "ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง",
       "blurbEn": "8-station functional fitness at QSNCC · central city stays"
     }
+  ],
+  "cities": [
+    { "slug": "city-bangkok", "name": "Bangkok", "blurbTh": "รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา", "blurbEn": "Rattanakosin · Siam/Pathumwan · Riverside" },
+    { "slug": "city-chiang-mai", "name": "Chiang Mai", "blurbTh": "เมืองเก่า · นิมมาน · วิ่งถนน + เทรล", "blurbEn": "Old town · Nimman · road + trail" },
+    { "slug": "city-phuket", "name": "Phuket", "blurbTh": "ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง", "blurbEn": "Patong · Laguna · triathlon + running" },
+    { "slug": "city-chonburi", "name": "Chonburi", "blurbTh": "บางแสน · พัทยา · ไตรกีฬา + วิ่ง", "blurbEn": "Bangsaen · Pattaya · triathlon + running" },
+    { "slug": "city-buriram", "name": "Buriram", "blurbTh": "สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์", "blurbEn": "Chang Circuit · central Buriram" },
+    { "slug": "city-nakhon-ratchasima", "name": "Nakhon Ratchasima", "blurbTh": "เขาใหญ่ · ปากช่อง · เทรล + จักรยาน", "blurbEn": "Khao Yai · Pak Chong · trail + cycling" },
+    { "slug": "city-khon-kaen", "name": "Khon Kaen", "blurbTh": "กลางเมืองขอนแก่น · มาราธอนอีสาน", "blurbEn": "Central Khon Kaen · Isan marathon" },
+    { "slug": "city-udon-thani", "name": "Udon Thani", "blurbTh": "กลางเมืองอุดรฯ · จักรยานทางไกล", "blurbEn": "Central Udon Thani · gran fondo" },
+    { "slug": "city-chiang-rai", "name": "Chiang Rai", "blurbTh": "กลางเมืองเชียงราย · ปั่นชมวิวดอย", "blurbEn": "Central Chiang Rai · scenic rides" }
   ]
 }

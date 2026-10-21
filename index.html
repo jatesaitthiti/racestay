@@ -9,9 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="RaceStay — ที่พักใกล้จุดปล่อยตัว ทุกงานกีฬา">
 <meta property="og:description" content="หาที่พักใกล้จุดปล่อยตัว — วิ่งถนน วิ่งเทรล ไตรกีฬา HYROX">
-<link rel="stylesheet" href="assets/style.css?v=48">
-<script>document.documentElement.classList.add('anim')</script>
-<script src="assets/app.js?v=12" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=49">
+<script src="assets/app.js?v=13" defer></script>
 </head>
 <body>
 <div class="topbg" aria-hidden="true"></div>
@@ -70,220 +69,375 @@
 <div class="band"><div class="in sec" id="races">
   <div class="seclabel"><span class="n">01 / Events</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2></div>
 
-  <div class="sportbar seg" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
-    <button class="pchip seg-item on" onclick="filterSport(this,'all')" data-sport="all" data-th="ทั้งหมด" data-en="All">ทั้งหมด</button>
-    <button class="pchip seg-item" onclick="filterSport(this,'road')" data-sport="road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</button>
-    <button class="pchip seg-item" onclick="filterSport(this,'trail')" data-sport="trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</button>
-    <button class="pchip seg-item" onclick="filterSport(this,'tri')" data-sport="tri" data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</button>
-    <button class="pchip seg-item" onclick="filterSport(this,'bike')" data-sport="bike" data-th="จักรยาน" data-en="Cycling">จักรยาน</button>
-    <button class="pchip seg-item" onclick="filterSport(this,'hyrox')" data-sport="hyrox">HYROX</button>
-  </div>
-  <div class="evcount-row"><span id="evcount">18</span> <span data-th="งาน" data-en="events">งาน</span></div>
-
-  <div class="grid c3" style="margin-top:16px">
-
-    <a class="evcard" href="atm-2026.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">28–29 NOV</span>
+  <div class="mq mq-events" style="margin-top:22px">
+    <div class="mq-track">
+<!-- EVENTS:START -->
+      <div class="mq-group">
+        <a class="evcard" href="chiangdao-trail.html" data-sport="trail">
+          <div class="dcover s-trail">
+            <span class="sp">TRAIL</span>
+            <span class="dd">NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>Chiang Dao Trail</h3>
+            <div class="desc" data-th="เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว" data-en="Doi Luang Chiang Dao trail · homestays around Chiang Dao">เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว</div>
+          </div>
+        </a>
+        <a class="evcard" href="ironman-703-bangsaen.html" data-sport="tri">
+          <div class="dcover s-tri">
+            <span class="sp">TRI</span>
+            <span class="dd">NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>IRONMAN 70.3 Bangsaen</h3>
+            <div class="desc" data-th="ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition" data-en="Half-distance Ironman at Bangsaen · beachfront stays near transition">ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition</div>
+          </div>
+        </a>
+        <a class="evcard" href="letape-thailand.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>L’Étape Thailand</h3>
+            <div class="desc" data-th="แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท" data-en="Tour de France-style gran fondo · central Udon stays near the start">แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="laguna-phuket-triathlon.html" data-sport="tri">
+          <div class="dcover s-tri">
+            <span class="sp">TRI</span>
+            <span class="dd">15 NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>Laguna Phuket Triathlon</h3>
+            <div class="desc" data-th="ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition" data-en="Phuket’s legendary triathlon · stays inside Laguna, walkable to transition">ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition</div>
+          </div>
+        </a>
+        <a class="evcard" href="atm-2026.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">28–29 NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>Amazing Thailand Marathon</h3>
+            <div class="desc" data-th="สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22" data-en="Sanam Luang · 2 AM start · walkable hotels + Stay22 map">สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22</div>
+          </div>
+        </a>
+        <a class="evcard" href="chiang-mai-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Chiang Mai Marathon</h3>
+            <div class="desc" data-th="รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท" data-en="Old-city moat route · old-town stays walkable to the start">รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="doi-inthanon-utmb.html" data-sport="trail">
+          <div class="dcover s-trail">
+            <span class="sp">TRAIL</span>
+            <span class="dd">DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Doi Inthanon Thailand by UTMB</h3>
+            <div class="desc" data-th="เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง" data-en="World-series trail on the highest peak · stays near Chom Thong">เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง</div>
+          </div>
+        </a>
+        <a class="evcard" href="bangsaen-triathlon.html" data-sport="tri">
+          <div class="dcover s-tri">
+            <span class="sp">TRI</span>
+            <span class="dd">DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Bangsaen Triathlon</h3>
+            <div class="desc" data-th="ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้" data-en="Swim–bike–run at Bangsaen · beachfront stays near transition">ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้</div>
+          </div>
+        </a>
+        <a class="evcard" href="chiang-mai-gran-fondo.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">13 DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Chiang Mai Gran Fondo</h3>
+            <div class="desc" data-th="แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน" data-en="Gran fondo around Chiang Mai · stays in the old town/Nimman">แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน</div>
+          </div>
+        </a>
+        <a class="evcard" href="khonkaen-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">JAN</span>
+          </div>
+          <div class="dbody">
+            <h3>Khon Kaen Marathon</h3>
+            <div class="desc" data-th="มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น" data-en="Isan’s international marathon · stays in central Khon Kaen">มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น</div>
+          </div>
+        </a>
+        <a class="evcard" href="buriram-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">24 JAN</span>
+          </div>
+          <div class="dbody">
+            <h3>Buriram Marathon</h3>
+            <div class="desc" data-th="สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม" data-en="Start at Chang International Circuit · hotels clustered nearby">สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม</div>
+          </div>
+        </a>
+        <a class="evcard" href="tour-of-chiangrai.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">FEB</span>
+          </div>
+          <div class="dbody">
+            <h3>Tour of Chiang Rai</h3>
+            <div class="desc" data-th="ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท" data-en="Scenic Chiang Rai ride · central stays near the start">ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="khao-yai-trail.html" data-sport="trail">
+          <div class="dcover s-trail">
+            <span class="sp">TRAIL</span>
+            <span class="dd">MAR</span>
+          </div>
+          <div class="dbody">
+            <h3>Khao Yai Trail</h3>
+            <div class="desc" data-th="เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง" data-en="Khao Yai trail · resort stays around Pak Chong">เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง</div>
+          </div>
+        </a>
+        <a class="evcard" href="amazing-bike-tour-khaoyai.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">APR</span>
+          </div>
+          <div class="dbody">
+            <h3>Amazing Bike Tour Khao Yai</h3>
+            <div class="desc" data-th="ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง" data-en="Ride around Khao Yai · resort stays in Pak Chong">ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง</div>
+          </div>
+        </a>
+        <a class="evcard" href="bangkok-midnight-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">MAY</span>
+          </div>
+          <div class="dbody">
+            <h3>Bangkok Midnight Marathon</h3>
+            <div class="desc" data-th="ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง" data-en="Midnight start, cooler air · riverside stays within walking distance">ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง</div>
+          </div>
+        </a>
+        <a class="evcard" href="laguna-phuket-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">JUN</span>
+          </div>
+          <div class="dbody">
+            <h3>Laguna Phuket Marathon</h3>
+            <div class="desc" data-th="วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท" data-en="Andaman seaside run · stays inside Laguna, walkable to the start">วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="pattaya-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">JUL</span>
+          </div>
+          <div class="dbody">
+            <h3>Pattaya Marathon</h3>
+            <div class="desc" data-th="วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท" data-en="Beach-road course · stays in North Pattaya near the start">วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="hyrox-bangkok.html" data-sport="hyrox">
+          <div class="dcover s-hyrox">
+            <span class="sp">HYROX</span>
+            <span class="dd">14–16 AUG</span>
+          </div>
+          <div class="dbody">
+            <h3>HYROX Bangkok</h3>
+            <div class="desc" data-th="ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง" data-en="8-station functional fitness at QSNCC · central city stays">ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง</div>
+          </div>
+        </a>
       </div>
-      <div class="dbody">
-        <h3>Amazing Thailand Marathon</h3>
-        <div class="desc" data-th="สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22" data-en="Sanam Luang · 2 AM start · walkable hotels + Stay22 map">สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22</div>
+      <div class="mq-group" aria-hidden="true">
+        <a class="evcard" href="chiangdao-trail.html" data-sport="trail">
+          <div class="dcover s-trail">
+            <span class="sp">TRAIL</span>
+            <span class="dd">NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>Chiang Dao Trail</h3>
+            <div class="desc" data-th="เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว" data-en="Doi Luang Chiang Dao trail · homestays around Chiang Dao">เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว</div>
+          </div>
+        </a>
+        <a class="evcard" href="ironman-703-bangsaen.html" data-sport="tri">
+          <div class="dcover s-tri">
+            <span class="sp">TRI</span>
+            <span class="dd">NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>IRONMAN 70.3 Bangsaen</h3>
+            <div class="desc" data-th="ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition" data-en="Half-distance Ironman at Bangsaen · beachfront stays near transition">ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition</div>
+          </div>
+        </a>
+        <a class="evcard" href="letape-thailand.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>L’Étape Thailand</h3>
+            <div class="desc" data-th="แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท" data-en="Tour de France-style gran fondo · central Udon stays near the start">แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="laguna-phuket-triathlon.html" data-sport="tri">
+          <div class="dcover s-tri">
+            <span class="sp">TRI</span>
+            <span class="dd">15 NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>Laguna Phuket Triathlon</h3>
+            <div class="desc" data-th="ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition" data-en="Phuket’s legendary triathlon · stays inside Laguna, walkable to transition">ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition</div>
+          </div>
+        </a>
+        <a class="evcard" href="atm-2026.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">28–29 NOV</span>
+          </div>
+          <div class="dbody">
+            <h3>Amazing Thailand Marathon</h3>
+            <div class="desc" data-th="สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22" data-en="Sanam Luang · 2 AM start · walkable hotels + Stay22 map">สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22</div>
+          </div>
+        </a>
+        <a class="evcard" href="chiang-mai-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Chiang Mai Marathon</h3>
+            <div class="desc" data-th="รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท" data-en="Old-city moat route · old-town stays walkable to the start">รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="doi-inthanon-utmb.html" data-sport="trail">
+          <div class="dcover s-trail">
+            <span class="sp">TRAIL</span>
+            <span class="dd">DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Doi Inthanon Thailand by UTMB</h3>
+            <div class="desc" data-th="เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง" data-en="World-series trail on the highest peak · stays near Chom Thong">เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง</div>
+          </div>
+        </a>
+        <a class="evcard" href="bangsaen-triathlon.html" data-sport="tri">
+          <div class="dcover s-tri">
+            <span class="sp">TRI</span>
+            <span class="dd">DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Bangsaen Triathlon</h3>
+            <div class="desc" data-th="ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้" data-en="Swim–bike–run at Bangsaen · beachfront stays near transition">ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้</div>
+          </div>
+        </a>
+        <a class="evcard" href="chiang-mai-gran-fondo.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">13 DEC</span>
+          </div>
+          <div class="dbody">
+            <h3>Chiang Mai Gran Fondo</h3>
+            <div class="desc" data-th="แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน" data-en="Gran fondo around Chiang Mai · stays in the old town/Nimman">แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน</div>
+          </div>
+        </a>
+        <a class="evcard" href="khonkaen-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">JAN</span>
+          </div>
+          <div class="dbody">
+            <h3>Khon Kaen Marathon</h3>
+            <div class="desc" data-th="มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น" data-en="Isan’s international marathon · stays in central Khon Kaen">มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น</div>
+          </div>
+        </a>
+        <a class="evcard" href="buriram-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">24 JAN</span>
+          </div>
+          <div class="dbody">
+            <h3>Buriram Marathon</h3>
+            <div class="desc" data-th="สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม" data-en="Start at Chang International Circuit · hotels clustered nearby">สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม</div>
+          </div>
+        </a>
+        <a class="evcard" href="tour-of-chiangrai.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">FEB</span>
+          </div>
+          <div class="dbody">
+            <h3>Tour of Chiang Rai</h3>
+            <div class="desc" data-th="ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท" data-en="Scenic Chiang Rai ride · central stays near the start">ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="khao-yai-trail.html" data-sport="trail">
+          <div class="dcover s-trail">
+            <span class="sp">TRAIL</span>
+            <span class="dd">MAR</span>
+          </div>
+          <div class="dbody">
+            <h3>Khao Yai Trail</h3>
+            <div class="desc" data-th="เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง" data-en="Khao Yai trail · resort stays around Pak Chong">เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง</div>
+          </div>
+        </a>
+        <a class="evcard" href="amazing-bike-tour-khaoyai.html" data-sport="bike">
+          <div class="dcover s-bike">
+            <span class="sp">BIKE</span>
+            <span class="dd">APR</span>
+          </div>
+          <div class="dbody">
+            <h3>Amazing Bike Tour Khao Yai</h3>
+            <div class="desc" data-th="ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง" data-en="Ride around Khao Yai · resort stays in Pak Chong">ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง</div>
+          </div>
+        </a>
+        <a class="evcard" href="bangkok-midnight-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">MAY</span>
+          </div>
+          <div class="dbody">
+            <h3>Bangkok Midnight Marathon</h3>
+            <div class="desc" data-th="ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง" data-en="Midnight start, cooler air · riverside stays within walking distance">ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง</div>
+          </div>
+        </a>
+        <a class="evcard" href="laguna-phuket-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">JUN</span>
+          </div>
+          <div class="dbody">
+            <h3>Laguna Phuket Marathon</h3>
+            <div class="desc" data-th="วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท" data-en="Andaman seaside run · stays inside Laguna, walkable to the start">วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="pattaya-marathon.html" data-sport="road">
+          <div class="dcover s-road">
+            <span class="sp">ROAD</span>
+            <span class="dd">JUL</span>
+          </div>
+          <div class="dbody">
+            <h3>Pattaya Marathon</h3>
+            <div class="desc" data-th="วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท" data-en="Beach-road course · stays in North Pattaya near the start">วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท</div>
+          </div>
+        </a>
+        <a class="evcard" href="hyrox-bangkok.html" data-sport="hyrox">
+          <div class="dcover s-hyrox">
+            <span class="sp">HYROX</span>
+            <span class="dd">14–16 AUG</span>
+          </div>
+          <div class="dbody">
+            <h3>HYROX Bangkok</h3>
+            <div class="desc" data-th="ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง" data-en="8-station functional fitness at QSNCC · central city stays">ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง</div>
+          </div>
+        </a>
       </div>
-    </a>
-
-    <a class="evcard" href="buriram-marathon.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">24 JAN</span>
-      </div>
-      <div class="dbody">
-        <h3>Buriram Marathon</h3>
-        <div class="desc" data-th="สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม" data-en="Start at Chang International Circuit · hotels clustered nearby">สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="chiang-mai-marathon.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">DEC</span>
-      </div>
-      <div class="dbody">
-        <h3>Chiang Mai Marathon</h3>
-        <div class="desc" data-th="รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท" data-en="Old-city moat route · old-town stays walkable to the start">รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท</div>
-      </div>
-    </a>
-
-    <div class="ad infeed"><span class="lbl">Advertisement · โฆษณา</span></div>
-
-    <a class="evcard" href="pattaya-marathon.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">JUL</span>
-      </div>
-      <div class="dbody">
-        <h3>Pattaya Marathon</h3>
-        <div class="desc" data-th="วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท" data-en="Beach-road course · stays in North Pattaya near the start">วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="laguna-phuket-marathon.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">JUN</span>
-      </div>
-      <div class="dbody">
-        <h3>Laguna Phuket Marathon</h3>
-        <div class="desc" data-th="วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท" data-en="Andaman seaside run · stays inside Laguna, walkable to the start">วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="khonkaen-marathon.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">JAN</span>
-      </div>
-      <div class="dbody">
-        <h3>Khon Kaen Marathon</h3>
-        <div class="desc" data-th="มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น" data-en="Isan’s international marathon · stays in central Khon Kaen">มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="bangkok-midnight-marathon.html" data-sport="road">
-      <div class="dcover s-road">
-        <span class="sp">ROAD</span>
-        <span class="dd">MAY</span>
-      </div>
-      <div class="dbody">
-        <h3>Bangkok Midnight Marathon</h3>
-        <div class="desc" data-th="ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง" data-en="Midnight start, cooler air · riverside stays within walking distance">ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="doi-inthanon-utmb.html" data-sport="trail">
-      <div class="dcover s-trail">
-        <span class="sp">TRAIL</span>
-        <span class="dd">DEC</span>
-      </div>
-      <div class="dbody">
-        <h3>Doi Inthanon Thailand by UTMB</h3>
-        <div class="desc" data-th="เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง" data-en="World-series trail on the highest peak · stays near Chom Thong">เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="khao-yai-trail.html" data-sport="trail">
-      <div class="dcover s-trail">
-        <span class="sp">TRAIL</span>
-        <span class="dd">MAR</span>
-      </div>
-      <div class="dbody">
-        <h3>Khao Yai Trail</h3>
-        <div class="desc" data-th="เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง" data-en="Khao Yai trail · resort stays around Pak Chong">เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="chiangdao-trail.html" data-sport="trail">
-      <div class="dcover s-trail">
-        <span class="sp">TRAIL</span>
-        <span class="dd">NOV</span>
-      </div>
-      <div class="dbody">
-        <h3>Chiang Dao Trail</h3>
-        <div class="desc" data-th="เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว" data-en="Doi Luang Chiang Dao trail · homestays around Chiang Dao">เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="laguna-phuket-triathlon.html" data-sport="tri">
-      <div class="dcover s-tri">
-        <span class="sp">TRI</span>
-        <span class="dd">15 NOV</span>
-      </div>
-      <div class="dbody">
-        <h3>Laguna Phuket Triathlon</h3>
-        <div class="desc" data-th="ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition" data-en="Phuket’s legendary triathlon · stays inside Laguna, walkable to transition">ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition</div>
-      </div>
-    </a>
-
-    <div class="ad infeed"><span class="lbl">Advertisement · โฆษณา</span></div>
-
-    <a class="evcard" href="bangsaen-triathlon.html" data-sport="tri">
-      <div class="dcover s-tri">
-        <span class="sp">TRI</span>
-        <span class="dd">DEC</span>
-      </div>
-      <div class="dbody">
-        <h3>Bangsaen Triathlon</h3>
-        <div class="desc" data-th="ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้" data-en="Swim–bike–run at Bangsaen · beachfront stays near transition">ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="ironman-703-bangsaen.html" data-sport="tri">
-      <div class="dcover s-tri">
-        <span class="sp">TRI</span>
-        <span class="dd">NOV</span>
-      </div>
-      <div class="dbody">
-        <h3>IRONMAN 70.3 Bangsaen</h3>
-        <div class="desc" data-th="ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition" data-en="Half-distance Ironman at Bangsaen · beachfront stays near transition">ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="chiang-mai-gran-fondo.html" data-sport="bike">
-      <div class="dcover s-bike">
-        <span class="sp">BIKE</span>
-        <span class="dd">13 DEC</span>
-      </div>
-      <div class="dbody">
-        <h3>Chiang Mai Gran Fondo</h3>
-        <div class="desc" data-th="แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน" data-en="Gran fondo around Chiang Mai · stays in the old town/Nimman">แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="letape-thailand.html" data-sport="bike">
-      <div class="dcover s-bike">
-        <span class="sp">BIKE</span>
-        <span class="dd">NOV</span>
-      </div>
-      <div class="dbody">
-        <h3>L’Étape Thailand</h3>
-        <div class="desc" data-th="แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท" data-en="Tour de France-style gran fondo · central Udon stays near the start">แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="amazing-bike-tour-khaoyai.html" data-sport="bike">
-      <div class="dcover s-bike">
-        <span class="sp">BIKE</span>
-        <span class="dd">APR</span>
-      </div>
-      <div class="dbody">
-        <h3>Amazing Bike Tour Khao Yai</h3>
-        <div class="desc" data-th="ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง" data-en="Ride around Khao Yai · resort stays in Pak Chong">ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="tour-of-chiangrai.html" data-sport="bike">
-      <div class="dcover s-bike">
-        <span class="sp">BIKE</span>
-        <span class="dd">FEB</span>
-      </div>
-      <div class="dbody">
-        <h3>Tour of Chiang Rai</h3>
-        <div class="desc" data-th="ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท" data-en="Scenic Chiang Rai ride · central stays near the start">ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท</div>
-      </div>
-    </a>
-
-    <a class="evcard" href="hyrox-bangkok.html" data-sport="hyrox">
-      <div class="dcover s-hyrox">
-        <span class="sp">HYROX</span>
-        <span class="dd">14–16 AUG</span>
-      </div>
-      <div class="dbody">
-        <h3>HYROX Bangkok</h3>
-        <div class="desc" data-th="ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง" data-en="8-station functional fitness at QSNCC · central city stays">ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง</div>
-      </div>
-    </a>
-
+    <!-- EVENTS:END -->
+    </div>
   </div>
 </div></div>
 
@@ -291,23 +445,105 @@
 <div class="band stay"><div class="in sec">
   <div class="seclabel"><span class="n">02 / By city</span><h2 data-th="เลือกตามเมือง" data-en="Browse by city">เลือกตามเมือง</h2></div>
   <p class="lead" data-th="เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน" data-en="See which events each city hosts, and which neighbourhoods to stay in.">เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน</p>
-  <div class="grid c3" style="margin-top:22px">
-    <a class="card" href="city-bangkok.html">
-      <span class="tag live" data-th="● 1 งาน" data-en="● 1 event">● 1 งาน</span>
-      <h3>Bangkok</h3>
-      <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
-      <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
-    </a>
-    <a class="card" href="city-chiang-mai.html">
-      <h3>Chiang Mai</h3>
-      <div class="desc" data-th="เมืองเก่า · นิมมาน · วิ่งถนน + เทรล" data-en="Old town · Nimman · road + trail">เมืองเก่า · นิมมาน · วิ่งถนน + เทรล</div>
-      <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
-    </a>
-    <a class="card" href="city-phuket.html">
-      <h3>Phuket</h3>
-      <div class="desc" data-th="ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง" data-en="Patong · Laguna · triathlon + running">ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง</div>
-      <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
-    </a>
+  <div class="mq mq-cities" style="margin-top:22px">
+    <div class="mq-track">
+<!-- CITIES:START -->
+      <div class="mq-group">
+        <a class="mqcity" href="city-bangkok.html">
+          <h3>Bangkok</h3>
+          <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-chiang-mai.html">
+          <h3>Chiang Mai</h3>
+          <div class="desc" data-th="เมืองเก่า · นิมมาน · วิ่งถนน + เทรล" data-en="Old town · Nimman · road + trail">เมืองเก่า · นิมมาน · วิ่งถนน + เทรล</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-phuket.html">
+          <h3>Phuket</h3>
+          <div class="desc" data-th="ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง" data-en="Patong · Laguna · triathlon + running">ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-chonburi.html">
+          <h3>Chonburi</h3>
+          <div class="desc" data-th="บางแสน · พัทยา · ไตรกีฬา + วิ่ง" data-en="Bangsaen · Pattaya · triathlon + running">บางแสน · พัทยา · ไตรกีฬา + วิ่ง</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-buriram.html">
+          <h3>Buriram</h3>
+          <div class="desc" data-th="สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์" data-en="Chang Circuit · central Buriram">สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-nakhon-ratchasima.html">
+          <h3>Nakhon Ratchasima</h3>
+          <div class="desc" data-th="เขาใหญ่ · ปากช่อง · เทรล + จักรยาน" data-en="Khao Yai · Pak Chong · trail + cycling">เขาใหญ่ · ปากช่อง · เทรล + จักรยาน</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-khon-kaen.html">
+          <h3>Khon Kaen</h3>
+          <div class="desc" data-th="กลางเมืองขอนแก่น · มาราธอนอีสาน" data-en="Central Khon Kaen · Isan marathon">กลางเมืองขอนแก่น · มาราธอนอีสาน</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-udon-thani.html">
+          <h3>Udon Thani</h3>
+          <div class="desc" data-th="กลางเมืองอุดรฯ · จักรยานทางไกล" data-en="Central Udon Thani · gran fondo">กลางเมืองอุดรฯ · จักรยานทางไกล</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-chiang-rai.html">
+          <h3>Chiang Rai</h3>
+          <div class="desc" data-th="กลางเมืองเชียงราย · ปั่นชมวิวดอย" data-en="Central Chiang Rai · scenic rides">กลางเมืองเชียงราย · ปั่นชมวิวดอย</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+      </div>
+      <div class="mq-group" aria-hidden="true">
+        <a class="mqcity" href="city-bangkok.html">
+          <h3>Bangkok</h3>
+          <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-chiang-mai.html">
+          <h3>Chiang Mai</h3>
+          <div class="desc" data-th="เมืองเก่า · นิมมาน · วิ่งถนน + เทรล" data-en="Old town · Nimman · road + trail">เมืองเก่า · นิมมาน · วิ่งถนน + เทรล</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-phuket.html">
+          <h3>Phuket</h3>
+          <div class="desc" data-th="ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง" data-en="Patong · Laguna · triathlon + running">ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-chonburi.html">
+          <h3>Chonburi</h3>
+          <div class="desc" data-th="บางแสน · พัทยา · ไตรกีฬา + วิ่ง" data-en="Bangsaen · Pattaya · triathlon + running">บางแสน · พัทยา · ไตรกีฬา + วิ่ง</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-buriram.html">
+          <h3>Buriram</h3>
+          <div class="desc" data-th="สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์" data-en="Chang Circuit · central Buriram">สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-nakhon-ratchasima.html">
+          <h3>Nakhon Ratchasima</h3>
+          <div class="desc" data-th="เขาใหญ่ · ปากช่อง · เทรล + จักรยาน" data-en="Khao Yai · Pak Chong · trail + cycling">เขาใหญ่ · ปากช่อง · เทรล + จักรยาน</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-khon-kaen.html">
+          <h3>Khon Kaen</h3>
+          <div class="desc" data-th="กลางเมืองขอนแก่น · มาราธอนอีสาน" data-en="Central Khon Kaen · Isan marathon">กลางเมืองขอนแก่น · มาราธอนอีสาน</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-udon-thani.html">
+          <h3>Udon Thani</h3>
+          <div class="desc" data-th="กลางเมืองอุดรฯ · จักรยานทางไกล" data-en="Central Udon Thani · gran fondo">กลางเมืองอุดรฯ · จักรยานทางไกล</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+        <a class="mqcity" href="city-chiang-rai.html">
+          <h3>Chiang Rai</h3>
+          <div class="desc" data-th="กลางเมืองเชียงราย · ปั่นชมวิวดอย" data-en="Central Chiang Rai · scenic rides">กลางเมืองเชียงราย · ปั่นชมวิวดอย</div>
+          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
+        </a>
+      </div>
+    <!-- CITIES:END -->
+    </div>
   </div>
 </div></div>
 
