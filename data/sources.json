@@ -19,7 +19,14 @@
       "name": "RUNLAH",
       "role": "discovery",
       "priority": 1,
-      "sports": ["road", "trail", "tri", "bike", "ultra", "swim"],
+      "sports": [
+        "road",
+        "trail",
+        "tri",
+        "bike",
+        "ultra",
+        "swim"
+      ],
       "home": "https://www.runlah.com/th",
       "fetch": "html",
       "robots": "calendar allowed; /office, /user, results pagination disallowed",
@@ -42,65 +49,100 @@
         "byProvince": "https://www.runlah.com/th/calendar/location/{province-slug}  (e.g. bangkok, chiang-mai, chon-buri, phuket, buri-ram)",
         "byWeek": "https://www.runlah.com/th/calendar/week/{YYYY-MM-DD in Buddhist year, e.g. 2569-11-02}"
       },
-      "notes": "Best single discovery source: clean type + region filters, covers multisport."
+      "notes": "Best single discovery source: clean type + region filters, covers multisport. Event links are /th/{code}; link text starts with the event name (first segment before tags like 'สมัครทาง RUNLAH' / province). Tested 2026-10-22: works with plain HTTP."
     },
     {
       "id": "thairun",
       "name": "ThaiRun (race.thai.run)",
       "role": "discovery",
       "priority": 2,
-      "sports": ["road", "trail"],
+      "sports": [
+        "road",
+        "trail"
+      ],
       "home": "https://race.thai.run",
       "fetch": "browser",
       "robots": "Allow: /",
-      "listUrls": ["https://race.thai.run"],
-      "urlPatterns": { "event": "https://race.thai.run/{event-slug}" },
-      "notes": "Largest Thai registration platform. SPA — data comes from a private GraphQL API; do not call it. Many virtual runs mixed in."
+      "listUrls": [
+        "https://race.thai.run"
+      ],
+      "urlPatterns": {
+        "event": "https://race.thai.run/{event-slug}"
+      },
+      "notes": "Largest Thai registration platform. SPA — data comes from a private GraphQL API; do not call it. Many virtual runs mixed in. Tested 2026-10-22 in browser: lists also contain overseas tour packages (Vientiane, Danang, HCMC, Wuhan, Xiamen) and virtual runs — filter both. Do not call the private GraphQL API."
     },
     {
       "id": "checkrace",
       "name": "Checkrace",
       "role": "discovery",
       "priority": 2,
-      "sports": ["road", "trail"],
+      "sports": [
+        "road",
+        "trail"
+      ],
       "home": "https://run.checkrace.com",
       "fetch": "browser",
       "robots": "Allow: / (except /order, /line, /facebook, password pages)",
-      "listUrls": ["https://run.checkrace.com"],
-      "notes": "SPA — render in a browser."
+      "listUrls": [
+        "https://run.checkrace.com"
+      ],
+      "notes": "SPA — render in a browser. Tested 2026-10-22: event links /event/{code}; virtual runs live on a separate host vr.checkrace.com — exclude that host."
     },
     {
       "id": "regisrun",
       "name": "Regis.run",
       "role": "discovery",
       "priority": 2,
-      "sports": ["road", "bike"],
+      "sports": [
+        "road",
+        "bike"
+      ],
       "home": "https://www.regis.run",
       "fetch": "html",
       "robots": "no rules",
-      "listUrls": ["https://www.regis.run/"],
-      "urlPatterns": { "runEvent": "https://www.regis.run/event/{slug}", "bikeEvent": "https://www.regis.run/bike/{slug}/" },
-      "notes": "Popular with smaller organizers; homepage lists many events including past ones — filter by date."
+      "listUrls": [
+        "https://www.regis.run/"
+      ],
+      "urlPatterns": {
+        "runEvent": "https://www.regis.run/event/{slug}",
+        "bikeEvent": "https://www.regis.run/bike/{slug}/"
+      },
+      "notes": "Popular with smaller organizers; homepage lists many events including past ones — filter by date. Tested 2026-10-22: slugs containing 'vr' are virtual (e.g. runnhaideevr); the 'สมัครเข้าร่วม' links duplicate each event — dedupe by URL."
     },
     {
       "id": "thaimtb",
       "name": "ThaiMaster.me / ThaiMTB Event Register",
       "role": "discovery",
       "priority": 2,
-      "sports": ["bike", "road", "tri"],
+      "sports": [
+        "bike",
+        "road",
+        "tri"
+      ],
       "home": "https://event.thaimtb.com",
       "fetch": "html",
       "robots": "allowed (only SemrushBot blocked)",
-      "listUrls": ["https://event.thaimtb.com/", "https://thaimaster.run/"],
-      "urlPatterns": { "event": "https://event.thaimtb.com/event.php?e={id}", "past": "https://event.thaimtb.com/V3/past-event.php" },
-      "notes": "Main source to grow our cycling events."
+      "listUrls": [
+        "https://event.thaimtb.com/",
+        "https://thaimaster.run/"
+      ],
+      "urlPatterns": {
+        "event": "https://event.thaimtb.com/event.php?e={id}",
+        "past": "https://event.thaimtb.com/V3/past-event.php"
+      },
+      "notes": "Main source to grow our cycling events. Tested 2026-10-22: link text is '{id}) {name}' — strip the numeric prefix."
     },
     {
       "id": "ahotu",
       "name": "Ahotu",
       "role": "discovery",
       "priority": 3,
-      "sports": ["road", "trail", "tri", "ultra"],
+      "sports": [
+        "road",
+        "trail",
+        "tri",
+        "ultra"
+      ],
       "home": "https://www.ahotu.com",
       "fetch": "manual",
       "robots": "bot-protected (HTTP 403 to scripts)",
@@ -111,72 +153,96 @@
         "https://www.ahotu.com/calendar/triathlon/thailand",
         "https://www.ahotu.com/calendar/triathlon/half-iron-70-3/thailand"
       ],
-      "notes": "Very complete global aggregator — use as a gap check. Listings can lag; never trust its dates without verifying."
+      "notes": "Very complete global aggregator — use as a gap check. Listings can lag; never trust its dates without verifying. Tested 2026-10-22: Cloudflare verification blocks scripts AND the automated browser — must be opened by a person. Do not try to bypass."
     },
     {
       "id": "worldsmarathons",
       "name": "World's Marathons",
       "role": "discovery",
       "priority": 3,
-      "sports": ["road", "trail"],
+      "sports": [
+        "road",
+        "trail"
+      ],
       "home": "https://www.worldsmarathons.com",
       "fetch": "manual",
       "robots": "bot-protected (HTTP 403 to scripts)",
-      "listUrls": ["https://www.worldsmarathons.com/s/running/thailand"],
-      "notes": "International-runner angle."
+      "listUrls": [
+        "https://www.worldsmarathons.com/s/running/thailand"
+      ],
+      "notes": "International-runner angle. Tested 2026-10-22: Cloudflare verification blocks the automated browser too — manual only."
     },
     {
       "id": "finishers",
       "name": "Finishers",
       "role": "discovery",
       "priority": 3,
-      "sports": ["road", "trail", "tri"],
+      "sports": [
+        "road",
+        "trail",
+        "tri"
+      ],
       "home": "https://www.finishers.com",
       "fetch": "html",
-      "listUrls": ["https://www.finishers.com/en/destinations/asia/thailand"],
-      "notes": "Server-rendered; international-runner angle."
+      "listUrls": [
+        "https://www.finishers.com/en/destinations/asia/thailand"
+      ],
+      "notes": "Server-rendered; international-runner angle. Tested 2026-10-22: event links /en/event/{slug}; card text starts with tags/emojis — the clean name follows the tags."
     },
     {
       "id": "ving",
       "name": "VING running calendar articles",
       "role": "discovery",
       "priority": 3,
-      "sports": ["road"],
+      "sports": [
+        "road"
+      ],
       "home": "https://www.shop.ving.run",
-      "fetch": "html",
+      "fetch": "browser",
       "listUrls": [
         "https://www.shop.ving.run/blog/running-events-2026-thailand/87",
         "https://www.shop.ving.run/blog/thailand-running-events-july-december-2026/188"
       ],
-      "notes": "Editorial monthly round-ups — good cross-check, not exhaustive."
+      "notes": "Editorial monthly round-ups — good cross-check, not exhaustive. Tested 2026-10-22 in browser: a table of ~280 rows (date | event | venue) — filter rows by month, take the event column only."
     },
     {
       "id": "thaiger",
       "name": "The Thaiger — marathon guides",
       "role": "discovery",
       "priority": 3,
-      "sports": ["road"],
+      "sports": [
+        "road"
+      ],
       "fetch": "html",
-      "listUrls": ["https://thethaiger.com/guides/best-of/lifestyle/marathons-around-thailand-in-q4-2025"],
-      "notes": "English editorial round-up of big Q4 marathons."
+      "listUrls": [
+        "https://thethaiger.com/guides/best-of/lifestyle/marathons-around-thailand-in-q4-2025"
+      ],
+      "notes": "English editorial round-up of big Q4 marathons. Tested 2026-10-22: event names are the h3 headings ('Name — Place, Date'); take the part before the dash."
     },
     {
       "id": "utmb",
       "name": "UTMB World Series",
       "role": "verify",
       "priority": 1,
-      "sports": ["trail"],
+      "sports": [
+        "trail"
+      ],
       "home": "https://utmb.world",
       "fetch": "html",
-      "listUrls": ["https://utmb.world/open-registrations", "https://chiangmai.utmb.world/"],
-      "notes": "Official — can confirm dates, distances, start locations for UTMB-series races in Thailand."
+      "listUrls": [
+        "https://utmb.world/utmb-world-series-events",
+        "https://chiangmai.utmb.world/"
+      ],
+      "notes": "Official — can confirm dates, distances, start locations for UTMB-series races in Thailand. Tested 2026-10-22: /open-registrations returned an error page; use https://utmb.world/utmb-world-series-events — only Thai event is chiangmai.utmb.world ('Chiang Mai Thailand by UTMB')."
     },
     {
       "id": "itra",
       "name": "ITRA",
       "role": "verify",
       "priority": 2,
-      "sports": ["trail"],
+      "sports": [
+        "trail"
+      ],
       "home": "https://itra.run",
       "fetch": "manual",
       "notes": "Trail race database. Race-finder URL path still to confirm (itra.run/Races/FindRaces returned 404 on 2026-10-22)."
@@ -186,31 +252,45 @@
       "name": "HYROX Thailand",
       "role": "verify",
       "priority": 1,
-      "sports": ["hyrox"],
+      "sports": [
+        "hyrox"
+      ],
       "home": "https://hyroxthailand.com",
       "fetch": "html",
-      "listUrls": ["https://hyroxthailand.com", "https://hyroxthailand.com/event/hyrox-bangkok-2/"],
-      "notes": "Official organizer for HYROX races in Thailand."
+      "listUrls": [
+        "https://hyroxthailand.com/find-your-race/",
+        "https://hyroxthailand.com/event/hyrox-bangkok/"
+      ],
+      "notes": "Official organizer for HYROX races in Thailand. Tested 2026-10-22: race list is https://hyroxthailand.com/find-your-race/ (global list) — Thai race is /event/hyrox-bangkok/ ('BYD HYROX BANGKOK')."
     },
     {
       "id": "thaicycling",
       "name": "Thai Cycling Association (สมาคมกีฬาจักรยานแห่งประเทศไทย)",
       "role": "verify",
       "priority": 2,
-      "sports": ["bike"],
+      "sports": [
+        "bike"
+      ],
       "home": "https://www.thaicycling.or.th/home",
       "fetch": "html",
-      "listUrls": ["https://www.thaicycling.or.th/home", "https://www.thaicycling.or.th/result"],
-      "notes": "Official association races (road, MTB, track)."
+      "listUrls": [
+        "https://www.thaicycling.or.th/home",
+        "https://www.thaicycling.or.th/result"
+      ],
+      "notes": "Official association races (road, MTB, track). Tested 2026-10-22: /events lists mostly national championships (track, BMX, balance-bike) — low relevance for travelling amateurs."
     }
   ],
   "officialEventSites": {
     "_comment": "Verified official pages for events already on RaceStay — first stop when verifying facts.",
     "atm-2026": "https://amazingthailandmarathon.com/",
     "laguna-phuket-triathlon": "https://www.lagunaphukettri.com/",
-    "hyrox-bangkok": "https://hyroxthailand.com/event/hyrox-bangkok-2/"
+    "hyrox-bangkok": "https://hyroxthailand.com/event/hyrox-bangkok/"
   },
   "excluded": [
-    { "name": "Checkpoint Spot", "url": "https://v2.checkpointspot.asia/", "reason": "No Thailand site found (Malaysia/Cambodia only)." }
+    {
+      "name": "Checkpoint Spot",
+      "url": "https://v2.checkpointspot.asia/",
+      "reason": "No Thailand site found (Malaysia/Cambodia only)."
+    }
   ]
 }
