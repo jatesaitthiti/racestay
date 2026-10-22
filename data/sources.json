@@ -1,0 +1,216 @@
+{
+  "_comment": "RaceStay event-discovery sources. Used by Claude (manual research) and any future fetcher script. Checked 2026-10-22.",
+  "rules": {
+    "takeFromDiscovery": "ONLY the event name (+ the listing URL as a pointer). Never copy descriptions, images or other details.",
+    "researchYourself": "date, start/finish point + coordinates, distances, start times, province — from official sources (role=verify, organizer site/page).",
+    "writeOwnBlurbs": "blurbTh / blurbEn are always written by us.",
+    "skipVirtual": "Skip virtual runs (no physical start). Keywords: virtual, เวอร์ชวล, เสมือน, วิ่งที่ไหนก็ได้, VR, online run.",
+    "provenance": "Every event in events.json gets source + checkedOn; owner reviews before publishing.",
+    "politeFetching": "Respect robots.txt, max ~1 request / 3 s per host, cache pages, identify the user agent. Do NOT call private/undocumented APIs (e.g. api.race.thai.run/graphql)."
+  },
+  "fetchModes": {
+    "html": "Event names are in the server-rendered HTML — fetch with a plain HTTP request.",
+    "browser": "Page is a JavaScript app (SPA) — render in a browser to read the visible list.",
+    "manual": "Bot-protected or no stable list — open by hand in a browser."
+  },
+  "sources": [
+    {
+      "id": "runlah",
+      "name": "RUNLAH",
+      "role": "discovery",
+      "priority": 1,
+      "sports": ["road", "trail", "tri", "bike", "ultra", "swim"],
+      "home": "https://www.runlah.com/th",
+      "fetch": "html",
+      "robots": "calendar allowed; /office, /user, results pagination disallowed",
+      "listUrls": [
+        "https://www.runlah.com/th/calendar",
+        "https://www.runlah.com/th/calendar/type/funrun",
+        "https://www.runlah.com/th/calendar/type/mini",
+        "https://www.runlah.com/th/calendar/type/half",
+        "https://www.runlah.com/th/calendar/type/full",
+        "https://www.runlah.com/th/calendar/type/ultra",
+        "https://www.runlah.com/th/calendar/type/trailrun",
+        "https://www.runlah.com/th/calendar/type/crosscountry",
+        "https://www.runlah.com/th/calendar/type/triathlon",
+        "https://www.runlah.com/th/calendar/type/bike",
+        "https://www.runlah.com/th/calendar/type/swim",
+        "https://www.runlah.com/th/calendar/type/charity"
+      ],
+      "urlPatterns": {
+        "byRegion": "https://www.runlah.com/th/calendar/location/{central|north|northeast|east|west|south}",
+        "byProvince": "https://www.runlah.com/th/calendar/location/{province-slug}  (e.g. bangkok, chiang-mai, chon-buri, phuket, buri-ram)",
+        "byWeek": "https://www.runlah.com/th/calendar/week/{YYYY-MM-DD in Buddhist year, e.g. 2569-11-02}"
+      },
+      "notes": "Best single discovery source: clean type + region filters, covers multisport."
+    },
+    {
+      "id": "thairun",
+      "name": "ThaiRun (race.thai.run)",
+      "role": "discovery",
+      "priority": 2,
+      "sports": ["road", "trail"],
+      "home": "https://race.thai.run",
+      "fetch": "browser",
+      "robots": "Allow: /",
+      "listUrls": ["https://race.thai.run"],
+      "urlPatterns": { "event": "https://race.thai.run/{event-slug}" },
+      "notes": "Largest Thai registration platform. SPA — data comes from a private GraphQL API; do not call it. Many virtual runs mixed in."
+    },
+    {
+      "id": "checkrace",
+      "name": "Checkrace",
+      "role": "discovery",
+      "priority": 2,
+      "sports": ["road", "trail"],
+      "home": "https://run.checkrace.com",
+      "fetch": "browser",
+      "robots": "Allow: / (except /order, /line, /facebook, password pages)",
+      "listUrls": ["https://run.checkrace.com"],
+      "notes": "SPA — render in a browser."
+    },
+    {
+      "id": "regisrun",
+      "name": "Regis.run",
+      "role": "discovery",
+      "priority": 2,
+      "sports": ["road", "bike"],
+      "home": "https://www.regis.run",
+      "fetch": "html",
+      "robots": "no rules",
+      "listUrls": ["https://www.regis.run/"],
+      "urlPatterns": { "runEvent": "https://www.regis.run/event/{slug}", "bikeEvent": "https://www.regis.run/bike/{slug}/" },
+      "notes": "Popular with smaller organizers; homepage lists many events including past ones — filter by date."
+    },
+    {
+      "id": "thaimtb",
+      "name": "ThaiMaster.me / ThaiMTB Event Register",
+      "role": "discovery",
+      "priority": 2,
+      "sports": ["bike", "road", "tri"],
+      "home": "https://event.thaimtb.com",
+      "fetch": "html",
+      "robots": "allowed (only SemrushBot blocked)",
+      "listUrls": ["https://event.thaimtb.com/", "https://thaimaster.run/"],
+      "urlPatterns": { "event": "https://event.thaimtb.com/event.php?e={id}", "past": "https://event.thaimtb.com/V3/past-event.php" },
+      "notes": "Main source to grow our cycling events."
+    },
+    {
+      "id": "ahotu",
+      "name": "Ahotu",
+      "role": "discovery",
+      "priority": 3,
+      "sports": ["road", "trail", "tri", "ultra"],
+      "home": "https://www.ahotu.com",
+      "fetch": "manual",
+      "robots": "bot-protected (HTTP 403 to scripts)",
+      "listUrls": [
+        "https://www.ahotu.com/calendar/running/marathon/thailand",
+        "https://www.ahotu.com/calendar/registration/running/thailand",
+        "https://www.ahotu.com/calendar/trail-running/ultramarathon/thailand",
+        "https://www.ahotu.com/calendar/triathlon/thailand",
+        "https://www.ahotu.com/calendar/triathlon/half-iron-70-3/thailand"
+      ],
+      "notes": "Very complete global aggregator — use as a gap check. Listings can lag; never trust its dates without verifying."
+    },
+    {
+      "id": "worldsmarathons",
+      "name": "World's Marathons",
+      "role": "discovery",
+      "priority": 3,
+      "sports": ["road", "trail"],
+      "home": "https://www.worldsmarathons.com",
+      "fetch": "manual",
+      "robots": "bot-protected (HTTP 403 to scripts)",
+      "listUrls": ["https://www.worldsmarathons.com/s/running/thailand"],
+      "notes": "International-runner angle."
+    },
+    {
+      "id": "finishers",
+      "name": "Finishers",
+      "role": "discovery",
+      "priority": 3,
+      "sports": ["road", "trail", "tri"],
+      "home": "https://www.finishers.com",
+      "fetch": "html",
+      "listUrls": ["https://www.finishers.com/en/destinations/asia/thailand"],
+      "notes": "Server-rendered; international-runner angle."
+    },
+    {
+      "id": "ving",
+      "name": "VING running calendar articles",
+      "role": "discovery",
+      "priority": 3,
+      "sports": ["road"],
+      "home": "https://www.shop.ving.run",
+      "fetch": "html",
+      "listUrls": [
+        "https://www.shop.ving.run/blog/running-events-2026-thailand/87",
+        "https://www.shop.ving.run/blog/thailand-running-events-july-december-2026/188"
+      ],
+      "notes": "Editorial monthly round-ups — good cross-check, not exhaustive."
+    },
+    {
+      "id": "thaiger",
+      "name": "The Thaiger — marathon guides",
+      "role": "discovery",
+      "priority": 3,
+      "sports": ["road"],
+      "fetch": "html",
+      "listUrls": ["https://thethaiger.com/guides/best-of/lifestyle/marathons-around-thailand-in-q4-2025"],
+      "notes": "English editorial round-up of big Q4 marathons."
+    },
+    {
+      "id": "utmb",
+      "name": "UTMB World Series",
+      "role": "verify",
+      "priority": 1,
+      "sports": ["trail"],
+      "home": "https://utmb.world",
+      "fetch": "html",
+      "listUrls": ["https://utmb.world/open-registrations", "https://chiangmai.utmb.world/"],
+      "notes": "Official — can confirm dates, distances, start locations for UTMB-series races in Thailand."
+    },
+    {
+      "id": "itra",
+      "name": "ITRA",
+      "role": "verify",
+      "priority": 2,
+      "sports": ["trail"],
+      "home": "https://itra.run",
+      "fetch": "manual",
+      "notes": "Trail race database. Race-finder URL path still to confirm (itra.run/Races/FindRaces returned 404 on 2026-10-22)."
+    },
+    {
+      "id": "hyroxth",
+      "name": "HYROX Thailand",
+      "role": "verify",
+      "priority": 1,
+      "sports": ["hyrox"],
+      "home": "https://hyroxthailand.com",
+      "fetch": "html",
+      "listUrls": ["https://hyroxthailand.com", "https://hyroxthailand.com/event/hyrox-bangkok-2/"],
+      "notes": "Official organizer for HYROX races in Thailand."
+    },
+    {
+      "id": "thaicycling",
+      "name": "Thai Cycling Association (สมาคมกีฬาจักรยานแห่งประเทศไทย)",
+      "role": "verify",
+      "priority": 2,
+      "sports": ["bike"],
+      "home": "https://www.thaicycling.or.th/home",
+      "fetch": "html",
+      "listUrls": ["https://www.thaicycling.or.th/home", "https://www.thaicycling.or.th/result"],
+      "notes": "Official association races (road, MTB, track)."
+    }
+  ],
+  "officialEventSites": {
+    "_comment": "Verified official pages for events already on RaceStay — first stop when verifying facts.",
+    "atm-2026": "https://amazingthailandmarathon.com/",
+    "laguna-phuket-triathlon": "https://www.lagunaphukettri.com/",
+    "hyrox-bangkok": "https://hyroxthailand.com/event/hyrox-bangkok-2/"
+  },
+  "excluded": [
+    { "name": "Checkpoint Spot", "url": "https://v2.checkpointspot.asia/", "reason": "No Thailand site found (Malaysia/Cambodia only)." }
+  ]
+}
