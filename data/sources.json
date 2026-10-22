@@ -284,13 +284,33 @@
     "_comment": "Verified official pages for events already on RaceStay — first stop when verifying facts.",
     "atm-2026": "https://amazingthailandmarathon.com/",
     "laguna-phuket-triathlon": "https://www.lagunaphukettri.com/",
-    "hyrox-bangkok": "https://hyroxthailand.com/event/hyrox-bangkok/"
+    "hyrox-bangkok": "https://hyroxthailand.com/event/hyrox-bangkok/",
+    "doi-inthanon-utmb": "https://chiangmai.utmb.world/",
+    "bangkok-marathon": "https://www.bkkmarathon.com/",
+    "bangsaen42-marathon": "https://www.bangsaen42.com",
+    "korat-marathon": "https://www.koratmarathon.com",
+    "amazing-nan-marathon": "https://www.facebook.com/marathonofnan/ (official FB page; no website)"
   },
   "excluded": [
     {
       "name": "Checkpoint Spot",
       "url": "https://v2.checkpointspot.asia/",
       "reason": "No Thailand site found (Malaysia/Cambodia only)."
+    }
+  ],
+  "pendingEvents": [
+    {
+      "name": "Black Ivory Trail Thailand",
+      "foundOn": "runlah",
+      "checkedOn": "2026-10-22",
+      "reason": "Start venue and start times only appear on RunLah (not official). Organizer Mission Earth (missionearth.co) has no event page yet; dates 20–21 Nov 2026 and 5/8/12 km come from press only.",
+      "recheck": "missionearth.co and the organizer's Facebook page closer to race day"
+    }
+  ],
+  "followUps": [
+    {
+      "event": "amazing-nan-marathon",
+      "todo": "Confirm start times and finish point from an official source (only aggregators have them as of 2026-10-22)."
     }
   ]
 }

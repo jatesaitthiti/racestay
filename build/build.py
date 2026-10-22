@@ -13,6 +13,8 @@ teasers, newsletter and everything else stay untouched. Idempotent.
 """
 import json
 import sys
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
+import event_pages
 from datetime import date
 from pathlib import Path
 
@@ -106,6 +108,9 @@ def main() -> int:
     html = splice(html, CITIES_START, CITIES_END, marquee_body([city_card(c) for c in cities]))
 
     INDEX.write_text(html, encoding="utf-8")
+    made = event_pages.render_all(data["events"])
+    if made:
+        print(f"✓ detail pages generated: {', '.join(made)}")
     print(f"✓ index.html rebuilt — {len(events)} events, {len(cities)} cities (marquees x2 copies)")
     return 0
 

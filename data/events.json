@@ -74,13 +74,111 @@
     },
     {
       "slug": "doi-inthanon-utmb",
-      "name": "Doi Inthanon Thailand by UTMB",
+      "name": "HOKA Chiang Mai Thailand by UTMB",
       "sport": "trail",
-      "date": "2026-12-01",
-      "dateLabel": "DEC 2026",
+      "date": "2026-11-28",
+      "dateLabel": "27 NOV – 6 DEC 2026",
       "city": "Chiang Mai",
-      "blurbTh": "เทรลระดับโลกบนยอดดอยสูงสุด · ที่พักย่านจอมทอง",
-      "blurbEn": "World-series trail on the highest peak · stays near Chom Thong"
+      "blurbTh": "เทรลซีรีส์ UTMB สองสุดสัปดาห์ · ดอยอินทนนท์ (28–29 พ.ย.) แล้วต่อที่สวนเฉลิมพระเกียรติ อบจ.เชียงใหม่ (4–6 ธ.ค.)",
+      "blurbEn": "A UTMB World Series event over two weekends · Doi Inthanon (28–29 Nov), then Chiang Mai PAO Park (4–6 Dec)",
+      "source": "https://chiangmai.utmb.world/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "27 NOV – 6 DEC 2026",
+        "start": "Doi Inthanon NP HQ / Chiang Mai PAO Park",
+        "finish": "Doi Inthanon NP HQ / Chiang Mai PAO Park",
+        "lat": 18.8319,
+        "lng": 98.9673,
+        "maps": [
+          {
+            "labelTh": "สุดสัปดาห์ 1 · ดอยอินทนนท์ (28–29 พ.ย.)",
+            "labelEn": "Weekend 1 · Doi Inthanon (28–29 Nov)",
+            "lat": 18.5366,
+            "lng": 98.5217,
+            "venue": "Doi Inthanon National Park HQ"
+          },
+          {
+            "labelTh": "สุดสัปดาห์ 2 · สวนเฉลิมพระเกียรติ อบจ.เชียงใหม่ (4–6 ธ.ค.)",
+            "labelEn": "Weekend 2 · Chiang Mai PAO Park (4–6 Dec)",
+            "lat": 18.8319,
+            "lng": 98.9673,
+            "venue": "Chiang Mai PAO Park"
+          }
+        ],
+        "distances": [
+          {
+            "name": "Pagoda 50",
+            "km": "57",
+            "time": "28 NOV · 07:00",
+            "start": "Doi Inthanon NP HQ",
+            "finish": "Doi Inthanon NP HQ"
+          },
+          {
+            "name": "Inthanon 20",
+            "km": "20",
+            "time": "29 NOV",
+            "start": "Doi Inthanon NP HQ",
+            "finish": "Doi Inthanon NP HQ"
+          },
+          {
+            "name": "Elephant 100",
+            "km": "100",
+            "time": "4 DEC · 08:00",
+            "start": "Wat Nong Bua Noi (Mae Taeng)",
+            "finish": "Chiang Mai PAO Park"
+          },
+          {
+            "name": "Chiang Dao 160",
+            "km": "173",
+            "time": "4 DEC · 10:00",
+            "start": "Wat Tham Chiang Dao",
+            "finish": "Chiang Mai PAO Park"
+          },
+          {
+            "name": "Hmong 50",
+            "km": "63",
+            "time": "5 DEC",
+            "start": "Chiang Mai PAO Park",
+            "finish": "Chiang Mai PAO Park"
+          },
+          {
+            "name": "Suthep 20",
+            "km": "26",
+            "time": "5–6 DEC",
+            "start": "Chiang Mai PAO Park",
+            "finish": "Chiang Mai PAO Park"
+          },
+          {
+            "name": "Chedi 20",
+            "km": "17",
+            "time": "6 DEC",
+            "start": "Chiang Mai PAO Park",
+            "finish": "Chiang Mai PAO Park"
+          }
+        ],
+        "zoneTh": "จอมทอง (สุดสัปดาห์ 1) · ช้างเผือก/ตัวเมืองเชียงใหม่ฝั่งเหนือ (สุดสัปดาห์ 2)",
+        "zoneEn": "Chom Thong (weekend 1) · Chang Phueak / north Chiang Mai city (weekend 2)",
+        "zoneNoteTh": "งานแบ่งสองพื้นที่ห่างกันราว 50 กม. ดูว่ารายการของคุณสตาร์ทสุดสัปดาห์ไหน แล้วจองที่พักฝั่งนั้น · Elephant 100 กับ Chiang Dao 160 สตาร์ทนอกเมืองแต่เข้าเส้นชัยที่สวนเฉลิมพระเกียรติฯ",
+        "zoneNoteEn": "The event is split across two hubs about 50 km apart — check which weekend your race is on and book that side · Elephant 100 and Chiang Dao 160 start out of town but finish at PAO Park",
+        "schedule": [
+          {
+            "when": "28–29 NOV",
+            "th": "สุดสัปดาห์ 1 · ดอยอินทนนท์",
+            "en": "Weekend 1 · Doi Inthanon",
+            "stayTh": "พักจอมทอง / ใกล้อุทยานฯ",
+            "stayEn": "Stay in Chom Thong / near the park"
+          },
+          {
+            "when": "4–6 DEC",
+            "th": "สุดสัปดาห์ 2 · ระยะไกลเข้าเส้นชัย + รายการในเมือง",
+            "en": "Weekend 2 · long races finish + city races",
+            "stayTh": "พักเชียงใหม่ฝั่งเหนือ ใกล้สวนเฉลิมพระเกียรติฯ",
+            "stayEn": "Stay in north Chiang Mai near PAO Park"
+          }
+        ],
+        "cityPage": "city-chiang-mai.html",
+        "officialUrl": "https://chiangmai.utmb.world/"
+      }
     },
     {
       "slug": "khao-yai-trail",
@@ -174,24 +272,313 @@
     },
     {
       "slug": "hyrox-bangkok",
-      "name": "HYROX Bangkok",
+      "name": "BYD HYROX Bangkok",
       "sport": "hyrox",
-      "date": "2026-08-15",
-      "dateLabel": "14–16 AUG 2026",
+      "date": "2027-02-11",
+      "dateLabel": "11–14 FEB 2027",
       "city": "Bangkok",
-      "blurbTh": "ฟังก์ชันฟิตเนส 8 สเตชัน ที่ศูนย์ฯ สิริกิติ์ · ที่พักใจกลางเมือง",
-      "blurbEn": "8-station functional fitness at QSNCC · central city stays"
+      "blurbTh": "วิ่ง 8 กม. สลับ 8 สเตชันออกกำลังกาย ที่ไบเทค บางนา · พักย่านบางนาเดินถึงฮอลล์ หรือพักแนว BTS",
+      "blurbEn": "8 km of running split by 8 workout stations at BITEC Bang Na · stay in Bang Na within walking distance, or along the BTS",
+      "source": "https://hyroxthailand.com/event/hyrox-bangkok/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "11–14 FEB 2027",
+        "start": "BITEC Bang Na",
+        "lat": 13.6698,
+        "lng": 100.6085,
+        "startMap": "BITEC Bang Na",
+        "distances": [
+          {
+            "name": "Elite 15 (Singles / Doubles)",
+            "km": "8",
+            "time": "11–12 FEB"
+          },
+          {
+            "name": "Open · Pro · Doubles · Relay",
+            "km": "8",
+            "time": "11–14 FEB"
+          }
+        ],
+        "zoneTh": "บางนา / แบริ่ง / อุดมสุข",
+        "zoneEn": "Bang Na / Bearing / Udom Suk",
+        "zoneNoteTh": "ไบเทคอยู่ติด BTS บางนา พักใกล้ฮอลล์เดินไปได้เลย หรือพักแนว BTS สายสุขุมวิทแล้วนั่งมาสนาม",
+        "zoneNoteEn": "BITEC sits next to BTS Bang Na — stay within walking distance, or anywhere on the Sukhumvit BTS line and ride in",
+        "schedule": [
+          {
+            "when": "11–12 FEB",
+            "th": "Elite 15 (ฮอลล์แยก)",
+            "en": "Elite 15 (separate hall)",
+            "stayTh": "พักใกล้ไบเทค",
+            "stayEn": "Stay near BITEC"
+          },
+          {
+            "when": "11–14 FEB",
+            "th": "รอบแข่ง Open / Pro / Doubles / Relay ทั้งวัน",
+            "en": "Open / Pro / Doubles / Relay heats all day",
+            "stayTh": "จองคืนให้ตรงวันรอบของคุณ",
+            "stayEn": "Book nights around your heat day"
+          }
+        ],
+        "cityPage": "city-bangkok.html",
+        "officialUrl": "https://hyroxthailand.com/event/hyrox-bangkok/"
+      }
+    },
+    {
+      "slug": "bangkok-marathon",
+      "name": "Bangkok Marathon",
+      "sport": "road",
+      "date": "2027-01-10",
+      "dateLabel": "10 JAN 2027",
+      "city": "Bangkok",
+      "blurbTh": "ปล่อยตัวหลังเที่ยงคืนที่ถนนสนามไชย ข้างพระบรมมหาราชวัง · พักย่านเกาะรัตนโกสินทร์เดินถึงเส้นสตาร์ท",
+      "blurbEn": "A past-midnight start on Sanam Chai Road beside the Grand Palace · stay in Rattanakosin and walk to the line",
+      "source": "https://www.bkkmarathon.com/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "10 JAN 2027",
+        "start": "Sanam Chai Road (Grand Palace)",
+        "lat": 13.7494,
+        "lng": 100.494,
+        "startMap": "Sanam Chai Road",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "00:30"
+          },
+          {
+            "km": "21.1",
+            "time": "03:00"
+          },
+          {
+            "km": "10",
+            "time": "04:30"
+          },
+          {
+            "km": "5",
+            "time": "05:00"
+          }
+        ],
+        "zoneTh": "เกาะรัตนโกสินทร์ / ท่าเตียน / สนามไชย",
+        "zoneEn": "Rattanakosin / Tha Tien / Sanam Chai",
+        "zoneNoteTh": "มาราธอนปล่อยตัว 00:30 น. และถนนรอบจุดปล่อยตัวเริ่มปิดตั้งแต่ช่วงดึกคืนก่อนแข่ง พักในระยะเดินจะไม่ต้องลุ้นหารถกลางดึก",
+        "zoneNoteEn": "The marathon starts at 00:30 and roads around the start close late the night before — a walkable stay saves a midnight ride",
+        "schedule": [
+          {
+            "when": "8–9 JAN",
+            "th": "รับอุปกรณ์ที่สถานีหัวลำโพง",
+            "en": "Race-kit pickup at Hua Lamphong station",
+            "stayTh": "มาถึงก่อนวันแข่งอย่างน้อย 1 วัน",
+            "stayEn": "Arrive at least a day early"
+          },
+          {
+            "when": "9 JAN · 23:00",
+            "th": "นักวิ่งมาราธอนรวมตัวที่ถนนสนามไชย",
+            "en": "Marathon runners gather on Sanam Chai Road",
+            "stayTh": "พักเดินถึงจุดปล่อยตัว",
+            "stayEn": "Stay within walking distance"
+          },
+          {
+            "when": "10 JAN",
+            "th": "ปล่อยตัว 00:30–05:00 · ปิดเส้นชัย 07:00",
+            "en": "Starts 00:30–05:00 · finish closes 07:00",
+            "stayTh": "เผื่อเช็กเอาต์สายไว้พักหลังแข่ง",
+            "stayEn": "Late checkout to rest after"
+          }
+        ],
+        "cityPage": "city-bangkok.html",
+        "officialUrl": "https://www.bkkmarathon.com/"
+      }
+    },
+    {
+      "slug": "bangsaen42-marathon",
+      "name": "Bangsaen42 Chonburi Marathon",
+      "sport": "road",
+      "date": "2026-11-15",
+      "dateLabel": "15 NOV 2026",
+      "city": "Chonburi",
+      "blurbTh": "มาราธอนระยะเดียวเลียบชายหาดบางแสน · สตาร์ทและเข้าเส้นชัยหน้าโรงแรมบางแสนเฮอริเทจ",
+      "blurbEn": "A marathon-only race along Bang Saen beach · start and finish at Bangsaen Heritage Hotel",
+      "source": "https://www.bangsaen42.com",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "15 NOV 2026",
+        "start": "Bangsaen Heritage Hotel",
+        "lat": 13.2916,
+        "lng": 100.91,
+        "startMap": "Bangsaen Heritage Hotel, Bang Saen",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "02:30 / 02:45 / 03:00"
+          }
+        ],
+        "zoneTh": "ริมหาดบางแสน / ถนนบางแสนสาย 1–2",
+        "zoneEn": "Bang Saen beachfront / Bang Saen Sai 1–2 roads",
+        "zoneNoteTh": "ปล่อยตัวเป็นรอบตั้งแต่ 02:30 น. และถนนบางแสนสาย 1 ช่วงจุดสตาร์ทปิดตั้งแต่ค่ำวันเสาร์ พักริมหาดในระยะเดินจะสะดวกที่สุด",
+        "zoneNoteEn": "Waves start from 02:30 and Bang Saen Sai 1 Road at the start closes from Saturday evening — a walkable beachfront stay is easiest",
+        "schedule": [
+          {
+            "when": "13–14 NOV",
+            "th": "รับอุปกรณ์ (ศุกร์–เสาร์ก่อนแข่ง)",
+            "en": "Race-kit pickup (Fri–Sat before)",
+            "stayTh": "พักตั้งแต่คืนวันศุกร์หรือเสาร์",
+            "stayEn": "Stay from Friday or Saturday night"
+          },
+          {
+            "when": "15 NOV",
+            "th": "ปล่อยตัว 02:30–03:00 · ปิดเส้นชัย 10:00",
+            "en": "Waves 02:30–03:00 · finish closes 10:00",
+            "stayTh": "พักเดินถึงจุดปล่อยตัว",
+            "stayEn": "Stay walkable to the start"
+          }
+        ],
+        "cityPage": "city-chonburi.html",
+        "officialUrl": "https://www.bangsaen42.com"
+      }
+    },
+    {
+      "slug": "korat-marathon",
+      "name": "Korat Marathon",
+      "sport": "road",
+      "date": "2026-11-08",
+      "dateLabel": "8 NOV 2026",
+      "city": "Nakhon Ratchasima",
+      "blurbTh": "ปล่อยตัวที่อนุสาวรีย์ท้าวสุรนารี เข้าเส้นชัยที่สวนน้ำบุ่งตาหลั่ว · พักกลางเมืองโคราชใกล้ย่าโม",
+      "blurbEn": "Start at the Thao Suranari Monument, finish at Bung Ta Lua Water Park · stay in central Korat near the monument",
+      "source": "https://www.koratmarathon.com",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "8 NOV 2026",
+        "start": "Thao Suranari Monument",
+        "finish": "Bung Ta Lua Water Park",
+        "lat": 14.9747,
+        "lng": 102.0981,
+        "startMap": "Thao Suranari Monument",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "03:00"
+          },
+          {
+            "km": "21.1",
+            "time": "04:00"
+          },
+          {
+            "km": "10",
+            "time": "05:00"
+          },
+          {
+            "km": "5",
+            "time": "05:30"
+          }
+        ],
+        "zoneTh": "ในเมืองโคราช / รอบอนุสาวรีย์ย่าโม",
+        "zoneEn": "Central Korat / around the monument",
+        "zoneNoteTh": "จุดสตาร์ทกับเส้นชัยอยู่คนละที่ พักใกล้อนุสาวรีย์แล้วเดินไปสตาร์ท จบแล้วค่อยนั่งรถกลับจากสวนน้ำบุ่งตาหลั่ว",
+        "zoneNoteEn": "Start and finish are in different places — stay near the monument, walk to the start, and ride back from Bung Ta Lua after",
+        "cityPage": "city-nakhon-ratchasima.html",
+        "officialUrl": "https://www.koratmarathon.com"
+      }
+    },
+    {
+      "slug": "amazing-nan-marathon",
+      "name": "Amazing Nan Marathon",
+      "sport": "road",
+      "date": "2026-11-01",
+      "dateLabel": "1 NOV 2026",
+      "city": "Nan",
+      "blurbTh": "มาราธอนผ่านเมืองเก่าน่าน สตาร์ทที่ข่วงเมืองน่านข้างวัดภูมินทร์ · พักในตัวเมืองเดินถึงจุดปล่อยตัว",
+      "blurbEn": "A marathon through Nan's old town, starting at Khuang Muang Nan by Wat Phumin · stay in town and walk to the start",
+      "source": "https://www.facebook.com/marathonofnan/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "1 NOV 2026",
+        "start": "Khuang Muang Nan (Wat Phumin)",
+        "finish": null,
+        "finishTbc": true,
+        "lat": 18.7752,
+        "lng": 100.7716,
+        "startMap": "Wat Phumin",
+        "distances": [
+          {
+            "km": "42",
+            "time": null
+          },
+          {
+            "km": "21",
+            "time": null
+          },
+          {
+            "km": "10",
+            "time": null
+          },
+          {
+            "km": "5",
+            "time": null
+          }
+        ],
+        "zoneTh": "เมืองเก่าน่าน / รอบวัดภูมินทร์",
+        "zoneEn": "Nan old town / around Wat Phumin",
+        "zoneNoteTh": "เมืองเก่าน่านเล็กและเดินง่าย พักในตัวเมืองเดินถึงข่วงเมืองได้ · เวลาปล่อยตัวและจุดเส้นชัยรอประกาศทางการ",
+        "zoneNoteEn": "Nan's old town is compact — stay in town and walk to the plaza · start times and finish point await official confirmation",
+        "officialUrl": "https://www.facebook.com/marathonofnan/"
+      }
     }
   ],
   "cities": [
-    { "slug": "city-bangkok", "name": "Bangkok", "blurbTh": "รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา", "blurbEn": "Rattanakosin · Siam/Pathumwan · Riverside" },
-    { "slug": "city-chiang-mai", "name": "Chiang Mai", "blurbTh": "เมืองเก่า · นิมมาน · วิ่งถนน + เทรล", "blurbEn": "Old town · Nimman · road + trail" },
-    { "slug": "city-phuket", "name": "Phuket", "blurbTh": "ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง", "blurbEn": "Patong · Laguna · triathlon + running" },
-    { "slug": "city-chonburi", "name": "Chonburi", "blurbTh": "บางแสน · พัทยา · ไตรกีฬา + วิ่ง", "blurbEn": "Bangsaen · Pattaya · triathlon + running" },
-    { "slug": "city-buriram", "name": "Buriram", "blurbTh": "สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์", "blurbEn": "Chang Circuit · central Buriram" },
-    { "slug": "city-nakhon-ratchasima", "name": "Nakhon Ratchasima", "blurbTh": "เขาใหญ่ · ปากช่อง · เทรล + จักรยาน", "blurbEn": "Khao Yai · Pak Chong · trail + cycling" },
-    { "slug": "city-khon-kaen", "name": "Khon Kaen", "blurbTh": "กลางเมืองขอนแก่น · มาราธอนอีสาน", "blurbEn": "Central Khon Kaen · Isan marathon" },
-    { "slug": "city-udon-thani", "name": "Udon Thani", "blurbTh": "กลางเมืองอุดรฯ · จักรยานทางไกล", "blurbEn": "Central Udon Thani · gran fondo" },
-    { "slug": "city-chiang-rai", "name": "Chiang Rai", "blurbTh": "กลางเมืองเชียงราย · ปั่นชมวิวดอย", "blurbEn": "Central Chiang Rai · scenic rides" }
+    {
+      "slug": "city-bangkok",
+      "name": "Bangkok",
+      "blurbTh": "รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา",
+      "blurbEn": "Rattanakosin · Siam/Pathumwan · Riverside"
+    },
+    {
+      "slug": "city-chiang-mai",
+      "name": "Chiang Mai",
+      "blurbTh": "เมืองเก่า · นิมมาน · วิ่งถนน + เทรล",
+      "blurbEn": "Old town · Nimman · road + trail"
+    },
+    {
+      "slug": "city-phuket",
+      "name": "Phuket",
+      "blurbTh": "ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง",
+      "blurbEn": "Patong · Laguna · triathlon + running"
+    },
+    {
+      "slug": "city-chonburi",
+      "name": "Chonburi",
+      "blurbTh": "บางแสน · พัทยา · ไตรกีฬา + วิ่ง",
+      "blurbEn": "Bangsaen · Pattaya · triathlon + running"
+    },
+    {
+      "slug": "city-buriram",
+      "name": "Buriram",
+      "blurbTh": "สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์",
+      "blurbEn": "Chang Circuit · central Buriram"
+    },
+    {
+      "slug": "city-nakhon-ratchasima",
+      "name": "Nakhon Ratchasima",
+      "blurbTh": "เขาใหญ่ · ปากช่อง · เทรล + จักรยาน",
+      "blurbEn": "Khao Yai · Pak Chong · trail + cycling"
+    },
+    {
+      "slug": "city-khon-kaen",
+      "name": "Khon Kaen",
+      "blurbTh": "กลางเมืองขอนแก่น · มาราธอนอีสาน",
+      "blurbEn": "Central Khon Kaen · Isan marathon"
+    },
+    {
+      "slug": "city-udon-thani",
+      "name": "Udon Thani",
+      "blurbTh": "กลางเมืองอุดรฯ · จักรยานทางไกล",
+      "blurbEn": "Central Udon Thani · gran fondo"
+    },
+    {
+      "slug": "city-chiang-rai",
+      "name": "Chiang Rai",
+      "blurbTh": "กลางเมืองเชียงราย · ปั่นชมวิวดอย",
+      "blurbEn": "Central Chiang Rai · scenic rides"
+    }
   ]
 }
