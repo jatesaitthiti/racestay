@@ -10,67 +10,267 @@
       "city": "Bangkok",
       "featured": true,
       "blurbTh": "สนามหลวง · ปล่อยตัวตี 2 · ที่พักเดินถึงสตาร์ท + แผนที่ Stay22",
-      "blurbEn": "Sanam Luang · 2 AM start · walkable hotels + Stay22 map"
+      "blurbEn": "Sanam Luang · 2 AM start · walkable hotels + Stay22 map",
+      "source": "https://amazingthailandmarathon.com/",
+      "checkedOn": "2026-10-22"
     },
     {
       "slug": "buriram-marathon",
       "name": "Buriram Marathon",
       "sport": "road",
-      "date": "2026-01-24",
-      "dateLabel": "24 JAN 2026",
+      "date": "2027-01-23",
+      "dateLabel": "23 JAN 2027",
       "city": "Buriram",
-      "blurbTh": "สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต · ที่พักกระจุกใกล้สนาม",
-      "blurbEn": "Start at Chang International Circuit · hotels clustered nearby"
+      "blurbTh": "วิ่งช่วงเย็นถึงค่ำ สตาร์ทที่สนามช้าง อินเตอร์เนชั่นแนล เซอร์กิต เข้าเส้นชัยที่ช้าง อารีน่า · พักใกล้สนามเดินไปได้",
+      "blurbEn": "An evening race from Chang International Circuit to the finish at Chang Arena · stay near the circuit and walk over",
+      "source": "https://burirammarathon.com/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "23 JAN 2027",
+        "start": "Chang International Circuit",
+        "finish": "Chang Arena",
+        "lat": 14.962,
+        "lng": 103.0847,
+        "startMap": "Chang International Circuit",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "18:30"
+          },
+          {
+            "km": "21.1",
+            "time": "20:00"
+          },
+          {
+            "km": "10",
+            "time": "21:00"
+          },
+          {
+            "km": "4.554",
+            "time": "21:45"
+          }
+        ],
+        "whyTh": "งานนี้ปล่อยตัวช่วงเย็นและวิ่งจบดึก พักใกล้สนามช่วยให้กลับห้องได้ไวหลังเข้าเส้นชัย ไม่ต้องหารถตอนกลางคืน",
+        "whyEn": "This race starts in the evening and finishes late — staying near the circuit gets you back to your room fast, with no hunt for a ride after dark.",
+        "tipTh": "จองคืนวันแข่งด้วย เพราะวิ่งจบดึก ไม่ควรขับรถทางไกลกลับทันที",
+        "tipEn": "Book the race night too — you finish late, so don't plan a long drive home straight after.",
+        "zoneTh": "รอบสนามช้าง / ตัวเมืองบุรีรัมย์",
+        "zoneEn": "Around Chang Circuit / Buriram town",
+        "zoneNoteTh": "จุดสตาร์ทที่สนามช้างกับเส้นชัยที่ช้าง อารีน่า ห่างกันราว 1 กม. พักรอบสนามเดินไปได้ทั้งสองจุด",
+        "zoneNoteEn": "The start at the circuit and the finish at Chang Arena are about 1 km apart — stay around the circuit and walk to both",
+        "schedule": [
+          {
+            "when": "23 JAN",
+            "th": "ปล่อยตัว 18:30 (มาราธอน) – 21:45 (ฟันรัน)",
+            "en": "Starts 18:30 (marathon) to 21:45 (fun run)",
+            "stayTh": "พักคืนวันแข่ง",
+            "stayEn": "Stay the race night"
+          }
+        ],
+        "cityPage": "city-buriram.html",
+        "officialUrl": "https://burirammarathon.com/"
+      }
     },
     {
       "slug": "chiang-mai-marathon",
-      "name": "Chiang Mai Marathon",
+      "name": "Muang Thai Chiang Mai Marathon",
       "sport": "road",
-      "date": "2026-12-01",
-      "dateLabel": "DEC 2026",
+      "date": "2026-12-20",
+      "dateLabel": "20 DEC 2026",
       "city": "Chiang Mai",
-      "blurbTh": "รอบคูเมือง อากาศเย็น · ที่พักย่านเมืองเก่าเดินถึงสตาร์ท",
-      "blurbEn": "Old-city moat route · old-town stays walkable to the start"
+      "blurbTh": "สตาร์ทที่ข่วงประตูท่าแพ · ฟูลและฮาล์ฟวิ่งไปจบที่แม่ริม มีรถสองแถวพากลับประตูท่าแพ",
+      "blurbEn": "Starts at Tha Phae Gate · the full and half finish in Mae Rim, with free songthaews back to the gate",
+      "source": "https://www.chiangmaimarathon.com",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "20 DEC 2026",
+        "start": "Tha Phae Gate",
+        "finish": "King Naresuan Monument, Mae Rim (42K/21K)",
+        "lat": 18.78776,
+        "lng": 98.99327,
+        "startMap": "Tha Phae Gate",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "03:00",
+            "finish": "King Naresuan Monument (Mae Rim)"
+          },
+          {
+            "km": "21.1",
+            "time": "04:00",
+            "finish": "King Naresuan Monument (Mae Rim)"
+          },
+          {
+            "km": "10",
+            "time": "05:00",
+            "finish": "Tha Phae Gate"
+          },
+          {
+            "km": "3",
+            "time": "05:20",
+            "finish": "Tha Phae Gate"
+          }
+        ],
+        "zoneTh": "เมืองเก่า / ถนนท่าแพ / ไนท์บาซาร์",
+        "zoneEn": "Old city / Tha Phae Road / Night Bazaar",
+        "zoneNoteTh": "พักในเมืองเก่าหรือแถวท่าแพเดินถึงจุดสตาร์ท · นักวิ่งฟูลและฮาล์ฟจบที่แม่ริม ผู้จัดมีรถสองแถวรับกลับประตูท่าแพฟรี",
+        "zoneNoteEn": "Stay in the old city or around Tha Phae to walk to the start · full and half runners finish in Mae Rim, and the organizer runs free songthaews back to the gate",
+        "cityPage": "city-chiang-mai.html",
+        "officialUrl": "https://www.chiangmaimarathon.com"
+      }
     },
     {
       "slug": "pattaya-marathon",
-      "name": "Pattaya Marathon",
+      "name": "Amazing Thailand Pattaya Marathon",
       "sport": "road",
-      "date": "2026-07-01",
-      "dateLabel": "JUL 2026",
+      "date": "2027-09-26",
+      "dateLabel": "TBA",
       "city": "Chonburi",
-      "blurbTh": "วิ่งเลียบหาด · ที่พักย่านพัทยาเหนือใกล้จุดสตาร์ท",
-      "blurbEn": "Beach-road course · stays in North Pattaya near the start"
+      "blurbTh": "สตาร์ทและเข้าเส้นชัยหน้า Terminal21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)",
+      "blurbEn": "Start and finish outside Terminal21 on North Pattaya Road · next date not announced yet (last held Sep 2026)",
+      "dateTba": true,
+      "source": "https://www.pattayamarathon.com",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "TBA",
+        "start": "Terminal21 Pattaya (Dolphin Roundabout)",
+        "lat": 12.951,
+        "lng": 100.88741,
+        "startMap": "Terminal 21 Pattaya",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": null
+          },
+          {
+            "km": "21.1",
+            "time": null
+          },
+          {
+            "km": "10",
+            "time": null
+          },
+          {
+            "km": "4.5",
+            "time": null
+          }
+        ],
+        "zoneTh": "พัทยาเหนือ / นาเกลือ / วงเวียนโลมา",
+        "zoneEn": "North Pattaya / Naklua / Dolphin Roundabout",
+        "zoneNoteTh": "รอบล่าสุดจัด 26–27 ก.ย. 2026 (10K/4.5K วันเสาร์ ฟูลและฮาล์ฟวันอาทิตย์) · รอผู้จัดประกาศวันรอบหน้า",
+        "zoneNoteEn": "Last held 26–27 Sep 2026 (10K/4.5K on Saturday, full and half on Sunday) · waiting for the organizer to announce the next date",
+        "schedule": [
+          {
+            "when": "TBA",
+            "th": "รอผู้จัดประกาศวันรอบหน้า",
+            "en": "Next date to be announced",
+            "stayTh": "รอประกาศก่อนจองที่พัก",
+            "stayEn": "Wait for the announcement before booking"
+          }
+        ],
+        "cityPage": "city-chonburi.html",
+        "officialUrl": "https://www.pattayamarathon.com"
+      }
     },
     {
       "slug": "laguna-phuket-marathon",
       "name": "Laguna Phuket Marathon",
       "sport": "road",
-      "date": "2026-06-01",
-      "dateLabel": "JUN 2026",
+      "date": "2027-06-13",
+      "dateLabel": "12–13 JUN 2027",
       "city": "Phuket",
-      "blurbTh": "วิ่งริมทะเลอันดามัน · ที่พักในลากูน่าเดินถึงสตาร์ท",
-      "blurbEn": "Andaman seaside run · stays inside Laguna, walkable to the start"
+      "blurbTh": "สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10K/5K วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์",
+      "blurbEn": "Start and finish at Laguna Grove · the 10K/5K run on Saturday evening, the full and half before dawn on Sunday",
+      "source": "https://phuketmarathon.com/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "12–13 JUN 2027",
+        "start": "Laguna Grove, Laguna Phuket",
+        "lat": 7.99727,
+        "lng": 98.29747,
+        "startMap": "Laguna Grove",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "13 JUN · 03:00"
+          },
+          {
+            "km": "21.1",
+            "time": "13 JUN · 04:30"
+          },
+          {
+            "km": "10",
+            "time": "12 JUN · 17:00"
+          },
+          {
+            "km": "5",
+            "time": "12 JUN · 17:25"
+          },
+          {
+            "name": "Junior Run",
+            "km": "2",
+            "time": "12 JUN · 16:00"
+          }
+        ],
+        "zoneTh": "ลากูน่า ภูเก็ต / บางเทา / เชิงทะเล",
+        "zoneEn": "Laguna Phuket / Bang Tao / Cherng Talay",
+        "zoneNoteTh": "สนามอยู่ในพื้นที่ลากูน่า พักในลากูน่าหรือแถวบางเทาเดินหรือนั่งรถช่วงสั้นๆ ถึงจุดสตาร์ท",
+        "zoneNoteEn": "The venue is inside Laguna — stay in Laguna or around Bang Tao for a short walk or ride to the start",
+        "cityPage": "city-phuket.html",
+        "officialUrl": "https://phuketmarathon.com/"
+      }
     },
     {
       "slug": "khonkaen-marathon",
-      "name": "Khon Kaen Marathon",
+      "name": "Khon Kaen International Marathon",
       "sport": "road",
-      "date": "2026-01-01",
-      "dateLabel": "JAN 2026",
+      "date": "2027-01-10",
+      "dateLabel": "9–10 JAN 2027",
       "city": "Khon Kaen",
-      "blurbTh": "มาราธอนนานาชาติอีสาน · ที่พักกลางเมืองขอนแก่น",
-      "blurbEn": "Isan’s international marathon · stays in central Khon Kaen"
-    },
-    {
-      "slug": "bangkok-midnight-marathon",
-      "name": "Bangkok Midnight Marathon",
-      "sport": "road",
-      "date": "2026-05-01",
-      "dateLabel": "MAY 2026",
-      "city": "Bangkok",
-      "blurbTh": "ปล่อยตัวเที่ยงคืน อากาศเย็น · ที่พักริมเจ้าพระยาเดินถึง",
-      "blurbEn": "Midnight start, cooler air · riverside stays within walking distance"
+      "blurbTh": "สตาร์ทและเข้าเส้นชัยที่ถนนกัลปพฤกษ์ หน้าศูนย์ประชุมกาญจนาภิเษก ม.ขอนแก่น · พักรอบมหาวิทยาลัยหรือในเมือง",
+      "blurbEn": "Start and finish on Kalapaphruek Road at KKU's Kanjanaphisek Convention Center · stay by the university or in town",
+      "source": "https://www.khonkaenmarathon.com/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "9–10 JAN 2027",
+        "start": "Kanjanaphisek Convention Center, KKU",
+        "lat": 16.446151,
+        "lng": 102.819564,
+        "startMap": "Khon Kaen University",
+        "distances": [
+          {
+            "km": "42.195",
+            "time": "10 JAN · 03:00"
+          },
+          {
+            "km": "21.1",
+            "time": "10 JAN · 04:00"
+          },
+          {
+            "km": "11.55",
+            "time": "10 JAN · 04:45"
+          },
+          {
+            "km": "5.4",
+            "time": "9 JAN · 06:50",
+            "start": "TBC",
+            "finish": "TBC"
+          },
+          {
+            "name": "Kids Run",
+            "km": "2.8",
+            "time": "9 JAN · 07:00",
+            "start": "TBC",
+            "finish": "TBC"
+          }
+        ],
+        "zoneTh": "รอบ ม.ขอนแก่น / ตัวเมืองขอนแก่น",
+        "zoneEn": "Around KKU / Khon Kaen city",
+        "zoneNoteTh": "จุดปล่อยตัวอยู่ในมหาวิทยาลัยขอนแก่น ไม่ใช่กลางเมือง พักรอบมหาวิทยาลัยเดินถึงได้ ถ้าพักในเมืองเผื่อเวลาเดินทางช่วงตีสาม · รายการวันเสาร์ผู้จัดยังไม่ระบุจุดปล่อยตัว",
+        "zoneNoteEn": "The start is on the KKU campus, not downtown — stay around the university to walk, or allow travel time from town for a 3 am start · the organizer hasn't named the Saturday start point yet",
+        "cityPage": "city-khon-kaen.html",
+        "officialUrl": "https://www.khonkaenmarathon.com/"
+      }
     },
     {
       "slug": "doi-inthanon-utmb",
@@ -181,54 +381,94 @@
       }
     },
     {
-      "slug": "khao-yai-trail",
-      "name": "Khao Yai Trail",
-      "sport": "trail",
-      "date": "2026-03-01",
-      "dateLabel": "MAR 2026",
-      "city": "Nakhon Ratchasima",
-      "blurbTh": "เทรลเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง",
-      "blurbEn": "Khao Yai trail · resort stays around Pak Chong"
-    },
-    {
-      "slug": "chiangdao-trail",
-      "name": "Chiang Dao Trail",
-      "sport": "trail",
-      "date": "2026-11-01",
-      "dateLabel": "NOV 2026",
-      "city": "Chiang Mai",
-      "blurbTh": "เทรลดอยหลวงเชียงดาว · ที่พักโฮมสเตย์ย่านเชียงดาว",
-      "blurbEn": "Doi Luang Chiang Dao trail · homestays around Chiang Dao"
-    },
-    {
       "slug": "laguna-phuket-triathlon",
       "name": "Laguna Phuket Triathlon",
       "sport": "tri",
       "date": "2026-11-15",
       "dateLabel": "15 NOV 2026",
       "city": "Phuket",
-      "blurbTh": "ไตรกีฬาระดับตำนานของภูเก็ต · ที่พักในลากูน่าเดินถึง transition",
-      "blurbEn": "Phuket’s legendary triathlon · stays inside Laguna, walkable to transition"
-    },
-    {
-      "slug": "bangsaen-triathlon",
-      "name": "Bangsaen Triathlon",
-      "sport": "tri",
-      "date": "2026-12-01",
-      "dateLabel": "DEC 2026",
-      "city": "Chonburi",
-      "blurbTh": "ว่าย–ปั่น–วิ่ง หาดบางแสน · ที่พักติดหาด transition ใกล้",
-      "blurbEn": "Swim–bike–run at Bangsaen · beachfront stays near transition"
+      "blurbTh": "ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · transition และเส้นชัยที่ลากูน่า โกรฟ",
+      "blurbEn": "A sea swim off Laguna beach, 50 km bike and 12 km run · transition and finish at Laguna Grove",
+      "source": "https://www.lagunaphukettri.com/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "15 NOV 2026",
+        "start": "Laguna Grove (transition)",
+        "finish": "Laguna Grove",
+        "lat": 7.99727,
+        "lng": 98.29747,
+        "startMap": "Laguna Grove",
+        "distances": [
+          {
+            "name": "Triathlon (Individual / Pro / Relay)",
+            "km": "1.8 / 50 / 12",
+            "time": "06:30–06:37",
+            "start": "SAii Laguna Phuket beach (swim)"
+          },
+          {
+            "name": "Sprint",
+            "km": "0.5 / 20 / 6",
+            "time": "07:15",
+            "start": "SAii Laguna Phuket beach (swim)"
+          },
+          {
+            "name": "Duathlon",
+            "km": "4 / 50 / 12",
+            "time": "06:45",
+            "start": "Laguna Grove"
+          }
+        ],
+        "zoneTh": "ลากูน่า ภูเก็ต / บางเทา",
+        "zoneEn": "Laguna Phuket / Bang Tao",
+        "zoneNoteTh": "จุดว่ายน้ำ transition และเส้นชัยอยู่ในลากูน่าทั้งหมด พักในลากูน่าหรือบางเทาจะเข็นจักรยานไปเช็กอินได้สะดวก",
+        "zoneNoteEn": "Swim start, transition and finish are all inside Laguna — stay in Laguna or Bang Tao to wheel your bike to check-in",
+        "cityPage": "city-phuket.html",
+        "officialUrl": "https://www.lagunaphukettri.com/"
+      }
     },
     {
       "slug": "ironman-703-bangsaen",
       "name": "IRONMAN 70.3 Bangsaen",
       "sport": "tri",
-      "date": "2026-11-01",
-      "dateLabel": "NOV 2026",
+      "date": "2027-02-15",
+      "dateLabel": "TBA",
       "city": "Chonburi",
-      "blurbTh": "ฮาล์ฟไอรอนแมนริมหาดบางแสน · ที่พักติดหาดใกล้ transition",
-      "blurbEn": "Half-distance Ironman at Bangsaen · beachfront stays near transition"
+      "blurbTh": "IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · ironman.com ยังไม่ประกาศวันรอบหน้า",
+      "blurbEn": "IRONMAN 70.3 on Bang Saen beach (1.9 / 90 / 21.1 km) · ironman.com hasn't announced the next date yet",
+      "dateTba": true,
+      "source": "https://www.ironman.com/races/im703-bangsaen",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "TBA",
+        "start": "Bang Saen (transition TBA)",
+        "finish": null,
+        "finishTbc": true,
+        "lat": 13.29793,
+        "lng": 100.9028,
+        "startMap": "Bang Saen Beach",
+        "distances": [
+          {
+            "name": "IRONMAN 70.3",
+            "km": "1.9 / 90 / 21.1",
+            "time": null
+          }
+        ],
+        "zoneTh": "ริมหาดบางแสน",
+        "zoneEn": "Bang Saen beachfront",
+        "zoneNoteTh": "ironman.com ยังไม่ระบุวันและตำแหน่ง transition ของรอบหน้า · เทศบาลเมืองแสนสุขระบุว่างานนี้จัดช่วงเดือน ก.พ.",
+        "zoneNoteEn": "ironman.com hasn't published the next date or transition location · Saensuk Municipality lists the race as a February event",
+        "schedule": [
+          {
+            "when": "TBA",
+            "th": "รอผู้จัดประกาศวันรอบหน้า",
+            "en": "Next date to be announced",
+            "stayTh": "รอประกาศก่อนจองที่พัก",
+            "stayEn": "Wait for the announcement before booking"
+          }
+        ],
+        "cityPage": "city-chonburi.html",
+        "officialUrl": "https://www.ironman.com/races/im703-bangsaen"
+      }
     },
     {
       "slug": "chiang-mai-gran-fondo",
@@ -237,38 +477,59 @@
       "date": "2026-12-13",
       "dateLabel": "13 DEC 2026",
       "city": "Chiang Mai",
-      "blurbTh": "แกรนด์ฟองโดรอบเชียงใหม่ · ที่พักย่านเมืองเก่า/นิมมาน",
-      "blurbEn": "Gran fondo around Chiang Mai · stays in the old town/Nimman"
-    },
-    {
-      "slug": "letape-thailand",
-      "name": "L’Étape Thailand",
-      "sport": "bike",
-      "date": "2026-11-01",
-      "dateLabel": "NOV 2026",
-      "city": "Udon Thani",
-      "blurbTh": "แกรนด์ฟองโดสไตล์ Tour de France · ที่พักกลางเมืองอุดรฯ ใกล้จุดสตาร์ท",
-      "blurbEn": "Tour de France-style gran fondo · central Udon stays near the start"
-    },
-    {
-      "slug": "amazing-bike-tour-khaoyai",
-      "name": "Amazing Bike Tour Khao Yai",
-      "sport": "bike",
-      "date": "2026-04-01",
-      "dateLabel": "APR 2026",
-      "city": "Nakhon Ratchasima",
-      "blurbTh": "ปั่นรอบเขาใหญ่ · ที่พักรีสอร์ทย่านปากช่อง",
-      "blurbEn": "Ride around Khao Yai · resort stays in Pak Chong"
-    },
-    {
-      "slug": "tour-of-chiangrai",
-      "name": "Tour of Chiang Rai",
-      "sport": "bike",
-      "date": "2026-02-01",
-      "dateLabel": "FEB 2026",
-      "city": "Chiang Rai",
-      "blurbTh": "ปั่นชมวิวดอยเชียงราย · ที่พักกลางเมืองใกล้จุดสตาร์ท",
-      "blurbEn": "Scenic Chiang Rai ride · central stays near the start"
+      "blurbTh": "ปั่น 4 ระยะ 25–120 กม. สตาร์ทที่สวนเฉลิมพระเกียรติ อบจ.เชียงใหม่ 7 โมงเช้า · พักเชียงใหม่ฝั่งเหนือ",
+      "blurbEn": "Four routes from 25 to 120 km, starting 7 am at Chiang Mai PAO Park · stay on the north side of town",
+      "source": "https://chiangmaigranfondo.com/",
+      "checkedOn": "2026-10-22",
+      "detail": {
+        "dayLabel": "13 DEC 2026",
+        "start": "Chiang Mai PAO Park",
+        "finish": null,
+        "finishTbc": true,
+        "lat": 18.836795,
+        "lng": 98.965749,
+        "startMap": "Chiang Mai PAO Park",
+        "distances": [
+          {
+            "km": "120",
+            "time": "07:00"
+          },
+          {
+            "km": "80",
+            "time": "07:00"
+          },
+          {
+            "km": "50",
+            "time": "07:00"
+          },
+          {
+            "km": "25",
+            "time": "07:00"
+          }
+        ],
+        "zoneTh": "เชียงใหม่ฝั่งเหนือ / ช้างเผือก / แม่ริม",
+        "zoneEn": "North Chiang Mai / Chang Phueak / Mae Rim",
+        "zoneNoteTh": "จุดสตาร์ทอยู่เหนือตัวเมือง ใกล้ศูนย์ราชการ · ผู้จัดยังไม่ประกาศเส้นทางและจุดเส้นชัยฉบับเต็ม",
+        "zoneNoteEn": "The start is north of town near the government center · the organizer hasn't published the full route and finish yet",
+        "schedule": [
+          {
+            "when": "12 DEC",
+            "th": "รับ race pack 11:00–18:00",
+            "en": "Race-pack pickup 11:00–18:00",
+            "stayTh": "พักตั้งแต่คืนก่อนปั่น",
+            "stayEn": "Stay the night before"
+          },
+          {
+            "when": "13 DEC",
+            "th": "ปล่อยตัว 07:00",
+            "en": "Start 07:00",
+            "stayTh": "เผื่อเช็กเอาต์สาย",
+            "stayEn": "Late checkout helps"
+          }
+        ],
+        "cityPage": "city-chiang-mai.html",
+        "officialUrl": "https://chiangmaigranfondo.com/"
+      }
     },
     {
       "slug": "hyrox-bangkok",
@@ -567,18 +828,6 @@
       "name": "Khon Kaen",
       "blurbTh": "กลางเมืองขอนแก่น · มาราธอนอีสาน",
       "blurbEn": "Central Khon Kaen · Isan marathon"
-    },
-    {
-      "slug": "city-udon-thani",
-      "name": "Udon Thani",
-      "blurbTh": "กลางเมืองอุดรฯ · จักรยานทางไกล",
-      "blurbEn": "Central Udon Thani · gran fondo"
-    },
-    {
-      "slug": "city-chiang-rai",
-      "name": "Chiang Rai",
-      "blurbTh": "กลางเมืองเชียงราย · ปั่นชมวิวดอย",
-      "blurbEn": "Central Chiang Rai · scenic rides"
     }
   ]
 }

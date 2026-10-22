@@ -15,6 +15,7 @@ import json
 import sys
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 import event_pages
+import city_pages
 from datetime import date
 from pathlib import Path
 
@@ -37,7 +38,10 @@ def short_date(label: str) -> str:
 
 
 def upcoming_days(ev: dict) -> int:
-    """Days until the event's next occurrence (wraps to next year if already past)."""
+    """Days until the event's next occurrence (wraps to next year if already past).
+    Events whose next date isn't announced yet (dateTba) sort last."""
+    if ev.get("dateTba"):
+        return 10**6
     _, m, d = (int(x) for x in ev["date"].split("-"))
     def mk(y):
         try:
@@ -109,6 +113,9 @@ def main() -> int:
 
     INDEX.write_text(html, encoding="utf-8")
     made = event_pages.render_all(data["events"])
+    synced = city_pages.sync(data["events"], upcoming_days)
+    if synced:
+        print(f"✓ city pages synced: {', '.join(synced)}")
     if made:
         print(f"✓ detail pages generated: {', '.join(made)}")
     print(f"✓ index.html rebuilt — {len(events)} events, {len(cities)} cities (marquees x2 copies)")

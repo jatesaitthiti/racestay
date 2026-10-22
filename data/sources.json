@@ -289,7 +289,14 @@
     "bangkok-marathon": "https://www.bkkmarathon.com/",
     "bangsaen42-marathon": "https://www.bangsaen42.com",
     "korat-marathon": "https://www.koratmarathon.com",
-    "amazing-nan-marathon": "https://www.facebook.com/marathonofnan/ (official FB page; no website)"
+    "amazing-nan-marathon": "https://www.facebook.com/marathonofnan/ (official FB page; no website)",
+    "buriram-marathon": "https://burirammarathon.com/",
+    "khonkaen-marathon": "https://www.khonkaenmarathon.com/",
+    "laguna-phuket-marathon": "https://phuketmarathon.com/",
+    "chiang-mai-marathon": "https://www.chiangmaimarathon.com",
+    "pattaya-marathon": "https://www.pattayamarathon.com",
+    "ironman-703-bangsaen": "https://www.ironman.com/races/im703-bangsaen",
+    "chiang-mai-gran-fondo": "https://chiangmaigranfondo.com/"
   },
   "excluded": [
     {
@@ -305,12 +312,85 @@
       "checkedOn": "2026-10-22",
       "reason": "Start venue and start times only appear on RunLah (not official). Organizer Mission Earth (missionearth.co) has no event page yet; dates 20–21 Nov 2026 and 5/8/12 km come from press only.",
       "recheck": "missionearth.co and the organizer's Facebook page closer to race day"
+    },
+    {
+      "name": "Chiang Dao 100 Ultra-Trail",
+      "checkedOn": "2026-10-22",
+      "reason": "Official Facebook page exists but details are behind the login wall; date/venue/distances only on non-official sources (likely 19–20 Dec 2026, Ban Mae Na School).",
+      "recheck": "official FB page / organizer email"
+    },
+    {
+      "name": "The North Face 100 Thailand (TNF100)",
+      "checkedOn": "2026-10-22",
+      "reason": "Official site says '2027 Coming Soon'; no date or venue published.",
+      "recheck": "https://www.thenorthfacethailand.com/tnf100/"
+    },
+    {
+      "name": "Bangkok Midnight Marathon",
+      "checkedOn": "2026-10-22",
+      "reason": "Official website offline; recent editions (Dec) reported only by news.",
+      "recheck": "https://www.facebook.com/BKKmidnightmarathon/"
+    },
+    {
+      "name": "L'Étape Udon Thani by Tour de France",
+      "checkedOn": "2026-10-22",
+      "reason": "Not on the ASO L'Étape Series calendar for 2026–2027; event site returns 404. Last official edition 24 Nov 2024.",
+      "recheck": "https://www.letapeseries.com/"
     }
   ],
   "followUps": [
     {
       "event": "amazing-nan-marathon",
       "todo": "Confirm start times and finish point from an official source (only aggregators have them as of 2026-10-22)."
+    },
+    {
+      "event": "ironman-703-bangsaen",
+      "todo": "Watch ironman.com for the next date and transition location."
+    },
+    {
+      "event": "pattaya-marathon",
+      "todo": "Watch pattayamarathon.com for the 2027 date."
+    },
+    {
+      "event": "chiang-mai-gran-fondo",
+      "todo": "Route and finish point to be announced by the organizer."
+    }
+  ],
+  "removedEvents": [
+    {
+      "slug": "bangsaen-triathlon",
+      "removedOn": "2026-10-22",
+      "why": "No such event found (Bang Saen's only triathlon is IRONMAN 70.3)"
+    },
+    {
+      "slug": "khao-yai-trail",
+      "removedOn": "2026-10-22",
+      "why": "Demo placeholder name — no matching real event"
+    },
+    {
+      "slug": "chiangdao-trail",
+      "removedOn": "2026-10-22",
+      "why": "Demo placeholder name — real event is Chiang Dao 100 (pending)"
+    },
+    {
+      "slug": "amazing-bike-tour-khaoyai",
+      "removedOn": "2026-10-22",
+      "why": "No such event found"
+    },
+    {
+      "slug": "tour-of-chiangrai",
+      "removedOn": "2026-10-22",
+      "why": "No such event found"
+    },
+    {
+      "slug": "letape-thailand",
+      "removedOn": "2026-10-22",
+      "why": "No current edition on the official calendar (pending)"
+    },
+    {
+      "slug": "bangkok-midnight-marathon",
+      "removedOn": "2026-10-22",
+      "why": "Official site offline; no official source for current edition (pending)"
     }
   ]
 }

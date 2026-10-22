@@ -28,11 +28,19 @@ WHY = {
 }
 WHY["hyrox"] = ("HYROX แข่งเป็นรอบตามเวลาที่ได้ทั้งวัน หลายวันติดกัน และมีคนดูมาเชียร์ด้วย ที่พักใกล้ฮอลล์จะเดินมาวอร์มอัปและกลับไปพักระหว่างวันได้สะดวก",
                  "HYROX runs in timed heats all day over several days, with spectators too — a stay near the hall lets you walk over to warm up and rest between sessions.")
+WHY["tri"] = ("ไตรกีฬาต้องเอาจักรยานไปเช็กอินที่ transition ก่อนวันแข่ง และปล่อยตัวว่ายน้ำตั้งแต่เช้า พักใกล้ transition ช่วยให้ขนอุปกรณ์ง่ายและไม่ต้องรีบ",
+               "Triathlons need bike check-in at transition the day before and an early swim start — staying near transition makes the gear run easy and unhurried.")
+WHY["bike"] = ("งานปั่นปล่อยตัวเช้าและต้องขนจักรยานไปจุดสตาร์ท พักใกล้จุดปล่อยตัวที่มีที่เก็บจักรยานช่วยให้เช้าวันแข่งไม่วุ่น",
+               "Rides start early and you need to get your bike to the line — a stay near the start with secure bike storage keeps race morning calm.")
 TIP = {
     "road": ("เช็กวันรับ BIB ก่อนจอง แล้วเลือกที่พักในระยะเดินถึงจุดปล่อยตัว",
              "Check the BIB pickup day before you book, then pick a stay within walking distance of the start."),
     "hyrox": ("ดูเวลารอบปล่อยตัว (heat) ของตัวเองก่อนจอง แล้วเลือกวันพักให้ตรงกับรอบนั้น",
               "Check your heat time before booking, then match your nights to that day."),
+    "tri": ("ถามที่พักว่าเอาจักรยานเข้าห้องหรือมีที่เก็บไหม และเช็กเวลาเช็กอินจักรยานที่ transition",
+            "Ask whether bikes can go in the room or into storage, and check the transition bike check-in times."),
+    "bike": ("เลือกที่พักที่มีที่เก็บจักรยานปลอดภัย และเผื่อเวลาประกอบรถก่อนวันแข่ง",
+             "Pick a stay with secure bike storage and leave time to build your bike before race day."),
     "trail": ("ระยะไกลมักปล่อยตัวกลางดึก เลือกที่พักที่ออกเดินทางได้ตอนตีสาม-ตีสี่ และเผื่อคืนหลังแข่งไว้พักฟื้น",
               "Long distances often start in the middle of the night — pick a stay you can leave at 3–4 am and keep a recovery night after."),
 }
@@ -57,7 +65,7 @@ def chrome():
 def render(ev, nav, foot):
     d = ev["detail"]
     s_th, s_en = SPORT[ev["sport"]]
-    kind = ev["sport"] if ev["sport"] in ("trail", "hyrox") else "road"
+    kind = ev["sport"] if ev["sport"] in ("trail", "hyrox", "tri", "bike") else "road"
     name, city = ev["name"], ev["city"]
     start = d["start"]
     finish_tbc = d.get("finish") is None and d.get("finishTbc")
@@ -133,8 +141,8 @@ def render(ev, nav, foot):
 
 <div class="band"><div class="in sec">
   <div class="seclabel"><span class="n">01 / Why</span><h2 data-th="ทำไมทำเลที่พักสำคัญ" data-en="Why location matters">ทำไมทำเลที่พักสำคัญ</h2></div>
-  {bi("p", WHY[kind][0], WHY[kind][1], "lead")}
-  <div class="callout"><span class="h" data-th="Insight · เคล็ดลับ" data-en="Insight · tip">Insight · เคล็ดลับ</span>{bi("span", TIP[kind][0], TIP[kind][1])}</div>
+  {bi("p", d.get("whyTh", WHY[kind][0]), d.get("whyEn", WHY[kind][1]), "lead")}
+  <div class="callout"><span class="h" data-th="Insight · เคล็ดลับ" data-en="Insight · tip">Insight · เคล็ดลับ</span>{bi("span", d.get("tipTh", TIP[kind][0]), d.get("tipEn", TIP[kind][1]))}</div>
 </div></div>
 
 <div class="band"><div class="in sec">
