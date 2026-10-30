@@ -559,3 +559,6 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
   .sec.banded > .seclabel + *{margin-top:var(--space-20) !important}
   .sec.banded .seclabel h2{font-size:22px}
 }
+
+/* footer: credit link flows inline with the sentence so both share one baseline */
+.foot .in{display:block}
