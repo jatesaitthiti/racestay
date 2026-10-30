@@ -87,7 +87,7 @@ def marquee_body(cards: list) -> str:
     """Two identical groups (second hidden from assistive tech) for a seamless loop."""
     block = "\n".join(cards)
     g1 = f'      <div class="mq-group">\n{block}\n      </div>'
-    g2 = f'      <div class="mq-group" aria-hidden="true">\n{block}\n      </div>'
+    g2 = f'      <div class="mq-group" aria-hidden="true" inert>\n{block}\n      </div>'
     return "\n" + g1 + "\n" + g2 + "\n    "
 
 

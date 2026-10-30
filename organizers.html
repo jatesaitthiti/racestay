@@ -6,13 +6,14 @@
 <title data-th="สำหรับผู้จัดงาน | RaceStay" data-en="For Organizers | RaceStay">สำหรับผู้จัดงาน — RaceStay</title>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="description" content="ลงงานกีฬาของคุณบน RaceStay ฟรี — ช่วยนักกีฬาหาที่พักใกล้จุดปล่อยตัว ลดคำถามเรื่องที่พัก">
-<link rel="stylesheet" href="assets/style.css?v=42">
-<script src="assets/app.js?v=10" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=53">
+<script src="assets/app.js?v=15" defer></script>
 </head>
 <body>
+<a class="skip" href="#main" data-th="ข้ามไปเนื้อหา" data-en="Skip to content">ข้ามไปเนื้อหา</a>
 <div class="band nav"><div class="in">
   <div class="navbar">
-    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay"></a>
+    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay" width="141" height="18"></a>
     <nav class="navlinks">
     <a href="index.html?sport=road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</a>
     <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
@@ -35,6 +36,7 @@
     <span class="lang menu-lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
   </div>
 </div></div>
+<main id="main">
 
 <!-- HERO -->
 <div class="band"><div class="in phero">
@@ -70,27 +72,29 @@
   <div class="seclabel"><span class="n">02 / Submit</span><h2 data-th="ส่งข้อมูลงานของคุณ" data-en="Submit your event">ส่งข้อมูลงานของคุณ</h2></div>
   <p class="lead" data-th="กรอกข้อมูลเบื้องต้น ทีมงานจะติดต่อกลับเพื่อจัดทำหน้างานให้ (แบบฟอร์มสาธิต)" data-en="Share the basics and our team will follow up to build your event page. (Demo form.)">กรอกข้อมูลเบื้องต้น ทีมงานจะติดต่อกลับเพื่อจัดทำหน้างานให้ (แบบฟอร์มสาธิต)</p>
   <form class="form" onsubmit="return false">
-    <label data-th="ชื่องาน" data-en="Event name">ชื่องาน</label>
-    <input type="text" aria-label="event name" data-th-ph="เช่น Amazing Thailand Marathon 2027" data-en-ph="e.g. Amazing Thailand Marathon 2027" placeholder="เช่น Amazing Thailand Marathon 2027">
-    <label data-th="ประเภทกีฬา" data-en="Sport">ประเภทกีฬา</label>
-    <select aria-label="sport">
+    <label for="f-organizers-1" data-th="ชื่องาน" data-en="Event name">ชื่องาน</label>
+    <input id="f-organizers-1" type="text" aria-label="event name" data-th-ph="เช่น Amazing Thailand Marathon 2027" data-en-ph="e.g. Amazing Thailand Marathon 2027" placeholder="เช่น Amazing Thailand Marathon 2027">
+    <label for="f-organizers-2" data-th="ประเภทกีฬา" data-en="Sport">ประเภทกีฬา</label>
+    <select id="f-organizers-2" aria-label="sport">
       <option data-th="วิ่งถนน" data-en="Road running">วิ่งถนน</option>
       <option data-th="วิ่งเทรล" data-en="Trail running">วิ่งเทรล</option>
       <option data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</option>
       <option>HYROX</option>
     </select>
-    <label data-th="เมือง / จังหวัด" data-en="City / province">เมือง / จังหวัด</label>
-    <input type="text" aria-label="city" data-th-ph="เช่น กรุงเทพฯ" data-en-ph="e.g. Bangkok" placeholder="เช่น กรุงเทพฯ">
-    <label data-th="วันที่จัดงาน" data-en="Event date">วันที่จัดงาน</label>
-    <input type="text" aria-label="date" data-th-ph="เช่น 28 พ.ย. 2027" data-en-ph="e.g. 28 Nov 2027" placeholder="เช่น 28 พ.ย. 2027">
-    <label data-th="อีเมลติดต่อ" data-en="Contact email">อีเมลติดต่อ</label>
-    <input type="email" aria-label="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
+    <label for="f-organizers-3" data-th="เมือง / จังหวัด" data-en="City / province">เมือง / จังหวัด</label>
+    <input id="f-organizers-3" type="text" aria-label="city" data-th-ph="เช่น กรุงเทพฯ" data-en-ph="e.g. Bangkok" placeholder="เช่น กรุงเทพฯ">
+    <label for="f-organizers-4" data-th="วันที่จัดงาน" data-en="Event date">วันที่จัดงาน</label>
+    <input id="f-organizers-4" type="text" aria-label="date" data-th-ph="เช่น 28 พ.ย. 2027" data-en-ph="e.g. 28 Nov 2027" placeholder="เช่น 28 พ.ย. 2027">
+    <label for="f-organizers-5" data-th="อีเมลติดต่อ" data-en="Contact email">อีเมลติดต่อ</label>
+    <input id="f-organizers-5" type="email" aria-label="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
     <button class="btn" type="submit" data-th="ส่งข้อมูลงาน" data-en="Submit event">ส่งข้อมูลงาน</button>
     <div class="formnote" data-th="* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง" data-en="* Demo form — does not submit real data">* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง</div>
   </form>
 </div></div>
 
 <!-- FOOTER NAV -->
+</main>
+
 <div class="band"><div class="in footnav">
   <a href="index.html" data-th="งานกีฬา" data-en="Events">งานกีฬา</a>
   <a href="cities.html" data-th="ตามเมือง" data-en="By city">ตามเมือง</a>

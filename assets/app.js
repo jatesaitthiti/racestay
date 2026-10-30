@@ -118,6 +118,15 @@ function initSegments(){
   });
   segSyncAll();
 }
+/* ----- marquee pause/play (WAI: moving content needs a pause control) ----- */
+function toggleMarquee(btn){
+  var mq=document.getElementById(btn.getAttribute('aria-controls')); if(!mq) return;
+  var paused=mq.classList.toggle('paused');
+  btn.setAttribute('aria-pressed', paused?'true':'false');
+  var th=paused?'▶ เลื่อนต่อ':'❚❚ หยุดเลื่อน', en=paused?'▶ Play':'❚❚ Pause';
+  btn.setAttribute('data-th',th); btn.setAttribute('data-en',en);
+  btn.textContent=(document.documentElement.lang==='en')?en:th;
+}
 function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
   var r=document.getElementById('races'); if(!r) return;

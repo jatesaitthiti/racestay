@@ -9,14 +9,15 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="RaceStay — ที่พักใกล้จุดปล่อยตัว ทุกงานกีฬา">
 <meta property="og:description" content="หาที่พักใกล้จุดปล่อยตัว — วิ่งถนน วิ่งเทรล ไตรกีฬา HYROX">
-<link rel="stylesheet" href="assets/style.css?v=52">
-<script src="assets/app.js?v=14" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=53">
+<script src="assets/app.js?v=15" defer></script>
 </head>
 <body>
+<a class="skip" href="#main" data-th="ข้ามไปเนื้อหา" data-en="Skip to content">ข้ามไปเนื้อหา</a>
 <div class="topbg" aria-hidden="true"></div>
 <div class="band nav"><div class="in">
   <div class="navbar">
-    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay"></a>
+    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay" width="141" height="18"></a>
     <nav class="navlinks">
     <a href="index.html?sport=road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</a>
     <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
@@ -39,6 +40,7 @@
     <span class="lang menu-lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
   </div>
 </div></div>
+<main id="main">
 
 <!-- HERO -->
 <div class="band"><div class="in hero home">
@@ -58,7 +60,7 @@
     <div class="fr">
       <div class="rowx"><span data-th="วันแข่ง" data-en="Date">วันแข่ง</span><b>28–29 NOV 2026</b></div>
       <div class="rowx"><span data-th="สถานที่" data-en="Venue">สถานที่</span><b>Sanam Luang</b></div>
-      <div class="rowx"><span data-th="ระยะ" data-en="Distances">ระยะ</span><b>42.195 / 21.1 / 10 / ~4.5 km</b></div>
+      <div class="rowx"><span data-th="ระยะ" data-en="Distances">ระยะ</span><b>42.195 / 21.1 / 10 / 4.5 km</b></div>
       <div class="rowx"><span data-th="ที่พักใกล้สุด" data-en="Nearest stay">ที่พักใกล้สุด</span><b>190 m · เดิน 3 นาที</b></div>
       <div class="rowx"><span data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span><b>฿990–3,600</b></div>
     </div>
@@ -67,9 +69,9 @@
 
 <!-- ALL EVENTS -->
 <div class="band"><div class="in sec" id="races">
-  <div class="seclabel"><span class="n">01 / Events</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2><a id="filterReset" href="index.html#races" onclick="clearFilter();return false" class="freset" style="display:none" data-th="× แสดงทั้งหมด" data-en="× Show all">× แสดงทั้งหมด</a></div>
+  <div class="seclabel"><span class="n">01 / Events</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2><a id="filterReset" href="index.html#races" onclick="clearFilter();return false" class="freset" style="display:none" data-th="× แสดงทั้งหมด" data-en="× Show all">× แสดงทั้งหมด</a><button type="button" class="mqtoggle" aria-pressed="false" aria-controls="mq-events" onclick="toggleMarquee(this)" data-th="❚❚ หยุดเลื่อน" data-en="❚❚ Pause">❚❚ หยุดเลื่อน</button></div>
 
-  <div class="mq mq-events" style="margin-top:22px">
+  <div class="mq mq-events" id="mq-events" style="margin-top:22px">
     <div class="mq-track">
 <!-- EVENTS:START -->
       <div class="mq-group">
@@ -224,7 +226,7 @@
           </div>
         </a>
       </div>
-      <div class="mq-group" aria-hidden="true">
+      <div class="mq-group" aria-hidden="true" inert>
         <a class="evcard" href="amazing-nan-marathon.html" data-sport="road">
           <div class="dcover s-road">
             <span class="sp">ROAD</span>
@@ -383,9 +385,9 @@
 
 <!-- BY CITY TEASER -->
 <div class="band stay"><div class="in sec">
-  <div class="seclabel"><span class="n">02 / By city</span><h2 data-th="เลือกตามเมือง" data-en="Browse by city">เลือกตามเมือง</h2></div>
+  <div class="seclabel"><span class="n">02 / By city</span><h2 data-th="เลือกตามเมือง" data-en="Browse by city">เลือกตามเมือง</h2><button type="button" class="mqtoggle" aria-pressed="false" aria-controls="mq-cities" onclick="toggleMarquee(this)" data-th="❚❚ หยุดเลื่อน" data-en="❚❚ Pause">❚❚ หยุดเลื่อน</button></div>
   <p class="lead" data-th="เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน" data-en="See which events each city hosts, and which neighbourhoods to stay in.">เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน</p>
-  <div class="mq mq-cities" style="margin-top:22px">
+  <div class="mq mq-cities" id="mq-cities" style="margin-top:22px">
     <div class="mq-track">
 <!-- CITIES:START -->
       <div class="mq-group">
@@ -425,7 +427,7 @@
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
       </div>
-      <div class="mq-group" aria-hidden="true">
+      <div class="mq-group" aria-hidden="true" inert>
         <a class="mqcity" href="city-bangkok.html">
           <h3>Bangkok</h3>
           <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
@@ -504,6 +506,8 @@
 </div></div>
 
 <!-- FOOTER NAV -->
+</main>
+
 <div class="band"><div class="in footnav">
   <a href="index.html" data-th="งานกีฬา" data-en="Events">งานกีฬา</a>
   <a href="cities.html" data-th="ตามเมือง" data-en="By city">ตามเมือง</a>

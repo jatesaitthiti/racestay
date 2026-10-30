@@ -6,13 +6,14 @@
 <title data-th="ลงโฆษณา | RaceStay" data-en="Advertise | RaceStay">ลงโฆษณา — RaceStay</title>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="description" content="โปรโมทโรงแรมหรือแบรนด์ของคุณกับนักกีฬาที่กำลังจะจองทริปแข่ง — RaceStay">
-<link rel="stylesheet" href="assets/style.css?v=42">
-<script src="assets/app.js?v=10" defer></script>
+<link rel="stylesheet" href="assets/style.css?v=53">
+<script src="assets/app.js?v=15" defer></script>
 </head>
 <body>
+<a class="skip" href="#main" data-th="ข้ามไปเนื้อหา" data-en="Skip to content">ข้ามไปเนื้อหา</a>
 <div class="band nav"><div class="in">
   <div class="navbar">
-    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay"></a>
+    <a class="brand" href="index.html" aria-label="RaceStay"><img class="logo" src="assets/brand.svg" alt="RaceStay" width="141" height="18"></a>
     <nav class="navlinks">
     <a href="index.html?sport=road" data-th="วิ่งถนน" data-en="Road">วิ่งถนน</a>
     <a href="index.html?sport=trail" data-th="วิ่งเทรล" data-en="Trail">วิ่งเทรล</a>
@@ -35,6 +36,7 @@
     <span class="lang menu-lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
   </div>
 </div></div>
+<main id="main">
 
 <!-- HERO -->
 <div class="band"><div class="in phero">
@@ -75,23 +77,25 @@
   <div class="seclabel"><span class="n">02 / Contact</span><h2 data-th="คุยกับทีมโฆษณา" data-en="Talk to our ads team">คุยกับทีมโฆษณา</h2></div>
   <p class="lead" data-th="บอกเราว่าคุณอยากโปรโมทอะไร เดี๋ยวเราส่งแพ็กเกจและราคาให้ (แบบฟอร์มสาธิต)" data-en="Tell us what you'd like to promote and we'll send packages and pricing. (Demo form.)">บอกเราว่าคุณอยากโปรโมทอะไร เดี๋ยวเราส่งแพ็กเกจและราคาให้ (แบบฟอร์มสาธิต)</p>
   <form class="form" onsubmit="return false">
-    <label data-th="ชื่อโรงแรม / แบรนด์" data-en="Hotel / brand name">ชื่อโรงแรม / แบรนด์</label>
-    <input type="text" aria-label="brand" data-th-ph="ชื่อธุรกิจของคุณ" data-en-ph="Your business name" placeholder="ชื่อธุรกิจของคุณ">
-    <label data-th="สนใจรูปแบบไหน" data-en="Interested in">สนใจรูปแบบไหน</label>
-    <select aria-label="format">
+    <label for="f-advertise-1" data-th="ชื่อโรงแรม / แบรนด์" data-en="Hotel / brand name">ชื่อโรงแรม / แบรนด์</label>
+    <input id="f-advertise-1" type="text" aria-label="brand" data-th-ph="ชื่อธุรกิจของคุณ" data-en-ph="Your business name" placeholder="ชื่อธุรกิจของคุณ">
+    <label for="f-advertise-2" data-th="สนใจรูปแบบไหน" data-en="Interested in">สนใจรูปแบบไหน</label>
+    <select id="f-advertise-2" aria-label="format">
       <option data-th="โรงแรมแนะนำ (Featured)" data-en="Featured hotel">โรงแรมแนะนำ (Featured)</option>
       <option data-th="เน้นหมุดบนแผนที่" data-en="Map pin boost">เน้นหมุดบนแผนที่</option>
       <option data-th="ลงในนิวส์เลตเตอร์" data-en="Newsletter placement">ลงในนิวส์เลตเตอร์</option>
       <option data-th="ยังไม่แน่ใจ" data-en="Not sure yet">ยังไม่แน่ใจ</option>
     </select>
-    <label data-th="อีเมลติดต่อ" data-en="Contact email">อีเมลติดต่อ</label>
-    <input type="email" aria-label="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
+    <label for="f-advertise-3" data-th="อีเมลติดต่อ" data-en="Contact email">อีเมลติดต่อ</label>
+    <input id="f-advertise-3" type="email" aria-label="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
     <button class="btn" type="submit" data-th="ขอแพ็กเกจ" data-en="Request packages">ขอแพ็กเกจ</button>
     <div class="formnote" data-th="* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง" data-en="* Demo form — does not submit real data">* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง</div>
   </form>
 </div></div>
 
 <!-- FOOTER NAV -->
+</main>
+
 <div class="band"><div class="in footnav">
   <a href="index.html" data-th="งานกีฬา" data-en="Events">งานกีฬา</a>
   <a href="cities.html" data-th="ตามเมือง" data-en="By city">ตามเมือง</a>

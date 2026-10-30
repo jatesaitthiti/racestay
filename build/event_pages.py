@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "52", "14"
+CSS_V, JS_V = "53", "15"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -161,7 +161,7 @@ def render(ev, nav, foot):
     <div class="node"><span class="lb">Finish</span><span class="v">{e(finish)}</span></div>
     {sf_same}
   </div>
-  <div class="zone"><div class="zonelabel">Stay zone</div>{bi("h4", zone_th, zone_en)}{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
+  <div class="zone"><div class="zonelabel">Stay zone</div>{bi("h3", zone_th, zone_en)}{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
 {maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย</div>
 {city_link}</div></div>
 
