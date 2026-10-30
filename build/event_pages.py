@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "58", "16"
+CSS_V, JS_V = "59", "17"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -53,6 +53,48 @@ def e(s):
 def bi(tag, th, en, cls="", extra=""):
     c = f' class="{cls}"' if cls else ""
     return f'<{tag}{c}{extra} data-th="{e(th)}" data-en="{e(en)}">{e(th)}</{tag}>'
+
+
+def statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th):
+    """Race stats panel: start times on charcoal + 2x2 facts. Verified data only — nothing estimated."""
+    from datetime import date as _date
+    tba = bool(ev.get("dateTba"))
+    rows = ""
+    for x in d["distances"]:
+        pre = (x["name"] + " · ") if x.get("name") else ""
+        rows += bi("span", f'{pre}{x["km"]} กม.', f'{pre}{x["km"]} km', "km")
+        rows += f'<span class="tm">{e(x["time"])}</span>' if x.get("time") else bi("span", "รอยืนยัน", "TBA", "tm")
+
+    def fact(lth, len_, value, sub):
+        return f'<div>{bi("div", lth, len_, "l")}{value}{sub}</div>'
+
+    day = bi("div", "รอยืนยัน", "TBA", "v txt") if tba else f'<div class="v txt">{e(date_th)}</div>'
+    if finish_tbc:
+        fin = bi("div", "เส้นชัยรอยืนยัน", "Finish to be confirmed", "sub")
+    elif same:
+        fin = bi("div", "เข้าเส้นชัยที่จุดเดียวกัน", "Finishes at the same spot", "sub")
+    else:
+        fin = bi("div", f"เส้นชัย: {finish}", f"Finish: {finish}", "sub")
+    if tba:
+        left = bi("div", "รอยืนยัน", "TBA", "v") + bi("div", "ผู้จัดยังไม่ประกาศวันแข่ง", "The organizer hasn't announced the date", "sub")
+    else:
+        y, m, dd = (int(v) for v in ev["date"].split("-"))
+        days = max((_date(y, m, dd) - _date.today()).days, 0)
+        left = (f'<div class="v" data-countdown="{e(ev["date"])}">{days}<small> วัน</small></div>'
+                + bi("div", "ถึงวันแข่ง", "to race day", "sub"))
+    city_sub = '<div class="sub">' + e(ev["city"]) + '</div>'
+    start_v = '<div class="v txt">' + e(start) + '</div>'
+    zone_v = bi("div", zone_th, zone_en, "v txt")
+    zone_sub = bi("div", "ดูที่พักจริงบนแผนที่ Stay22 ด้านล่าง", "Live hotels on the Stay22 map below", "sub")
+    facts = [fact("วันแข่ง", "Race day", day, city_sub),
+             fact("จุดปล่อยตัว", "Start", start_v, fin),
+             fact("ย่านที่พักแนะนำ", "Where to stay", zone_v, zone_sub),
+             fact("เหลืออีก", "Countdown", left, "")]
+    times_l = bi("div", "เวลาปล่อยตัว", "Start times", "l")
+    return ('<div class="band"><div class="in"><div class="statpanel">\n'
+            '  <div class="times">' + times_l + '<div class="list">' + rows + '</div></div>\n'
+            '  <div class="facts">\n' + "".join("    " + x + "\n" for x in facts) + '  </div>\n'
+            '</div></div></div>\n')
 
 
 def chrome():
@@ -127,9 +169,10 @@ def render(ev, nav, foot):
 </head>
 <body>
 """
-    body = f"""<div class="band"><div class="in"><div class="crumb"><a href="index.html" data-th="← งานกีฬาทั้งหมด" data-en="← All events">← งานกีฬาทั้งหมด</a></div></div></div>
+    panel = statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
+    body = f"""<div class="band herodark"><div class="in"><div class="crumb"><a href="index.html" data-th="← งานกีฬาทั้งหมด" data-en="← All events">← งานกีฬาทั้งหมด</a></div></div></div>
 
-<div class="band"><div class="in phero">
+<div class="band herodark"><div class="in phero">
   <div class="kick">{e(s_en)} · {e(city)}</div>
   <h1>{e(name)}</h1>
   {bi("p", ev["blurbTh"], ev["blurbEn"], "sub")}
@@ -139,6 +182,7 @@ def render(ev, nav, foot):
   <span><b>{e(d["dayLabel"])}</b></span><span>{e(start)}</span><span>{e(city)}</span><span class="times">{e(km_list)}</span>
 </div></div>
 
+{panel}
 <div class="band"><div class="in sec">
   <div class="seclabel"><span class="n">01 / Why</span><h2 data-th="ทำไมทำเลที่พักสำคัญ" data-en="Why location matters">ทำไมทำเลที่พักสำคัญ</h2></div>
   {bi("p", d.get("whyTh", WHY[kind][0]), d.get("whyEn", WHY[kind][1]), "lead")}

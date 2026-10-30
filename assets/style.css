@@ -67,7 +67,8 @@
   .databand{background:var(--charcoal);color:var(--white)}
   /* dark race hero: runs into the charcoal data band and stats panel as one block */
   .herodark{background:var(--charcoal);color:var(--white)}
-  .herodark :is(.kick,.sub){color:var(--on-dark-muted)}
+  .band.herodark :is(.kick,.sub,.crumb,.crumb a){color:var(--on-dark-muted)}
+  .band.herodark .crumb a:hover{color:var(--white)}
   .herodark :focus-visible{outline-color:var(--lime)}
   /* the sticky nav is transparent: paint the strip behind it so the dark runs to the top of the page */
   body:has(.herodark){background:linear-gradient(var(--charcoal) 0 200px,var(--paper) 200px)}
@@ -93,6 +94,7 @@
   .statpanel .v{font-size:28px;font-weight:700;line-height:1.15;letter-spacing:-.02em;margin:var(--space-6) 0 var(--space-4);font-variant-numeric:tabular-nums}
   .statpanel .v small{font-size:14px;font-weight:600;color:var(--ink-2);letter-spacing:0;margin-left:var(--space-4)}
   .statpanel .sub{font-size:12px;line-height:1.5;color:var(--muted)}
+  .statpanel .v.txt{font-size:18px;font-weight:600;line-height:1.35;letter-spacing:0;overflow-wrap:anywhere}
   @media(max-width:760px){.statpanel{grid-template-columns:1fr}}
   @media(max-width:420px){.statpanel .times,.statpanel .facts > *{padding:var(--space-16)}.statpanel .v{font-size:24px}}
 

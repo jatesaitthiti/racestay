@@ -4,7 +4,7 @@ var TH2EN={}; (function(){for(var k in EN2TH)TH2EN[EN2TH[k]]=k;})();
 var RE_EN=/\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\b/g;
 var RE_TH=/(ม\.ค\.|ก\.พ\.|มี\.ค\.|เม\.ย\.|พ\.ค\.|มิ\.ย\.|ก\.ค\.|ส\.ค\.|ก\.ย\.|ต\.ค\.|พ\.ย\.|ธ\.ค\.)/g;
 function localizeDates(l){
-  var roots=document.querySelectorAll('.when, .databand, .feature, table, .dcover');
+  var roots=document.querySelectorAll('.when, .databand, .feature, table, .dcover, .statpanel');
   for(var i=0;i<roots.length;i++){
     var w=document.createTreeWalker(roots[i], NodeFilter.SHOW_TEXT, null);
     var n;
@@ -30,6 +30,7 @@ function setLang(l){
   document.querySelectorAll('[data-setlang]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-setlang')===l); });
   try{ localStorage.setItem('rs-lang',l); }catch(e){}
   fitDesc();
+  countdowns();
 }
 
 /* ----- race-detail page only (guards keep it safe elsewhere) ----- */
@@ -41,6 +42,16 @@ function fitDesc(){
     if(!b.offsetHeight||!lh) return;
     var room=b.getBoundingClientRect().bottom-parseFloat(getComputedStyle(b).paddingBottom)-d.getBoundingClientRect().top;
     d.style.webkitLineClamp=String(Math.max(1,Math.floor((room+1)/lh)));
+  });
+}
+/* Days to race day, counted live (Bangkok midnight) so the number never goes stale */
+function countdowns(){
+  var en=document.documentElement.lang==='en';
+  document.querySelectorAll('[data-countdown]').forEach(function(el){
+    var t=new Date(el.getAttribute('data-countdown')+'T00:00:00+07:00').getTime();
+    var days=Math.ceil((t-Date.now())/86400000);
+    if(days>0) el.innerHTML=days+'<small>'+(en?(days===1?' day':' days'):' วัน')+'</small>';
+    else el.textContent=(days===0)?(en?'Race day':'วันนี้'):(en?'Finished':'จบแล้ว');
   });
 }
 function setTab(t){
