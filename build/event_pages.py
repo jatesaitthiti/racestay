@@ -13,26 +13,28 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "63", "17"
+CSS_V, JS_V = "64", "18"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
     "bike": ("จักรยาน", "Cycling"), "hyrox": ("ไฮรอกซ์", "HYROX"),
 }
+# the start-point word per sport (docs/BRIEF.md §10); cross-sport copy uses จุดสตาร์ท
+SPOT = {"road": "จุดปล่อยตัว", "trail": "จุดปล่อยตัว", "bike": "จุดสตาร์ท", "tri": "จุด transition", "hyrox": "เวนิว"}
 TH_MONTH = {"JAN": "ม.ค.", "FEB": "ก.พ.", "MAR": "มี.ค.", "APR": "เม.ย.", "MAY": "พ.ค.", "JUN": "มิ.ย.",
             "JUL": "ก.ค.", "AUG": "ส.ค.", "SEP": "ก.ย.", "OCT": "ต.ค.", "NOV": "พ.ย.", "DEC": "ธ.ค."}
 
 WHY = {
     "road": ("งานวิ่งถนนส่วนใหญ่ปล่อยตัวเช้ามืดและปิดถนน พักใกล้จุดปล่อยตัวช่วยให้ไม่ต้องลุ้นรถ และกลับไปพักได้ไวหลังเข้าเส้นชัย",
              "Most road races start before dawn with roads closed — staying near the start removes the transport gamble and gets you back to rest sooner."),
-    "trail": ("งานเทรลมักสตาร์ทในพื้นที่ห่างไกล รถสาธารณะน้อย และปล่อยตัวตั้งแต่ก่อนสว่าง พักใกล้จุดสตาร์ทหรือในอำเภอเดียวกันช่วยให้ได้นอนเต็มอิ่ม",
+    "trail": ("งานเทรลมักสตาร์ทในพื้นที่ห่างไกล รถสาธารณะน้อย และปล่อยตัวตั้งแต่ก่อนสว่าง พักใกล้จุดปล่อยตัวหรือในอำเภอเดียวกันช่วยให้ได้นอนเต็มอิ่ม",
               "Trail races usually start somewhere remote with little transport and pre-dawn gun times — staying close to the start (or in the same district) buys you sleep."),
 }
 WHY["hyrox"] = ("ไฮรอกซ์ แข่งเป็นรอบตามเวลาที่ได้ทั้งวัน หลายวันติดกัน และมีคนดูมาเชียร์ด้วย ที่พักใกล้ฮอลล์จะเดินมาวอร์มอัปและกลับไปพักระหว่างวันได้สะดวก",
                  "HYROX runs in timed heats all day over several days, with spectators too — a stay near the hall lets you walk over to warm up and rest between sessions.")
 WHY["tri"] = ("ไตรกีฬาต้องเอาจักรยานไปเช็กอินที่ transition ก่อนวันแข่ง และปล่อยตัวว่ายน้ำตั้งแต่เช้า พักใกล้ transition ช่วยให้ขนอุปกรณ์ง่ายและไม่ต้องรีบ",
                "Triathlons need bike check-in at transition the day before and an early swim start — staying near transition makes the gear run easy and unhurried.")
-WHY["bike"] = ("งานปั่นปล่อยตัวเช้าและต้องขนจักรยานไปจุดสตาร์ท พักใกล้จุดปล่อยตัวที่มีที่เก็บจักรยานช่วยให้เช้าวันแข่งไม่วุ่น",
+WHY["bike"] = ("งานปั่นปล่อยตัวเช้าและต้องขนจักรยานไปจุดสตาร์ท พักใกล้ๆ ในที่ที่มีที่เก็บจักรยานช่วยให้เช้าวันแข่งไม่วุ่น",
                "Rides start early and you need to get your bike to the line — a stay near the start with secure bike storage keeps race morning calm.")
 TIP = {
     "road": ("เช็กวันรับ BIB ก่อนจอง แล้วเลือกที่พักในระยะเดินถึงจุดปล่อยตัว",
@@ -62,8 +64,8 @@ OLD_HEAD = [("ทำไมทำเลที่พักสำคัญ", "Why l
        ("คำถามที่นักกีฬาถามบ่อย", "Answers to athletes’ questions")]
 
 # second half of the 01 headline: what the early start means for where you sleep, per sport
-WHY_TAIL = {"road": ("พักให้เดินถึงจุดสตาร์ท", "stay within walking distance of the start"),
-            "trail": ("พักให้ใกล้จุดสตาร์ทที่สุด", "sleep as close to the start as you can"),
+WHY_TAIL = {"road": ("พักให้เดินถึงจุดปล่อยตัว", "stay within walking distance of the start"),
+            "trail": ("พักให้ใกล้จุดปล่อยตัวที่สุด", "sleep as close to the start as you can"),
             "tri": ("พักใกล้ transition", "stay near transition"),
             "bike": ("พักที่มีที่เก็บจักรยาน ใกล้จุดสตาร์ท", "stay near the start with bike storage")}
 
@@ -212,7 +214,7 @@ def statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
     zone_v = bi("div", zone_th, zone_en, "v txt")
     zone_sub = bi("div", "ดูที่พักจริงบนแผนที่ Stay22 ด้านล่าง", "Live hotels on the Stay22 map below", "sub")
     facts = [fact("วันแข่ง", "Race day", day, city_sub),
-             fact("จุดปล่อยตัว", "Start", start_v, fin),
+             fact(SPOT.get(ev["sport"], "จุดสตาร์ท"), "Start", start_v, fin),
              fact("ย่านที่พักแนะนำ", "Where to stay", zone_v, zone_sub),
              fact("เหลืออีก", "Countdown", left, "")]
     times_l = bi("div", "เวลาปล่อยตัว", "Start times", "l")
@@ -234,6 +236,8 @@ def render(ev, nav, foot):
     d = ev["detail"]
     s_th, s_en = SPORT[ev["sport"]]
     kind = ev["sport"] if ev["sport"] in ("trail", "hyrox", "tri", "bike") else "road"
+    spot = SPOT.get(ev["sport"], "จุดสตาร์ท")
+    start_col = "จุดปล่อยตัว" if kind in ("road", "trail") else "จุดสตาร์ท"
     name, city = ev["name"], ev["city"]
     start = d["start"]
     finish_tbc = d.get("finish") is None and d.get("finishTbc")
@@ -257,7 +261,7 @@ def render(ev, nav, foot):
         for r in d.get("schedule", []))
     if not sched:
         sched = (f'    <tr>{bi("td", "ก่อนวันแข่ง", "Before", "num")}{bi("td", "รับ BIB", "BIB pickup")}{bi("td", "พักตั้งแต่คืนก่อนแข่ง", "Stay the night before")}</tr>\n'
-                 f'    <tr><td class="num">{e(d["dayLabel"])}</td>{bi("td", "ปล่อยตัว + เข้าเส้นชัย", "Start + finish")}{bi("td", "พักใกล้จุดปล่อยตัว", "Stay near the start")}</tr>\n'
+                 f'    <tr><td class="num">{e(d["dayLabel"])}</td>{bi("td", "ปล่อยตัว + เข้าเส้นชัย", "Start + finish")}{bi("td", f"พักใกล้{spot}", "Stay near the start")}</tr>\n'
                  f'    <tr>{bi("td", "หลังแข่ง", "After", "num")}{bi("td", "พักฟื้น / เดินทางกลับ", "Recover / travel home")}{bi("td", "เลือกเช็กเอาต์สายถ้ามี", "Late checkout if available")}</tr>')
 
     if finish_tbc:
@@ -280,7 +284,7 @@ def render(ev, nav, foot):
         maps_html += (f'  <div class="maplabel"><span data-th="{e(m["labelTh"])}" data-en="{e(m["labelEn"])}">{e(m["labelTh"])}</span><span>Stay22</span></div>\n'
                       f'  <iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near {e(m["venue"])}" '
                       f'src="https://www.stay22.com/embed/gm?aid=affiliateid&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe>\n')
-    title_th = f"{name} — ที่พักใกล้จุดปล่อยตัว | RaceStay"
+    title_th = f"{name} — ที่พักใกล้{spot} | RaceStay"
     title_en = f"{name} — Hotels Near the Start | RaceStay"
     head = f"""<!DOCTYPE html>
 <html lang="th">
@@ -289,7 +293,7 @@ def render(ev, nav, foot):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-th="{e(title_th)}" data-en="{e(title_en)}">{e(name)} — RaceStay</title>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
-<meta name="description" content="{e(name)} — ที่พักใกล้จุดปล่อยตัว {e(start)} · {e(city)} · ระยะ {e(km_list)}">
+<meta name="description" content="{e(name)} — ที่พักใกล้{spot} {e(start)} · {e(city)} · ระยะ {e(km_list)}">
 <link rel="stylesheet" href="assets/style.css?v={CSS_V}">
 <script src="assets/app.js?v={JS_V}" defer></script>
 </head>
@@ -306,7 +310,7 @@ def render(ev, nav, foot):
 </div></div>
 
 <div class="band databand"><div class="in">
-  <span><b>{e(d["dayLabel"])}</b></span><span>{e(start)}</span><span>{e(city)}</span><span class="times">{e(km_list)}</span>
+  <span><b>{e(d["dayLabel"])}</b></span><span>{e(start)}</span><span>{e(city)}</span>{bi("span", km_list[:-3] + " กม.", km_list, "times")}
 </div></div>
 
 {panel}
@@ -319,7 +323,7 @@ def render(ev, nav, foot):
 <div class="band tone-white"><div class="in sec banded">
   <div class="seclabel"><span class="num">02</span><span class="n" data-th="ทุกระยะ" data-en="Distances">ทุกระยะ</span>{bi("h2", *H[1])}</div>
   <div class="table-wrap"><table>
-    <tr><th data-th="ระยะ" data-en="Distance">ระยะ</th><th data-th="เวลาปล่อยตัว" data-en="Start time">เวลาปล่อยตัว</th><th data-th="จุดสตาร์ท" data-en="Start">จุดสตาร์ท</th><th data-th="เส้นชัย" data-en="Finish">เส้นชัย</th></tr>
+    <tr><th data-th="ระยะ" data-en="Distance">ระยะ</th><th data-th="เวลาปล่อยตัว" data-en="Start time">เวลาปล่อยตัว</th><th data-th="{start_col}" data-en="Start">{start_col}</th><th data-th="เส้นชัย" data-en="Finish">เส้นชัย</th></tr>
 {rows}
   </table></div>
 {official}</div></div>
@@ -332,7 +336,7 @@ def render(ev, nav, foot):
     <span class="v vs">{e(start)}</span><span class="arrow" aria-hidden="true">→</span><span class="v vf">{e(finish)}</span>
   </div>
   <div class="zone">{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
-{maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย</div>
+{maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบ{spot} เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบ{spot} เลือกและจองได้เลย</div>
 {city_link}</div></div>
 
 <div class="band tone-paper2"><div class="in sec banded">
@@ -357,7 +361,7 @@ def render(ev, nav, foot):
   <div class="seclabel"><span class="num">06</span><span class="n" data-th="คำถามบ่อย" data-en="FAQ">คำถามบ่อย</span>{bi("h2", *H[5])}</div>
   <div class="faq2" style="margin-top:16px">
     <details open>{bi("summary", "ควรจองที่พักกี่คืน?", "How many nights should I book?")}{bi("p", "อย่างน้อยคืนก่อนแข่ง (เผื่อรับ BIB) ถ้าวิ่งระยะไกลเผื่ออีกคืนหลังแข่งไว้พักฟื้น", "At least the night before (for BIB pickup); for long distances add a recovery night.")}</details>
-    <details>{bi("summary", "ควรพักย่านไหน?", "Where should I stay?")}{bi("p", "แนะนำย่าน " + zone_th + " ที่เดินทางสะดวกถึงจุดปล่อยตัว", "We recommend " + zone_en + " — easy to reach the start.")}</details>
+    <details>{bi("summary", "ควรพักย่านไหน?", "Where should I stay?")}{bi("p", "แนะนำย่าน " + zone_th + " ที่เดินทางสะดวกถึง" + spot, "We recommend " + zone_en + " — easy to reach the start.")}</details>
     <details>{bi("summary", "ปล่อยตัวเช้ามืด อาหารเช้าทำยังไง?", "Early start — what about breakfast?")}{bi("p", "ถามที่พักว่าขอกล่องอาหารเช้าล่วงหน้าได้ไหม หรือเตรียมของกินเบา ๆ ไว้เอง", "Ask your stay for a pre-arranged breakfast box, or bring light snacks.")}</details>
     <details>{bi("summary", "ฝากกระเป๋าหลังเช็กเอาต์ได้ไหม?", "Can I store luggage after checkout?")}{bi("p", "ได้เกือบทุกที่ · ถ้าเลือกที่เช็กเอาต์สายได้ จะอาบน้ำหลังแข่งได้สบาย", "Almost everywhere · a late checkout lets you shower after finishing.")}</details>
   </div>

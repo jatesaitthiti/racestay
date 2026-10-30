@@ -570,3 +570,5 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 :is(p,li,summary,figcaption,blockquote,.sub,.lead,.desc,.callout,.mapfoot,.foot .in){text-wrap:pretty}
 /* table cells hold short names (venues, times): balance splits "Thao Suranari Monument" evenly instead of stranding "Monument" */
 :is(td,th){text-wrap:balance}
+/* phrases and number+unit that must not split across lines (wrapped by keepTogether in app.js) */
+.nobr{white-space:nowrap}

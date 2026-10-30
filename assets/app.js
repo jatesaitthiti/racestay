@@ -15,6 +15,40 @@ function localizeDates(l){
     }
   }
 }
+/* Thai has no spaces: the browser breaks lines at dictionary word boundaries, which can split a
+   compound (ระยะ|เดิน) or a name (เฮอ|ริเทจ). Wrap known phrases, and numbers with their unit or
+   month, in a no-wrap span so each moves to the next line whole. Runs after every language switch. */
+var KEEP_TH=['ระยะเดิน','จุดปล่อยตัว','ปล่อยตัว','จุดสตาร์ท','เส้นชัย','เข้าเส้นชัย','รอยืนยัน','รับ BIB','เช้ามืด','กลางคืน','กลางดึก',
+  'ก่อนแข่ง','หลังแข่ง','วันแข่ง','สุดสัปดาห์','เดินทาง','ล่วงหน้า','ติดกัน','หารถ','ก่อนกด','เช็กอิน','เช็กเอาต์','เช็คอิน','เช็คเอาต์',
+  'แพ็กเกจ','ไตรกีฬา','ไฮรอกซ์','วิ่งเทรล','วิ่งถนน','สวนน้ำ','ศูนย์ประชุม','เฮอริเทจ','อินเตอร์เนชั่นแนล','เซอร์กิต','มหาราชวัง',
+  'กาญจนาภิเษก','ท่าเตียน','ช้างเผือก','นาเกลือ','วงเวียนโลมา','เชิงทะเล','ลากูน่า','ย่าโม','ฝั่งเหนือ','บุ่งตาหลั่ว','รัตนโกสินทร์',
+  'สนามหลวง','สนามไชย','สนามช้าง','เชียงใหม่','ขอนแก่น','อุดมสุข','ไบเทค','บางนา','เขาใหญ่','ปากช่อง','จอมทอง','แม่ริม','ปทุมวัน',
+  'เจ้าพระยา','ท่าแพ','ไนท์บาซาร์','พระบรมราชานุสาวรีย์','พระบรมมหาราชวัง','อนุสาวรีย์','อารีน่า','บางแสน'];
+var RE_KEEP=new RegExp('('+
+  KEEP_TH.sort(function(a,b){return b.length-a.length;}).map(function(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}).join('|')+
+  '|฿\\d[\\d,]*'+
+  '|ตี\\s\\d+'+
+  '|\\d+(?:[.,]\\d+)?(?:\\s?[–-]\\s?\\d+(?:[.,]\\d+)?)?\\s(?:กม\\.|ม\\.|km|K\\b|นาที|ชม\\.|ชั่วโมง|วัน|คืน|ดาว|บาท|คน|'+
+  '(?:ม\\.ค\\.|ก\\.พ\\.|มี\\.ค\\.|เม\\.ย\\.|พ\\.ค\\.|มิ\\.ย\\.|ก\\.ค\\.|ส\\.ค\\.|ก\\.ย\\.|ต\\.ค\\.|พ\\.ย\\.|ธ\\.ค\\.)|'+
+  '(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\b)'+
+  ')','g');
+function keepTogether(){
+  var w=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
+    var p=n.parentNode; if(!p||!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+    if(/^(SCRIPT|STYLE|TEXTAREA|OPTION|TITLE)$/.test(p.nodeName)||p.closest('.nobr,svg')) return NodeFilter.FILTER_REJECT;
+    RE_KEEP.lastIndex=0; return RE_KEEP.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT; }});
+  var hits=[],n; while(n=w.nextNode()) hits.push(n);
+  hits.forEach(function(n){
+    var t=n.nodeValue,f=document.createDocumentFragment(),last=0,m; RE_KEEP.lastIndex=0;
+    while(m=RE_KEEP.exec(t)){
+      if(m.index>last) f.appendChild(document.createTextNode(t.slice(last,m.index)));
+      var s=document.createElement('span'); s.className='nobr'; s.textContent=m[0]; f.appendChild(s); last=m.index+m[0].length;
+    }
+    if(last<t.length) f.appendChild(document.createTextNode(t.slice(last)));
+    if(/flex|grid/.test(getComputedStyle(n.parentNode).display)){ var box=document.createElement('span'); box.appendChild(f); f=box; }
+    n.parentNode.replaceChild(f,n);
+  });
+}
 function setLang(l){
   document.querySelectorAll('[data-th]').forEach(function(el){
     var v=(l==='en')?el.getAttribute('data-en'):el.getAttribute('data-th');
@@ -29,8 +63,9 @@ function setLang(l){
   localizeDates(l);
   document.querySelectorAll('[data-setlang]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-setlang')===l); });
   try{ localStorage.setItem('rs-lang',l); }catch(e){}
-  fitDesc();
   countdowns();
+  keepTogether();
+  fitDesc();
 }
 
 /* ----- race-detail page only (guards keep it safe elsewhere) ----- */
@@ -50,7 +85,8 @@ function countdowns(){
   document.querySelectorAll('[data-countdown]').forEach(function(el){
     var t=new Date(el.getAttribute('data-countdown')+'T00:00:00+07:00').getTime();
     var days=Math.ceil((t-Date.now())/86400000);
-    if(days>0) el.innerHTML=days+'<small>'+(en?(days===1?' day':' days'):' วัน')+'</small>';
+    if(days>0 && el.hasAttribute('data-countdown-text')) el.textContent=en?(days+(days===1?' day':' days')+' to go'):('อีก '+days+' วัน');
+    else if(days>0) el.innerHTML=days+'<small>'+(en?(days===1?' day':' days'):' วัน')+'</small>';
     else el.textContent=(days===0)?(en?'Race day':'วันนี้'):(en?'Finished':'จบแล้ว');
   });
 }

@@ -56,7 +56,7 @@
         "tipEn": "Book the race night too — you finish late, so don't plan a long drive home straight after.",
         "zoneTh": "รอบสนามช้าง / ตัวเมืองบุรีรัมย์",
         "zoneEn": "Around Chang Circuit / Buriram town",
-        "zoneNoteTh": "จุดสตาร์ทที่สนามช้างกับเส้นชัยที่ช้าง อารีน่า ห่างกันราว 1 กม. พักรอบสนามเดินไปได้ทั้งสองจุด",
+        "zoneNoteTh": "จุดปล่อยตัวที่สนามช้างกับเส้นชัยที่ช้าง อารีน่า ห่างกันราว 1 กม. พักรอบสนามเดินไปได้ทั้งสองจุด",
         "zoneNoteEn": "The start at the circuit and the finish at Chang Arena are about 1 km apart — stay around the circuit and walk to both",
         "schedule": [
           {
@@ -113,7 +113,7 @@
         ],
         "zoneTh": "เมืองเก่า / ถนนท่าแพ / ไนท์บาซาร์",
         "zoneEn": "Old city / Tha Phae Road / Night Bazaar",
-        "zoneNoteTh": "พักในเมืองเก่าหรือแถวท่าแพเดินถึงจุดสตาร์ท · นักวิ่งฟูลและฮาล์ฟจบที่แม่ริม ผู้จัดมีรถสองแถวรับกลับประตูท่าแพฟรี",
+        "zoneNoteTh": "พักในเมืองเก่าหรือแถวท่าแพเดินถึงจุดปล่อยตัว · นักวิ่งฟูลและฮาล์ฟจบที่แม่ริม ผู้จัดมีรถสองแถวรับกลับประตูท่าแพฟรี",
         "zoneNoteEn": "Stay in the old city or around Tha Phae to walk to the start · full and half runners finish in Mae Rim, and the organizer runs free songthaews back to the gate",
         "cityPage": "city-chiang-mai.html",
         "officialUrl": "https://www.chiangmaimarathon.com"
@@ -214,7 +214,7 @@
         ],
         "zoneTh": "ลากูน่า ภูเก็ต / บางเทา / เชิงทะเล",
         "zoneEn": "Laguna Phuket / Bang Tao / Cherng Talay",
-        "zoneNoteTh": "สนามอยู่ในพื้นที่ลากูน่า พักในลากูน่าหรือแถวบางเทาเดินหรือนั่งรถช่วงสั้นๆ ถึงจุดสตาร์ท",
+        "zoneNoteTh": "สนามอยู่ในพื้นที่ลากูน่า พักในลากูน่าหรือแถวบางเทาเดินหรือนั่งรถช่วงสั้นๆ ถึงจุดปล่อยตัว",
         "zoneNoteEn": "The venue is inside Laguna — stay in Laguna or around Bang Tao for a short walk or ride to the start",
         "cityPage": "city-phuket.html",
         "officialUrl": "https://phuketmarathon.com/"
@@ -675,7 +675,7 @@
         ],
         "zoneTh": "ริมหาดบางแสน / ถนนบางแสนสาย 1–2",
         "zoneEn": "Bang Saen beachfront / Bang Saen Sai 1–2 roads",
-        "zoneNoteTh": "ปล่อยตัวเป็นรอบตั้งแต่ 02:30 น. และถนนบางแสนสาย 1 ช่วงจุดสตาร์ทปิดตั้งแต่ค่ำวันเสาร์ พักริมหาดในระยะเดินจะสะดวกที่สุด",
+        "zoneNoteTh": "ปล่อยตัวเป็นรอบตั้งแต่ 02:30 น. และถนนบางแสนสาย 1 ช่วงจุดปล่อยตัวปิดตั้งแต่ค่ำวันเสาร์ พักริมหาดในระยะเดินจะสะดวกที่สุด",
         "zoneNoteEn": "Waves start from 02:30 and Bang Saen Sai 1 Road at the start closes from Saturday evening — a walkable beachfront stay is easiest",
         "schedule": [
           {
@@ -735,7 +735,7 @@
         ],
         "zoneTh": "ในเมืองโคราช / รอบอนุสาวรีย์ย่าโม",
         "zoneEn": "Central Korat / around the monument",
-        "zoneNoteTh": "จุดสตาร์ทกับเส้นชัยอยู่คนละที่ พักใกล้อนุสาวรีย์แล้วเดินไปสตาร์ท จบแล้วค่อยนั่งรถกลับจากสวนน้ำบุ่งตาหลั่ว",
+        "zoneNoteTh": "จุดปล่อยตัวกับเส้นชัยอยู่คนละที่ พักใกล้อนุสาวรีย์แล้วเดินไปสตาร์ท จบแล้วค่อยนั่งรถกลับจากสวนน้ำบุ่งตาหลั่ว",
         "zoneNoteEn": "Start and finish are in different places — stay near the monument, walk to the start, and ride back from Bung Ta Lua after",
         "cityPage": "city-nakhon-ratchasima.html",
         "officialUrl": "https://www.koratmarathon.com"
