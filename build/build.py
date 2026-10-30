@@ -26,7 +26,7 @@ TODAY = date.today()
 
 # Sport name shown in the colored band — full words in each language, never abbreviated (same as the nav).
 SPORT_CODE = {"road": ("วิ่งถนน", "ROAD"), "trail": ("วิ่งเทรล", "TRAIL"), "tri": ("ไตรกีฬา", "TRIATHLON"),
-              "bike": ("จักรยาน", "CYCLING"), "hyrox": ("HYROX", "HYROX")}
+              "bike": ("จักรยาน", "CYCLING"), "hyrox": ("ไฮรอกซ์", "HYROX")}
 
 EVENTS_START, EVENTS_END = "<!-- EVENTS:START -->", "<!-- EVENTS:END -->"
 CITIES_START, CITIES_END = "<!-- CITIES:START -->", "<!-- CITIES:END -->"

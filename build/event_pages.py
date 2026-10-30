@@ -16,7 +16,7 @@ CSS_V, JS_V = "61", "17"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
-    "bike": ("จักรยาน", "Cycling"), "hyrox": ("HYROX", "HYROX"),
+    "bike": ("จักรยาน", "Cycling"), "hyrox": ("ไฮรอกซ์", "HYROX"),
 }
 TH_MONTH = {"JAN": "ม.ค.", "FEB": "ก.พ.", "MAR": "มี.ค.", "APR": "เม.ย.", "MAY": "พ.ค.", "JUN": "มิ.ย.",
             "JUL": "ก.ค.", "AUG": "ส.ค.", "SEP": "ก.ย.", "OCT": "ต.ค.", "NOV": "พ.ย.", "DEC": "ธ.ค."}
@@ -27,7 +27,7 @@ WHY = {
     "trail": ("งานเทรลมักสตาร์ทในพื้นที่ห่างไกล รถสาธารณะน้อย และปล่อยตัวตั้งแต่ก่อนสว่าง พักใกล้จุดสตาร์ทหรือในอำเภอเดียวกันช่วยให้ได้นอนเต็มอิ่ม",
               "Trail races usually start somewhere remote with little transport and pre-dawn gun times — staying close to the start (or in the same district) buys you sleep."),
 }
-WHY["hyrox"] = ("HYROX แข่งเป็นรอบตามเวลาที่ได้ทั้งวัน หลายวันติดกัน และมีคนดูมาเชียร์ด้วย ที่พักใกล้ฮอลล์จะเดินมาวอร์มอัปและกลับไปพักระหว่างวันได้สะดวก",
+WHY["hyrox"] = ("ไฮรอกซ์ แข่งเป็นรอบตามเวลาที่ได้ทั้งวัน หลายวันติดกัน และมีคนดูมาเชียร์ด้วย ที่พักใกล้ฮอลล์จะเดินมาวอร์มอัปและกลับไปพักระหว่างวันได้สะดวก",
                  "HYROX runs in timed heats all day over several days, with spectators too — a stay near the hall lets you walk over to warm up and rest between sessions.")
 WHY["tri"] = ("ไตรกีฬาต้องเอาจักรยานไปเช็กอินที่ transition ก่อนวันแข่ง และปล่อยตัวว่ายน้ำตั้งแต่เช้า พักใกล้ transition ช่วยให้ขนอุปกรณ์ง่ายและไม่ต้องรีบ",
                "Triathlons need bike check-in at transition the day before and an early swim start — staying near transition makes the gear run easy and unhurried.")
@@ -175,7 +175,7 @@ def render(ev, nav, foot):
     body = f"""<div class="band herodark"><div class="in"><div class="crumb"><a href="index.html" data-th="← งานกีฬาทั้งหมด" data-en="← All events">← งานกีฬาทั้งหมด</a></div></div></div>
 
 <div class="band herodark"><div class="in phero">
-  <div class="kick">{e(s_en)} · {e(city)}</div>
+  {bi("div", s_th + " · " + city, s_en + " · " + city, "kick")}
   <h1>{e(name)}</h1>
   {bi("p", ev["blurbTh"], ev["blurbEn"], "sub")}
 </div></div>

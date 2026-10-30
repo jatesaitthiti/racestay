@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SPORT = {"road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
-         "bike": ("จักรยาน", "Cycling"), "hyrox": ("HYROX", "HYROX")}
+         "bike": ("จักรยาน", "Cycling"), "hyrox": ("ไฮรอกซ์", "HYROX")}
 
 
 def e(s):
