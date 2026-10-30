@@ -7,6 +7,7 @@ Stay22 map, per the RaceStay concept (aggregate, don't curate).
 """
 import html
 import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import quote
 
@@ -45,6 +46,129 @@ TIP = {
     "trail": ("ระยะไกลมักปล่อยตัวกลางดึก เลือกที่พักที่ออกเดินทางได้ตอนตีสาม-ตีสี่ และเผื่อคืนหลังแข่งไว้พักฟื้น",
               "Long distances often start in the middle of the night — pick a stay you can leave at 3–4 am and keep a recovery night after."),
 }
+
+
+# ---- section headlines: answers built from verified data, generic only when data is missing ----
+TH_MON = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."]
+EN_MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+TH_DAY = ["จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์", "อาทิตย์"]
+EN_DAY = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+OLD_HEAD = [("ทำไมทำเลที่พักสำคัญ", "Why location matters"),
+       ("รายละเอียดการแข่ง — ทุกระยะ", "Race details — every distance"),
+       ("ที่พักใกล้จุดปล่อยตัว", "Where to stay"),
+       ("การเดินทางไปจุดปล่อยตัว", "Getting to the start"),
+       ("ตารางสุดสัปดาห์แข่ง", "Race weekend schedule"),
+       ("คำถามที่นักกีฬาถามบ่อย", "Answers to athletes’ questions")]
+
+# second half of the 01 headline: what the early start means for where you sleep, per sport
+WHY_TAIL = {"road": ("พักให้เดินถึงจุดสตาร์ท", "stay within walking distance of the start"),
+            "trail": ("พักให้ใกล้จุดสตาร์ทที่สุด", "sleep as close to the start as you can"),
+            "tri": ("พักใกล้ transition", "stay near transition"),
+            "bike": ("พักที่มีที่เก็บจักรยาน ใกล้จุดสตาร์ท", "stay near the start with bike storage")}
+
+
+def mins(t):
+    h, m = t.split(":")
+    return int(h) * 60 + int(m)
+
+
+def parse(entry):
+    """'13 JUN · 03:00' -> ('13 JUN', ['03:00']); '02:30 / 02:45 / 03:00' -> (None, [3 waves]); '29 NOV' -> ('29 NOV', [])"""
+    m = re.match(r"(\d{1,2}(?:–\d{1,2})? [A-Z]{3})", entry or "")
+    return (m.group(1) if m else None), re.findall(r"\d{2}:\d{2}", entry or "")
+
+
+def daymonths(prefix):
+    """'5–6 DEC' -> [(12, 5), (12, 6)]"""
+    days, mon = prefix.split(" ")
+    m = [x.upper() for x in EN_MONTH].index(mon) + 1
+    return [(m, int(x)) for x in days.split("–")]
+
+
+def headlines(ev):
+    d = ev["detail"]
+    dist = d["distances"]
+    n = len(dist)
+    parsed = [parse(x.get("time")) for x in dist]
+    days = {p[0] for p in parsed if p[0]}
+    firsts = [p[1][0] for p in parsed if p[1]]
+    every = [t for p in parsed for t in p[1]]
+    out = []
+
+    # 01 why
+    if ev["sport"] == "hyrox":
+        out.append(("แข่งเป็นรอบทั้งวัน พักใกล้ฮอลล์", "Heats run all day, stay near the hall"))
+    elif len(days) > 1:
+        out.append(("จองคืนให้ตรงกับวันแข่งของระยะที่ลง", "Book your nights around your distance's race day"))
+    elif firsts:
+        first = min(firsts, key=mins)
+        th, en = WHY_TAIL[ev["sport"]]
+        word_th, word_en = ("ปล่อยตัวแรก", "First start") if n > 1 else ("ปล่อยตัว", "Start")
+        out.append((f"{word_th} {first} {th}", f"{word_en} {first}, {en}"))
+    else:
+        th, en = WHY_TAIL[ev["sport"]]
+        out.append((th, en[0].upper() + en[1:]))
+
+    # 02 distances
+    if ev["sport"] == "hyrox":
+        out.append((f"{n} รุ่น แข่งเป็นรอบ (heat)", f"{n} divisions, timed heats"))
+    elif len(days) > 1:
+        when_th, when_en = "ปล่อยตัวคนละวัน", "on different days"
+    elif every and len(firsts) == n:
+        lo, hi = min(every, key=mins), max(every, key=mins)
+        waves = n == 1 and len(every) > 1
+        if lo == hi:
+            when_th, when_en = f"ปล่อยตัว {lo}", f"start {lo}"
+        elif waves:
+            when_th, when_en = f"ปล่อยตัวเป็นรอบ {lo}–{hi}", f"waves {lo}–{hi}"
+        else:
+            when_th, when_en = f"ปล่อยตัว {lo}–{hi}", f"starts {lo}–{hi}"
+    elif firsts:
+        when_th, when_en = "บางระยะรอยืนยันเวลา", "some start times TBA"
+    else:
+        when_th, when_en = "เวลาปล่อยตัวรอยืนยัน", "start times TBA"
+    if ev["sport"] == "hyrox":
+        pass
+    elif n == 1:
+        what_th = dist[0].get("name") or f"{dist[0]['km']} กม."
+        what_en = dist[0].get("name") or f"{dist[0]['km']} km"
+        out.append((f"{what_th} {when_th}", f"{what_en}, {when_en}"))
+    else:
+        out.append((f"{n} ระยะ {when_th}", f"{n} races, {when_en}".replace(", on ", " on ")))
+
+    # 03 stay: the recommended zone is the answer
+    out.append((d["zoneTh"], d["zoneEn"]))
+
+    # 04 transit: where the trip home starts
+    finish = d.get("finish")
+    if finish is None and d.get("finishTbc"):
+        out.append(("จุดเส้นชัยรอผู้จัดยืนยัน", "Finish point still to be confirmed"))
+    elif not finish or finish == d["start"]:
+        out.append(("สตาร์ทและเข้าเส้นชัยที่เดียวกัน", "Start and finish at the same spot"))
+    else:
+        out.append((f"ขากลับออกจากเส้นชัยที่ {finish}", f"The trip back starts at {finish}"))
+
+    # 05 schedule
+    if ev.get("dateTba"):
+        out.append(("วันแข่งรอยืนยัน", "Race date to be announced"))
+    elif len(days) > 1:
+        y = int(ev["date"][:4])
+        span = sorted(dm for p in days for dm in daymonths(p))
+        (m1, d1), (m2, d2) = span[0], span[-1]
+        if m1 == m2:
+            th_s, en_s = f"{d1}–{d2} {TH_MON[m1-1]}", f"{d1}–{d2} {EN_MONTH[m1-1]}"
+        else:
+            th_s, en_s = f"{d1} {TH_MON[m1-1]}–{d2} {TH_MON[m2-1]}", f"{d1} {EN_MONTH[m1-1]}–{d2} {EN_MONTH[m2-1]}"
+        out.append((f"แข่ง {th_s} {y}", f"Racing {en_s} {y}"))
+    else:
+        y, m, dd = (int(v) for v in ev["date"].split("-"))
+        wd = date(y, m, dd).weekday()
+        out.append((f"วันแข่ง {TH_DAY[wd]} {dd} {TH_MON[m-1]} {y}", f"Race day {EN_DAY[wd]} {dd} {EN_MONTH[m-1]} {y}"))
+
+    # 06 faq: the four questions are the same on every page
+    out.append(("4 เรื่องที่นักกีฬาถามก่อนจองที่พัก", "4 things athletes ask before booking"))
+    return out
 
 
 def e(s):
@@ -172,6 +296,7 @@ def render(ev, nav, foot):
 <body>
 """
     panel = statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
+    H = headlines(ev)
     body = f"""<div class="band herodark"><div class="in"><div class="crumb"><a href="index.html" data-th="← งานกีฬาทั้งหมด" data-en="← All events">← งานกีฬาทั้งหมด</a></div></div></div>
 
 <div class="band herodark"><div class="in phero">
@@ -186,13 +311,13 @@ def render(ev, nav, foot):
 
 {panel}
 <div class="band tone-paper"><div class="in sec banded">
-  <div class="seclabel"><span class="num">01</span><span class="n" data-th="ทำไม" data-en="Why">ทำไม</span><h2 data-th="ทำไมทำเลที่พักสำคัญ" data-en="Why location matters">ทำไมทำเลที่พักสำคัญ</h2></div>
+  <div class="seclabel"><span class="num">01</span><span class="n" data-th="ทำไม" data-en="Why">ทำไม</span>{bi("h2", *H[0])}</div>
   {bi("p", d.get("whyTh", WHY[kind][0]), d.get("whyEn", WHY[kind][1]), "lead")}
   <div class="callout"><span class="h" data-th="Insight · เคล็ดลับ" data-en="Insight · tip">Insight · เคล็ดลับ</span>{bi("span", d.get("tipTh", TIP[kind][0]), d.get("tipEn", TIP[kind][1]))}</div>
 </div></div>
 
 <div class="band tone-white"><div class="in sec banded">
-  <div class="seclabel"><span class="num">02</span><span class="n" data-th="ทุกระยะ" data-en="Distances">ทุกระยะ</span><h2 data-th="รายละเอียดการแข่ง — ทุกระยะ" data-en="Race details — every distance">รายละเอียดการแข่ง — ทุกระยะ</h2></div>
+  <div class="seclabel"><span class="num">02</span><span class="n" data-th="ทุกระยะ" data-en="Distances">ทุกระยะ</span>{bi("h2", *H[1])}</div>
   <div class="table-wrap"><table>
     <tr><th data-th="ระยะ" data-en="Distance">ระยะ</th><th data-th="เวลาปล่อยตัว" data-en="Start time">เวลาปล่อยตัว</th><th data-th="จุดสตาร์ท" data-en="Start">จุดสตาร์ท</th><th data-th="เส้นชัย" data-en="Finish">เส้นชัย</th></tr>
 {rows}
@@ -200,18 +325,18 @@ def render(ev, nav, foot):
 {official}</div></div>
 
 <div class="band stay tone-lime"><div class="in sec banded">
-  <div class="seclabel"><span class="num">03</span><span class="n" data-th="ที่พัก" data-en="Stay">ที่พัก</span><h2 data-th="ที่พักใกล้จุดปล่อยตัว" data-en="Where to stay">ที่พักใกล้จุดปล่อยตัว</h2></div>
+  <div class="seclabel"><span class="num">03</span><span class="n" data-th="ที่พัก" data-en="Stay">ที่พัก</span>{bi("h2", *H[2])}</div>
   <div class="sf">
     {sf_same}
     <span class="lb ls">Start</span><span class="lb lf">Finish</span>
     <span class="v vs">{e(start)}</span><span class="arrow" aria-hidden="true">→</span><span class="v vf">{e(finish)}</span>
   </div>
-  <div class="zone"><div class="zonelabel">Stay zone</div>{bi("h3", zone_th, zone_en)}{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
+  <div class="zone">{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
 {maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย</div>
 {city_link}</div></div>
 
 <div class="band tone-paper2"><div class="in sec banded">
-  <div class="seclabel"><span class="num">04</span><span class="n" data-th="การเดินทาง" data-en="Transit">การเดินทาง</span><h2 data-th="การเดินทางไปจุดปล่อยตัว" data-en="Getting to the start">การเดินทางไปจุดปล่อยตัว</h2></div>
+  <div class="seclabel"><span class="num">04</span><span class="n" data-th="การเดินทาง" data-en="Transit">การเดินทาง</span>{bi("h2", *H[3])}</div>
   <div class="table-wrap"><table>
     <tr><th data-th="วิธี" data-en="Option">วิธี</th><th data-th="รายละเอียด" data-en="Details">รายละเอียด</th><th data-th="เหมาะกับ" data-en="Best for">เหมาะกับ</th></tr>
     <tr>{bi("td", "เดินจากที่พัก", "Walk", "d")}{bi("td", "ชัวร์สุด ไม่ลุ้นจราจรหรือถนนปิด", "Surest — no traffic or closures")}{bi("td", "พักย่าน " + zone_th, zone_en + " stays")}</tr>
@@ -221,7 +346,7 @@ def render(ev, nav, foot):
 </div></div>
 
 <div class="band tone-dark"><div class="in sec banded">
-  <div class="seclabel"><span class="num">05</span><span class="n" data-th="ตารางแข่ง" data-en="Schedule">ตารางแข่ง</span><h2 data-th="ตารางสุดสัปดาห์แข่ง" data-en="Race weekend schedule">ตารางสุดสัปดาห์แข่ง</h2></div>
+  <div class="seclabel"><span class="num">05</span><span class="n" data-th="ตารางแข่ง" data-en="Schedule">ตารางแข่ง</span>{bi("h2", *H[4])}</div>
   <div class="table-wrap"><table>
     <tr><th data-th="ช่วง" data-en="When">ช่วง</th><th data-th="รายการ" data-en="What">รายการ</th><th data-th="คำแนะนำที่พัก" data-en="Stay tip">คำแนะนำที่พัก</th></tr>
 {sched}
@@ -229,7 +354,7 @@ def render(ev, nav, foot):
 </div></div>
 
 <div class="band tone-white"><div class="in sec banded" id="faq">
-  <div class="seclabel"><span class="num">06</span><span class="n" data-th="คำถามบ่อย" data-en="FAQ">คำถามบ่อย</span><h2 data-th="คำถามที่นักกีฬาถามบ่อย" data-en="Answers to athletes’ questions">คำถามที่นักกีฬาถามบ่อย</h2></div>
+  <div class="seclabel"><span class="num">06</span><span class="n" data-th="คำถามบ่อย" data-en="FAQ">คำถามบ่อย</span>{bi("h2", *H[5])}</div>
   <div class="faq2" style="margin-top:16px">
     <details open>{bi("summary", "ควรจองที่พักกี่คืน?", "How many nights should I book?")}{bi("p", "อย่างน้อยคืนก่อนแข่ง (เผื่อรับ BIB) ถ้าวิ่งระยะไกลเผื่ออีกคืนหลังแข่งไว้พักฟื้น", "At least the night before (for BIB pickup); for long distances add a recovery night.")}</details>
     <details>{bi("summary", "ควรพักย่านไหน?", "Where should I stay?")}{bi("p", "แนะนำย่าน " + zone_th + " ที่เดินทางสะดวกถึงจุดปล่อยตัว", "We recommend " + zone_en + " — easy to reach the start.")}</details>
