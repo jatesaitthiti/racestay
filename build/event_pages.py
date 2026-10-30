@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "53", "15"
+CSS_V, JS_V = "54", "16"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -93,11 +93,11 @@ def render(ev, nav, foot):
                  f'    <tr>{bi("td", "หลังแข่ง", "After", "num")}{bi("td", "พักฟื้น / เดินทางกลับ", "Recover / travel home")}{bi("td", "เลือกเช็กเอาต์สายถ้ามี", "Late checkout if available")}</tr>')
 
     if finish_tbc:
-        sf_same = bi("span", "รอผู้จัดยืนยันจุดเส้นชัย", "Finish point to be confirmed by the organizer", "same")
+        sf_same = bi("span", "รอผู้จัดยืนยันจุดเส้นชัย", "Finish point to be confirmed by the organizer", "status tbc")
     elif same:
-        sf_same = bi("span", "จุดเดียวกัน · พักที่เดียวจบ", "Same spot · one base", "same")
+        sf_same = bi("span", "จุดเดียวกัน · พักที่เดียวจบ", "Same spot · one base", "status same")
     else:
-        sf_same = bi("span", "คนละที่ · ระวังเรื่องการเดินทาง", "Different spots · plan your transport", "same")
+        sf_same = bi("span", "คนละที่ · ระวังเรื่องการเดินทาง", "Different spots · plan your transport", "status diff")
     city_link = (f'  <div class="allrow"><a href="{e(d["cityPage"])}" data-th="ดูที่พักทั้งหมดใน {e(city)} →" data-en="See all stays in {e(city)} →">ดูที่พักทั้งหมดใน {e(city)} →</a></div>\n'
                  if d.get("cityPage") else "")
     official = (f'  <div class="mapfoot" style="margin-top:12px"><span data-th="ข้อมูลจากเว็บไซต์ทางการ · ตรวจล่าสุด {e(checked)}" data-en="From the official website · last checked {e(checked)}">ข้อมูลจากเว็บไซต์ทางการ · ตรวจล่าสุด {e(checked)}</span> · '
@@ -156,10 +156,9 @@ def render(ev, nav, foot):
 <div class="band stay"><div class="in sec">
   <div class="seclabel"><span class="n">03 / Stay</span><h2 data-th="ที่พักใกล้จุดปล่อยตัว" data-en="Where to stay">ที่พักใกล้จุดปล่อยตัว</h2></div>
   <div class="sf">
-    <div class="node"><span class="lb">Start</span><span class="v">{e(start)}</span></div>
-    <span class="arrow">→</span>
-    <div class="node"><span class="lb">Finish</span><span class="v">{e(finish)}</span></div>
     {sf_same}
+    <span class="lb ls">Start</span><span class="lb lf">Finish</span>
+    <span class="v vs">{e(start)}</span><span class="arrow" aria-hidden="true">→</span><span class="v vf">{e(finish)}</span>
   </div>
   <div class="zone"><div class="zonelabel">Stay zone</div>{bi("h3", zone_th, zone_en)}{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
 {maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย</div>

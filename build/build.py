@@ -24,8 +24,9 @@ DATA = ROOT / "data" / "events.json"
 INDEX = ROOT / "index.html"
 TODAY = date.today()
 
-# Short uppercase category tag shown in the colored cover header.
-SPORT_CODE = {"road": "ROAD", "trail": "TRAIL", "tri": "TRI", "bike": "BIKE", "hyrox": "HYROX"}
+# Sport name shown in the colored band — full words in each language, never abbreviated (same as the nav).
+SPORT_CODE = {"road": ("วิ่งถนน", "ROAD"), "trail": ("วิ่งเทรล", "TRAIL"), "tri": ("ไตรกีฬา", "TRIATHLON"),
+              "bike": ("จักรยาน", "CYCLING"), "hyrox": ("HYROX", "HYROX")}
 
 EVENTS_START, EVENTS_END = "<!-- EVENTS:START -->", "<!-- EVENTS:END -->"
 CITIES_START, CITIES_END = "<!-- CITIES:START -->", "<!-- CITIES:END -->"
@@ -58,11 +59,11 @@ def event_card(ev: dict) -> str:
     sport = ev["sport"]
     if sport not in SPORT_CODE:
         raise SystemExit(f"Unknown sport '{sport}' for event '{ev['slug']}'")
-    code = SPORT_CODE[sport]
+    th, en = SPORT_CODE[sport]
     return (
         f'        <a class="evcard" href="{ev["slug"]}.html" data-sport="{sport}">\n'
         f'          <div class="dcover s-{sport}">\n'
-        f'            <span class="sp">{code}</span>\n'
+        f'            <span class="sp" data-th="{th}" data-en="{en}">{th}</span>\n'
         f'            <span class="dd">{short_date(ev["dateLabel"])}</span>\n'
         f'          </div>\n'
         f'          <div class="dbody">\n'

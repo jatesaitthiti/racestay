@@ -29,9 +29,20 @@ function setLang(l){
   localizeDates(l);
   document.querySelectorAll('[data-setlang]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-setlang')===l); });
   try{ localStorage.setItem('rs-lang',l); }catch(e){}
+  fitDesc();
 }
 
 /* ----- race-detail page only (guards keep it safe elsewhere) ----- */
+/* Event cards: show as many whole description lines as fit under the title (CSS alone must assume a 2-line title) */
+function fitDesc(){
+  document.querySelectorAll('.evcard .desc').forEach(function(d){
+    d.style.webkitLineClamp='';
+    var b=d.parentElement, lh=parseFloat(getComputedStyle(d).lineHeight);
+    if(!b.offsetHeight||!lh) return;
+    var room=b.getBoundingClientRect().bottom-parseFloat(getComputedStyle(b).paddingBottom)-d.getBoundingClientRect().top;
+    d.style.webkitLineClamp=String(Math.max(1,Math.floor((room+1)/lh)));
+  });
+}
 function setTab(t){
   var el;
   if(el=document.getElementById('tab-a')) el.classList.toggle('on',t==='a');
@@ -64,6 +75,7 @@ function applyFilter(sport){
     mq.classList.remove('filtering');
     mq.querySelectorAll('.evcard').forEach(function(c){ c.style.display=''; });
     if(reset) reset.style.display='none';
+    fitDesc();
     return;
   }
   mq.classList.add('filtering');                 // CSS: stop animation, grid layout, hide duplicate group
@@ -72,6 +84,7 @@ function applyFilter(sport){
     c.style.display=(c.getAttribute('data-sport')===sport)?'':'none';
   });
   if(reset) reset.style.display='';
+  fitDesc();
 }
 function clearFilter(){
   applyFilter('all');
@@ -133,8 +146,9 @@ function sizeTopBg(){
   var band=r.closest('.band')||r;
   b.style.height=Math.round(band.getBoundingClientRect().top+window.pageYOffset)+'px';
 }
-window.addEventListener('resize', function(){ segSyncAll(); sizeTopBg(); });
+window.addEventListener('resize', function(){ segSyncAll(); sizeTopBg(); fitDesc(); });
 window.addEventListener('load', sizeTopBg);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitDesc);
 
 /* apply saved language on every page load */
 document.addEventListener('DOMContentLoaded',function(){
