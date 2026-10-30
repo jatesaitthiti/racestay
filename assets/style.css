@@ -65,6 +65,12 @@
   .hero .sub{color:var(--muted);font-size:16px;max-width:560px;margin:0}
 
   .databand{background:var(--charcoal);color:var(--white)}
+  /* dark race hero: runs into the charcoal data band and stats panel as one block */
+  .herodark{background:var(--charcoal);color:var(--white)}
+  .herodark :is(.kick,.sub){color:var(--on-dark-muted)}
+  .herodark :focus-visible{outline-color:var(--lime)}
+  /* the sticky nav is transparent: paint the strip behind it so the dark runs to the top of the page */
+  body:has(.herodark){background:linear-gradient(var(--charcoal) 0 200px,var(--paper) 200px)}
   .databand .in{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-24);padding-top:var(--space-12);padding-bottom:var(--space-12);font-family:var(--data);font-size:13px}
   .databand .hl{background:var(--lime);color:var(--ink);padding:var(--space-2) var(--space-8);font-weight:700}
   .databand .times{color:var(--lime-pale)}
