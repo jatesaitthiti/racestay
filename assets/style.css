@@ -4,7 +4,7 @@
     /* colour */
     --paper:#f4f4ee; --paper-rgb:244,244,238; --paper-2:#eeede6; --white:#fff;
     --ink:#15160f; --ink-2:#3a3c31; --muted:#696b60; --line:#e5e4db; --line-strong:#c6c5ba;
-    --lime:#d9ef2f; --lime-pale:#effcb6; --lime-ink:#5c6416; --on-lime:#3a4206; --green:#197e48;
+    --lime:#d9ef2f; --lime-pale:#effcb6; --lime-ink:#5c6416; --on-lime:#3a4206; --green:#177440; --warn-ink:#a9520c;
     --warn:#c8630f; --warn-pale:#f4d7bd;
     --charcoal:#181818; --charcoal-2:#2b2b2b; --charcoal-3:#3a3a3a; --on-dark-muted:#b8bab0; --on-dark-placeholder:#939489;
     --sport-tri:#2c76c5; --sport-bike:#a4680e;
@@ -56,7 +56,7 @@
   .nav nav a{cursor:pointer}.nav nav a:hover{color:var(--ink)}
   .nav nav a.active{color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:var(--space-2)}
   .lang{display:inline-flex;border:1px solid var(--ink);font-family:var(--data);font-size:12px;justify-self:end}
-  .lang button{border:0;background:var(--paper);color:var(--muted);padding:var(--space-10) var(--space-16);cursor:pointer;font-family:var(--data);font-size:13px;min-height:42px}
+  .lang button{border:0;background:var(--paper);color:var(--muted);padding:var(--space-10) var(--space-16);cursor:pointer;font-family:var(--data);font-size:13px;min-height:44px}
   .lang button.on{background:var(--charcoal);color:var(--lime-pale)}
   @media(max-width:640px){.nav nav{display:none}}
 
@@ -101,6 +101,8 @@
 
   .table-wrap{overflow-x:auto;margin-top:var(--space-16)}
   table{width:100%;border-collapse:collapse;min-width:520px}
+  .table-wrap table{table-layout:fixed}
+  .table-wrap tr > :first-child{width:22%}
   th{font-family:var(--data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:var(--space-14) var(--space-12) var(--space-12) 0;border-bottom:1px solid var(--line)}
   td{padding:var(--space-18) var(--space-12) var(--space-18) 0;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle}
   td .d{font-weight:600;font-size:15px}
@@ -170,9 +172,9 @@
   .row .dist{color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:var(--space-2)}
   .row .rt b{color:var(--ink)}
   .row .note{grid-column:1/-1;font-size:13px;color:var(--ink-2);margin-top:var(--space-8);max-width:660px}
-  .row .note b{font-family:var(--data);font-size:11px;letter-spacing:.04em;color:var(--warn)}
+  .row .note b{font-family:var(--data);font-size:11px;letter-spacing:.04em;color:var(--warn-ink)}
   .row .act{grid-column:2;grid-row:2/5;align-self:center;text-align:right}
-  .btn{font-family:var(--sans);font-weight:600;font-size:13px;background:var(--lime);color:var(--ink);border:0;padding:var(--space-10) var(--space-18);cursor:pointer}
+  .btn{font-family:var(--sans);font-weight:600;font-size:13px;background:var(--lime);color:var(--ink);border:0;padding:var(--space-10) var(--space-18);cursor:pointer;min-height:44px}
   .btn:hover{background:var(--ink);color:var(--lime-pale)}
   .allrow{font-family:var(--data);font-size:12px;color:var(--green);padding:var(--space-16) 0 0}
   @media(max-width:560px){.row .act{grid-column:1;grid-row:auto;text-align:left;margin-top:var(--space-10)}.row .price{font-size:18px}}
@@ -185,7 +187,7 @@
   .faqcat{display:flex;align-items:center;gap:var(--space-8);font-family:var(--disp);font-weight:600;font-size:16px;margin:var(--space-32) 0 0}
   .faqcat:first-child{margin-top:0}
   .faq2 details{border-top:1px solid var(--line);padding:var(--space-24) var(--space-2)}
-  .faq2 summary{display:flex;justify-content:space-between;align-items:center;gap:var(--space-24);font-size:16px;font-weight:500;cursor:pointer;list-style:none}
+  .faq2 summary{display:flex;justify-content:space-between;align-items:center;gap:var(--space-24);font-size:16px;font-weight:500;cursor:pointer;list-style:none;min-height:44px}
   .faq2 summary::-webkit-details-marker{display:none}
   .faq2 summary:after{content:"+";font-family:var(--data);font-size:20px;color:var(--muted);line-height:1;flex:none}
   .faq2 details[open] summary:after{content:"–";color:var(--ink)}
@@ -237,7 +239,7 @@
 a.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .card .tag{font-family:var(--data);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .card .tag.live{color:var(--green)}
-.card .tag.soon{color:var(--warn)}
+.card .tag.soon{color:var(--warn-ink)}
 .card h3{font-family:var(--disp);font-weight:600;font-size:20px;margin:var(--space-10) 0 var(--space-4);letter-spacing:var(--head-ls)}
 .card .when{font-family:var(--data);font-size:12px;color:var(--muted)}
 .card .desc{font-size:13px;color:var(--ink-2);margin:var(--space-10) 0 0}
@@ -504,7 +506,11 @@ a.evcard:focus-visible,a.mqcity:focus-visible,a.card:focus-visible{outline-offse
 .menubtn{min-width:44px;min-height:44px}
 .footnav a,.crumb a,.freset{display:inline-flex;align-items:center;min-height:44px}
 .footnav a{padding:0 var(--space-6)}
-.mapfoot a,.allrow a,.foot a{display:inline-flex;align-items:center;min-height:24px}
+.mapfoot a,.allrow a,.foot a,.mono a{display:inline-flex;align-items:center;min-height:24px}
+a.allrow{display:inline-flex;align-items:center;min-height:44px}
+/* nav-like links and price chips: a 44px hit area without changing how they look */
+.navlinks a,.jump a,.pchip{position:relative}
+.navlinks a::after,.jump a::after,.pchip::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 /* smallest label size 11px */
 .menu .grp,.stat .l,.stat .sub,th,.tab .t1,.tab .pill,.subtab .b,.sf .lb,.zonelabel,.pricebar .plabel,.curatedlabel,.row .pin,.row h3 .badge,.facil span,.card .tag,.form label,.stat-inline .b .l{font-size:11px}
 /* guide sub-headings are now h2 (correct outline) but keep their previous look */

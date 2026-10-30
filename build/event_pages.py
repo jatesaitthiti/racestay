@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "55", "16"
+CSS_V, JS_V = "56", "16"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -177,7 +177,7 @@ def render(ev, nav, foot):
 <div class="band"><div class="in sec">
   <div class="seclabel"><span class="n">05 / Schedule</span><h2 data-th="ตารางสุดสัปดาห์แข่ง" data-en="Race weekend schedule">ตารางสุดสัปดาห์แข่ง</h2></div>
   <div class="table-wrap"><table>
-    <tr><th data-th="ช่วง" data-en="When">ช่วง</th><th data-th="รายการ" data-en="What">รายการ</th><th data-th="ผลต่อการจอง" data-en="Impact on stay">ผลต่อการจอง</th></tr>
+    <tr><th data-th="ช่วง" data-en="When">ช่วง</th><th data-th="รายการ" data-en="What">รายการ</th><th data-th="คำแนะนำที่พัก" data-en="Stay tip">คำแนะนำที่พัก</th></tr>
 {sched}
   </table></div>
 </div></div>
