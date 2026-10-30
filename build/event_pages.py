@@ -6,12 +6,13 @@ stays consistent. No hotel cards are generated — hotels come live from the
 Stay22 map, per the RaceStay concept (aggregate, don't curate).
 """
 import html
+import re
 from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "59", "17"
+CSS_V, JS_V = "60", "17"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -99,7 +100,8 @@ def statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
 
 def chrome():
     src = CHROME_SRC.read_text(encoding="utf-8")
-    nav = src[src.index("<body>") + len("<body>\n"): src.index('<div class="band"><div class="in"><div class="crumb">')]
+    crumb = re.search(r'<div class="band[^"]*"><div class="in"><div class="crumb">', src).start()
+    nav = src[src.index("<body>") + len("<body>\n"): crumb]
     foot = src[src.index("<!-- AD: end of content -->"):]
     return nav, foot
 
@@ -183,22 +185,22 @@ def render(ev, nav, foot):
 </div></div>
 
 {panel}
-<div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">01 / Why</span><h2 data-th="ทำไมทำเลที่พักสำคัญ" data-en="Why location matters">ทำไมทำเลที่พักสำคัญ</h2></div>
+<div class="band"><div class="in sec banded">
+  <div class="seclabel"><span class="num">01</span><span class="n" data-th="ทำไม" data-en="Why">ทำไม</span><h2 data-th="ทำไมทำเลที่พักสำคัญ" data-en="Why location matters">ทำไมทำเลที่พักสำคัญ</h2></div>
   {bi("p", d.get("whyTh", WHY[kind][0]), d.get("whyEn", WHY[kind][1]), "lead")}
   <div class="callout"><span class="h" data-th="Insight · เคล็ดลับ" data-en="Insight · tip">Insight · เคล็ดลับ</span>{bi("span", d.get("tipTh", TIP[kind][0]), d.get("tipEn", TIP[kind][1]))}</div>
 </div></div>
 
-<div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">02 / Distances</span><h2 data-th="รายละเอียดการแข่ง — ทุกระยะ" data-en="Race details — every distance">รายละเอียดการแข่ง — ทุกระยะ</h2></div>
+<div class="band alt"><div class="in sec banded">
+  <div class="seclabel"><span class="num">02</span><span class="n" data-th="ทุกระยะ" data-en="Distances">ทุกระยะ</span><h2 data-th="รายละเอียดการแข่ง — ทุกระยะ" data-en="Race details — every distance">รายละเอียดการแข่ง — ทุกระยะ</h2></div>
   <div class="table-wrap"><table>
     <tr><th data-th="ระยะ" data-en="Distance">ระยะ</th><th data-th="เวลาปล่อยตัว" data-en="Start time">เวลาปล่อยตัว</th><th data-th="จุดสตาร์ท" data-en="Start">จุดสตาร์ท</th><th data-th="เส้นชัย" data-en="Finish">เส้นชัย</th></tr>
 {rows}
   </table></div>
 {official}</div></div>
 
-<div class="band stay"><div class="in sec">
-  <div class="seclabel"><span class="n">03 / Stay</span><h2 data-th="ที่พักใกล้จุดปล่อยตัว" data-en="Where to stay">ที่พักใกล้จุดปล่อยตัว</h2></div>
+<div class="band stay"><div class="in sec banded">
+  <div class="seclabel"><span class="num">03</span><span class="n" data-th="ที่พัก" data-en="Stay">ที่พัก</span><h2 data-th="ที่พักใกล้จุดปล่อยตัว" data-en="Where to stay">ที่พักใกล้จุดปล่อยตัว</h2></div>
   <div class="sf">
     {sf_same}
     <span class="lb ls">Start</span><span class="lb lf">Finish</span>
@@ -208,8 +210,8 @@ def render(ev, nav, foot):
 {maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบจุดปล่อยตัว เลือกและจองได้เลย</div>
 {city_link}</div></div>
 
-<div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">04 / Transit</span><h2 data-th="การเดินทางไปจุดปล่อยตัว" data-en="Getting to the start">การเดินทางไปจุดปล่อยตัว</h2></div>
+<div class="band alt"><div class="in sec banded">
+  <div class="seclabel"><span class="num">04</span><span class="n" data-th="การเดินทาง" data-en="Transit">การเดินทาง</span><h2 data-th="การเดินทางไปจุดปล่อยตัว" data-en="Getting to the start">การเดินทางไปจุดปล่อยตัว</h2></div>
   <div class="table-wrap"><table>
     <tr><th data-th="วิธี" data-en="Option">วิธี</th><th data-th="รายละเอียด" data-en="Details">รายละเอียด</th><th data-th="เหมาะกับ" data-en="Best for">เหมาะกับ</th></tr>
     <tr>{bi("td", "เดินจากที่พัก", "Walk", "d")}{bi("td", "ชัวร์สุด ไม่ลุ้นจราจรหรือถนนปิด", "Surest — no traffic or closures")}{bi("td", "พักย่าน " + zone_th, zone_en + " stays")}</tr>
@@ -218,16 +220,16 @@ def render(ev, nav, foot):
   </table></div>
 </div></div>
 
-<div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">05 / Schedule</span><h2 data-th="ตารางสุดสัปดาห์แข่ง" data-en="Race weekend schedule">ตารางสุดสัปดาห์แข่ง</h2></div>
+<div class="band"><div class="in sec banded">
+  <div class="seclabel"><span class="num">05</span><span class="n" data-th="ตารางแข่ง" data-en="Schedule">ตารางแข่ง</span><h2 data-th="ตารางสุดสัปดาห์แข่ง" data-en="Race weekend schedule">ตารางสุดสัปดาห์แข่ง</h2></div>
   <div class="table-wrap"><table>
     <tr><th data-th="ช่วง" data-en="When">ช่วง</th><th data-th="รายการ" data-en="What">รายการ</th><th data-th="คำแนะนำที่พัก" data-en="Stay tip">คำแนะนำที่พัก</th></tr>
 {sched}
   </table></div>
 </div></div>
 
-<div class="band"><div class="in sec" id="faq">
-  <div class="seclabel"><span class="n">06 / FAQ</span><h2 data-th="คำถามที่นักกีฬาถามบ่อย" data-en="Answers to athletes’ questions">คำถามที่นักกีฬาถามบ่อย</h2></div>
+<div class="band alt"><div class="in sec banded" id="faq">
+  <div class="seclabel"><span class="num">06</span><span class="n" data-th="คำถามบ่อย" data-en="FAQ">คำถามบ่อย</span><h2 data-th="คำถามที่นักกีฬาถามบ่อย" data-en="Answers to athletes’ questions">คำถามที่นักกีฬาถามบ่อย</h2></div>
   <div class="faq2" style="margin-top:16px">
     <details open>{bi("summary", "ควรจองที่พักกี่คืน?", "How many nights should I book?")}{bi("p", "อย่างน้อยคืนก่อนแข่ง (เผื่อรับ BIB) ถ้าวิ่งระยะไกลเผื่ออีกคืนหลังแข่งไว้พักฟื้น", "At least the night before (for BIB pickup); for long distances add a recovery night.")}</details>
     <details>{bi("summary", "ควรพักย่านไหน?", "Where should I stay?")}{bi("p", "แนะนำย่าน " + zone_th + " ที่เดินทางสะดวกถึงจุดปล่อยตัว", "We recommend " + zone_en + " — easy to reach the start.")}</details>

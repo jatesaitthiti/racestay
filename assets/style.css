@@ -533,3 +533,21 @@ a.allrow{display:inline-flex;align-items:center;min-height:44px}
 
 /* Thai display headings: stacked tone marks (ตั้ง reaches 1.108em) collide with the line above at 1.03-1.14; EN keeps the tight leading */
 html[lang="th"] :is(.hero h1,.phero h1,.feature h2,.faqhead h2){line-height:1.35}
+
+/* ===== event pages: alternating section bands — 02/04/06 on white, 03 Stay on paper-2 ===== */
+.band.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band.alt + .band.stay,.band.stay + .band.alt{border-top:0}
+.sec.banded{padding-top:0;padding-bottom:var(--space-64)}
+.sec.banded > .seclabel{display:block;border:0;padding:var(--space-56) 0 0}
+.sec.banded > .seclabel + *{margin-top:var(--space-24) !important}
+.sec.banded .seclabel :is(.num,.n){font-size:12px;font-weight:600;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--muted)}
+.sec.banded .seclabel .num{font-variant-numeric:tabular-nums}
+.sec.banded .seclabel .num::after{content:"·";margin:0 var(--space-6)}
+html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:uppercase}
+.sec.banded .seclabel h2{font-size:30px;line-height:1.35;margin-top:var(--space-6);text-wrap:balance}
+@media(max-width:640px){
+  .sec.banded{padding-bottom:var(--space-48)}
+  .sec.banded > .seclabel{padding-top:var(--space-40)}
+  .sec.banded > .seclabel + *{margin-top:var(--space-20) !important}
+  .sec.banded .seclabel h2{font-size:22px}
+}
