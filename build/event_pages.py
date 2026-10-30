@@ -13,7 +13,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "62", "17"
+CSS_V, JS_V = "63", "17"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),

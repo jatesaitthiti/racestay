@@ -562,3 +562,11 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 
 /* footer: credit link flows inline with the sentence so both share one baseline */
 .foot .in{display:block}
+
+/* ===== line breaks: never leave one word alone on the last line =====
+   headings and short labels balance their lines; running text uses pretty, which
+   pulls a word down so the last line is never a lone word (Thai and English alike) */
+:is(h1,h2,h3,h4,.kick){text-wrap:balance}
+:is(p,li,summary,figcaption,blockquote,.sub,.lead,.desc,.callout,.mapfoot,.foot .in){text-wrap:pretty}
+/* table cells hold short names (venues, times): balance splits "Thao Suranari Monument" evenly instead of stranding "Monument" */
+:is(td,th){text-wrap:balance}
