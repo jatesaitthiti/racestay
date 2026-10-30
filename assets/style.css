@@ -534,9 +534,17 @@ a.allrow{display:inline-flex;align-items:center;min-height:44px}
 /* Thai display headings: stacked tone marks (ตั้ง reaches 1.108em) collide with the line above at 1.03-1.14; EN keeps the tight leading */
 html[lang="th"] :is(.hero h1,.phero h1,.feature h2,.faqhead h2){line-height:1.35}
 
-/* ===== event pages: alternating section bands — 02/04/06 on white, 03 Stay on paper-2 ===== */
-.band.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.band.alt + .band.stay,.band.stay + .band.alt{border-top:0}
+/* ===== event pages: section bands, one DS tone each — paper · white · lime-pale (Stay) · paper-2 · charcoal (Schedule) · white ===== */
+.band.tone-white{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band.tone-paper2{background:var(--paper-2)}
+.band.tone-lime{background:var(--lime-pale);border:0}
+.tone-lime .sf .same{box-shadow:var(--ring-strong)}
+.band.tone-dark{background:var(--charcoal);color:var(--white)}
+.tone-dark :is(h2,h3){color:var(--white)}
+.tone-dark .sec.banded .seclabel :is(.num,.n),.tone-dark th,.tone-dark .mapfoot{color:var(--on-dark-muted)}
+.tone-dark :is(th,td,.mapfoot){border-color:var(--charcoal-3)}
+.tone-dark a{color:var(--lime-pale)}
+.tone-dark :focus-visible{outline-color:var(--lime)}
 .sec.banded{padding-top:0;padding-bottom:var(--space-64)}
 .sec.banded > .seclabel{display:block;border:0;padding:var(--space-56) 0 0}
 .sec.banded > .seclabel + *{margin-top:var(--space-24) !important}
