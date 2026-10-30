@@ -572,3 +572,38 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 :is(td,th){text-wrap:balance}
 /* phrases and number+unit that must not split across lines (wrapped by keepTogether in app.js) */
 .nobr{white-space:nowrap}
+
+/* ===== stay section: one card (route | recommended area) then a full-width map ===== */
+.staycard{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);margin-top:var(--space-24);background:var(--white);border-radius:var(--r-card);box-shadow:var(--ring),var(--shadow-sm);overflow:hidden}
+.staycard > div{padding:var(--space-20) var(--space-24);min-width:0}
+.staycard > div + div{box-shadow:inset 1px 0 0 var(--line)}
+.staycard .status{display:inline-flex;align-items:center;gap:7px;padding:var(--space-4) var(--space-10);border-radius:var(--r-xs);font-size:12px;font-weight:600;line-height:1.4;color:var(--ink)}
+.staycard .status::before{content:"";width:7px;height:7px;border-radius:50%;flex:none}
+.staycard .same{background:var(--lime)} .staycard .same::before{display:none}
+.staycard .diff{background:var(--warn-pale)} .staycard .diff::before{background:var(--warn)}
+.staycard .tbc{background:var(--white);box-shadow:inset 0 0 0 1px var(--line-strong)} .staycard .tbc::before{box-shadow:inset 0 0 0 1.5px var(--muted)}
+.route{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-4) var(--space-10);margin-top:var(--space-10);font-size:16px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.route .to{color:var(--muted);font-weight:400}
+.staycard .l{font-size:12px;font-weight:500;color:var(--muted);line-height:1.4}
+.staycard .zone2{font-size:18px;font-weight:600;line-height:1.4;margin-top:var(--space-2)}
+.staycard .note{font-size:14px;color:var(--ink-2);margin:var(--space-8) 0 0;line-height:1.65}
+.staycard .l + .note{margin-top:var(--space-2)}
+.staycard .warnnote{display:flex;gap:var(--space-8);font-size:13px;line-height:1.6;color:var(--ink-2);margin:var(--space-12) 0 0;padding:var(--space-10) var(--space-12);background:var(--paper);border-radius:var(--r-ctl)}
+.staycard .warnnote::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--warn);margin-top:8px}
+.staycard .startseg{margin-top:var(--space-14)}
+.staycard .pricebar{padding:var(--space-14) 0 0;gap:var(--space-8)}
+.staycard .pricebar .plabel{font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;margin-right:0}
+.staycard .chips{display:flex;flex-wrap:wrap;gap:var(--space-8)}
+.staycard .pchip{font-family:var(--sans);font-size:12.5px;background:var(--paper-2);border:1px solid var(--line);color:var(--ink-2);padding:var(--space-8) var(--space-12)}
+.staycard .pchip.on{background:var(--ink);border-color:var(--ink);color:var(--white);font-weight:600}
+.staymap{margin-top:var(--space-16)}
+.staymap + .staymap{margin-top:var(--space-24)}
+.staymap .l{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:var(--space-8)}
+.staymap .mapframe{box-shadow:var(--ring)}
+.staycap{font-size:12px;color:var(--muted);margin:var(--space-8) 0 0}
+.staycap a{color:var(--green);font-weight:600;display:inline-flex;align-items:center;min-height:24px}
+@media(max-width:640px){
+  .staycard{grid-template-columns:1fr}
+  .staycard > div + div{box-shadow:inset 0 1px 0 var(--line)}
+  .staycard > div{padding:var(--space-16) var(--space-18)}
+}

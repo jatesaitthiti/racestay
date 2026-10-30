@@ -13,7 +13,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "64", "18"
+CSS_V, JS_V = "65", "19"
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -224,6 +224,33 @@ def statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
             '</div></div></div>\n')
 
 
+def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
+    """Stay layout A: card (status + route | area note) then the map(s) and a one-line caption."""
+    if same:
+        route = bi("span", "สตาร์ทและเส้นชัย", "Start and finish", "to") + f"<span>{e(start)}</span>"
+    elif finish_tbc:
+        route = f'<span>{e(start)}</span><span class="to">→</span>' + bi("span", "เส้นชัยรอยืนยัน", "Finish TBC")
+    else:
+        route = f'<span>{e(start)}</span><span class="to">→</span><span>{e(finish)}</span>'
+    card = (f'  <div class="staycard">\n    <div>{sf_same}<div class="route">{route}</div></div>\n'
+            f'    <div>{bi("div", "เตรียมตัวเรื่องที่พัก", "Before you book", "l")}{bi("p", d["zoneNoteTh"], d["zoneNoteEn"], "note")}</div>\n  </div>\n')
+    maps = d.get("maps") or [{"labelTh": "", "labelEn": "", "lat": d["lat"], "lng": d["lng"], "venue": d.get("startMap", start)}]
+    out = card
+    for i, m in enumerate(maps):
+        vq = quote(f'{m["venue"]}, {city}')
+        mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
+        label = bi("div", m["labelTh"], m["labelEn"], "l") if m["labelTh"] else ""
+        out += (f'  <div class="staymap">{label}<iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near {e(m["venue"])}" '
+                f'src="https://www.stay22.com/embed/gm?aid=affiliateid&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe></div>\n')
+    near = d.get("startMap", start)
+    cap_th = f"ราคาและห้องว่างจริงจาก Stay22 · รอบ {near}"
+    cap_en = f"Live prices and availability from Stay22 · around {near}"
+    link = (f' · <a href="{e(d["cityPage"])}" data-th="ดูที่พักทั้งหมดใน {e(city)} →" data-en="See all stays in {e(city)} →">ดูที่พักทั้งหมดใน {e(city)} →</a>'
+            if d.get("cityPage") else "")
+    out += f'  <p class="staycap">{bi("span", cap_th, cap_en)}{link}</p>\n'
+    return out
+
+
 def chrome():
     src = CHROME_SRC.read_text(encoding="utf-8")
     crumb = re.search(r'<div class="band[^"]*"><div class="in"><div class="crumb">', src).start()
@@ -301,6 +328,7 @@ def render(ev, nav, foot):
 """
     panel = statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
     H = headlines(ev)
+    stay_html = staycard(ev, d, start, finish, same, finish_tbc, sf_same, city)
     body = f"""<div class="band herodark"><div class="in"><div class="crumb"><a href="index.html" data-th="← งานกีฬาทั้งหมด" data-en="← All events">← งานกีฬาทั้งหมด</a></div></div></div>
 
 <div class="band herodark"><div class="in phero">
@@ -330,14 +358,7 @@ def render(ev, nav, foot):
 
 <div class="band stay tone-lime"><div class="in sec banded">
   <div class="seclabel"><span class="num">03</span><span class="n" data-th="ที่พัก" data-en="Stay">ที่พัก</span>{bi("h2", *H[2])}</div>
-  <div class="sf">
-    {sf_same}
-    <span class="lb ls">Start</span><span class="lb lf">Finish</span>
-    <span class="v vs">{e(start)}</span><span class="arrow" aria-hidden="true">→</span><span class="v vf">{e(finish)}</span>
-  </div>
-  <div class="zone">{bi("p", d["zoneNoteTh"], d["zoneNoteEn"])}</div>
-{maps_html}  <div class="mapfoot" data-th="วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบ{spot} เลือกและจองได้เลย" data-en="Live Stay22 widget · real hotels and prices around the start — browse and book">วิดเจ็ต Stay22 จริง · โรงแรมและราคาจริงรอบ{spot} เลือกและจองได้เลย</div>
-{city_link}</div></div>
+{stay_html}</div></div>
 
 <div class="band tone-paper2"><div class="in sec banded">
   <div class="seclabel"><span class="num">04</span><span class="n" data-th="การเดินทาง" data-en="Transit">การเดินทาง</span>{bi("h2", *H[3])}</div>

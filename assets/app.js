@@ -103,6 +103,8 @@ function setStay(s){
   if(el=document.getElementById('st-finish')) el.classList.toggle('on',s==='finish');
   if(el=document.getElementById('bstay-start')) el.classList.toggle('on',s==='start');
   if(el=document.getElementById('bstay-finish')) el.classList.toggle('on',s==='finish');
+  document.querySelectorAll('[data-stay]').forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-stay')===s); });
+  if(typeof segSyncAll==='function') segSyncAll();
 }
 function setPrice(btn,min,max){
   var bar=btn.closest('.pricebar');
