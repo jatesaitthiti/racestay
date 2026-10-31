@@ -607,3 +607,10 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
   .staycard > div + div{box-shadow:inset 0 1px 0 var(--line)}
   .staycard > div{padding:var(--space-16) var(--space-18)}
 }
+/* icons: Dazzle Line (CC0, svgrepo.com), inline SVG, single 2px stroke in currentColor, never emoji */
+.icon{width:1.15em;height:1.15em;flex:none;display:inline-block;vertical-align:-0.2em}
+.faqcat .icon{width:20px;height:20px}
+.official .links{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4) var(--space-8)}
+.official .links a{display:inline-flex;align-items:center;gap:var(--space-6);min-height:24px}
+.official .links .icon{width:16px;height:16px}
+.official .links .sep{color:var(--muted)}
