@@ -191,12 +191,36 @@ function toggleMarquee(btn){
 }
 function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
-  var r=document.getElementById('races'); if(!r) return;
-  var band=r.closest('.band')||r;
+  var h=document.querySelector('.hero.home'), r=document.getElementById('races');
+  var band=h?h.closest('.band'):(r?(r.closest('.band')||r):null); if(!band) return;
+  if(h){ b.style.height=Math.round(band.getBoundingClientRect().bottom+window.pageYOffset)+'px'; return; }
   b.style.height=Math.round(band.getBoundingClientRect().top+window.pageYOffset)+'px';
 }
 window.addEventListener('resize', function(){ segSyncAll(); sizeTopBg(); fitDesc(); });
 window.addEventListener('load', sizeTopBg);
+/* home hero video: phones get the 640px file; reduced motion or save-data keep the still poster */
+function setVidBtn(btn,paused){
+  if(!btn) return; btn.classList.toggle('paused',paused);
+  var s=btn.querySelector('.vh'), th=paused?'เล่นวิดีโอพื้นหลัง':'หยุดวิดีโอพื้นหลัง', en=paused?'Play background video':'Pause background video';
+  s.setAttribute('data-th',th); s.setAttribute('data-en',en); s.textContent=(document.documentElement.lang==='en')?en:th;
+}
+function toggleHeroVid(btn){
+  var v=document.querySelector('.herovid'); if(!v) return;
+  v.dataset.userPaused=v.paused?'':'1';
+  if(v.paused){ v.play(); setVidBtn(btn,false); } else { v.pause(); setVidBtn(btn,true); }
+}
+function initHeroVid(){
+  var v=document.querySelector('.herovid'); if(!v) return;
+  var btn=document.querySelector('.vidtoggle');
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save=navigator.connection && navigator.connection.saveData;
+  if(reduce||save){ if(btn) btn.hidden=true; return; }
+  v.src=(window.innerWidth<700)?v.getAttribute('data-src-sm'):v.getAttribute('data-src-lg');
+  var p=v.play(); if(p&&p.catch) p.catch(function(){ setVidBtn(btn,true); });
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(v.dataset.userPaused) return; if(e.isIntersecting) v.play().catch(function(){}); else v.pause(); });
+  }).observe(v);
+}
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitDesc);
 
 /* apply saved language on every page load */
@@ -212,6 +236,7 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   initSegments();
+  initHeroVid();
   var ec=document.getElementById('evcount');
   if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .evcard'),function(c){return c.style.display!=='none';}).length;
   sizeTopBg();
