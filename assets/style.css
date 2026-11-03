@@ -629,7 +629,10 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 .hotelcard .hd b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .hotelcard .hfac{min-width:0;margin-top:var(--space-12)}
 .hotelcard .facil{margin-top:0}
-.hotelcard .facil > span{white-space:nowrap}
+.hotelcard .facil > span{display:inline-flex;align-items:center;gap:var(--space-6);white-space:nowrap;padding-left:var(--space-6)}
+/* the Dazzle icon replaces the ✓ on hotel chips */
+.hotelcard .facil > span:before{content:none}
+.hotelcard .facil .icon{width:16px;height:16px;color:var(--green)}
 /* app.js wraps Thai phrases in inner spans; only the outer span is the chip */
 .hotelcard .facil span span{border:0;padding:0;background:none;border-radius:0}
 .hotelcard .facil span span:before{content:none}
