@@ -193,7 +193,8 @@ function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
   var h=document.querySelector('.hero.home'), r=document.getElementById('races');
   var band=h?h.closest('.band'):(r?(r.closest('.band')||r):null); if(!band) return;
-  if(h){ b.style.height=Math.round(band.getBoundingClientRect().bottom+window.pageYOffset)+'px'; return; }
+  if(h){ var f=document.querySelector('.onvid'); if(f && window.innerWidth>=700) band=f;
+    b.style.height=Math.round(band.getBoundingClientRect().bottom+window.pageYOffset)+'px'; return; }
   b.style.height=Math.round(band.getBoundingClientRect().top+window.pageYOffset)+'px';
 }
 window.addEventListener('resize', function(){ segSyncAll(); sizeTopBg(); fitDesc(); });
@@ -216,6 +217,9 @@ function initHeroVid(){
   var save=navigator.connection && navigator.connection.saveData;
   if(reduce||save){ if(btn) btn.hidden=true; return; }
   v.src=(window.innerWidth<700)?v.getAttribute('data-src-sm'):v.getAttribute('data-src-lg');
+  /* the button follows the video's real state (autoplay can be blocked, then start later on scroll) */
+  v.addEventListener('play',function(){ setVidBtn(btn,false); });
+  v.addEventListener('pause',function(){ setVidBtn(btn,true); });
   var p=v.play(); if(p&&p.catch) p.catch(function(){ setVidBtn(btn,true); });
   if('IntersectionObserver' in window) new IntersectionObserver(function(es){
     es.forEach(function(e){ if(v.dataset.userPaused) return; if(e.isIntersecting) v.play().catch(function(){}); else v.pause(); });
