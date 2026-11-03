@@ -17,7 +17,7 @@ from urllib.parse import quote, urlencode
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
 HOTELS_DIR = ROOT / "data" / "hotels"
-CSS_V, JS_V = "71", "19"
+CSS_V, JS_V = "72", "19"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
@@ -284,12 +284,13 @@ def hotel_cards(ev, d, same):
     cards = ""
     for h in hotels:
         dt_th, dt_en = dist_text(metres(d["lat"], d["lng"], h["lat"], h["lng"]))
-        shown, last = [], None
+        ok, last = set(), None
         for key, f in (h.get("facilities") or {}).items():
             on = f.get("checkedOn")
             if key in FACIL and f.get("status") == "yes" and on and (today - date.fromisoformat(on)).days <= FACIL_MAX_AGE_DAYS:
-                shown.append(key)
+                ok.add(key)
                 last = max(last or on, on)
+        shown = [k for k in FACIL if k in ok]  # same order on every card, whatever order the team typed
         facil = ""
         if shown:
             y, m, dd = (int(v) for v in last.split("-"))
@@ -303,9 +304,11 @@ def hotel_cards(ev, d, same):
         q = {"aid": STAY22_AID, "hotelname": h["name"], "lat": h["lat"], "lng": h["lng"], **stay,
              "currency": "THB", "campaign": f'ev_{ev["slug"].replace("-", "_")}_hotel'}
         link = "https://www.stay22.com/allez/roam?" + urlencode(q)
-        cards += (f'    <article class="hotelcard"><div class="hmain"><h3>{e(h["name"])}</h3>{bi("p", h["zoneTh"], h["zoneEn"], "hz")}'
-                  f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}</p></div>{facil}'
-                  f'<a class="go" href="{e(link)}" target="_blank" rel="noopener sponsored" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</a></article>\n')
+        # header row (name, distance · zone, button) over a full-width facility strip
+        cards += (f'    <article class="hotelcard"><div class="hmain"><h3>{e(h["name"])}</h3>'
+                  f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}<span class="sep" aria-hidden="true">·</span>{bi("span", h["zoneTh"], h["zoneEn"], "hz")}</p></div>'
+                  f'<a class="go" href="{e(link)}" target="_blank" rel="noopener sponsored">{bi("span", "ดูห้องว่าง", "See rooms")}'
+                  f'<span class="vh">: {e(h["name"])}</span></a>{facil}</article>\n')
     cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
     cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
     return (f'  <div class="hotels">{bi("div", f"โรงแรมใกล้{spot}", "Hotels near the start", "l")}\n'

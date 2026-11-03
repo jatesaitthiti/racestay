@@ -618,16 +618,16 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 .official .links .sep{color:var(--muted)}
 
 /* team-curated hotel cards under the Stay22 map: text only, prices and availability stay on Stay22.
-   Desktop: one hotel per row (name | facilities | link) so facilities have room and line up. Phones: stacked */
+   Desktop: header row (name, distance · zone | outline button) over a full-width facility strip. Phones: button last */
 .hotels{margin-top:var(--space-32)}
 .hotels > .l{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:var(--space-8)}
 .hotelgrid{display:grid;gap:var(--space-12)}
-.hotelcard{display:flex;flex-direction:column;min-width:0;background:var(--white);border-radius:var(--r-card);box-shadow:var(--ring),var(--shadow-sm);padding:var(--space-18) var(--space-20) var(--space-8)}
+.hotelcard{display:flex;flex-direction:column;min-width:0;background:var(--white);border-radius:var(--r-card);box-shadow:var(--ring),var(--shadow-sm);padding:var(--space-18) var(--space-20)}
 .hotelcard h3{font-size:18px;font-weight:600;line-height:1.3;margin:0}
-.hotelcard .hz{font-size:14px;color:var(--muted);margin:var(--space-4) 0 0}
-.hotelcard .hd{font-size:14px;color:var(--ink-2);margin:var(--space-8) 0 0}
+.hotelcard .hd{font-size:14px;color:var(--ink-2);margin:var(--space-6) 0 0}
 .hotelcard .hd b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
-.hotelcard .hfac{min-width:0;margin-top:var(--space-12)}
+.hotelcard .hd .sep{margin:0 var(--space-6);color:var(--muted)}
+.hotelcard .hfac{order:1;min-width:0;margin-top:var(--space-14);padding-top:var(--space-12);border-top:1px solid var(--line)}
 .hotelcard .facil{margin-top:0}
 .hotelcard .facil > span{display:inline-flex;align-items:center;gap:var(--space-6);white-space:nowrap;padding-left:var(--space-6)}
 /* the Dazzle icon replaces the ✓ on hotel chips */
@@ -636,12 +636,14 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 /* app.js wraps Thai phrases in inner spans; only the outer span is the chip */
 .hotelcard .facil span span{border:0;padding:0;background:none;border-radius:0}
 .hotelcard .facil span span:before{content:none}
-.hotelcard .checked{font-size:12px;color:var(--muted);margin:var(--space-6) 0 0}
-.hotelcard .go{margin-top:var(--space-4);display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;font-size:14px;font-weight:600;color:var(--green);white-space:nowrap}
-.hotelcard .go:hover{color:var(--ink)}
+.hotelcard .checked{font-size:12px;color:var(--muted);margin:var(--space-8) 0 0}
+/* secondary (outline) button: several cards in a row shouldn't turn the section lime */
+.hotelcard .go{order:2;align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 var(--space-18);margin-top:var(--space-14);border-radius:var(--r-ctl);box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);font-size:14px;font-weight:600;white-space:nowrap;text-decoration:none}
+.hotelcard .go:hover{background:var(--ink);color:var(--lime-pale)}
+.hotelcard .go .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media(min-width:761px){
-  .hotelcard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr) auto;column-gap:var(--space-32);align-items:start;padding:var(--space-18) var(--space-24)}
-  .hotelcard .hmain{grid-column:1}
-  .hotelcard .hfac{grid-column:2;margin-top:var(--space-2)}
-  .hotelcard .go{grid-column:3;align-self:center;margin-top:0}
+  .hotelcard{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-24);align-items:center;padding:var(--space-18) var(--space-24)}
+  .hotelcard .hmain{grid-column:1;grid-row:1}
+  .hotelcard .go{grid-column:2;grid-row:1;margin-top:0}
+  .hotelcard .hfac{grid-column:1/-1;grid-row:2}
 }
