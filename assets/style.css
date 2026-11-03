@@ -433,8 +433,10 @@ a.card.disabled{pointer-events:none}
 .evcount-row{font-family:var(--data);font-size:14px;color:var(--muted);margin-top:var(--space-14);text-align:center}
 
 /* ===== home top background slot (top of page → before 01/Events) ===== */
+/* full-bleed rows (.mq is 100vw) must not add a sideways scroll when the scrollbar takes width */
+html{overflow-x:clip}
 body{position:relative;overflow-x:clip}
-.topbg{position:absolute;top:0;left:0;right:0;height:720px;z-index:-1;overflow:hidden;background:var(--charcoal) url('hero-poster.jpg') center/cover no-repeat}
+.topbg{position:absolute;top:0;left:0;right:0;height:720px;z-index:-1;overflow:hidden;background:var(--charcoal) url('hero-poster.jpg?v=2') center/cover no-repeat}
 /* home hero: looping sports video (assets/hero-*.mp4) under a dark overlay; height set to the hero's bottom by sizeTopBg() */
 .herovid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .topbg:after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 45%, rgba(21,22,15,.32), rgba(21,22,15,0) 70%), linear-gradient(180deg, rgba(21,22,15,.62) 0%, rgba(21,22,15,.58) 60%, rgba(21,22,15,.78) 100%)}
