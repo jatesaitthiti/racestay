@@ -1,0 +1,39 @@
+{
+  "_comment": "Team-curated hotels for the Bangkok Marathon page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "bangkok-marathon",
+  "hotels": [
+    {
+      "name": "Riva Arun Bangkok",
+      "zoneTh": "ท่าเตียน",
+      "zoneEn": "Tha Tien",
+      "lat": 13.7442618,
+      "lng": 100.4917791,
+      "website": "https://www.rivaarunbangkok.com",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-03",
+      "facilities": {}
+    },
+    {
+      "name": "Arun Residence",
+      "zoneTh": "ท่าเตียน",
+      "zoneEn": "Tha Tien",
+      "lat": 13.7448277,
+      "lng": 100.4912739,
+      "website": "https://www.arunresidence.com",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-03",
+      "facilities": {}
+    },
+    {
+      "name": "Chakrabongse Villas",
+      "zoneTh": "ท่าเตียน",
+      "zoneEn": "Tha Tien",
+      "lat": 13.7436256,
+      "lng": 100.4926374,
+      "website": "https://www.chakrabongsevillas.com",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-03",
+      "facilities": {}
+    }
+  ]
+}

@@ -2,18 +2,35 @@
 
 Hand-written pages (events without `detail`) are never touched. The page chrome
 (nav, newsletter, footer) is borrowed from an existing detail page so every page
-stays consistent. No hotel cards are generated — hotels come live from the
-Stay22 map, per the RaceStay concept (aggregate, don't curate).
+stays consistent. Prices and availability come live from the Stay22 map; under
+it, an event may list team-curated hotel cards from data/hotels/{slug}.json
+(text only: name, area, distance, phone-confirmed facilities, a Stay22 link).
 """
 import html
+import json
+import math
 import re
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
-CSS_V, JS_V = "68", "19"
+HOTELS_DIR = ROOT / "data" / "hotels"
+CSS_V, JS_V = "69", "19"
+STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
+
+# athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
+FACIL = {
+    "earlyBreakfast": ("อาหารเช้าก่อนปล่อยตัว", "Breakfast before the start"),
+    "breakfastBox": ("กล่องอาหารเช้า", "Breakfast box"),
+    "lateCheckout": ("เช็กเอาต์สายหลังแข่ง", "Late checkout after the race"),
+    "luggage": ("ฝากกระเป๋า", "Luggage storage"),
+    "showerAfterCheckout": ("อาบน้ำหลังเช็กเอาต์", "Shower after checkout"),
+    "bikeStorage": ("ที่เก็บจักรยาน", "Bike storage"),
+    "shuttle": ("รถรับส่งไปจุดสตาร์ท", "Shuttle to the start"),
+}
+FACIL_MAX_AGE_DAYS = 365  # an older phone check is hidden until the team calls again
 
 SPORT = {
     "road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
@@ -224,6 +241,64 @@ def statpanel(ev, d, start, finish, same, finish_tbc, zone_th, zone_en, date_th)
             '</div></div></div>\n')
 
 
+def metres(lat1, lng1, lat2, lng2):
+    """Straight-line (haversine) distance in metres."""
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    a = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(math.radians(lng2 - lng1) / 2) ** 2
+    return 2 * 6371000 * math.asin(math.sqrt(a))
+
+
+def dist_text(m):
+    if m < 1000:
+        v = max(50, int(round(m / 50.0)) * 50)
+        return f"{v} ม.", f"{v} m"
+    k = f"{m / 1000:.1f}"
+    return f"{k} กม.", f"{k} km"
+
+
+def hotel_cards(ev, d, same):
+    """Team-curated hotels under the map. Facilities show only when phone-confirmed and recent."""
+    path = HOTELS_DIR / f'{ev["slug"]}.json'
+    if not path.exists():
+        return ""
+    hotels = json.loads(path.read_text(encoding="utf-8")).get("hotels", [])
+    if not hotels:
+        return ""
+    spot = SPOT.get(ev["sport"], "จุดสตาร์ท")
+    to_th, to_en = (f"จาก{spot}และเส้นชัย", "from the start and finish") if same else (f"จาก{spot}", "from the start")
+    stay = {}
+    if not ev.get("dateTba"):
+        race = date.fromisoformat(ev["date"])
+        stay = {"checkin": (race - timedelta(days=1)).isoformat(), "checkout": race.isoformat()}
+    today = date.today()
+    cards = ""
+    for h in hotels:
+        dt_th, dt_en = dist_text(metres(d["lat"], d["lng"], h["lat"], h["lng"]))
+        shown, last = [], None
+        for key, f in (h.get("facilities") or {}).items():
+            on = f.get("checkedOn")
+            if key in FACIL and f.get("status") == "yes" and on and (today - date.fromisoformat(on)).days <= FACIL_MAX_AGE_DAYS:
+                shown.append(key)
+                last = max(last or on, on)
+        facil = ""
+        if shown:
+            y, m, dd = (int(v) for v in last.split("-"))
+            chips = "".join(bi("span", *FACIL[k]) for k in shown)
+            facil = (f'<div class="facil">{chips}</div>'
+                     + bi("p", f"ตรวจสอบโดยทีมงาน · โทรเช็ค {dd} {TH_MON[m - 1]} {y}",
+                          f"Checked by our team · phoned {dd} {EN_MONTH[m - 1]} {y}", "checked"))
+        q = {"aid": STAY22_AID, "hotelname": h["name"], "lat": h["lat"], "lng": h["lng"], **stay,
+             "currency": "THB", "campaign": f'ev_{ev["slug"].replace("-", "_")}_hotel'}
+        link = "https://www.stay22.com/allez/roam?" + urlencode(q)
+        cards += (f'    <article class="hotelcard"><h3>{e(h["name"])}</h3>{bi("p", h["zoneTh"], h["zoneEn"], "hz")}'
+                  f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}</p>{facil}'
+                  f'<a class="go" href="{e(link)}" target="_blank" rel="noopener sponsored" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</a></article>\n')
+    cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
+    cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
+    return (f'  <div class="hotels">{bi("div", f"โรงแรมใกล้{spot}", "Hotels near the start", "l")}\n'
+            f'  <div class="hotelgrid">\n{cards}  </div>\n  <p class="staycap">{bi("span", cap_th, cap_en)}</p></div>\n')
+
+
 def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
     """Stay layout A: card (status + route | area note) then the map(s) and a one-line caption."""
     if same:
@@ -241,14 +316,14 @@ def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
         mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
         label = bi("div", m["labelTh"], m["labelEn"], "l") if m["labelTh"] else ""
         out += (f'  <div class="staymap">{label}<iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near {e(m["venue"])}" '
-                f'src="https://www.stay22.com/embed/gm?aid=affiliateid&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe></div>\n')
+                f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe></div>\n')
     near = d.get("startMap", start)
     cap_th = f"ราคาและห้องว่างจริงจาก Stay22 · รอบ {near}"
     cap_en = f"Live prices and availability from Stay22 · around {near}"
     link = (f' · <a href="{e(d["cityPage"])}" data-th="ดูที่พักทั้งหมดใน {e(city)} →" data-en="See all stays in {e(city)} →">ดูที่พักทั้งหมดใน {e(city)} →</a>'
             if d.get("cityPage") else "")
     out += f'  <p class="staycap">{bi("span", cap_th, cap_en)}{link}</p>\n'
-    return out
+    return out + hotel_cards(ev, d, same)
 
 
 def chrome():
@@ -310,7 +385,7 @@ def render(ev, nav, foot):
         mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
         maps_html += (f'  <div class="maplabel"><span data-th="{e(m["labelTh"])}" data-en="{e(m["labelEn"])}">{e(m["labelTh"])}</span><span>Stay22</span></div>\n'
                       f'  <iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="hotels near {e(m["venue"])}" '
-                      f'src="https://www.stay22.com/embed/gm?aid=affiliateid&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe>\n')
+                      f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe>\n')
     title_th = f"{name} — ที่พักใกล้{spot} | RaceStay"
     title_en = f"{name} — Hotels Near the Start | RaceStay"
     head = f"""<!DOCTYPE html>
