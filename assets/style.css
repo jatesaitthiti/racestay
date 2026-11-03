@@ -462,7 +462,7 @@ html[lang="th"] .zone p, html[lang="th"] .lead, html[lang="th"] .hero .sub{lette
 .evcard{container-type:inline-size;display:flex;flex-direction:column;background:var(--white);border-radius:var(--r-card);overflow:hidden;color:inherit;text-decoration:none;box-shadow:var(--ring)}
 a.evcard:hover{box-shadow:var(--ring-strong)}
 .evcard .dcover{flex:0 0 calc(100cqw / 6);display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-10);padding:0 var(--space-18) var(--space-12);border-radius:var(--r-card) var(--r-card) 0 0}
-.evcard .dcover .sp{font-family:var(--data);font-size:13px;font-weight:700;letter-spacing:.1em;white-space:nowrap;flex-shrink:0}
+.evcard .dcover .sp{font-family:var(--data);font-size:12px;font-weight:700;letter-spacing:.1em;white-space:nowrap;flex-shrink:0}
 .evcard .dcover .dd{font-family:var(--data);font-size:12px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
 .evcard .dbody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:var(--space-8);padding:var(--space-16) var(--space-20) var(--space-18)}
 .evcard .dbody h3{font-family:var(--disp);font-weight:600;font-size:20px;line-height:1.3;margin:0;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -559,7 +559,7 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
   .sec.banded{padding-bottom:var(--space-48)}
   .sec.banded > .seclabel{padding-top:var(--space-40)}
   .sec.banded > .seclabel + *{margin-top:var(--space-20) !important}
-  .sec.banded .seclabel h2{font-size:22px}
+  .sec.banded .seclabel h2{font-size:20px}
 }
 
 /* footer: credit link flows inline with the sentence so both share one baseline */
