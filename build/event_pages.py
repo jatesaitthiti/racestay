@@ -17,7 +17,7 @@ from urllib.parse import quote, urlencode
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
 HOTELS_DIR = ROOT / "data" / "hotels"
-CSS_V, JS_V = "69", "19"
+CSS_V, JS_V = "70", "19"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
@@ -284,14 +284,14 @@ def hotel_cards(ev, d, same):
         if shown:
             y, m, dd = (int(v) for v in last.split("-"))
             chips = "".join(bi("span", *FACIL[k]) for k in shown)
-            facil = (f'<div class="facil">{chips}</div>'
+            facil = (f'<div class="hfac"><div class="facil">{chips}</div>'
                      + bi("p", f"ตรวจสอบโดยทีมงาน · โทรเช็ค {dd} {TH_MON[m - 1]} {y}",
-                          f"Checked by our team · phoned {dd} {EN_MONTH[m - 1]} {y}", "checked"))
+                          f"Checked by our team · phoned {dd} {EN_MONTH[m - 1]} {y}", "checked") + '</div>')
         q = {"aid": STAY22_AID, "hotelname": h["name"], "lat": h["lat"], "lng": h["lng"], **stay,
              "currency": "THB", "campaign": f'ev_{ev["slug"].replace("-", "_")}_hotel'}
         link = "https://www.stay22.com/allez/roam?" + urlencode(q)
-        cards += (f'    <article class="hotelcard"><h3>{e(h["name"])}</h3>{bi("p", h["zoneTh"], h["zoneEn"], "hz")}'
-                  f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}</p>{facil}'
+        cards += (f'    <article class="hotelcard"><div class="hmain"><h3>{e(h["name"])}</h3>{bi("p", h["zoneTh"], h["zoneEn"], "hz")}'
+                  f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}</p></div>{facil}'
                   f'<a class="go" href="{e(link)}" target="_blank" rel="noopener sponsored" data-th="เช็คห้อง →" data-en="Check rooms →">เช็คห้อง →</a></article>\n')
     cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
     cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
