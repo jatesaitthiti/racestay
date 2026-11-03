@@ -349,6 +349,8 @@ a.card.disabled{pointer-events:none}
 .card,.statpanel,.feature,.mapframe,.tabs,.subtabs,.menu,.news form,.row.partner,.ad,.ad.infeed{border-radius:var(--r-card)}
 .btn,.fbtn,.form input,.form select,.form textarea{border-radius:var(--r-ctl)}
 .pchip,.lang,.menu-lang,.navbar,.menubtn,.menu .cta{border-radius:var(--r-pill)}
+/* mobile newsletter: input and button stack as separate controls, so each takes its own corners */
+@media(max-width:480px){.news form{border-radius:0;overflow:visible}.news input,.news button{border-radius:var(--r-ctl)}}
 
 /* ===== unified segmented control (mobbin tabs) ===== */
 .seg{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-pill);padding:var(--space-4)}
