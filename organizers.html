@@ -7,7 +7,7 @@
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="description" content="ลงงานกีฬาของคุณบน RaceStay ฟรี — ช่วยนักกีฬาหาที่พักใกล้จุดสตาร์ท ลดคำถามเรื่องที่พัก">
 <link rel="stylesheet" href="assets/style.css?v=79">
-<script src="assets/app.js?v=23" defer></script>
+<script src="assets/app.js?v=24" defer></script>
 </head>
 <body>
 <a class="skip" href="#main" data-th="ข้ามไปเนื้อหา" data-en="Skip to content">ข้ามไปเนื้อหา</a>
@@ -24,7 +24,7 @@
     </nav>
     <div class="navright">
       <span class="lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
-      <button class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 6H20M4 12H20M4 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6L18 18M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="menubtn" aria-label="เมนู" data-th-aria="เมนู" data-en-aria="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 6H20M4 12H20M4 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6L18 18M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
   <div class="menu" id="menu">
@@ -40,14 +40,14 @@
 
 <!-- HERO -->
 <div class="band"><div class="in phero">
-  <div class="kick">For organizers</div>
+  <div class="kick" data-th="สำหรับผู้จัดงาน" data-en="For organizers">สำหรับผู้จัดงาน</div>
   <h1 data-th="ลงงานของคุณบน RaceStay<br>ฟรี" data-en="List your event on RaceStay<br>free">ลงงานของคุณบน RaceStay<br>ฟรี</h1>
   <p class="sub" data-th="จัดงานวิ่ง เทรล ไตรกีฬา หรือ ไฮรอกซ์? ให้เราช่วยนักกีฬาของคุณหาที่พักใกล้จุดสตาร์ท — ลดคำถามเรื่องที่พัก เพิ่มคนมาถึงเส้นสตาร์ททันเวลา" data-en="Running a road race, trail, triathlon or HYROX? Let us help your athletes find hotels near the start — fewer stay questions, more athletes at the gun on time.">จัดงานวิ่ง เทรล ไตรกีฬา หรือ ไฮรอกซ์? ให้เราช่วยนักกีฬาของคุณหาที่พักใกล้จุดสตาร์ท — ลดคำถามเรื่องที่พัก เพิ่มคนมาถึงเส้นสตาร์ททันเวลา</p>
 </div></div>
 
 <!-- WHY -->
 <div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">01 / Why</span><h2 data-th="ทำไมผู้จัดงานถึงลงกับเรา" data-en="Why organizers list with us">ทำไมผู้จัดงานถึงลงกับเรา</h2></div>
+  <div class="seclabel"><span class="n" data-th="01 / ทำไม" data-en="01 / Why">01 / ทำไม</span><h2 data-th="ทำไมผู้จัดงานถึงลงกับเรา" data-en="Why organizers list with us">ทำไมผู้จัดงานถึงลงกับเรา</h2></div>
   <div class="grid c3" style="margin-top:22px">
     <span class="card">
       <span class="tag" data-th="ฟรี" data-en="Free">ฟรี</span>
@@ -62,31 +62,31 @@
     <span class="card">
       <span class="tag" data-th="ครบทุกกีฬา" data-en="All sports">ครบทุกกีฬา</span>
       <h3 data-th="รองรับทุกประเภทงาน" data-en="Every event type">รองรับทุกประเภทงาน</h3>
-      <div class="desc" data-th="วิ่งถนน วิ่งเทรล ไตรกีฬา และ ไฮรอกซ์ — จัดการจุดสตาร์ท/เส้นชัยคนละที่ และ transition ได้" data-en="Road, trail, triathlon and HYROX — we handle split start/finish and transition zones.">วิ่งถนน วิ่งเทรล ไตรกีฬา และ ไฮรอกซ์ — จัดการจุดสตาร์ท/เส้นชัยคนละที่ และ transition ได้</div>
+      <div class="desc" data-th="วิ่งถนน วิ่งเทรล ไตรกีฬา และ ไฮรอกซ์ — จัดการจุดสตาร์ท/เส้นชัยคนละที่ และจุดทรานซิชัน ได้" data-en="Road, trail, triathlon and HYROX — we handle split start/finish and transition zones.">วิ่งถนน วิ่งเทรล ไตรกีฬา และ ไฮรอกซ์ — จัดการจุดสตาร์ท/เส้นชัยคนละที่ และจุดทรานซิชัน ได้</div>
     </span>
   </div>
 </div></div>
 
 <!-- SUBMIT FORM -->
 <div class="band stay"><div class="in sec">
-  <div class="seclabel"><span class="n">02 / Submit</span><h2 data-th="ส่งข้อมูลงานของคุณ" data-en="Submit your event">ส่งข้อมูลงานของคุณ</h2></div>
+  <div class="seclabel"><span class="n" data-th="02 / ส่งข้อมูล" data-en="02 / Submit">02 / ส่งข้อมูล</span><h2 data-th="ส่งข้อมูลงานของคุณ" data-en="Submit your event">ส่งข้อมูลงานของคุณ</h2></div>
   <p class="lead" data-th="กรอกข้อมูลเบื้องต้น ทีมงานจะติดต่อกลับเพื่อจัดทำหน้างานให้ (แบบฟอร์มสาธิต)" data-en="Share the basics and our team will follow up to build your event page. (Demo form.)">กรอกข้อมูลเบื้องต้น ทีมงานจะติดต่อกลับเพื่อจัดทำหน้างานให้ (แบบฟอร์มสาธิต)</p>
   <form class="form" onsubmit="return false">
     <label for="f-organizers-1" data-th="ชื่องาน" data-en="Event name">ชื่องาน</label>
-    <input id="f-organizers-1" type="text" aria-label="event name" data-th-ph="เช่น Amazing Thailand Marathon 2027" data-en-ph="e.g. Amazing Thailand Marathon 2027" placeholder="เช่น Amazing Thailand Marathon 2027">
+    <input id="f-organizers-1" type="text" aria-label="ชื่องาน" data-th-aria="ชื่องาน" data-en-aria="event name" data-th-ph="เช่น Amazing Thailand Marathon 2027" data-en-ph="e.g. Amazing Thailand Marathon 2027" placeholder="เช่น Amazing Thailand Marathon 2027">
     <label for="f-organizers-2" data-th="ประเภทกีฬา" data-en="Sport">ประเภทกีฬา</label>
-    <select id="f-organizers-2" aria-label="sport">
+    <select id="f-organizers-2" aria-label="กีฬา" data-th-aria="กีฬา" data-en-aria="sport">
       <option data-th="วิ่งถนน" data-en="Road running">วิ่งถนน</option>
       <option data-th="วิ่งเทรล" data-en="Trail running">วิ่งเทรล</option>
       <option data-th="ไตรกีฬา" data-en="Triathlon">ไตรกีฬา</option>
       <option data-th="ไฮรอกซ์" data-en="HYROX">ไฮรอกซ์</option>
     </select>
     <label for="f-organizers-3" data-th="เมือง / จังหวัด" data-en="City / province">เมือง / จังหวัด</label>
-    <input id="f-organizers-3" type="text" aria-label="city" data-th-ph="เช่น กรุงเทพฯ" data-en-ph="e.g. Bangkok" placeholder="เช่น กรุงเทพฯ">
+    <input id="f-organizers-3" type="text" aria-label="เมือง" data-th-aria="เมือง" data-en-aria="city" data-th-ph="เช่น กรุงเทพฯ" data-en-ph="e.g. Bangkok" placeholder="เช่น กรุงเทพฯ">
     <label for="f-organizers-4" data-th="วันที่จัดงาน" data-en="Event date">วันที่จัดงาน</label>
-    <input id="f-organizers-4" type="text" aria-label="date" data-th-ph="เช่น 28 พ.ย. 2027" data-en-ph="e.g. 28 Nov 2027" placeholder="เช่น 28 พ.ย. 2027">
+    <input id="f-organizers-4" type="text" aria-label="วันที่" data-th-aria="วันที่" data-en-aria="date" data-th-ph="เช่น 28 พ.ย. 2027" data-en-ph="e.g. 28 Nov 2027" placeholder="เช่น 28 พ.ย. 2027">
     <label for="f-organizers-5" data-th="อีเมลติดต่อ" data-en="Contact email">อีเมลติดต่อ</label>
-    <input id="f-organizers-5" type="email" aria-label="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
+    <input id="f-organizers-5" type="email" aria-label="อีเมล" data-th-aria="อีเมล" data-en-aria="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
     <button class="btn" type="submit" data-th="ส่งข้อมูลงาน" data-en="Submit event">ส่งข้อมูลงาน</button>
     <div class="formnote" data-th="* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง" data-en="* Demo form — does not submit real data">* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง</div>
   </form>

@@ -126,7 +126,7 @@
       "date": "2027-09-26",
       "dateLabel": "TBA",
       "city": "Chonburi",
-      "blurbTh": "สตาร์ทและเข้าเส้นชัยหน้า Terminal21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)",
+      "blurbTh": "สตาร์ทและเข้าเส้นชัยหน้าเทอร์มินอล 21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)",
       "blurbEn": "Start and finish outside Terminal21 on North Pattaya Road · next date not announced yet (last held Sep 2026)",
       "dateTba": true,
       "source": "https://www.pattayamarathon.com",
@@ -157,7 +157,7 @@
         ],
         "zoneTh": "พัทยาเหนือ / นาเกลือ / วงเวียนโลมา",
         "zoneEn": "North Pattaya / Naklua / Dolphin Roundabout",
-        "zoneNoteTh": "รอบล่าสุดจัด 26–27 ก.ย. 2026 (10K/4.5K วันเสาร์ ฟูลและฮาล์ฟวันอาทิตย์) · รอผู้จัดประกาศวันรอบหน้า",
+        "zoneNoteTh": "รอบล่าสุดจัด 26–27 ก.ย. 2026 (10 กม. และ 4.5 กม. วันเสาร์ ฟูลและฮาล์ฟวันอาทิตย์) · รอผู้จัดประกาศวันรอบหน้า",
         "zoneNoteEn": "Last held 26–27 Sep 2026 (10K/4.5K on Saturday, full and half on Sunday) · waiting for the organizer to announce the next date",
         "schedule": [
           {
@@ -179,7 +179,7 @@
       "date": "2027-06-13",
       "dateLabel": "12–13 JUN 2027",
       "city": "Phuket",
-      "blurbTh": "สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10K/5K วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์",
+      "blurbTh": "สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10 กม. และ 5 กม. วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์",
       "blurbEn": "Start and finish at Laguna Grove · the 10K/5K run on Saturday evening, the full and half before dawn on Sunday",
       "source": "https://phuketmarathon.com/",
       "checkedOn": "2026-10-22",
@@ -387,7 +387,7 @@
       "date": "2026-11-15",
       "dateLabel": "15 NOV 2026",
       "city": "Phuket",
-      "blurbTh": "ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · transition และเส้นชัยที่ลากูน่า โกรฟ",
+      "blurbTh": "ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · จุดทรานซิชันและเส้นชัยที่ลากูน่า โกรฟ",
       "blurbEn": "A sea swim off Laguna beach, 50 km bike and 12 km run · transition and finish at Laguna Grove",
       "source": "https://www.lagunaphukettri.com/",
       "checkedOn": "2026-10-22",
@@ -420,7 +420,7 @@
         ],
         "zoneTh": "ลากูน่า ภูเก็ต / บางเทา",
         "zoneEn": "Laguna Phuket / Bang Tao",
-        "zoneNoteTh": "จุดว่ายน้ำ transition และเส้นชัยอยู่ในลากูน่าทั้งหมด พักในลากูน่าหรือบางเทาจะเข็นจักรยานไปเช็กอินได้สะดวก",
+        "zoneNoteTh": "จุดว่ายน้ำ จุดทรานซิชัน และเส้นชัยอยู่ในลากูน่าทั้งหมด พักในลากูน่าหรือบางเทาจะเข็นจักรยานไปเช็กอินได้สะดวก",
         "zoneNoteEn": "Swim start, transition and finish are all inside Laguna — stay in Laguna or Bang Tao to wheel your bike to check-in",
         "cityPage": "city-phuket.html",
         "officialUrl": "https://www.lagunaphukettri.com/"
@@ -433,7 +433,7 @@
       "date": "2027-02-15",
       "dateLabel": "TBA",
       "city": "Chonburi",
-      "blurbTh": "IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · ironman.com ยังไม่ประกาศวันรอบหน้า",
+      "blurbTh": "IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · เว็บไซต์ IRONMAN ยังไม่ประกาศวันรอบหน้า",
       "blurbEn": "IRONMAN 70.3 on Bang Saen beach (1.9 / 90 / 21.1 km) · ironman.com hasn't announced the next date yet",
       "dateTba": true,
       "source": "https://www.ironman.com/races/im703-bangsaen",
@@ -455,7 +455,7 @@
         ],
         "zoneTh": "ริมหาดบางแสน",
         "zoneEn": "Bang Saen beachfront",
-        "zoneNoteTh": "ironman.com ยังไม่ระบุวันและตำแหน่ง transition ของรอบหน้า · เทศบาลเมืองแสนสุขระบุว่างานนี้จัดช่วงเดือน ก.พ.",
+        "zoneNoteTh": "เว็บไซต์ IRONMAN ยังไม่ระบุวันและตำแหน่งจุดทรานซิชันของรอบหน้า · เทศบาลเมืองแสนสุขระบุว่างานนี้จัดช่วงเดือน ก.พ.",
         "zoneNoteEn": "ironman.com hasn't published the next date or transition location · Saensuk Municipality lists the race as a February event",
         "schedule": [
           {
@@ -514,7 +514,7 @@
         "schedule": [
           {
             "when": "12 DEC",
-            "th": "รับ race pack 11:00–18:00",
+            "th": "รับแพ็กเกจแข่ง 11:00–18:00",
             "en": "Race-pack pickup 11:00–18:00",
             "stayTh": "พักตั้งแต่คืนก่อนปั่น",
             "stayEn": "Stay the night before"
@@ -567,14 +567,14 @@
         "schedule": [
           {
             "when": "11–12 FEB",
-            "th": "Elite 15 (ฮอลล์แยก)",
+            "th": "อีลิท 15 (ฮอลล์แยก)",
             "en": "Elite 15 (separate hall)",
             "stayTh": "พักใกล้ไบเทค",
             "stayEn": "Stay near BITEC"
           },
           {
             "when": "11–14 FEB",
-            "th": "รอบแข่ง Open / Pro / Doubles / Relay ทั้งวัน",
+            "th": "รอบแข่งโอเพน / โปร / คู่ / ผลัด ทั้งวัน",
             "en": "Open / Pro / Doubles / Relay heats all day",
             "stayTh": "จองคืนให้ตรงวันรอบของคุณ",
             "stayEn": "Book nights around your heat day"

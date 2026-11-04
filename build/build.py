@@ -16,6 +16,7 @@ import sys
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 import event_pages
 import city_pages
+from th_names import place_th
 from datetime import date
 from pathlib import Path
 
@@ -77,7 +78,7 @@ def event_card(ev: dict) -> str:
 def city_card(c: dict) -> str:
     return (
         f'        <a class="mqcity" href="{c["slug"]}.html">\n'
-        f'          <h3>{c["name"]}</h3>\n'
+        f'          <h3 data-th="{place_th(c["name"])}" data-en="{c["name"]}">{place_th(c["name"])}</h3>\n'
         f'          <div class="desc" data-th="{c["blurbTh"]}" data-en="{c["blurbEn"]}">{c["blurbTh"]}</div>\n'
         f'          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>\n'
         f'        </a>'

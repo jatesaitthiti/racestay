@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-th="RaceStay — ที่พักใกล้จุดสตาร์ท ทุกงานกีฬา" data-en="RaceStay — Hotels Near the Start, Every Event">RaceStay</title>
 <link rel="icon" href="logo.svg" type="image/svg+xml">
-<meta name="description" content="RaceStay — หาที่พักใกล้จุดสตาร์ท/เส้นชัยของทุกงาน วิ่งถนน วิ่งเทรล ไตรกีฬา จักรยาน และ HYROX จองแล้วเดินถึงเส้นสตาร์ทได้">
+<meta name="description" content="RaceStay — หาที่พักใกล้จุดสตาร์ท/เส้นชัยของทุกงาน วิ่งถนน วิ่งเทรล ไตรกีฬา จักรยาน และไฮรอกซ์ จองแล้วเดินถึงเส้นสตาร์ทได้">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RaceStay — ที่พักใกล้จุดสตาร์ท ทุกงานกีฬา">
-<meta property="og:description" content="หาที่พักใกล้จุดสตาร์ท — วิ่งถนน วิ่งเทรล ไตรกีฬา HYROX">
+<meta property="og:description" content="หาที่พักใกล้จุดสตาร์ท — วิ่งถนน วิ่งเทรล ไตรกีฬา ไฮรอกซ์">
 <link rel="stylesheet" href="assets/style.css?v=79">
-<script src="assets/app.js?v=23" defer></script>
+<script src="assets/app.js?v=24" defer></script>
 </head>
 <body>
 <a class="skip" href="#main" data-th="ข้ามไปเนื้อหา" data-en="Skip to content">ข้ามไปเนื้อหา</a>
@@ -28,7 +28,7 @@
     </nav>
     <div class="navright">
       <span class="lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
-      <button class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 6H20M4 12H20M4 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6L18 18M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="menubtn" aria-label="เมนู" data-th-aria="เมนู" data-en-aria="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 6H20M4 12H20M4 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6L18 18M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
   <div class="menu" id="menu">
@@ -60,9 +60,9 @@
     </div>
     <div class="fr">
       <div class="rowx"><span data-th="วันแข่ง" data-en="Date">วันแข่ง</span><b>28–29 NOV 2026</b></div>
-      <div class="rowx"><span data-th="สถานที่" data-en="Venue">สถานที่</span><b>Sanam Luang</b></div>
-      <div class="rowx"><span data-th="ระยะ" data-en="Distances">ระยะ</span><b>42.195 / 21.1 / 10 / 4.5 km</b></div>
-      <div class="rowx"><span data-th="ที่พักใกล้สุด" data-en="Nearest stay">ที่พักใกล้สุด</span><b>190 m · เดิน 3 นาที</b></div>
+      <div class="rowx"><span data-th="สถานที่" data-en="Venue">สถานที่</span><b data-th="สนามหลวง" data-en="Sanam Luang">สนามหลวง</b></div>
+      <div class="rowx"><span data-th="ระยะ" data-en="Distances">ระยะ</span><b data-th="42.195 / 21.1 / 10 / 4.5 กม." data-en="42.195 / 21.1 / 10 / 4.5 km">42.195 / 21.1 / 10 / 4.5 กม.</b></div>
+      <div class="rowx"><span data-th="ที่พักใกล้สุด" data-en="Nearest stay">ที่พักใกล้สุด</span><b data-th="190 ม. · เดิน 3 นาที" data-en="190 m · 3-min walk">190 ม. · เดิน 3 นาที</b></div>
       <div class="rowx"><span data-th="ช่วงราคา/คืน" data-en="Price/night">ช่วงราคา/คืน</span><b>฿990–3,600</b></div>
     </div>
   </a>
@@ -70,7 +70,7 @@
 
 <!-- ALL EVENTS -->
 <div class="band"><div class="in sec" id="races">
-  <div class="seclabel"><span class="n">01 / Events</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2><a id="filterReset" href="index.html#races" onclick="clearFilter();return false" class="freset" style="display:none" data-th="× แสดงทั้งหมด" data-en="× Show all">× แสดงทั้งหมด</a><button type="button" class="mqtoggle" aria-pressed="false" aria-controls="mq-events" onclick="toggleMarquee(this)" data-th="❚❚ หยุดเลื่อน" data-en="❚❚ Pause">❚❚ หยุดเลื่อน</button></div>
+  <div class="seclabel"><span class="n" data-th="01 / งาน" data-en="01 / Events">01 / งาน</span><h2 data-th="งานทั้งหมด" data-en="All events">งานทั้งหมด</h2><a id="filterReset" href="index.html#races" onclick="clearFilter();return false" class="freset" style="display:none" data-th="× แสดงทั้งหมด" data-en="× Show all">× แสดงทั้งหมด</a><button type="button" class="mqtoggle" aria-pressed="false" aria-controls="mq-events" onclick="toggleMarquee(this)" data-th="❚❚ หยุดเลื่อน" data-en="❚❚ Pause">❚❚ หยุดเลื่อน</button></div>
 
   <div class="mq mq-events" id="mq-events" style="margin-top:22px">
     <div class="mq-track">
@@ -93,7 +93,7 @@
           </div>
           <div class="dbody">
             <h3>Laguna Phuket Triathlon</h3>
-            <div class="desc" data-th="ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · transition และเส้นชัยที่ลากูน่า โกรฟ" data-en="A sea swim off Laguna beach, 50 km bike and 12 km run · transition and finish at Laguna Grove">ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · transition และเส้นชัยที่ลากูน่า โกรฟ</div>
+            <div class="desc" data-th="ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · จุดทรานซิชันและเส้นชัยที่ลากูน่า โกรฟ" data-en="A sea swim off Laguna beach, 50 km bike and 12 km run · transition and finish at Laguna Grove">ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · จุดทรานซิชันและเส้นชัยที่ลากูน่า โกรฟ</div>
           </div>
         </a>
         <a class="evcard" href="bangsaen42-marathon.html" data-sport="road">
@@ -193,7 +193,7 @@
           </div>
           <div class="dbody">
             <h3>Laguna Phuket Marathon</h3>
-            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10K/5K วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์" data-en="Start and finish at Laguna Grove · the 10K/5K run on Saturday evening, the full and half before dawn on Sunday">สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10K/5K วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์</div>
+            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10 กม. และ 5 กม. วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์" data-en="Start and finish at Laguna Grove · the 10K/5K run on Saturday evening, the full and half before dawn on Sunday">สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10 กม. และ 5 กม. วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์</div>
           </div>
         </a>
         <a class="evcard" href="amazing-nan-marathon.html" data-sport="road">
@@ -213,7 +213,7 @@
           </div>
           <div class="dbody">
             <h3>Amazing Thailand Pattaya Marathon</h3>
-            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยหน้า Terminal21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)" data-en="Start and finish outside Terminal21 on North Pattaya Road · next date not announced yet (last held Sep 2026)">สตาร์ทและเข้าเส้นชัยหน้า Terminal21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)</div>
+            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยหน้าเทอร์มินอล 21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)" data-en="Start and finish outside Terminal21 on North Pattaya Road · next date not announced yet (last held Sep 2026)">สตาร์ทและเข้าเส้นชัยหน้าเทอร์มินอล 21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)</div>
           </div>
         </a>
         <a class="evcard" href="ironman-703-bangsaen.html" data-sport="tri">
@@ -223,7 +223,7 @@
           </div>
           <div class="dbody">
             <h3>IRONMAN 70.3 Bangsaen</h3>
-            <div class="desc" data-th="IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · ironman.com ยังไม่ประกาศวันรอบหน้า" data-en="IRONMAN 70.3 on Bang Saen beach (1.9 / 90 / 21.1 km) · ironman.com hasn't announced the next date yet">IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · ironman.com ยังไม่ประกาศวันรอบหน้า</div>
+            <div class="desc" data-th="IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · เว็บไซต์ IRONMAN ยังไม่ประกาศวันรอบหน้า" data-en="IRONMAN 70.3 on Bang Saen beach (1.9 / 90 / 21.1 km) · ironman.com hasn't announced the next date yet">IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · เว็บไซต์ IRONMAN ยังไม่ประกาศวันรอบหน้า</div>
           </div>
         </a>
       </div>
@@ -245,7 +245,7 @@
           </div>
           <div class="dbody">
             <h3>Laguna Phuket Triathlon</h3>
-            <div class="desc" data-th="ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · transition และเส้นชัยที่ลากูน่า โกรฟ" data-en="A sea swim off Laguna beach, 50 km bike and 12 km run · transition and finish at Laguna Grove">ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · transition และเส้นชัยที่ลากูน่า โกรฟ</div>
+            <div class="desc" data-th="ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · จุดทรานซิชันและเส้นชัยที่ลากูน่า โกรฟ" data-en="A sea swim off Laguna beach, 50 km bike and 12 km run · transition and finish at Laguna Grove">ว่ายทะเลหน้าหาดลากูน่า ปั่น 50 กม. วิ่ง 12 กม. · จุดทรานซิชันและเส้นชัยที่ลากูน่า โกรฟ</div>
           </div>
         </a>
         <a class="evcard" href="bangsaen42-marathon.html" data-sport="road">
@@ -345,7 +345,7 @@
           </div>
           <div class="dbody">
             <h3>Laguna Phuket Marathon</h3>
-            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10K/5K วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์" data-en="Start and finish at Laguna Grove · the 10K/5K run on Saturday evening, the full and half before dawn on Sunday">สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10K/5K วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์</div>
+            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10 กม. และ 5 กม. วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์" data-en="Start and finish at Laguna Grove · the 10K/5K run on Saturday evening, the full and half before dawn on Sunday">สตาร์ทและเข้าเส้นชัยที่ลากูน่า โกรฟ · 10 กม. และ 5 กม. วิ่งเย็นวันเสาร์ ฟูลและฮาล์ฟวิ่งเช้ามืดวันอาทิตย์</div>
           </div>
         </a>
         <a class="evcard" href="amazing-nan-marathon.html" data-sport="road">
@@ -365,7 +365,7 @@
           </div>
           <div class="dbody">
             <h3>Amazing Thailand Pattaya Marathon</h3>
-            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยหน้า Terminal21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)" data-en="Start and finish outside Terminal21 on North Pattaya Road · next date not announced yet (last held Sep 2026)">สตาร์ทและเข้าเส้นชัยหน้า Terminal21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)</div>
+            <div class="desc" data-th="สตาร์ทและเข้าเส้นชัยหน้าเทอร์มินอล 21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)" data-en="Start and finish outside Terminal21 on North Pattaya Road · next date not announced yet (last held Sep 2026)">สตาร์ทและเข้าเส้นชัยหน้าเทอร์มินอล 21 ถนนพัทยาเหนือ · รอบหน้ายังไม่ประกาศวัน (ล่าสุดจัด ก.ย. 2026)</div>
           </div>
         </a>
         <a class="evcard" href="ironman-703-bangsaen.html" data-sport="tri">
@@ -375,7 +375,7 @@
           </div>
           <div class="dbody">
             <h3>IRONMAN 70.3 Bangsaen</h3>
-            <div class="desc" data-th="IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · ironman.com ยังไม่ประกาศวันรอบหน้า" data-en="IRONMAN 70.3 on Bang Saen beach (1.9 / 90 / 21.1 km) · ironman.com hasn't announced the next date yet">IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · ironman.com ยังไม่ประกาศวันรอบหน้า</div>
+            <div class="desc" data-th="IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · เว็บไซต์ IRONMAN ยังไม่ประกาศวันรอบหน้า" data-en="IRONMAN 70.3 on Bang Saen beach (1.9 / 90 / 21.1 km) · ironman.com hasn't announced the next date yet">IRONMAN 70.3 ริมหาดบางแสน (ว่าย 1.9 / ปั่น 90 / วิ่ง 21.1 กม.) · เว็บไซต์ IRONMAN ยังไม่ประกาศวันรอบหน้า</div>
           </div>
         </a>
       </div>
@@ -386,81 +386,81 @@
 
 <!-- BY CITY TEASER -->
 <div class="band stay"><div class="in sec">
-  <div class="seclabel"><span class="n">02 / By city</span><h2 data-th="เลือกตามเมือง" data-en="Browse by city">เลือกตามเมือง</h2><button type="button" class="mqtoggle" aria-pressed="false" aria-controls="mq-cities" onclick="toggleMarquee(this)" data-th="❚❚ หยุดเลื่อน" data-en="❚❚ Pause">❚❚ หยุดเลื่อน</button></div>
+  <div class="seclabel"><span class="n" data-th="02 / ตามเมือง" data-en="02 / By city">02 / ตามเมือง</span><h2 data-th="เลือกตามเมือง" data-en="Browse by city">เลือกตามเมือง</h2><button type="button" class="mqtoggle" aria-pressed="false" aria-controls="mq-cities" onclick="toggleMarquee(this)" data-th="❚❚ หยุดเลื่อน" data-en="❚❚ Pause">❚❚ หยุดเลื่อน</button></div>
   <p class="lead" data-th="เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน" data-en="See which events each city hosts, and which neighbourhoods to stay in.">เดินทางไปเมืองไหน ดูได้เลยว่ามีงานกีฬาอะไร และควรพักย่านไหน</p>
   <div class="mq mq-cities" id="mq-cities" style="margin-top:22px">
     <div class="mq-track">
 <!-- CITIES:START -->
       <div class="mq-group">
         <a class="mqcity" href="city-bangkok.html">
-          <h3>Bangkok</h3>
+          <h3 data-th="กรุงเทพฯ" data-en="Bangkok">กรุงเทพฯ</h3>
           <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-chiang-mai.html">
-          <h3>Chiang Mai</h3>
+          <h3 data-th="เชียงใหม่" data-en="Chiang Mai">เชียงใหม่</h3>
           <div class="desc" data-th="เมืองเก่า · นิมมาน · วิ่งถนน + เทรล" data-en="Old town · Nimman · road + trail">เมืองเก่า · นิมมาน · วิ่งถนน + เทรล</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-phuket.html">
-          <h3>Phuket</h3>
+          <h3 data-th="ภูเก็ต" data-en="Phuket">ภูเก็ต</h3>
           <div class="desc" data-th="ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง" data-en="Patong · Laguna · triathlon + running">ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-chonburi.html">
-          <h3>Chonburi</h3>
+          <h3 data-th="ชลบุรี" data-en="Chonburi">ชลบุรี</h3>
           <div class="desc" data-th="บางแสน · พัทยา · ไตรกีฬา + วิ่ง" data-en="Bangsaen · Pattaya · triathlon + running">บางแสน · พัทยา · ไตรกีฬา + วิ่ง</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-buriram.html">
-          <h3>Buriram</h3>
+          <h3 data-th="บุรีรัมย์" data-en="Buriram">บุรีรัมย์</h3>
           <div class="desc" data-th="สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์" data-en="Chang Circuit · central Buriram">สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-nakhon-ratchasima.html">
-          <h3>Nakhon Ratchasima</h3>
+          <h3 data-th="นครราชสีมา" data-en="Nakhon Ratchasima">นครราชสีมา</h3>
           <div class="desc" data-th="เขาใหญ่ · ปากช่อง · เทรล + จักรยาน" data-en="Khao Yai · Pak Chong · trail + cycling">เขาใหญ่ · ปากช่อง · เทรล + จักรยาน</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-khon-kaen.html">
-          <h3>Khon Kaen</h3>
+          <h3 data-th="ขอนแก่น" data-en="Khon Kaen">ขอนแก่น</h3>
           <div class="desc" data-th="กลางเมืองขอนแก่น · มาราธอนอีสาน" data-en="Central Khon Kaen · Isan marathon">กลางเมืองขอนแก่น · มาราธอนอีสาน</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
       </div>
       <div class="mq-group" aria-hidden="true" inert>
         <a class="mqcity" href="city-bangkok.html">
-          <h3>Bangkok</h3>
+          <h3 data-th="กรุงเทพฯ" data-en="Bangkok">กรุงเทพฯ</h3>
           <div class="desc" data-th="รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา" data-en="Rattanakosin · Siam/Pathumwan · Riverside">รัตนโกสินทร์ · สยาม/ปทุมวัน · ริมเจ้าพระยา</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-chiang-mai.html">
-          <h3>Chiang Mai</h3>
+          <h3 data-th="เชียงใหม่" data-en="Chiang Mai">เชียงใหม่</h3>
           <div class="desc" data-th="เมืองเก่า · นิมมาน · วิ่งถนน + เทรล" data-en="Old town · Nimman · road + trail">เมืองเก่า · นิมมาน · วิ่งถนน + เทรล</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-phuket.html">
-          <h3>Phuket</h3>
+          <h3 data-th="ภูเก็ต" data-en="Phuket">ภูเก็ต</h3>
           <div class="desc" data-th="ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง" data-en="Patong · Laguna · triathlon + running">ป่าตอง · ลากูน่า · ไตรกีฬา + วิ่ง</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-chonburi.html">
-          <h3>Chonburi</h3>
+          <h3 data-th="ชลบุรี" data-en="Chonburi">ชลบุรี</h3>
           <div class="desc" data-th="บางแสน · พัทยา · ไตรกีฬา + วิ่ง" data-en="Bangsaen · Pattaya · triathlon + running">บางแสน · พัทยา · ไตรกีฬา + วิ่ง</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-buriram.html">
-          <h3>Buriram</h3>
+          <h3 data-th="บุรีรัมย์" data-en="Buriram">บุรีรัมย์</h3>
           <div class="desc" data-th="สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์" data-en="Chang Circuit · central Buriram">สนามช้าง อินเตอร์ฯ · กลางเมืองบุรีรัมย์</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-nakhon-ratchasima.html">
-          <h3>Nakhon Ratchasima</h3>
+          <h3 data-th="นครราชสีมา" data-en="Nakhon Ratchasima">นครราชสีมา</h3>
           <div class="desc" data-th="เขาใหญ่ · ปากช่อง · เทรล + จักรยาน" data-en="Khao Yai · Pak Chong · trail + cycling">เขาใหญ่ · ปากช่อง · เทรล + จักรยาน</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
         <a class="mqcity" href="city-khon-kaen.html">
-          <h3>Khon Kaen</h3>
+          <h3 data-th="ขอนแก่น" data-en="Khon Kaen">ขอนแก่น</h3>
           <div class="desc" data-th="กลางเมืองขอนแก่น · มาราธอนอีสาน" data-en="Central Khon Kaen · Isan marathon">กลางเมืองขอนแก่น · มาราธอนอีสาน</div>
           <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>
         </a>
@@ -472,7 +472,7 @@
 
 <!-- GUIDES TEASER -->
 <div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">03 / Guides</span><h2 data-th="คู่มือนักกีฬา" data-en="Athlete's guides">คู่มือนักกีฬา</h2></div>
+  <div class="seclabel"><span class="n" data-th="03 / คู่มือ" data-en="03 / Guides">03 / คู่มือ</span><h2 data-th="คู่มือนักกีฬา" data-en="Athlete's guides">คู่มือนักกีฬา</h2></div>
   <div class="grid c3" style="margin-top:22px">
 
     <a class="card" href="guide-walkable.html">
@@ -485,7 +485,7 @@
     <a class="card" href="guide-start-or-finish.html">
       <span class="tag" data-th="คู่มือ" data-en="Guide">คู่มือ</span>
       <h3 data-th="พักใกล้สตาร์ท หรือ ใกล้เส้นชัย?" data-en="Stay near the start or the finish?">พักใกล้สตาร์ท หรือ ใกล้เส้นชัย?</h3>
-      <div class="desc" data-th="สำหรับงานที่จุดสตาร์ทกับเส้นชัยอยู่คนละที่ (point-to-point) การเลือกทำเลมีสองแนวคิด" data-en="For point-to-point events where start and finish differ, there are two schools of thought.">สำหรับงานที่จุดสตาร์ทกับเส้นชัยอยู่คนละที่ (point-to-point) การเลือกทำเลมีสองแนวคิด</div>
+      <div class="desc" data-th="สำหรับงานที่จุดสตาร์ทกับเส้นชัยอยู่คนละที่ การเลือกทำเลมีสองแนวคิด" data-en="For point-to-point events where start and finish differ, there are two schools of thought.">สำหรับงานที่จุดสตาร์ทกับเส้นชัยอยู่คนละที่ การเลือกทำเลมีสองแนวคิด</div>
       <span class="go" data-th="อ่านต่อ →" data-en="Read →">อ่านต่อ →</span>
     </a>
 
@@ -503,7 +503,7 @@
 <div class="band news"><div class="in">
   <h3 data-th="งานกีฬาเดือนหน้า ส่งตรงถึงอีเมล" data-en="Next month's events in your inbox">งานกีฬาเดือนหน้า ส่งตรงถึงอีเมล</h3>
   <p data-th="รับปฏิทินงานวิ่ง เทรล ไตรกีฬา จักรยาน ไฮรอกซ์ + ที่พักใกล้จุดสตาร์ท ก่อนห้องเต็ม (ฟรี)" data-en="Get the calendar for running, trail, tri, cycling &amp; HYROX + hotels near the start before rooms sell out (free)">รับปฏิทินงานวิ่ง เทรล ไตรกีฬา จักรยาน ไฮรอกซ์ + ที่พักใกล้จุดสตาร์ท ก่อนห้องเต็ม</p>
-  <form onsubmit="return false"><input type="email" aria-label="email" data-th-ph="อีเมลของคุณ" data-en-ph="Your email" placeholder="อีเมลของคุณ"><button data-th="รับอีเมล" data-en="Subscribe">รับอีเมล</button></form>
+  <form onsubmit="return false"><input type="email" aria-label="อีเมล" data-th-aria="อีเมล" data-en-aria="email" data-th-ph="อีเมลของคุณ" data-en-ph="Your email" placeholder="อีเมลของคุณ"><button data-th="รับอีเมล" data-en="Subscribe">รับอีเมล</button></form>
 </div></div>
 
 <!-- FOOTER NAV -->
@@ -519,6 +519,6 @@
 </div></div>
 
 <div class="band foot"><div class="in"><span data-th="RaceStay · ข้อมูลเป็นตัวอย่างสาธิต · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์ · ออกแบบและพัฒนาโดย" data-en="RaceStay · Demo data · May earn a commission on bookings · Design &amp; Development by">RaceStay · ข้อมูลเป็นตัวอย่างสาธิต · อาจได้รับค่าคอมเมื่อจองผ่านลิงก์ · ออกแบบและพัฒนาโดย</span> <a href="https://suffix.works/en" target="_blank" rel="noopener">SUFFIX</a></div></div>
-<div class="ad sticky"><span class="lbl">Advertisement · โฆษณา</span><button class="x" aria-label="close" onclick="this.parentNode.style.display='none'">×</button></div>
+<div class="ad sticky"><span class="lbl" data-th="โฆษณา" data-en="Advertisement">โฆษณา</span><button class="x" aria-label="ปิด" data-th-aria="ปิด" data-en-aria="close" onclick="this.parentNode.style.display='none'">×</button></div>
 </body>
 </html>

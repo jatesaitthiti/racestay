@@ -7,7 +7,7 @@
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <meta name="description" content="โปรโมทโรงแรมหรือแบรนด์ของคุณกับนักกีฬาที่กำลังจะจองทริปแข่ง — RaceStay">
 <link rel="stylesheet" href="assets/style.css?v=79">
-<script src="assets/app.js?v=23" defer></script>
+<script src="assets/app.js?v=24" defer></script>
 </head>
 <body>
 <a class="skip" href="#main" data-th="ข้ามไปเนื้อหา" data-en="Skip to content">ข้ามไปเนื้อหา</a>
@@ -24,7 +24,7 @@
     </nav>
     <div class="navright">
       <span class="lang seg"><button data-setlang="th" class="seg-item on" onclick="setLang('th')">TH</button><button data-setlang="en" class="seg-item" onclick="setLang('en')">EN</button></span>
-      <button class="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 6H20M4 12H20M4 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6L18 18M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="menubtn" aria-label="เมนู" data-th-aria="เมนู" data-en-aria="Menu" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)"><svg class="ic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 6H20M4 12H20M4 18H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic-x" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M6 6L18 18M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
   <div class="menu" id="menu">
@@ -40,11 +40,11 @@
 
 <!-- HERO -->
 <div class="band"><div class="in phero">
-  <div class="kick">Advertise</div>
+  <div class="kick" data-th="ลงโฆษณา" data-en="Advertise">ลงโฆษณา</div>
   <h1 data-th="เข้าถึงนักกีฬา<br>ที่กำลังจะจองทริป" data-en="Reach athletes<br>about to book a trip">เข้าถึงนักกีฬา<br>ที่กำลังจะจองทริป</h1>
   <p class="sub" data-th="RaceStay คือจุดที่นักกีฬา เทรล ไตรกีฬา และ ไฮรอกซ์ มาวางแผนที่พักก่อนแข่ง — โปรโมทโรงแรมหรือแบรนด์ของคุณตรงจังหวะที่เขากำลังตัดสินใจ" data-en="RaceStay is where athletes, trail, tri and HYROX athletes plan their stay before a race — promote your hotel or brand right when they're deciding.">RaceStay คือจุดที่นักกีฬา เทรล ไตรกีฬา และ ไฮรอกซ์ มาวางแผนที่พักก่อนแข่ง — โปรโมทโรงแรมหรือแบรนด์ของคุณตรงจังหวะที่เขากำลังตัดสินใจ</p>
   <div class="stat-inline">
-    <div class="b"><div class="v">12k+</div><div class="l" data-th="ผู้เข้าชม/เดือน (ตัวอย่าง)" data-en="monthly visitors (sample)">ผู้เข้าชม/เดือน (ตัวอย่าง)</div></div>
+    <div class="b"><div class="v" data-th="12,000+" data-en="12k+">12,000+</div><div class="l" data-th="ผู้เข้าชม/เดือน (ตัวอย่าง)" data-en="monthly visitors (sample)">ผู้เข้าชม/เดือน (ตัวอย่าง)</div></div>
     <div class="b"><div class="v">4</div><div class="l" data-th="ประเภทกีฬา" data-en="sports covered">ประเภทกีฬา</div></div>
     <div class="b"><div class="v">70%</div><div class="l" data-th="ตั้งใจจองที่พัก (ตัวอย่าง)" data-en="stay-intent (sample)">ตั้งใจจองที่พัก (ตัวอย่าง)</div></div>
   </div>
@@ -52,12 +52,12 @@
 
 <!-- FORMATS -->
 <div class="band"><div class="in sec">
-  <div class="seclabel"><span class="n">01 / Formats</span><h2 data-th="รูปแบบโฆษณา" data-en="Ad formats">รูปแบบโฆษณา</h2></div>
+  <div class="seclabel"><span class="n" data-th="01 / รูปแบบ" data-en="01 / Formats">01 / รูปแบบ</span><h2 data-th="รูปแบบโฆษณา" data-en="Ad formats">รูปแบบโฆษณา</h2></div>
   <div class="grid c3" style="margin-top:22px">
     <span class="card">
       <span class="tag" data-th="แนะนำ" data-en="Popular">แนะนำ</span>
-      <h3 data-th="โรงแรมแนะนำ (Featured)" data-en="Featured hotel">โรงแรมแนะนำ (Featured)</h3>
-      <div class="desc" data-th="ปักหมุดโรงแรมของคุณไว้บนสุดของหน้างานที่เกี่ยวข้อง พร้อมป้าย Featured" data-en="Pin your hotel to the top of relevant event pages with a Featured badge.">ปักหมุดโรงแรมของคุณไว้บนสุดของหน้างานที่เกี่ยวข้อง พร้อมป้าย Featured</div>
+      <h3 data-th="โรงแรมแนะนำ" data-en="Featured hotel">โรงแรมแนะนำ</h3>
+      <div class="desc" data-th="ปักหมุดโรงแรมของคุณไว้บนสุดของหน้างานที่เกี่ยวข้อง พร้อมป้ายแนะนำ" data-en="Pin your hotel to the top of relevant event pages with a Featured badge.">ปักหมุดโรงแรมของคุณไว้บนสุดของหน้างานที่เกี่ยวข้อง พร้อมป้ายแนะนำ</div>
     </span>
     <span class="card">
       <span class="tag" data-th="แผนที่" data-en="Map">แผนที่</span>
@@ -74,20 +74,20 @@
 
 <!-- CONTACT FORM -->
 <div class="band stay"><div class="in sec">
-  <div class="seclabel"><span class="n">02 / Contact</span><h2 data-th="คุยกับทีมโฆษณา" data-en="Talk to our ads team">คุยกับทีมโฆษณา</h2></div>
+  <div class="seclabel"><span class="n" data-th="02 / ติดต่อ" data-en="02 / Contact">02 / ติดต่อ</span><h2 data-th="คุยกับทีมโฆษณา" data-en="Talk to our ads team">คุยกับทีมโฆษณา</h2></div>
   <p class="lead" data-th="บอกเราว่าคุณอยากโปรโมทอะไร เดี๋ยวเราส่งแพ็กเกจและราคาให้ (แบบฟอร์มสาธิต)" data-en="Tell us what you'd like to promote and we'll send packages and pricing. (Demo form.)">บอกเราว่าคุณอยากโปรโมทอะไร เดี๋ยวเราส่งแพ็กเกจและราคาให้ (แบบฟอร์มสาธิต)</p>
   <form class="form" onsubmit="return false">
     <label for="f-advertise-1" data-th="ชื่อโรงแรม / แบรนด์" data-en="Hotel / brand name">ชื่อโรงแรม / แบรนด์</label>
-    <input id="f-advertise-1" type="text" aria-label="brand" data-th-ph="ชื่อธุรกิจของคุณ" data-en-ph="Your business name" placeholder="ชื่อธุรกิจของคุณ">
+    <input id="f-advertise-1" type="text" aria-label="แบรนด์" data-th-aria="แบรนด์" data-en-aria="brand" data-th-ph="ชื่อธุรกิจของคุณ" data-en-ph="Your business name" placeholder="ชื่อธุรกิจของคุณ">
     <label for="f-advertise-2" data-th="สนใจรูปแบบไหน" data-en="Interested in">สนใจรูปแบบไหน</label>
-    <select id="f-advertise-2" aria-label="format">
-      <option data-th="โรงแรมแนะนำ (Featured)" data-en="Featured hotel">โรงแรมแนะนำ (Featured)</option>
+    <select id="f-advertise-2" aria-label="รูปแบบ" data-th-aria="รูปแบบ" data-en-aria="format">
+      <option data-th="โรงแรมแนะนำ" data-en="Featured hotel">โรงแรมแนะนำ</option>
       <option data-th="เน้นหมุดบนแผนที่" data-en="Map pin boost">เน้นหมุดบนแผนที่</option>
       <option data-th="ลงในนิวส์เลตเตอร์" data-en="Newsletter placement">ลงในนิวส์เลตเตอร์</option>
       <option data-th="ยังไม่แน่ใจ" data-en="Not sure yet">ยังไม่แน่ใจ</option>
     </select>
     <label for="f-advertise-3" data-th="อีเมลติดต่อ" data-en="Contact email">อีเมลติดต่อ</label>
-    <input id="f-advertise-3" type="email" aria-label="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
+    <input id="f-advertise-3" type="email" aria-label="อีเมล" data-th-aria="อีเมล" data-en-aria="email" data-th-ph="you@email.com" data-en-ph="you@email.com" placeholder="you@email.com">
     <button class="btn" type="submit" data-th="ขอแพ็กเกจ" data-en="Request packages">ขอแพ็กเกจ</button>
     <div class="formnote" data-th="* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง" data-en="* Demo form — does not submit real data">* แบบฟอร์มสาธิต — ยังไม่ส่งข้อมูลจริง</div>
   </form>

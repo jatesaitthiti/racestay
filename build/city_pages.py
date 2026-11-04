@@ -10,6 +10,8 @@ import html
 import re
 from pathlib import Path
 
+from th_names import place_th
+
 ROOT = Path(__file__).resolve().parent.parent
 SPORT = {"road": ("วิ่งถนน", "Road"), "trail": ("วิ่งเทรล", "Trail"), "tri": ("ไตรกีฬา", "Triathlon"),
          "bike": ("จักรยาน", "Cycling"), "hyrox": ("ไฮรอกซ์", "HYROX")}
@@ -23,11 +25,17 @@ def city_page(city):
     return f'city-{city.lower().replace(" ", "-")}.html'
 
 
+def when_html(ev):
+    if ev["dateLabel"] == "TBA":
+        return '<span data-th="รอยืนยัน" data-en="TBA">รอยืนยัน</span>'
+    return e(ev["dateLabel"])
+
+
 def card(ev):
     th, en = SPORT[ev["sport"]]
     return (f'    <a class="card" href="{ev["slug"]}.html" data-sport="{ev["sport"]}">\n'
             f'      <h3>{e(ev["name"])}</h3>\n'
-            f'      <div class="when"><span data-th="{th}" data-en="{en}">{th}</span> · {e(ev["dateLabel"])} · {e(ev["city"])}</div>\n'
+            f'      <div class="when"><span data-th="{th}" data-en="{en}">{th}</span> · {when_html(ev)} · <span data-th="{e(place_th(ev["city"]))}" data-en="{e(ev["city"])}">{e(place_th(ev["city"]))}</span></div>\n'
             f'      <div class="desc" data-th="{e(ev["blurbTh"])}" data-en="{e(ev["blurbEn"])}">{e(ev["blurbTh"])}</div>\n'
             f'      <span class="go" data-th="ดูรายละเอียด →" data-en="View details →">ดูรายละเอียด →</span>\n'
             f'    </a>')

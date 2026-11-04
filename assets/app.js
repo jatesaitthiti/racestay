@@ -1,8 +1,8 @@
 /* RaceStay — shared behaviour across all pages */
-var EN2TH={JAN:'ม.ค.',FEB:'ก.พ.',MAR:'มี.ค.',APR:'เม.ย.',MAY:'พ.ค.',JUN:'มิ.ย.',JUL:'ก.ค.',AUG:'ส.ค.',SEP:'ก.ย.',OCT:'ต.ค.',NOV:'พ.ย.',DEC:'ธ.ค.'};
+var EN2TH={JAN:'ม.ค.',FEB:'ก.พ.',MAR:'มี.ค.',APR:'เม.ย.',MAY:'พ.ค.',JUN:'มิ.ย.',JUL:'ก.ค.',AUG:'ส.ค.',SEP:'ก.ย.',OCT:'ต.ค.',NOV:'พ.ย.',DEC:'ธ.ค.',TBA:'รอยืนยัน'};
 var TH2EN={}; (function(){for(var k in EN2TH)TH2EN[EN2TH[k]]=k;})();
-var RE_EN=/\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\b/g;
-var RE_TH=/(ม\.ค\.|ก\.พ\.|มี\.ค\.|เม\.ย\.|พ\.ค\.|มิ\.ย\.|ก\.ค\.|ส\.ค\.|ก\.ย\.|ต\.ค\.|พ\.ย\.|ธ\.ค\.)/g;
+var RE_EN=/\b(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TBA)\b/g;
+var RE_TH=/(ม\.ค\.|ก\.พ\.|มี\.ค\.|เม\.ย\.|พ\.ค\.|มิ\.ย\.|ก\.ค\.|ส\.ค\.|ก\.ย\.|ต\.ค\.|พ\.ย\.|ธ\.ค\.|รอยืนยัน)/g;
 function localizeDates(l){
   var roots=document.querySelectorAll('.when, .databand, .feature, table, .dcover, .statpanel');
   for(var i=0;i<roots.length;i++){
@@ -18,7 +18,7 @@ function localizeDates(l){
 /* Thai has no spaces: the browser breaks lines at dictionary word boundaries, which can split a
    compound (ระยะ|เดิน) or a name (เฮอ|ริเทจ). Wrap known phrases, and numbers with their unit or
    month, in a no-wrap span so each moves to the next line whole. Runs after every language switch. */
-var KEEP_TH=['ระยะเดิน','จุดปล่อยตัว','ปล่อยตัว','จุดสตาร์ท','เส้นชัย','เข้าเส้นชัย','รอยืนยัน','รับ BIB','เช้ามืด','กลางคืน','กลางดึก',
+var KEEP_TH=['ทรานซิชัน','อุทยานแห่งชาติ','ดอยอินทนนท์','อบจ.เชียงใหม่','ระยะเดิน','จุดปล่อยตัว','ปล่อยตัว','จุดสตาร์ท','เส้นชัย','เข้าเส้นชัย','รอยืนยัน','รับบิบ','เช้ามืด','กลางคืน','กลางดึก',
   'ก่อนแข่ง','หลังแข่ง','วันแข่ง','สุดสัปดาห์','เดินทาง','ล่วงหน้า','ติดกัน','หารถ','ก่อนกด','เช็กอิน','เช็กเอาต์','เช็คอิน','เช็คเอาต์',
   'แพ็กเกจ','ไตรกีฬา','ไฮรอกซ์','วิ่งเทรล','วิ่งถนน','สวนน้ำ','ศูนย์ประชุม','เฮอริเทจ','อินเตอร์เนชั่นแนล','เซอร์กิต','มหาราชวัง',
   'กาญจนาภิเษก','ท่าเตียน','ช้างเผือก','นาเกลือ','วงเวียนโลมา','เชิงทะเล','ลากูน่า','ย่าโม','ฝั่งเหนือ','บุ่งตาหลั่ว','รัตนโกสินทร์',
@@ -28,7 +28,7 @@ var RE_KEEP=new RegExp('('+
   KEEP_TH.sort(function(a,b){return b.length-a.length;}).map(function(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}).join('|')+
   '|฿\\d[\\d,]*'+
   '|ตี\\s\\d+'+
-  '|\\d+(?:[.,]\\d+)?(?:\\s?[–-]\\s?\\d+(?:[.,]\\d+)?)?\\s(?:กม\\.|ม\\.|km|K\\b|นาที|ชม\\.|ชั่วโมง|วัน|คืน|ดาว|บาท|คน|'+
+  '|\\d+(?:[.,]\\d+)?(?:\\s?[–-]\\s?\\d+(?:[.,]\\d+)?)?\\s(?:กม\\.|ม\\.(?!ค\\.)|km|K\\b|นาที|ชม\\.|ชั่วโมง|วัน|คืน|ดาว|บาท|คน|'+
   '(?:ม\\.ค\\.|ก\\.พ\\.|มี\\.ค\\.|เม\\.ย\\.|พ\\.ค\\.|มิ\\.ย\\.|ก\\.ค\\.|ส\\.ค\\.|ก\\.ย\\.|ต\\.ค\\.|พ\\.ย\\.|ธ\\.ค\\.)|'+
   '(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\b)'+
   ')','g');
@@ -58,6 +58,11 @@ function setLang(l){
   });
   document.querySelectorAll('[data-th-ph]').forEach(function(el){
     el.setAttribute('placeholder',(l==='en')?el.getAttribute('data-en-ph'):el.getAttribute('data-th-ph'));
+  });
+  [['title','title'],['aria','aria-label']].forEach(function(a){
+    document.querySelectorAll('[data-th-'+a[0]+']').forEach(function(el){
+      el.setAttribute(a[1],el.getAttribute('data-'+l+'-'+a[0]));
+    });
   });
   document.documentElement.lang=l;
   localizeDates(l);
