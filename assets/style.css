@@ -442,10 +442,11 @@ body{position:relative;overflow-x:clip}
 /* home hero: looping sports video (assets/hero-*.mp4) under a dark overlay; height set to the hero's bottom by sizeTopBg() */
 .herovid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .topbg:after{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 50% 300px, rgba(21,22,15,.32), rgba(21,22,15,0) 70%), linear-gradient(180deg, rgba(21,22,15,.62) 0, rgba(21,22,15,.58) 480px, rgba(21,22,15,.76) 100%)}
-/* featured event sits on the video from 700px up (phones keep the video in the hero: a taller crop would blow the 640px file up ~3x) */
-.onvid > .sec{padding-bottom:0}
+/* featured event sits on the video at every width; phones skip the blur (costly over video) and use a darker glass */
+.onvid > .sec{padding-bottom:var(--space-28)}
+.onvid .feature{background:rgba(21,22,15,.62);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
 @media(min-width:700px){.onvid > .sec{padding-bottom:var(--space-56)}
-  .onvid .feature{background:rgba(21,22,15,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}}
+  .onvid .feature{background:rgba(21,22,15,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}}
 .hero.home{position:relative;color:var(--white);padding-bottom:calc(var(--space-80) + var(--space-24))}
 .hero.home h1{color:var(--white);text-shadow:0 1px 18px rgba(0,0,0,.35)}
 .hero.home h1 .ital{color:var(--lime)}

@@ -66,6 +66,7 @@ function setLang(l){
   countdowns();
   keepTogether();
   fitDesc();
+  sizeTopBg();
 }
 
 /* ----- race-detail page only (guards keep it safe elsewhere) ----- */
@@ -193,13 +194,13 @@ function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
   var h=document.querySelector('.hero.home'), r=document.getElementById('races');
   var band=h?h.closest('.band'):(r?(r.closest('.band')||r):null); if(!band) return;
-  if(h){ var f=document.querySelector('.onvid'); if(f && window.innerWidth>=700) band=f;
+  if(h){ var f=document.querySelector('.onvid'); if(f) band=f;
     b.style.height=Math.round(band.getBoundingClientRect().bottom+window.pageYOffset)+'px'; return; }
   b.style.height=Math.round(band.getBoundingClientRect().top+window.pageYOffset)+'px';
 }
 window.addEventListener('resize', function(){ segSyncAll(); sizeTopBg(); fitDesc(); });
 window.addEventListener('load', sizeTopBg);
-/* home hero video: phones get the 640px file; reduced motion or save-data keep the still poster */
+/* home hero video: phones get the portrait crop; reduced motion or save-data keep the still poster */
 function setVidBtn(btn,paused){
   if(!btn) return; btn.classList.toggle('paused',paused);
   var s=btn.querySelector('.vh'), th=paused?'เล่นวิดีโอพื้นหลัง':'หยุดวิดีโอพื้นหลัง', en=paused?'Play background video':'Pause background video';
