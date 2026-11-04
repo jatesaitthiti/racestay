@@ -1,0 +1,28 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "buriram-marathon",
+  "hotels": [
+    {
+      "name": "Amari Buriram United",
+      "zoneTh": "ถนนบุรีรัมย์–ประโคนชัย",
+      "zoneEn": "Buriram–Prakhon Chai Road",
+      "lat": 14.9682324,
+      "lng": 103.0933449,
+      "website": "https://www.amari.com/buriram-united",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Modena by Fraser Buriram",
+      "zoneTh": "ถนนบุรีรัมย์–ประโคนชัย",
+      "zoneEn": "Buriram–Prakhon Chai Road",
+      "lat": 14.9633173,
+      "lng": 103.0938887,
+      "website": "https://www.frasershospitality.com/en/thailand/buriram/modena-by-fraser-buriram/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}

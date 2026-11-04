@@ -1,0 +1,28 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "korat-marathon",
+  "hotels": [
+    {
+      "name": "HOP INN Nakhon Ratchasima City Center",
+      "zoneTh": "ในเมืองโคราช",
+      "zoneEn": "Korat city",
+      "lat": 14.9806947,
+      "lng": 102.0873118,
+      "website": "https://www.hopinnhotel.com/th/our-hotels/hop-inn-nakhon-ratchasima-city-center",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Sima Thani Hotel",
+      "zoneTh": "ถนนมิตรภาพ",
+      "zoneEn": "Mittraphap Road",
+      "lat": 14.9698641,
+      "lng": 102.0636923,
+      "website": "https://www.simathani.com",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}

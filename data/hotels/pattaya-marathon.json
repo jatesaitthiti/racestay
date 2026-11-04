@@ -1,0 +1,39 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "pattaya-marathon",
+  "hotels": [
+    {
+      "name": "Sunshine Garden Resort",
+      "zoneTh": "พัทยาเหนือ",
+      "zoneEn": "North Pattaya",
+      "lat": 12.9513853,
+      "lng": 100.8868073,
+      "website": "https://www.sunshinegardenresort.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Woodlands Hotel & Resort",
+      "zoneTh": "พัทยา–นาเกลือ",
+      "zoneEn": "Pattaya–Naklua",
+      "lat": 12.9523682,
+      "lng": 100.8875674,
+      "website": "https://www.woodland-resort.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Dusit Thani Pattaya",
+      "zoneTh": "พัทยาเหนือ",
+      "zoneEn": "North Pattaya",
+      "lat": 12.9503798,
+      "lng": 100.8850291,
+      "website": "https://www.dusit.com/dusitthani/pattaya/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "laguna-phuket-triathlon",
+  "hotels": [
+    {
+      "name": "Dusit Thani Laguna Phuket",
+      "zoneTh": "ลากูน่า ภูเก็ต",
+      "zoneEn": "Laguna Phuket",
+      "lat": 8.0016738,
+      "lng": 98.2939725,
+      "website": "https://www.dusit.com/dusitthani-lagunaphuket/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Angsana Laguna Phuket",
+      "zoneTh": "ลากูน่า ภูเก็ต",
+      "zoneEn": "Laguna Phuket",
+      "lat": 8.0055531,
+      "lng": 98.2965797,
+      "website": "https://www.angsana.com/thailand/laguna-phuket",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}

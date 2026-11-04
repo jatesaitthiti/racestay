@@ -1,0 +1,38 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only. Weekend 1 at Doi Inthanon has no card yet: no hotel near the park HQ with a confirmed official website.",
+  "event": "doi-inthanon-utmb",
+  "near": {
+    "lat": 18.8319,
+    "lng": 98.9673,
+    "labelTh": "โรงแรมใกล้สวนเฉลิมพระเกียรติ อบจ.เชียงใหม่ · สุดสัปดาห์ 2",
+    "labelEn": "Hotels near Chiang Mai PAO Park · Weekend 2",
+    "toTh": "จากสวนเฉลิมพระเกียรติ",
+    "toEn": "from the park",
+    "capTh": "สุดสัปดาห์ 1 ที่ดอยอินทนนท์ดูที่พักจากแผนที่ด้านบน",
+    "capEn": "For weekend 1 at Doi Inthanon, use the map above"
+  },
+  "hotels": [
+    {
+      "name": "B2 Black Business & Budget Hotel",
+      "zoneTh": "ช้างเผือก",
+      "zoneEn": "Chang Phueak",
+      "lat": 18.8205072,
+      "lng": 98.9638112,
+      "website": "https://www.b2hotel.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Holiday Garden Hotel & Resort",
+      "zoneTh": "ช้างเผือก",
+      "zoneEn": "Chang Phueak",
+      "lat": 18.8054108,
+      "lng": 98.9638606,
+      "website": "https://holidaygardenhotel.com",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}

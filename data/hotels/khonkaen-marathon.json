@@ -1,0 +1,39 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "khonkaen-marathon",
+  "hotels": [
+    {
+      "name": "Khon Kaen Hotel",
+      "zoneTh": "ในเมืองขอนแก่น",
+      "zoneEn": "Khon Kaen city",
+      "lat": 16.4357267,
+      "lng": 102.8352933,
+      "website": "https://www.khonkaen-hotel.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "The Heritage Grand Khon Kaen",
+      "zoneTh": "ในเมืองขอนแก่น",
+      "zoneEn": "Khon Kaen city",
+      "lat": 16.4289966,
+      "lng": 102.8304053,
+      "website": "https://www.heritagegrandkhonkaen.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Kosa Hotel",
+      "zoneTh": "ในเมืองขอนแก่น",
+      "zoneEn": "Khon Kaen city",
+      "lat": 16.429458,
+      "lng": 102.8321649,
+      "website": "https://www.kosahotel.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}

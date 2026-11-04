@@ -1,6 +1,7 @@
 """Generate event detail pages ({slug}.html) for events that carry a `detail` block.
 
-Hand-written pages (events without `detail`) are never touched. The page chrome
+Hand-written pages (events without `detail`) are left alone, except the marked hotel
+regions of atm-2026.html (see fill_handwritten_hotels). The page chrome
 (nav, newsletter, footer) is borrowed from an existing detail page so every page
 stays consistent. Prices and availability come live from the Stay22 map; under
 it, an event may list team-curated hotel cards from data/hotels/{slug}.json
@@ -259,31 +260,23 @@ def metres(lat1, lng1, lat2, lng2):
 
 
 def dist_text(m):
-    if m < 1000:
-        v = max(50, int(round(m / 50.0)) * 50)
+    v = max(50, int(round(m / 50.0)) * 50)
+    if v < 1000:
         return f"{v} ม.", f"{v} m"
     k = f"{m / 1000:.1f}"
     return f"{k} กม.", f"{k} km"
 
 
-def hotel_cards(ev, d, same):
-    """Team-curated hotels under the map. Facilities show only when phone-confirmed and recent."""
-    path = HOTELS_DIR / f'{ev["slug"]}.json'
-    if not path.exists():
-        return ""
-    hotels = json.loads(path.read_text(encoding="utf-8")).get("hotels", [])
-    if not hotels:
-        return ""
-    spot = SPOT.get(ev["sport"], "จุดสตาร์ท")
-    to_th, to_en = (f"จาก{spot}และเส้นชัย", "from the start and finish") if same else (f"จาก{spot}", "from the start")
-    stay = {}
-    if not ev.get("dateTba"):
-        race = date.fromisoformat(ev["date"])
-        stay = {"checkin": (race - timedelta(days=1)).isoformat(), "checkout": race.isoformat()}
+def hotel_block(slug, hotels, lat, lng, label, to, race, extra_cap=None):
+    """Cards for one venue, nearest first. Facilities show only when phone-confirmed and recent."""
+    to_th, to_en = to
     today = date.today()
+    stay = {}
+    if race and date.fromisoformat(race) >= today:  # a finished race gets no pre-filled dates
+        stay = {"checkin": (date.fromisoformat(race) - timedelta(days=1)).isoformat(), "checkout": race}
     cards = ""
-    for h in hotels:
-        dt_th, dt_en = dist_text(metres(d["lat"], d["lng"], h["lat"], h["lng"]))
+    for h in sorted(hotels, key=lambda h: metres(lat, lng, h["lat"], h["lng"])):
+        dt_th, dt_en = dist_text(metres(lat, lng, h["lat"], h["lng"]))
         ok, last = set(), None
         for key, f in (h.get("facilities") or {}).items():
             on = f.get("checkedOn")
@@ -302,7 +295,7 @@ def hotel_cards(ev, d, same):
                      + bi("p", f"ตรวจสอบโดยทีมงาน · โทรเช็ค {dd} {TH_MON[m - 1]} {y}",
                           f"Checked by our team · phoned {dd} {EN_MONTH[m - 1]} {y}", "checked") + '</div>')
         q = {"aid": STAY22_AID, "hotelname": h["name"], "lat": h["lat"], "lng": h["lng"], **stay,
-             "currency": "THB", "campaign": f'ev_{ev["slug"].replace("-", "_")}_hotel'}
+             "currency": "THB", "campaign": f'ev_{slug.replace("-", "_")}_hotel'}
         link = "https://www.stay22.com/allez/roam?" + urlencode(q)
         # header row (name, distance · zone, button) over a full-width facility strip
         cards += (f'    <article class="hotelcard"><div class="hmain"><h3>{e(h["name"])}</h3>'
@@ -311,8 +304,45 @@ def hotel_cards(ev, d, same):
                   f'<span class="vh">: {e(h["name"])}</span></a>{facil}</article>\n')
     cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
     cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
-    return (f'  <div class="hotels">{bi("div", f"โรงแรมใกล้{spot}", "Hotels near the start", "l")}\n'
+    if extra_cap:
+        cap_th, cap_en = f"{extra_cap[0]} · {cap_th}", f"{extra_cap[1]} · {cap_en}"
+    return (f'  <div class="hotels">{bi("div", label[0], label[1], "l")}\n'
             f'  <div class="hotelgrid">\n{cards}  </div>\n  <p class="staycap">{bi("span", cap_th, cap_en)}</p></div>\n')
+
+
+def hotel_cards(ev, d, same):
+    """Team-curated hotels under the map; a file's `near` block overrides the venue on multi-venue events."""
+    path = HOTELS_DIR / f'{ev["slug"]}.json'
+    if not path.exists():
+        return ""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    hotels = data.get("hotels", [])
+    if not hotels:
+        return ""
+    near = data.get("near")
+    if near:
+        return hotel_block(ev["slug"], hotels, near["lat"], near["lng"], (near["labelTh"], near["labelEn"]),
+                           (near["toTh"], near["toEn"]), near.get("race"), (near["capTh"], near["capEn"]))
+    spot = SPOT.get(ev["sport"], "จุดสตาร์ท")
+    spot_en = {"tri": "transition", "hyrox": "the venue"}.get(ev["sport"], "the start")
+    # HYROX races inside one hall, so "and the finish" would read oddly there
+    both = same and ev["sport"] != "hyrox"
+    to = (f"จาก{spot}และเส้นชัย", f"from {spot_en} and finish") if both else (f"จาก{spot}", f"from {spot_en}")
+    return hotel_block(ev["slug"], hotels, d["lat"], d["lng"], (f"โรงแรมใกล้{spot}", f"Hotels near {spot_en}"), to,
+                       None if ev.get("dateTba") else ev["date"])
+
+
+def fill_handwritten_hotels():
+    """atm-2026.html is hand-written: fill only its <!-- HOTELS:key --> regions from data/hotels/atm-2026.json."""
+    page = ROOT / "atm-2026.html"
+    html_text = page.read_text(encoding="utf-8")
+    for key, g in json.loads((HOTELS_DIR / "atm-2026.json").read_text(encoding="utf-8"))["groups"].items():
+        block = hotel_block("atm-2026", g["hotels"], g["lat"], g["lng"], (g["labelTh"], g["labelEn"]),
+                            (g["toTh"], g["toEn"]), g["race"])
+        html_text, n = re.subn(rf"(<!-- HOTELS:{key} -->\n).*?(\s*<!-- /HOTELS:{key} -->)",
+                               lambda m: m.group(1) + block.rstrip("\n") + m.group(2), html_text, flags=re.S)
+        assert n == 1, key
+    page.write_text(html_text, encoding="utf-8")
 
 
 def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
@@ -491,4 +521,5 @@ def render_all(events):
             continue
         (ROOT / f'{ev["slug"]}.html').write_text(render(ev, nav, foot), encoding="utf-8")
         made.append(ev["slug"])
+    fill_handwritten_hotels()
     return made

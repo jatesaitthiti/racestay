@@ -1,0 +1,138 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only. atm-2026.html is hand-written: build/event_pages.py fills only its HOTELS marker regions from these groups.",
+  "event": "atm-2026",
+  "groups": {
+    "a": {
+      "lat": 13.7554,
+      "lng": 100.4922,
+      "race": "2026-11-29",
+      "labelTh": "โรงแรมใกล้สนามหลวง",
+      "labelEn": "Hotels near Sanam Luang",
+      "toTh": "จากจุดปล่อยตัวและเส้นชัย",
+      "toEn": "from the start and finish",
+      "hotels": [
+        {
+          "name": "Chillax Resort",
+          "zoneTh": "บางลำพู",
+          "zoneEn": "Banglamphu",
+          "lat": 13.7624355,
+          "lng": 100.5003298,
+          "website": "https://www.chillaxresort.com/",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        },
+        {
+          "name": "Methavalai Residence",
+          "zoneTh": "ราชดำเนิน",
+          "zoneEn": "Ratchadamnoen",
+          "lat": 13.7555667,
+          "lng": 100.5025057,
+          "website": "https://www.methavalairesidence.com/",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        },
+        {
+          "name": "Riva Arun Bangkok",
+          "zoneTh": "ท่าเตียน",
+          "zoneEn": "Tha Tien",
+          "lat": 13.7442618,
+          "lng": 100.4917791,
+          "website": "https://www.rivaarunbangkok.com",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        }
+      ]
+    },
+    "bstart": {
+      "lat": 13.7447,
+      "lng": 100.5299,
+      "race": "2026-11-28",
+      "labelTh": "โรงแรมใกล้ MBK",
+      "labelEn": "Hotels near MBK",
+      "toTh": "จากจุดปล่อยตัว",
+      "toEn": "from the start",
+      "hotels": [
+        {
+          "name": "Pathumwan Princess Hotel",
+          "zoneTh": "ปทุมวัน",
+          "zoneEn": "Pathum Wan",
+          "lat": 13.7434591,
+          "lng": 100.5296954,
+          "website": "https://www.pprincess.com",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        },
+        {
+          "name": "Reno Hotel",
+          "zoneTh": "เกษมสันต์",
+          "zoneEn": "Kasem San",
+          "lat": 13.7473535,
+          "lng": 100.5295209,
+          "website": "https://www.renohotel.co.th/",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        },
+        {
+          "name": "Holiday Inn Express Bangkok Siam",
+          "zoneTh": "สยาม",
+          "zoneEn": "Siam",
+          "lat": 13.7472378,
+          "lng": 100.5277776,
+          "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/bangkok/bkkrb/hoteldetail",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        }
+      ]
+    },
+    "bfinish": {
+      "lat": 13.7554,
+      "lng": 100.4922,
+      "race": "2026-11-28",
+      "labelTh": "โรงแรมใกล้เส้นชัย",
+      "labelEn": "Hotels near the finish",
+      "toTh": "จากเส้นชัย",
+      "toEn": "from the finish",
+      "hotels": [
+        {
+          "name": "Chillax Resort",
+          "zoneTh": "บางลำพู",
+          "zoneEn": "Banglamphu",
+          "lat": 13.7624355,
+          "lng": 100.5003298,
+          "website": "https://www.chillaxresort.com/",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        },
+        {
+          "name": "Methavalai Residence",
+          "zoneTh": "ราชดำเนิน",
+          "zoneEn": "Ratchadamnoen",
+          "lat": 13.7555667,
+          "lng": 100.5025057,
+          "website": "https://www.methavalairesidence.com/",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        },
+        {
+          "name": "Riva Arun Bangkok",
+          "zoneTh": "ท่าเตียน",
+          "zoneEn": "Tha Tien",
+          "lat": 13.7442618,
+          "lng": 100.4917791,
+          "website": "https://www.rivaarunbangkok.com",
+          "source": "official website + OpenStreetMap",
+          "checkedOn": "2026-11-04",
+          "facilities": {}
+        }
+      ]
+    }
+  }
+}

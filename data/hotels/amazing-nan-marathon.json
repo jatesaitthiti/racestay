@@ -1,0 +1,28 @@
+{
+  "_comment": "Team-curated hotels for this event page. Name and website from the hotel's official site; coordinates from OpenStreetMap. Facilities appear on the card only when the team has confirmed them by phone (status yes + checkedOn). Prices, ratings and availability come from Stay22 only.",
+  "event": "amazing-nan-marathon",
+  "hotels": [
+    {
+      "name": "Dhevaraj Hotel",
+      "zoneTh": "ในเวียงน่าน",
+      "zoneEn": "Nan town",
+      "lat": 18.7783264,
+      "lng": 100.7746947,
+      "website": "https://www.dhevarajhotel.com/",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    },
+    {
+      "name": "Nan Boutique Hotel",
+      "zoneTh": "ในเวียงน่าน",
+      "zoneEn": "Nan town",
+      "lat": 18.7815909,
+      "lng": 100.7799004,
+      "website": "https://www.nanboutique.com/home-1",
+      "source": "official website + OpenStreetMap",
+      "checkedOn": "2026-11-04",
+      "facilities": {}
+    }
+  ]
+}
