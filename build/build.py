@@ -80,7 +80,7 @@ def city_card(c: dict) -> str:
         f'        <a class="mqcity" href="{c["slug"]}.html">\n'
         f'          <h3 data-th="{place_th(c["name"])}" data-en="{c["name"]}">{place_th(c["name"])}</h3>\n'
         f'          <div class="desc" data-th="{c["blurbTh"]}" data-en="{c["blurbEn"]}">{c["blurbTh"]}</div>\n'
-        f'          <span class="go" data-th="ดูเมือง →" data-en="View city →">ดูเมือง →</span>\n'
+        f'          <span class="go btn ghost" data-th="ดูเมือง" data-en="View city">ดูเมือง</span>\n'
         f'        </a>'
     )
 
