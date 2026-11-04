@@ -11,7 +11,16 @@
       "website": "https://www.rivaarunbangkok.com",
       "source": "official website + OpenStreetMap",
       "checkedOn": "2026-11-03",
-      "facilities": {}
+      "facilities": {},
+      "sampleFacilities": [
+        "earlyBreakfast",
+        "breakfastBox",
+        "lateCheckout",
+        "luggage",
+        "showerAfterCheckout",
+        "bikeStorage",
+        "shuttle"
+      ]
     },
     {
       "name": "Arun Residence",
@@ -22,7 +31,13 @@
       "website": "https://www.arunresidence.com",
       "source": "official website + OpenStreetMap",
       "checkedOn": "2026-11-03",
-      "facilities": {}
+      "facilities": {},
+      "sampleFacilities": [
+        "earlyBreakfast",
+        "lateCheckout",
+        "luggage",
+        "shuttle"
+      ]
     },
     {
       "name": "Chakrabongse Villas",
@@ -33,7 +48,12 @@
       "website": "https://www.chakrabongsevillas.com",
       "source": "official website + OpenStreetMap",
       "checkedOn": "2026-11-03",
-      "facilities": {}
+      "facilities": {},
+      "sampleFacilities": [
+        "breakfastBox",
+        "luggage"
+      ]
     }
-  ]
+  ],
+  "_sampleFacilities": "sampleFacilities are made-up mockup data to preview the chips, labelled as samples on the card. Delete them once real phone checks exist."
 }

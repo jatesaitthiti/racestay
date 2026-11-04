@@ -18,7 +18,7 @@ from urllib.parse import quote, urlencode
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
 HOTELS_DIR = ROOT / "data" / "hotels"
-CSS_V, JS_V = "76", "22"
+CSS_V, JS_V = "77", "22"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
@@ -284,16 +284,20 @@ def hotel_block(slug, hotels, lat, lng, label, to, race, extra_cap=None):
                 ok.add(key)
                 last = max(last or on, on)
         shown = [k for k in FACIL if k in ok]  # same order on every card, whatever order the team typed
+        sample = [k for k in FACIL if k in (h.get("sampleFacilities") or [])] if not shown else []  # mockup only, never a phone check
         facil = ""
-        if shown:
-            y, m, dd = (int(v) for v in last.split("-"))
+        if shown or sample:
             chips = "".join(
                 '<span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" '
                 f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{FACIL_ICON[k]}</svg>{bi("span", *FACIL[k])}</span>'
-                for k in shown)
-            facil = (f'<div class="hfac"><div class="facil">{chips}</div>'
-                     + bi("p", f"ตรวจสอบโดยทีมงาน · โทรเช็ค {dd} {TH_MON[m - 1]} {y}",
-                          f"Checked by our team · phoned {dd} {EN_MONTH[m - 1]} {y}", "checked") + '</div>')
+                for k in shown or sample)
+            if shown:
+                y, m, dd = (int(v) for v in last.split("-"))
+                note = bi("p", f"ตรวจสอบโดยทีมงาน · โทรเช็ค {dd} {TH_MON[m - 1]} {y}",
+                          f"Checked by our team · phoned {dd} {EN_MONTH[m - 1]} {y}", "checked")
+            else:
+                note = bi("p", "ข้อมูลตัวอย่าง · ยังไม่ได้โทรเช็คกับโรงแรม", "Sample data · not yet checked with the hotel", "checked sample")
+            facil = f'<div class="hfac"><div class="facil">{chips}</div>{note}</div>'
         q = {"aid": STAY22_AID, "hotelname": h["name"], "lat": h["lat"], "lng": h["lng"], **stay,
              "currency": "THB", "campaign": f'ev_{slug.replace("-", "_")}_hotel'}
         link = "https://www.stay22.com/allez/roam?" + urlencode(q)
