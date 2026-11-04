@@ -18,7 +18,7 @@ from urllib.parse import quote, urlencode
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
 HOTELS_DIR = ROOT / "data" / "hotels"
-CSS_V, JS_V = "80", "23"
+CSS_V, JS_V = "81", "23"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
@@ -304,7 +304,7 @@ def hotel_block(slug, hotels, lat, lng, label, to, race, extra_cap=None):
         # header row (name, distance · zone, button) over a full-width facility strip
         cards += (f'    <article class="hotelcard"><div class="hmain"><h3>{e(h["name"])}</h3>'
                   f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}<span class="sep" aria-hidden="true">·</span>{bi("span", h["zoneTh"], h["zoneEn"], "hz")}</p></div>'
-                  f'<a class="go" href="{e(link)}" target="_blank" rel="noopener sponsored">{bi("span", "ดูห้องว่าง", "See rooms")}'
+                  f'<a class="go btn ghost" href="{e(link)}" target="_blank" rel="noopener sponsored">{bi("span", "ดูห้องว่าง", "See rooms")}'
                   f'<span class="vh">: {e(h["name"])}</span></a>{facil}</article>\n')
     cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
     cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
