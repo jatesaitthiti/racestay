@@ -262,7 +262,9 @@ a.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .card .desc{font-size:14px;color:var(--ink-2);margin:var(--space-10) 0 0}
 .card .metrow{display:flex;flex-wrap:wrap;gap:var(--space-6) var(--space-14);margin-top:var(--space-14);font-family:var(--data);font-size:14px;color:var(--muted)}
 .card .metrow b{color:var(--ink);font-weight:700}
-.card .go{margin-top:auto;padding-top:var(--space-14);font-family:var(--data);font-size:14px;color:var(--green);font-weight:600}
+.card .go{margin-top:auto;align-self:flex-start}
+.card :has(+ .go){margin-bottom:var(--space-14)}
+a.card:hover .btn.ghost{color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .card.disabled{opacity:.6}
 a.card.disabled{pointer-events:none}
 

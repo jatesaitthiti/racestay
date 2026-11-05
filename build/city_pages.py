@@ -37,7 +37,7 @@ def card(ev):
             f'      <h3>{e(ev["name"])}</h3>\n'
             f'      <div class="when"><span data-th="{th}" data-en="{en}">{th}</span> · {when_html(ev)} · <span data-th="{e(place_th(ev["city"]))}" data-en="{e(ev["city"])}">{e(place_th(ev["city"]))}</span></div>\n'
             f'      <div class="desc" data-th="{e(ev["blurbTh"])}" data-en="{e(ev["blurbEn"])}">{e(ev["blurbTh"])}</div>\n'
-            f'      <span class="go" data-th="ดูรายละเอียด →" data-en="View details →">ดูรายละเอียด →</span>\n'
+            f'      <span class="go btn ghost" data-th="ดูรายละเอียด" data-en="View details">ดูรายละเอียด</span>\n'
             f'    </a>')
 
 
