@@ -188,11 +188,13 @@
   .row .note{grid-column:1/-1;font-size:14px;color:var(--ink-2);margin-top:var(--space-8);max-width:660px}
   .row .note b{font-family:var(--data);font-size:12px;letter-spacing:.04em;color:var(--warn-ink)}
   .row .act{grid-column:2;grid-row:2/5;align-self:center;text-align:right}
-  .btn{font-family:var(--sans);font-weight:600;font-size:14px;background:var(--lime);color:var(--ink);border:0;padding:var(--space-10) var(--space-18);cursor:pointer;min-height:44px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:14px;background:var(--lime);color:var(--ink);border:0;padding:var(--space-10) var(--space-18);cursor:pointer;min-height:44px;text-decoration:none;transition:background var(--dur-base),color var(--dur-base),box-shadow var(--dur-base)}
   .btn:hover{background:var(--ink);color:var(--lime-pale)}
-  .btn.ghost{display:inline-flex;align-items:center;background:var(--white);box-shadow:var(--ring);white-space:nowrap;text-decoration:none}
+  .btn.ghost{background:var(--white);box-shadow:var(--ring);white-space:nowrap}
   .btn.ghost:hover,a.mqcity:hover .btn.ghost{background:var(--white);color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
-  .allrow{font-family:var(--data);font-size:14px;color:var(--green);padding:var(--space-16) 0 0}
+  /* on charcoal or the hero video an ink hover would vanish into the surface */
+  .btn.on-dark:hover,a.feature:hover .btn.on-dark{background:var(--white);color:var(--ink)}
+  .allrow{font-family:var(--data);font-size:14px;font-weight:600;color:var(--green);padding:var(--space-16) 0 0}
   @media(max-width:560px){.row .act{grid-column:1;grid-row:auto;text-align:left;margin-top:var(--space-10)}.row .price{font-size:18px}}
 
   .faqwrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:var(--space-56);margin-top:var(--space-16)}
@@ -218,11 +220,10 @@
   .news .in{padding:var(--space-36) var(--space-24);text-align:center}
   .news h3{margin:0 0 var(--space-6);font-size:20px;color:var(--lime-pale)}
   .news p{margin:0 0 var(--space-16);color:var(--on-dark-muted);font-size:16px}
-  .news form{display:flex;gap:0;max-width:420px;margin:0 auto;border:1px solid var(--lime-pale)}
-  .news input{flex:1;border:0;padding:var(--space-12) var(--space-14);font-size:16px;font-family:var(--sans);background:transparent;color:var(--white)}
+  .news form{display:flex;gap:var(--space-4);padding:var(--space-4);max-width:420px;margin:0 auto;border:1px solid var(--lime-pale)}
+  .news input{flex:1;min-width:0;border:0;padding:var(--space-8) var(--space-12);font-size:16px;font-family:var(--sans);background:transparent;color:var(--white)}
   .news input::placeholder{color:var(--on-dark-placeholder)}
-  .news button{background:var(--lime);color:var(--ink);border:0;padding:var(--space-12) var(--space-20);font-weight:600;font-family:var(--sans);font-size:14px;cursor:pointer}
-  @media(max-width:480px){.news form{flex-direction:column;border:0}.news input{border:1px solid var(--lime-pale);margin-bottom:var(--space-8)}.news button{border:0}}
+  @media(max-width:480px){.news form{flex-direction:column;gap:0;padding:0;border:0}.news input{padding:var(--space-12) var(--space-14);border:1px solid var(--lime-pale);margin-bottom:var(--space-8)}}
 
   .foot{border-top:1px solid var(--line)}
   .foot .in{padding:var(--space-28) var(--space-24) var(--space-48);font-family:var(--data);font-size:14px;color:var(--muted);line-height:1.8;text-align:center}
@@ -269,8 +270,6 @@ a.card.disabled{pointer-events:none}
 .feature .k{font-family:var(--data);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-pale)}
 .feature h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,3.5vw,40px);line-height:1.04;margin:var(--space-10) 0 var(--space-8)}
 .feature p{color:var(--on-dark-muted);font-size:16px;margin:0 0 var(--space-18);max-width:460px}
-.feature .fbtn{display:inline-block;background:var(--lime);color:var(--ink);font-weight:600;font-size:14px;padding:var(--space-12) var(--space-20);font-family:var(--sans)}
-.feature .fbtn:hover{background:var(--white)}
 .feature .fr{display:flex;flex-direction:column;gap:var(--space-12);justify-content:center;border-left:1px solid var(--charcoal-3);padding-left:var(--space-24);font-family:var(--data);font-size:14px}
 .feature .fr .rowx{display:flex;justify-content:space-between;gap:var(--space-12);color:var(--on-dark-muted)}
 .feature .fr .rowx b{color:var(--white);font-weight:500}
@@ -343,16 +342,16 @@ a.card.disabled{pointer-events:none}
 
 /* ===== mobile menu language toggle ===== */
 .menu-lang{display:flex !important;width:100%;margin-top:var(--space-16);border:1px solid var(--ink);border-radius:var(--r-pill);overflow:hidden}
-.menu-lang button{flex:1;min-height:50px;font-size:15px;border-radius:0}
+.menu-lang button{flex:1;min-height:50px;border-radius:0}
 @media(max-width:760px){ .navright .lang{display:none} }
 
 /* ===== unified corner-radius system (card / control / pill) ===== */
 :root{--r-card:16px;--r-ctl:10px;--r-pill:999px}
 .card,.statpanel,.feature,.mapframe,.tabs,.subtabs,.menu,.news form,.row.partner,.ad,.ad.infeed{border-radius:var(--r-card)}
-.btn,.fbtn,.form input,.form select,.form textarea{border-radius:var(--r-ctl)}
+.btn,.form input,.form select,.form textarea{border-radius:var(--r-ctl)}
 .pchip,.lang,.menu-lang,.navbar,.menubtn,.menu .cta{border-radius:var(--r-pill)}
 /* mobile newsletter: input and button stack as separate controls, so each takes its own corners */
-@media(max-width:480px){.news form{border-radius:0;overflow:visible}.news input,.news button{border-radius:var(--r-ctl)}}
+@media(max-width:480px){.news form{border-radius:0;overflow:visible}.news input{border-radius:var(--r-ctl)}}
 
 /* ===== unified segmented control (mobbin tabs) ===== */
 .seg{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-pill);padding:var(--space-4)}
@@ -361,7 +360,7 @@ a.card.disabled{pointer-events:none}
 .seg .seg-item:hover{color:var(--ink)}
 .seg .seg-item.on,.seg .seg-item.active{color:var(--ink);font-weight:700}
 .menu-lang.seg{display:flex!important;width:100%;overflow:visible}
-.menu-lang.seg .seg-item{flex:1;justify-content:center;font-size:15px;min-height:46px;display:inline-flex;align-items:center}
+.menu-lang.seg .seg-item{flex:1;justify-content:center;min-height:46px;display:inline-flex;align-items:center}
 /* main nav active = pill */
 .navlinks a{padding:var(--space-6) var(--space-12);border-radius:var(--r-pill);transition:background var(--dur-base),color var(--dur-base)}
 .navlinks a.active{color:var(--ink);background:var(--paper-2)}
