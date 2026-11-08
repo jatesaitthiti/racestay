@@ -4,7 +4,7 @@
     /* colour */
     --paper:#f5f6f5; --paper-rgb:245,246,245; --paper-2:#ebeeec; --white:#fff;
     --ink:#171718; --ink-2:#343a37; --muted:#5d6561; --line:#e0e4e2; --line-strong:#c4cac7;
-    --mint:#72f1ba; --mint-pale:#d2f9e7; --mint-ink:#0b6b47; --yellow:#f5ff00; --green:#0b7a4e; --warn-ink:#a9520c;
+    --mint:#72f1ba; --mint-pale:#d2f9e7; --mint-ink:#0b6b47; --yellow:#f5ff00; --warn-ink:#a9520c;
     --warn:#c8630f; --warn-pale:#f4d7bd;
     --charcoal:#242424; --charcoal-2:#2e2e2e; --charcoal-3:#3a3a3a; --on-dark-muted:#b6bcb9; --on-dark-placeholder:#8f9693;
     --sport-trail:#c8f169; --sport-tri:#8fd6ff; --sport-bike:#ffbf7a; /* pastel-neon bands, all with ink text */
@@ -49,7 +49,7 @@
   .menu-in{display:flex;flex-direction:column;padding:var(--space-8) 0 var(--space-28)}
   .menu .grp{font-family:var(--data);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:var(--space-18) 0 var(--space-6)}
   .menu a{font-family:var(--data);font-size:15px;color:var(--ink);padding:var(--space-12) 0;border-bottom:1px solid var(--line)}
-  .menu a:hover,.menu a.active{color:var(--green)}
+  .menu a:hover,.menu a.active{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mint);text-decoration-thickness:3px;text-underline-offset:6px}
   .brand{display:inline-flex;align-items:center;color:var(--ink);text-decoration:none;cursor:pointer;justify-self:start}
   .brand .logo{height:22px;width:auto;display:block;fill:currentColor}
   .nav nav{display:flex;gap:var(--space-24);justify-content:center;flex-wrap:wrap;font-family:var(--data);font-size:14px;color:var(--muted)}
@@ -194,7 +194,7 @@
   .btn.ghost:hover,a.mqcity:hover .btn.ghost{background:var(--white);color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
   /* on charcoal or the hero video an ink hover would vanish into the surface */
   .btn.on-dark:hover,a.feature:hover .btn.on-dark{background:var(--white);color:var(--ink)}
-  .allrow{font-family:var(--data);font-size:14px;font-weight:600;color:var(--green);padding:var(--space-16) 0 0}
+  .allrow{font-family:var(--data);font-size:14px;padding:var(--space-16) 0 0}
   @media(max-width:560px){.row .act{grid-column:1;grid-row:auto;text-align:left;margin-top:var(--space-10)}.row .price{font-size:18px}}
 
   .faqwrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:var(--space-56);margin-top:var(--space-16)}
@@ -213,8 +213,7 @@
 
   .official{border-top:1px solid var(--line);padding-top:var(--space-24);margin-top:var(--space-36)}
   .official .h{font-family:var(--data);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-  .official a{color:var(--green);font-weight:600}
-  .official .mono{font-size:14px;margin-top:var(--space-6)}
+    .official .mono{font-size:14px;margin-top:var(--space-6)}
 
   .news{background:var(--charcoal);color:var(--white)}
   .news .in{padding:var(--space-36) var(--space-24);text-align:center}
@@ -235,7 +234,7 @@
   .row h3 .badge{background:var(--yellow);color:var(--ink);font-family:var(--data);font-size:12px;font-weight:700;letter-spacing:.04em;padding:var(--space-4) var(--space-8);margin-left:var(--space-8);vertical-align:middle}
   .facil{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:var(--space-6);margin-top:var(--space-10)}
   .facil span{font-family:var(--data);font-size:12px;border:1px solid var(--line);padding:var(--space-4) var(--space-8);color:var(--ink-2);background:var(--paper)}
-  .facil span:before{content:"✓ ";color:var(--green);font-weight:700}
+  .facil span:before{content:"✓ ";color:var(--ink);font-weight:700}
 
 /* ===== multi-page additions ===== */
 .nav nav a.active{color:var(--ink);border-bottom:2px solid var(--mint);padding-bottom:var(--space-2)}
@@ -255,7 +254,7 @@
 .card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow-sm);padding:var(--space-28) var(--space-28);color:inherit;text-decoration:none;transition:transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease}
 a.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .card .tag{font-family:var(--data);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.card .tag.live{color:var(--green)}
+.card .tag.live{color:var(--ink)}
 .card .tag.soon{color:var(--warn-ink)}
 .card h3{font-family:var(--disp);font-weight:600;font-size:20px;margin:var(--space-10) 0 var(--space-4);letter-spacing:var(--head-ls)}
 .card .when{font-family:var(--data);font-size:14px;color:var(--muted)}
@@ -326,7 +325,7 @@ a.card.disabled{pointer-events:none}
 .menu.open{display:block}
 .menu a{display:block;font-family:var(--data);font-size:15px;color:var(--ink);padding:var(--space-12) 0;border-bottom:1px solid var(--line)}
 .menu a:last-child{border-bottom:0}
-.menu a:hover,.menu a.active{color:var(--green)}
+.menu a:hover,.menu a.active{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mint);text-decoration-thickness:3px;text-underline-offset:6px}
 @media(max-width:760px){
   .navlinks{display:none}
   .menubtn{display:inline-flex}
@@ -335,7 +334,7 @@ a.card.disabled{pointer-events:none}
 /* ===== mobbin-style mobile menu (overlay card) ===== */
 .menu{position:absolute;top:calc(100% - 2px);left:clamp(var(--space-20),4vw,var(--space-56));right:clamp(var(--space-20),4vw,var(--space-56));max-width:1180px;margin:0 auto;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow-lg);padding:var(--space-14) var(--space-28) var(--space-24);z-index:45}
 .menu a{display:block;font-family:var(--sans);font-size:20px;font-weight:500;color:var(--ink);padding:var(--space-12) 0;border:0}
-.menu a:hover,.menu a.active{color:var(--green)}
+.menu a:hover,.menu a.active{color:var(--ink);text-decoration:underline;text-decoration-color:var(--mint);text-decoration-thickness:3px;text-underline-offset:6px}
 .menu .cta{text-align:center;background:var(--ink);color:var(--white);font-weight:600;font-size:15px;padding:var(--space-16);border-radius:var(--r-pill);margin-top:var(--space-14)}
 .menu .cta:hover{background:var(--charcoal-2);color:var(--white)}
 .menubtn .ic-x{display:none}
@@ -368,8 +367,6 @@ a.card.disabled{pointer-events:none}
 .navlinks a.active{color:var(--ink);background:var(--paper-2)}
 
 .foot .credit{margin-top:var(--space-10);letter-spacing:.04em}
-.foot .credit a{color:var(--green);font-weight:700}
-.foot .credit a:hover{color:var(--ink);text-decoration:underline}
 
 .foot .in{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-12) var(--space-20);flex-wrap:wrap;text-align:left}
 .foot .fright{white-space:nowrap}
@@ -383,8 +380,6 @@ a.card.disabled{pointer-events:none}
 
 .facil span{border-radius:var(--r-pill)}
 
-.foot .fleft a{color:var(--green);font-weight:700}
-.foot .fleft a:hover{color:var(--ink);text-decoration:underline}
 
 /* center home hero (home only — detail hero stays left) */
 .hero.home{text-align:center}
@@ -430,8 +425,6 @@ a.card.disabled{pointer-events:none}
 
 /* footer: centered single line */
 .foot .in{justify-content:center;text-align:center}
-.foot .fleft a,.foot a{color:var(--green);font-weight:700}
-.foot a:hover{color:var(--ink);text-decoration:underline}
 
 /* events list at scale: sticky filter + count */
 .sportbar.seg{position:sticky;top:74px;z-index:30}
@@ -521,7 +514,7 @@ a.mqcity:hover{box-shadow:var(--ring-strong)}
 .mqcity .go{margin-top:auto}
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mq{overflow-x:auto}}
 /* filtered mode: events become a static, non-animated grid in the content column */
-.freset{font-family:var(--data);font-size:12px;font-weight:700;color:var(--green);text-decoration:none;margin-left:var(--space-14);white-space:nowrap}
+.freset{font-family:var(--data);font-size:12px;margin-left:var(--space-14);white-space:nowrap}
 .mq-events.filtering{width:auto;margin-left:0;overflow:visible}
 .mq-events.filtering .mq-track{animation:none;display:block;width:auto}
 .mq-events.filtering .mq-group{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-12);padding-right:0}
@@ -628,7 +621,7 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 .staymap .l{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:var(--space-8)}
 .staymap .mapframe{box-shadow:var(--ring)}
 .staycap{font-size:14px;color:var(--muted);margin:var(--space-8) 0 0}
-.staycap a{color:var(--green);font-weight:600;display:inline-flex;align-items:center;min-height:24px}
+.staycap a{display:inline-flex;align-items:center;min-height:24px}
 @media(max-width:640px){
   .staycard{grid-template-columns:1fr}
   .staycard > div + div{box-shadow:inset 0 1px 0 var(--line)}
@@ -657,7 +650,7 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 .hotelcard .facil > span{display:inline-flex;align-items:center;gap:var(--space-6);white-space:nowrap;padding-left:var(--space-6)}
 /* the Dazzle icon replaces the ✓ on hotel chips */
 .hotelcard .facil > span:before{content:none}
-.hotelcard .facil .icon{width:16px;height:16px;color:var(--green)}
+.hotelcard .facil .icon{width:16px;height:16px;color:var(--ink)}
 /* app.js wraps Thai phrases in inner spans; only the outer span is the chip */
 .hotelcard .facil span span{border:0;padding:0;background:none;border-radius:0}
 .hotelcard .facil span span:before{content:none}
@@ -673,3 +666,11 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
   .hotelcard .go{grid-column:2;grid-row:1;margin-top:0}
   .hotelcard .hfac{grid-column:1/-1;grid-row:2}
 }
+
+/* text links outside cards (official sites, map caption, see-all, filter reset, footer):
+   ink text + thick mint underline; hover fills mint-pale and the line turns ink */
+.official a,.staycap a,.foot a,.allrow,.freset{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--mint);text-decoration-thickness:3px;text-underline-offset:4px;transition:background var(--dur-base),text-decoration-color var(--dur-base)}
+.official a:hover,.staycap a:hover,.foot a:hover,.allrow:hover,.freset:hover{background:var(--mint-pale);text-decoration-color:var(--ink)}
+/* on the mint-pale Stay band a mint line would vanish (1.3:1): the line goes ink and the hover fill goes white */
+.tone-mint :is(.official a,.staycap a,.allrow){text-decoration-color:var(--ink);text-decoration-thickness:2px}
+.tone-mint :is(.official a,.staycap a,.allrow):hover{background:var(--white)}
