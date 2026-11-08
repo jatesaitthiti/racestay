@@ -7,7 +7,7 @@
     --mint:#72f1ba; --mint-pale:#d2f9e7; --mint-ink:#0b6b47; --on-mint:#0e3d2a; --yellow:#f5ff00; --green:#0b7a4e; --warn-ink:#a9520c;
     --warn:#c8630f; --warn-pale:#f4d7bd;
     --charcoal:#242424; --charcoal-2:#2e2e2e; --charcoal-3:#3a3a3a; --on-dark-muted:#b6bcb9; --on-dark-placeholder:#8f9693;
-    --sport-tri:#2c76c5; --sport-bike:#a4680e;
+    --sport-trail:#c8f169; --sport-tri:#8fd6ff; --sport-bike:#ffbf7a; /* pastel-neon bands, all with ink text */
     /* type: no mono font, Plex digits are already equal-width, so labels and numbers use the sans */
     --sans:'IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,Arial,sans-serif;
     --disp:var(--sans); --serif:'Taviraj',Georgia,serif; --data:var(--sans); --head-ls:-0.02em;
@@ -492,11 +492,11 @@ a.evcard:hover{box-shadow:var(--ring-strong)}
 .evcard .dbody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:var(--space-8);padding:var(--space-16) var(--space-20) var(--space-18)}
 .evcard .dbody h3{font-family:var(--disp);font-weight:600;font-size:20px;line-height:1.3;margin:0;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .evcard .dbody .desc{font-size:14px;color:var(--ink-2);margin:0;line-height:1.55}
-.dcover.s-road{background:var(--mint);color:var(--on-mint)}
-.dcover.s-trail{background:var(--green);color:var(--white)}
-.dcover.s-tri{background:var(--sport-tri);color:var(--white)}
-.dcover.s-bike{background:var(--sport-bike);color:var(--white)}
-.dcover.s-hyrox{background:var(--charcoal);color:var(--mint)}
+.dcover.s-road{background:var(--mint);color:var(--ink)}
+.dcover.s-trail{background:var(--sport-trail);color:var(--ink)}
+.dcover.s-tri{background:var(--sport-tri);color:var(--ink)}
+.dcover.s-bike{background:var(--sport-bike);color:var(--ink)}
+.dcover.s-hyrox{background:var(--charcoal);color:var(--yellow)}
 html[lang="th"] .evcard .dcover .sp{letter-spacing:normal}
 
 /* ===== home marquees: auto-scrolling event & city rows ===== */
