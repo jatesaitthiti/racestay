@@ -4,7 +4,7 @@
     /* colour */
     --paper:#f5f6f5; --paper-rgb:245,246,245; --paper-2:#ebeeec; --white:#fff;
     --ink:#171718; --ink-2:#343a37; --muted:#5d6561; --line:#e0e4e2; --line-strong:#c4cac7;
-    --mint:#72f1ba; --mint-pale:#d2f9e7; --mint-ink:#0b6b47; --on-mint:#0e3d2a; --yellow:#f5ff00; --green:#0b7a4e; --warn-ink:#a9520c;
+    --mint:#72f1ba; --mint-pale:#d2f9e7; --mint-ink:#0b6b47; --yellow:#f5ff00; --green:#0b7a4e; --warn-ink:#a9520c;
     --warn:#c8630f; --warn-pale:#f4d7bd;
     --charcoal:#242424; --charcoal-2:#2e2e2e; --charcoal-3:#3a3a3a; --on-dark-muted:#b6bcb9; --on-dark-placeholder:#8f9693;
     --sport-trail:#c8f169; --sport-tri:#8fd6ff; --sport-bike:#ffbf7a; /* pastel-neon bands, all with ink text */
