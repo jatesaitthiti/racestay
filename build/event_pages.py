@@ -20,7 +20,7 @@ from th_names import distance_th, place_th
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
 HOTELS_DIR = ROOT / "data" / "hotels"
-CSS_V, JS_V = "84", "24"
+CSS_V, JS_V = "85", "24"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
@@ -369,7 +369,7 @@ def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
         mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
         label = bi("div", m["labelTh"], m["labelEn"], "l") if m["labelTh"] else ""
         out += (f'  <div class="staymap">{label}<iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ที่พักใกล้{e(place_th(m["venue"]))}" data-th-title="ที่พักใกล้{e(place_th(m["venue"]))}" data-en-title="hotels near {e(m["venue"])}" '
-                f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe></div>\n')
+                f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=72f1ba&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe></div>\n')
     near = d.get("startMap", start)
     cap_th = f"ราคาและห้องว่างจริงจาก Stay22 · รอบ{place_th(near)}"
     cap_en = f"Live prices and availability from Stay22 · around {near}"
@@ -438,7 +438,7 @@ def render(ev, nav, foot):
         mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
         maps_html += (f'  <div class="maplabel"><span data-th="{e(m["labelTh"])}" data-en="{e(m["labelEn"])}">{e(m["labelTh"])}</span><span>Stay22</span></div>\n'
                       f'  <iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ที่พักใกล้{e(place_th(m["venue"]))}" data-th-title="ที่พักใกล้{e(place_th(m["venue"]))}" data-en-title="hotels near {e(m["venue"])}" '
-                      f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=d9ef2f&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe>\n')
+                      f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=72f1ba&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe>\n')
     title_th = f"{name} — ที่พักใกล้{spot} | RaceStay"
     title_en = f"{name} — Hotels Near the Start | RaceStay"
     head = f"""<!DOCTYPE html>
@@ -484,7 +484,7 @@ def render(ev, nav, foot):
   </table></div>
 {official}</div></div>
 
-<div class="band stay tone-lime"><div class="in sec banded">
+<div class="band stay tone-mint"><div class="in sec banded">
   <div class="seclabel"><span class="num">03</span><span class="n" data-th="ที่พัก" data-en="Stay">ที่พัก</span>{bi("h2", *H[2])}</div>
 {stay_html}</div></div>
 
