@@ -674,3 +674,30 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 /* on the mint-pale Stay band a mint line would vanish (1.3:1): the line goes ink and the hover fill goes white */
 .tone-mint :is(.official a,.staycap a,.allrow){text-decoration-color:var(--ink);text-decoration-thickness:2px}
 .tone-mint :is(.official a,.staycap a,.allrow):hover{background:var(--white)}
+
+/* ===== motion + type pass (Awwwards audit ideas 1, 3, 4) ===== */
+/* 1 · section titles carry the page rhythm: display size on home sections, larger banded titles on event pages */
+.seclabel h2{font-size:clamp(34px,5.6vw,72px);font-weight:700;line-height:1.08}
+html[lang="th"] .seclabel h2{line-height:1.3}
+.seclabel{align-items:baseline}
+.sec.banded .seclabel h2{font-size:clamp(28px,3.8vw,46px);font-weight:700;line-height:1.25;max-width:880px}
+html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
+@media(max-width:640px){
+  .seclabel h2{font-size:32px}
+  .sec.banded .seclabel h2{font-size:26px}
+}
+
+/* 3 · scroll reveal: app.js adds .rv only when motion is allowed, so content never hides without JS */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rv-d,0ms)}
+.rv.in{opacity:1;transform:none}
+
+/* 4 · cross-page View Transitions (Chrome/Edge 126+, Safari 18.2+; others just navigate) */
+@view-transition{navigation:auto}
+.nav{view-transition-name:site-nav}
+:is(.phero,.hero:not(.home)) h1{view-transition-name:page-title}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
+::view-transition-group(page-title){animation-duration:.5s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  .rv{opacity:1;transform:none;transition:none}
+}

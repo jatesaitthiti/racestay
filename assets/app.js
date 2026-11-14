@@ -231,6 +231,40 @@ function initHeroVid(){
     es.forEach(function(e){ if(v.dataset.userPaused) return; if(e.isIntersecting) v.play().catch(function(){}); else v.pause(); });
   }).observe(v);
 }
+/* ----- scroll reveal: each section's blocks (and grid cards, staggered) rise in once as they enter ----- */
+function initReveal(){
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var els=[].slice.call(document.querySelectorAll('.sec > *:not(.grid), .grid > *'));
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target; el.classList.add('in'); io.unobserve(el);
+      /* hand the element back to its own transitions (card hover lift etc.) once it has landed */
+      setTimeout(function(){ el.classList.remove('rv','in'); el.style.removeProperty('--rv-d'); }, 1100);
+    });
+  },{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){
+    if(el.parentElement.classList.contains('grid')){
+      var i=[].indexOf.call(el.parentElement.children, el);
+      el.style.setProperty('--rv-d', Math.min(i,3)*90+'ms');
+    }
+    el.classList.add('rv'); io.observe(el);
+  });
+}
+/* ----- View Transitions: the clicked card's title morphs into the next page's h1 ----- */
+function initPageTitleMorph(){
+  if(!('onpagereveal' in window) && !document.startViewTransition) return;
+  document.addEventListener('click', function(e){
+    var a=e.target.closest && e.target.closest('a.evcard, a.mqcity, a.card, a.feature');
+    if(!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var t=a.querySelector('h3, h2'); if(t) t.style.viewTransitionName='page-title';
+  });
+  /* coming back via bfcache: drop the name so the next click has a single named title */
+  window.addEventListener('pageshow', function(){
+    document.querySelectorAll('[style*="view-transition-name"]').forEach(function(el){ el.style.viewTransitionName=''; });
+  });
+}
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitDesc);
 
 /* apply saved language on every page load */
@@ -247,6 +281,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
   initSegments();
   initHeroVid();
+  initReveal();
+  initPageTitleMorph();
   var ec=document.getElementById('evcount');
   if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .evcard'),function(c){return c.style.display!=='none';}).length;
   sizeTopBg();
