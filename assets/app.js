@@ -178,6 +178,8 @@ function initSegments(){
   document.querySelectorAll('.seg').forEach(function(seg){
     if(!seg.querySelector('.seg-thumb')){
       var th=document.createElement('span'); th.className='seg-thumb';
+      /* first placement is instant: otherwise the thumb grows sideways from 0 on every page load */
+      th.style.transition='none';
       seg.insertBefore(th, seg.firstChild);
     }
     seg.querySelectorAll('.seg-item').forEach(function(it){
@@ -185,6 +187,9 @@ function initSegments(){
     });
   });
   segSyncAll();
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    document.querySelectorAll('.seg-thumb').forEach(function(th){ th.style.transition=''; });
+  }); });
 }
 /* ----- marquee pause/play (WAI: moving content needs a pause control) ----- */
 function toggleMarquee(btn){
@@ -244,25 +249,15 @@ function initReveal(){
       setTimeout(function(){ el.classList.remove('rv','in'); el.style.removeProperty('--rv-d'); }, 1100);
     });
   },{rootMargin:'0px 0px -8% 0px'});
+  var fold=window.innerHeight;
   els.forEach(function(el){
+    /* already on screen at load: show it as is, so arriving on a page never replays a reveal */
+    if(el.getBoundingClientRect().top < fold) return;
     if(el.parentElement.classList.contains('grid')){
       var i=[].indexOf.call(el.parentElement.children, el);
       el.style.setProperty('--rv-d', Math.min(i,3)*90+'ms');
     }
     el.classList.add('rv'); io.observe(el);
-  });
-}
-/* ----- View Transitions: the clicked card's title morphs into the next page's h1 ----- */
-function initPageTitleMorph(){
-  if(!('onpagereveal' in window) && !document.startViewTransition) return;
-  document.addEventListener('click', function(e){
-    var a=e.target.closest && e.target.closest('a.evcard, a.mqcity, a.card, a.feature');
-    if(!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    var t=a.querySelector('h3, h2'); if(t) t.style.viewTransitionName='page-title';
-  });
-  /* coming back via bfcache: drop the name so the next click has a single named title */
-  window.addEventListener('pageshow', function(){
-    document.querySelectorAll('[style*="view-transition-name"]').forEach(function(el){ el.style.viewTransitionName=''; });
   });
 }
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitDesc);
@@ -282,7 +277,6 @@ document.addEventListener('DOMContentLoaded',function(){
   initSegments();
   initHeroVid();
   initReveal();
-  initPageTitleMorph();
   var ec=document.getElementById('evcount');
   if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .evcard'),function(c){return c.style.display!=='none';}).length;
   sizeTopBg();

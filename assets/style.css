@@ -691,12 +691,14 @@ html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rv-d,0ms)}
 .rv.in{opacity:1;transform:none}
 
-/* 4 · cross-page View Transitions (Chrome/Edge 126+, Safari 18.2+; others just navigate) */
+/* 4 · cross-page View Transitions, fade + rise (Chrome/Edge 126+, Safari 18.2+; others just navigate) */
 @view-transition{navigation:auto}
 .nav{view-transition-name:site-nav}
-:is(.phero,.hero:not(.home)) h1{view-transition-name:page-title}
-::view-transition-old(root),::view-transition-new(root){animation-duration:.32s}
-::view-transition-group(page-title){animation-duration:.5s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+/* old page fades out quickly, new page fades in while rising 18px; the nav (own group) stays put */
+@keyframes rs-vt-out{to{opacity:0}}
+@keyframes rs-vt-in{from{opacity:0;transform:translateY(18px)}}
+::view-transition-old(root){animation:rs-vt-out .18s ease-in both}
+::view-transition-new(root){animation:rs-vt-in .4s cubic-bezier(.2,.7,.2,1) .06s both}
 @media (prefers-reduced-motion:reduce){
   @view-transition{navigation:none}
   .rv{opacity:1;transform:none;transition:none}
