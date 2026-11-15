@@ -350,6 +350,16 @@ function initNavSections(){
   window.addEventListener('resize', function(){ cur=-2; update(); });
   update();
 }
+/* ----- hotel cards: draw the walk-to-start line when the card scrolls into view ----- */
+function initWalks(){
+  var w=[].slice.call(document.querySelectorAll('.walk')); if(!w.length) return;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)){ w.forEach(function(el){ el.classList.add('on'); }); return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -12% 0px'});
+  w.forEach(function(el){ io.observe(el); });
+}
 function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
   var h=document.querySelector('.hero.home'), r=document.getElementById('races');
@@ -428,6 +438,7 @@ document.addEventListener('DOMContentLoaded',function(){
   initSegments();
   initHeroVid();
   initMarquee();
+  initWalks();
   initReveal();
   var ec=document.getElementById('evcount');
   if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .evcard'),function(c){return c.style.display!=='none';}).length;

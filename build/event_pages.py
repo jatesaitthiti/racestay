@@ -20,7 +20,10 @@ from th_names import distance_th, place_th
 ROOT = Path(__file__).resolve().parent.parent
 CHROME_SRC = ROOT / "buriram-marathon.html"
 HOTELS_DIR = ROOT / "data" / "hotels"
-CSS_V, JS_V = "96", "31"
+# on-foot routes hotel -> venue, cached by build/fetch_walks.py (the build itself stays offline)
+WALKS = json.loads((ROOT / "data" / "walks.json").read_text(encoding="utf-8")).get("routes", {}) if (ROOT / "data" / "walks.json").exists() else {}
+WALK_MAX_S = 30 * 60  # past a 30-minute walk the card says "by road" and drops the walk strip
+CSS_V, JS_V = "97", "32"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
@@ -270,6 +273,11 @@ def dist_text(m):
     return f"{k} กม.", f"{k} km"
 
 
+def walk(h, lat, lng):
+    """Cached on-foot route for this hotel and venue, or None."""
+    return WALKS.get(f'{h["lat"]:.6f},{h["lng"]:.6f}|{lat:.6f},{lng:.6f}')
+
+
 def hotel_block(slug, hotels, lat, lng, label, to, race, extra_cap=None):
     """Cards for one venue, nearest first. Facilities show only when phone-confirmed and recent."""
     to_th, to_en = to
@@ -278,8 +286,24 @@ def hotel_block(slug, hotels, lat, lng, label, to, race, extra_cap=None):
     if race and date.fromisoformat(race) >= today:  # a finished race gets no pre-filled dates
         stay = {"checkin": (date.fromisoformat(race) - timedelta(days=1)).isoformat(), "checkout": race}
     cards = ""
-    for h in sorted(hotels, key=lambda h: metres(lat, lng, h["lat"], h["lng"])):
-        dt_th, dt_en = dist_text(metres(lat, lng, h["lat"], h["lng"]))
+    def far(h):
+        w = walk(h, lat, lng)
+        return w["m"] if w else metres(lat, lng, h["lat"], h["lng"])
+    routed = all(walk(h, lat, lng) for h in hotels)
+    for h in sorted(hotels, key=far):
+        w = walk(h, lat, lng)
+        dt_th, dt_en = dist_text(w["m"] if w else metres(lat, lng, h["lat"], h["lng"]))
+        strip = ""
+        if w and w["s"] <= WALK_MAX_S:
+            mn = max(1, round(w["s"] / 60))
+            head = f'<b>{bi("span", f"เดิน {mn} นาที", f"{mn} min walk")}</b> {bi("span", dt_th, dt_en)} {bi("span", to_th, to_en)}'
+            # a shared 0-30 min scale, so cards compare at a glance; the line draws in when the card scrolls into view
+            strip = (f'<div class="walk" aria-hidden="true"><div class="w-track" style="--p:{min(1, w["s"] / WALK_MAX_S):.3f}">'
+                     f'<i class="w-l"></i><i class="w-h"></i><i class="w-s"></i></div>{bi("span", "30 นาที", "30 min", "w-max")}</div>')
+        elif w:
+            head = f'<b>{bi("span", dt_th, dt_en)}</b> {bi("span", "ตามถนน" + to_th, "by road " + to_en)}'
+        else:
+            head = f'<b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}'
         ok, last = set(), None
         for key, f in (h.get("facilities") or {}).items():
             on = f.get("checkedOn")
@@ -306,11 +330,15 @@ def hotel_block(slug, hotels, lat, lng, label, to, race, extra_cap=None):
         link = "https://www.stay22.com/allez/roam?" + urlencode(q)
         # header row (name, distance · zone, button) over a full-width facility strip
         cards += (f'    <article class="hotelcard"><div class="hmain"><h3>{e(h["name"])}</h3>'
-                  f'<p class="hd"><b>{bi("span", dt_th, dt_en)}</b> {bi("span", to_th, to_en)}<span class="sep" aria-hidden="true">·</span>{bi("span", h["zoneTh"], h["zoneEn"], "hz")}</p></div>'
+                  f'<p class="hd">{head}<span class="sep" aria-hidden="true">·</span>{bi("span", h["zoneTh"], h["zoneEn"], "hz")}</p>{strip}</div>'
                   f'<a class="go btn ghost" href="{e(link)}" target="_blank" rel="noopener sponsored">{bi("span", "ดูห้องว่าง", "See rooms")}'
                   f'<span class="vh">: {e(h["name"])}</span></a>{facil}</article>\n')
-    cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
-    cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
+    if routed:
+        cap_th = "เวลาและระยะเดินตามทางเท้าจริง คำนวณจากแผนที่ © ผู้ร่วมสร้าง OpenStreetMap · ราคาและห้องว่างดูได้ที่ Stay22"
+        cap_en = "Walking time and distance along real streets, from © OpenStreetMap contributors · prices and availability on Stay22"
+    else:
+        cap_th = "ระยะวัดเป็นเส้นตรงจากพิกัด OpenStreetMap ระยะเดินจริงอาจไกลกว่า · ราคาและห้องว่างดูได้ที่ Stay22"
+        cap_en = "Straight-line distance from OpenStreetMap coordinates; the walk may be longer · prices and availability on Stay22"
     if extra_cap:
         cap_th, cap_en = f"{extra_cap[0]} · {cap_th}", f"{extra_cap[1]} · {cap_en}"
     return (f'  <div class="hotels">{bi("div", label[0], label[1], "l")}\n'
