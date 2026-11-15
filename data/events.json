@@ -68,7 +68,9 @@
           }
         ],
         "cityPage": "city-buriram.html",
-        "officialUrl": "https://burirammarathon.com/"
+        "officialUrl": "https://burirammarathon.com/",
+        "finishLat": 14.9659154,
+        "finishLng": 103.0948222
       }
     },
     {
@@ -116,7 +118,9 @@
         "zoneNoteTh": "พักในเมืองเก่าหรือแถวท่าแพเดินถึงจุดปล่อยตัว · นักวิ่งฟูลและฮาล์ฟจบที่แม่ริม ผู้จัดมีรถสองแถวรับกลับประตูท่าแพฟรี",
         "zoneNoteEn": "Stay in the old city or around Tha Phae to walk to the start · full and half runners finish in Mae Rim, and the organizer runs free songthaews back to the gate",
         "cityPage": "city-chiang-mai.html",
-        "officialUrl": "https://www.chiangmaimarathon.com"
+        "officialUrl": "https://www.chiangmaimarathon.com",
+        "finishLat": 18.8853696,
+        "finishLng": 98.9553927
       }
     },
     {
@@ -738,7 +742,9 @@
         "zoneNoteTh": "จุดปล่อยตัวกับเส้นชัยอยู่คนละที่ พักใกล้อนุสาวรีย์แล้วเดินไปสตาร์ท จบแล้วค่อยนั่งรถกลับจากสวนน้ำบุ่งตาหลั่ว",
         "zoneNoteEn": "Start and finish are in different places — stay near the monument, walk to the start, and ride back from Bung Ta Lua after",
         "cityPage": "city-nakhon-ratchasima.html",
-        "officialUrl": "https://www.koratmarathon.com"
+        "officialUrl": "https://www.koratmarathon.com",
+        "finishLat": 14.9586576,
+        "finishLng": 102.0882256
       }
     },
     {

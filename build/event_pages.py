@@ -392,12 +392,19 @@ def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
             f'    <div>{bi("div", "เตรียมตัวเรื่องที่พัก", "Before you book", "l")}{bi("p", d["zoneNoteTh"], d["zoneNoteEn"], "note")}</div>\n  </div>\n')
     maps = d.get("maps") or [{"labelTh": "", "labelEn": "", "lat": d["lat"], "lng": d["lng"], "venue": d.get("startMap", start)}]
     out = card
+    # point-to-point races: a finish pin on the first map (Stay22 `poi`), zoomed to show start and finish together;
+    # Stay22's own hover card on the pin adds the travel time from the start
+    pins = ""
+    if not same and not finish_tbc and d.get("finishLat") is not None:
+        poi = [{"lat": d["finishLat"], "lng": d["finishLng"], "name": "FINISH", "size": 3,
+                "desc": f"เส้นชัย {place_th(finish)} · Finish {finish}"}]
+        pins = "&amp;poi=" + quote(json.dumps(poi, ensure_ascii=False, separators=(",", ":"))) + "&amp;fitmaptopoi=true"
     for i, m in enumerate(maps):
         vq = quote(f'{m["venue"]}, {city}')
         mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
         label = bi("div", m["labelTh"], m["labelEn"], "l") if m["labelTh"] else ""
         out += (f'  <div class="staymap">{label}<iframe class="mapframe" id="{mid}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="ที่พักใกล้{e(place_th(m["venue"]))}" data-th-title="ที่พักใกล้{e(place_th(m["venue"]))}" data-en-title="hotels near {e(m["venue"])}" '
-                f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=72f1ba&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}"></iframe></div>\n')
+                f'src="https://www.stay22.com/embed/gm?aid={STAY22_AID}&amp;lat={m["lat"]}&amp;lng={m["lng"]}&amp;venue={vq}&amp;maincolor=72f1ba&amp;currency=THB&amp;priceper=nightly&amp;campaign=ev-{e(ev["slug"])}{pins if i == 0 else ""}"></iframe></div>\n')
     near = d.get("startMap", start)
     cap_th = f"ราคาและห้องว่างจริงจาก Stay22 · รอบ{place_th(near)}"
     cap_en = f"Live prices and availability from Stay22 · around {near}"
