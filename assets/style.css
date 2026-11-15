@@ -687,6 +687,10 @@ html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
   .sec.banded .seclabel h2{font-size:26px}
 }
 
+/* the home hero stays the largest type on the page: 7.2vw vs the 5.6vw section titles at every width */
+.hero.home h1{font-size:clamp(40px,7.2vw,88px)}
+@media(max-width:640px){.hero.home h1{font-size:38px}}
+
 /* 3 · scroll reveal: app.js adds .rv only when motion is allowed, so content never hides without JS */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rv-d,0ms)}
 .rv.rv-on{opacity:1;transform:none}
