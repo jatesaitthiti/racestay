@@ -493,14 +493,14 @@ a.evcard:hover{box-shadow:var(--ring-strong)}
 html[lang="th"] .evcard .dcover .sp{letter-spacing:normal}
 
 /* ===== home marquees: auto-scrolling event & city rows ===== */
-.mq{--tile-h:clamp(200px,22vw,320px);overflow:hidden;position:relative;width:100vw;margin-left:calc(50% - 50vw)}
+/* rows move only with the user's own page scroll, swipe or drag (app.js initMarquee) - nothing autoplays, so no pause control is needed (WCAG 2.2.2) */
+.mq{--tile-h:clamp(200px,22vw,320px);overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:none;position:relative;width:100vw;margin-left:calc(50% - 50vw)}
+.mq::-webkit-scrollbar{display:none}
+@media (pointer:fine){.mq{cursor:grab}}
+.mq.dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.mq.dragging a{pointer-events:none}
 .mq-track{display:flex;width:max-content}
 .mq-group{display:flex;gap:var(--space-12);padding-right:var(--space-12);flex:0 0 auto}
-.mq-events .mq-track{animation:mq-right 80s linear infinite}
-.mq-cities .mq-track{animation:mq-left 40s linear infinite}
-.mq:hover .mq-track{animation-play-state:paused}
-@keyframes mq-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@keyframes mq-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .mq-events .evcard{flex:0 0 auto;width:calc(var(--tile-h) * 1.5);height:var(--tile-h);display:flex;flex-direction:column}
 /* description: whole lines only. CSS assumes a 2-line title; app.js fitDesc() refines per card */
 .evcard .dbody .desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -512,11 +512,10 @@ a.mqcity:hover{box-shadow:var(--ring-strong)}
 .mqcity h3{font-family:var(--disp);font-weight:600;font-size:16px;margin:0;color:var(--ink)}
 .mqcity .desc{font-size:14px;color:var(--muted);margin-top:var(--space-8);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .mqcity .go{margin-top:auto}
-@media (prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mq{overflow-x:auto}}
 /* filtered mode: events become a static, non-animated grid in the content column */
 .freset{font-family:var(--data);font-size:12px;margin-left:var(--space-14);white-space:nowrap}
 .mq-events.filtering{width:auto;margin-left:0;overflow:visible}
-.mq-events.filtering .mq-track{animation:none;display:block;width:auto}
+.mq-events.filtering .mq-track{display:block;width:auto}
 .mq-events.filtering .mq-group{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-12);padding-right:0}
 .mq-events.filtering .mq-group[aria-hidden]{display:none}
 .mq-events.filtering .evcard{flex:none;width:auto;height:auto;aspect-ratio:3/2}
@@ -530,10 +529,6 @@ html{scroll-padding-top:104px;touch-action:manipulation}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:var(--r-xs)}
 .news :focus-visible,.foot :focus-visible{outline-color:var(--mint)}
 a.evcard:focus-visible,a.mqcity:focus-visible,a.card:focus-visible{outline-offset:3px;border-radius:var(--r-card)}
-.mq:focus-within .mq-track,.mq.paused .mq-track{animation-play-state:paused}
-.mqtoggle{margin-left:auto;display:inline-flex;align-items:center;gap:var(--space-6);min-height:44px;padding:0 var(--space-16);border:1px solid var(--line);border-radius:var(--r-pill);background:var(--white);color:var(--ink);font-family:var(--data);font-size:14px;cursor:pointer}
-.mqtoggle:hover{border-color:var(--ink)}
-.seclabel:has(.mqtoggle){display:flex;align-items:baseline;gap:var(--space-14);flex-wrap:wrap}
 /* touch / pointer targets: 44px for nav-like controls, 24px (WCAG 2.2 AA) for inline links */
 .brand{display:inline-flex;align-items:center;min-height:44px}
 .menubtn{min-width:44px;min-height:44px}

@@ -129,6 +129,7 @@ function applyFilter(sport){
   if(!sport || sport==='all'){
     mq.classList.remove('filtering');
     mq.querySelectorAll('.evcard').forEach(function(c){ c.style.display=''; });
+    if(mq._mq){ mq._mq.todo=0; mq._mq.set(0); }
     if(reset) reset.style.display='none';
     fitDesc();
     return;
@@ -191,14 +192,77 @@ function initSegments(){
     document.querySelectorAll('.seg-thumb').forEach(function(th){ th.style.transition=''; });
   }); });
 }
-/* ----- marquee pause/play (WAI: moving content needs a pause control) ----- */
-function toggleMarquee(btn){
-  var mq=document.getElementById(btn.getAttribute('aria-controls')); if(!mq) return;
-  var paused=mq.classList.toggle('paused');
-  btn.setAttribute('aria-pressed', paused?'true':'false');
-  var th=paused?'▶ เลื่อนต่อ':'❚❚ หยุดเลื่อน', en=paused?'▶ Play':'❚❚ Pause';
-  btn.setAttribute('data-th',th); btn.setAttribute('data-en',en);
-  btn.textContent=(document.documentElement.lang==='en')?en:th;
+/* ----- home marquees: rows drift only while the page is scrolled, and can be swiped / dragged.
+   Nothing moves on its own, so no pause control is needed (WCAG 2.2.2).
+   Each row is a native horizontal scroller holding two copies of its cards; the position wraps
+   by one copy's width so the row never runs out. ----- */
+function initMarquee(){
+  var rows=[].slice.call(document.querySelectorAll('.mq')); if(!rows.length) return;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raf=0;
+  function kick(){ if(!raf) raf=requestAnimationFrame(tick); }
+  function tick(){
+    raf=0; var more=false;
+    rows.forEach(function(mq){
+      var st=mq._mq; if(!st || st.drag) return;
+      if(Math.abs(st.todo)<0.1){ st.todo=0; return; }
+      var step=st.todo*0.12; st.todo-=step; st.set(st.pos+step); more=true;
+    });
+    if(more) kick();
+  }
+  rows.forEach(function(mq){
+    var g=mq.querySelector('.mq-group');
+    var st={pos:0, todo:0, drag:null, dir:mq.classList.contains('mq-events')?-1:1};
+    st.set=function(p){
+      var w=g?g.offsetWidth:0;
+      if(w && w>mq.clientWidth){ while(p>=w) p-=w; while(p<0) p+=w; }
+      st.pos=p; mq.scrollLeft=p;
+    };
+    mq._mq=st;
+    /* swipe, trackpad or keyboard focus moved the row: adopt that position, wrapping if needed */
+    mq.addEventListener('scroll', function(){
+      if(Math.abs(mq.scrollLeft-st.pos)>1.5) st.set(mq.scrollLeft);
+    }, {passive:true});
+    /* mouse drag (touch already swipes natively) */
+    mq.addEventListener('pointerdown', function(e){
+      if(e.pointerType!=='mouse' || e.button!==0) return;
+      st.drag={x:e.clientX, t:e.timeStamp, v:0, moved:false}; st.todo=0;
+    });
+    mq.addEventListener('pointermove', function(e){
+      var d=st.drag; if(!d) return;
+      var dx=e.clientX-d.x;
+      if(!d.moved){
+        if(Math.abs(dx)<5) return;
+        d.moved=true; mq.classList.add('dragging');
+        try{ mq.setPointerCapture(e.pointerId); }catch(_){}
+      }
+      var dt=Math.max(1, e.timeStamp-d.t);
+      d.v=dx/dt; d.x=e.clientX; d.t=e.timeStamp;
+      st.set(st.pos-dx);
+    });
+    function end(){
+      var d=st.drag; st.drag=null; if(!d || !d.moved) return;
+      st.todo=-d.v*220; kick();                       /* a short glide after letting go */
+      st.justDragged=true;
+      setTimeout(function(){ st.justDragged=false; mq.classList.remove('dragging'); }, 0);
+    }
+    mq.addEventListener('pointerup', end);
+    mq.addEventListener('pointercancel', end);
+    mq.addEventListener('click', function(e){ if(st.justDragged){ e.preventDefault(); e.stopPropagation(); } }, true);
+    mq.addEventListener('dragstart', function(e){ e.preventDefault(); });
+  });
+  if(reduce) return;                                  /* reduced motion: rows stay put unless swiped */
+  var lastY=window.scrollY;
+  window.addEventListener('scroll', function(){
+    var y=window.scrollY, dy=y-lastY; lastY=y; if(!dy) return;
+    var vh=window.innerHeight;
+    rows.forEach(function(mq){
+      var st=mq._mq; if(!st || st.drag || mq.classList.contains('filtering')) return;
+      var r=mq.getBoundingClientRect(); if(r.bottom<0 || r.top>vh) return;
+      st.todo+=dy*0.7*st.dir;
+    });
+    kick();
+  }, {passive:true});
 }
 function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
@@ -276,6 +340,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   initSegments();
   initHeroVid();
+  initMarquee();
   initReveal();
   var ec=document.getElementById('evcount');
   if(ec) ec.textContent=[].filter.call(document.querySelectorAll('#races .evcard'),function(c){return c.style.display!=='none';}).length;
