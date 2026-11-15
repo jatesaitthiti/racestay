@@ -702,3 +702,44 @@ html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
   @view-transition{navigation:none}
   .rv{opacity:1;transform:none;transition:none}
 }
+
+/* ===== event pages: sticky jump bar (audit idea 5; built by app.js initJumpNav) ===== */
+.jumpnav{position:sticky;top:var(--navh,74px);z-index:35;display:flex;justify-content:center;padding:var(--space-12) clamp(16px,4vw,40px);pointer-events:none}
+.jn-track{pointer-events:auto;display:flex;max-width:100%;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;transition:box-shadow var(--dur-slow),background var(--dur-slow)}
+.jn-track::-webkit-scrollbar{display:none}
+.jumpnav.stuck .jn-track{background:var(--white);box-shadow:var(--ring),var(--shadow-md)}
+.jumpnav.stuck .jn-track .seg-thumb{background:var(--mint-pale);box-shadow:none}
+.jn-track .seg-item{display:inline-flex;align-items:center;min-height:40px;text-decoration:none;flex:0 0 auto}
+@media(max-width:640px){.jumpnav{justify-content:flex-start}.jn-track{width:100%}}
+
+/* ===== microinteractions (audit idea 7) ===== */
+:root{--ease-out:cubic-bezier(.2,.7,.2,1)}
+/* press: buttons and pills give a little under the finger */
+.btn,.menubtn,.seg .seg-item{transition:background var(--dur-base),color var(--dur-base),box-shadow var(--dur-base),transform var(--dur-fast) var(--ease-out)}
+.btn:active,.menubtn:active,.seg .seg-item:active{transform:scale(.95)}
+/* cards lift on hover and settle when pressed */
+a.evcard,a.mqcity,a.card,.hotelcard{transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+@media (hover:hover){
+  a.evcard:hover,a.mqcity:hover,a.card:hover{transform:translateY(-5px);box-shadow:var(--ring-strong),var(--shadow-md)}
+  .hotelcard:hover{transform:translateY(-3px);box-shadow:var(--ring-strong),var(--shadow-md)}
+}
+a.evcard:active,a.mqcity:active,a.card:active{transform:translateY(-1px) scale(.985);transition-duration:.1s}
+.mq.dragging a{transform:none!important}
+/* marquee rows clip vertically: give lifted cards room */
+.mq-track{padding:var(--space-8) 0}
+.mq{margin-top:14px!important;margin-bottom:-8px}
+/* card buttons point the way: → goes to a page here, ↗ opens the booking site */
+.go.btn:after{content:"→";display:inline-block;margin-left:var(--space-6);transition:transform .3s var(--ease-out)}
+.hotelcard .go.btn:after{content:"↗"}
+@media (hover:hover){
+  .go.btn:hover:after,a.mqcity:hover .go.btn:after,a.card:hover .go.btn:after{transform:translateX(4px)}
+  .hotelcard .go.btn:hover:after{transform:translate(3px,-3px)}
+}
+/* text links: the mint-pale fill sweeps in from the left instead of snapping on */
+:is(.official a,.staycap a,.foot a,.allrow,.freset){background:linear-gradient(var(--mint-pale),var(--mint-pale)) no-repeat left bottom/0% 100%;transition:background-size .35s var(--ease-out),text-decoration-color var(--dur-base)}
+:is(.official a,.staycap a,.foot a,.allrow,.freset):hover{background:linear-gradient(var(--mint-pale),var(--mint-pale)) no-repeat left bottom/100% 100%}
+.tone-mint :is(.official a,.staycap a,.allrow){background:linear-gradient(var(--white),var(--white)) no-repeat left bottom/0% 100%}
+.tone-mint :is(.official a,.staycap a,.allrow):hover{background:linear-gradient(var(--white),var(--white)) no-repeat left bottom/100% 100%}
+@media (prefers-reduced-motion:reduce){
+  a.evcard:hover,a.mqcity:hover,a.card:hover,.hotelcard:hover,a.evcard:active,a.mqcity:active,a.card:active,.btn:active,.menubtn:active,.seg .seg-item:active{transform:none}
+}
