@@ -132,6 +132,7 @@ function applyFilter(sport){
     mq.querySelectorAll('.evcard').forEach(function(c){ c.style.display=''; });
     if(mq._mq){ mq._mq.todo=0; mq._mq.set(0); }
     if(reset) reset.style.display='none';
+    setEventCount(null);
     fitDesc();
     return;
   }
@@ -141,7 +142,17 @@ function applyFilter(sport){
     c.style.display=(c.getAttribute('data-sport')===sport)?'':'none';
   });
   if(reset) reset.style.display='';
+  setEventCount(first ? [].filter.call(first.querySelectorAll('.evcard'), function(c){ return c.style.display!=='none'; }).length : null);
   fitDesc();
+}
+/* the "N events" heading counts what the filter shows; null puts the full count back */
+function setEventCount(n){
+  var h=document.querySelector('h2[data-count="events"]'); if(!h) return;
+  ['th','en'].forEach(function(l){
+    var k='data-'+l, o=h.getAttribute(k+'-all'); if(o===null){ o=h.getAttribute(k); h.setAttribute(k+'-all',o); }
+    h.setAttribute(k, n===null ? o : o.replace(/^\d+/, n));
+  });
+  h.textContent=h.getAttribute(document.documentElement.lang==='en'?'data-en':'data-th');
 }
 function clearFilter(){
   applyFilter('all');

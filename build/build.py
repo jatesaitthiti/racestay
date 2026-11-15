@@ -12,6 +12,7 @@ It only rewrites the regions between the marker comments below; the hero,
 teasers, newsletter and everything else stay untouched. Idempotent.
 """
 import json
+import re
 import sys
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 import event_pages
@@ -104,6 +105,22 @@ def splice(html: str, start: str, end: str, body: str) -> str:
     return html[:s] + body + html[e:]
 
 
+# section headings: the label above names the section, the heading says what the reader gets
+HEADINGS = {
+    "events": lambda n: (f"{n} งาน พร้อมที่พักใกล้จุดสตาร์ท", f"{n} events, each with stays near the start"),
+    "cities": lambda n: (f"{n} เมือง รู้ก่อนว่าควรพักย่านไหน", f"{n} cities, and where to stay in each"),
+}
+
+
+def set_heading(html: str, key: str, n: int) -> str:
+    th, en = HEADINGS[key](n)
+    new = f'<h2 data-count="{key}" data-th="{th}" data-en="{en}">{th}</h2>'
+    html, k = re.subn(rf'<h2 data-count="{key}"[^>]*>.*?</h2>', new, html, count=1)
+    if k != 1:
+        raise SystemExit(f'Could not find <h2 data-count="{key}"> in index.html')
+    return html
+
+
 def main() -> int:
     data = json.loads(DATA.read_text(encoding="utf-8"))
     events = sorted(data["events"], key=upcoming_days)
@@ -112,6 +129,8 @@ def main() -> int:
     html = INDEX.read_text(encoding="utf-8")
     html = splice(html, EVENTS_START, EVENTS_END, marquee_body([event_card(e) for e in events]))
     html = splice(html, CITIES_START, CITIES_END, marquee_body([city_card(c) for c in cities]))
+    html = set_heading(html, "events", len(events))
+    html = set_heading(html, "cities", len(cities))
 
     INDEX.write_text(html, encoding="utf-8")
     made = event_pages.render_all(data["events"])
