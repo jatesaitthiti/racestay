@@ -703,14 +703,30 @@ html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
   .rv{opacity:1;transform:none;transition:none}
 }
 
-/* ===== event pages: sticky jump bar (audit idea 5; built by app.js initJumpNav) ===== */
-.jumpnav{position:sticky;top:var(--navh,74px);z-index:35;display:flex;justify-content:center;padding:var(--space-12) clamp(16px,4vw,40px);pointer-events:none}
-.jn-track{pointer-events:auto;display:flex;max-width:100%;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;transition:box-shadow var(--dur-slow),background var(--dur-slow)}
-.jn-track::-webkit-scrollbar{display:none}
-.jumpnav.stuck .jn-track{background:var(--white);box-shadow:var(--ring),var(--shadow-md)}
-.jumpnav.stuck .jn-track .seg-thumb{background:var(--mint-pale);box-shadow:none}
-.jn-track .seg-item{display:inline-flex;align-items:center;min-height:40px;text-decoration:none;flex:0 0 auto}
-@media(max-width:640px){.jumpnav{justify-content:flex-start}.jn-track{width:100%}}
+/* ===== race pages: nav links swap to page sections past the stat panel (audit idea 5; app.js initNavSections) ===== */
+.navswap{flex:1;display:grid;min-width:0}
+.navswap>*{grid-area:1/1;transition:opacity .25s var(--ease-out,ease),transform .35s var(--ease-out,ease),visibility 0s}
+.navbar.secmode .navlinks,.navbar:not(.secmode) .navsecs{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .3s,visibility 0s linear .3s}
+.navbar.secmode .navlinks{transform:translateY(-8px)}
+.navbar:not(.secmode) .navsecs{transform:translateY(8px)}
+.navsecs{position:relative;display:flex;justify-content:center;gap:var(--space-4);font-family:var(--data);font-size:14px;color:var(--muted)}
+.navsecs a{position:relative;z-index:1;padding:var(--space-6) var(--space-12);border-radius:var(--r-pill);color:inherit;text-decoration:none;white-space:nowrap;transition:color var(--dur-base)}
+.navsecs a:hover,.navsecs a.active{color:var(--ink)}
+.navsecs a.active{font-weight:600}
+.navsecs a::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.ns-pill{position:absolute;left:0;top:0;z-index:0;border-radius:var(--r-pill);background:var(--mint-pale);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.4,0,.2,1),width .35s cubic-bezier(.4,0,.2,1),opacity .2s}
+.secchip{display:none;align-items:center;gap:var(--space-6);min-height:40px;margin-left:auto;padding:0 var(--space-12) 0 var(--space-14);border:1px solid var(--line);border-radius:var(--r-pill);background:var(--mint-pale);color:var(--ink);font-family:var(--data);font-size:14px;font-weight:600;cursor:pointer;max-width:52vw}
+.secchip .sc-k{font-weight:400;color:var(--muted)}
+.secchip .sc-l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.secchip svg{flex:0 0 auto;transition:transform .25s var(--ease-out,ease)}
+.secchip[aria-expanded="true"] svg{transform:rotate(180deg)}
+.secmenu a.active{text-decoration:underline;text-decoration-color:var(--mint);text-decoration-thickness:3px;text-underline-offset:6px}
+@media(max-width:760px){
+  .navswap{display:none}
+  .navbar.secmode .secchip{display:inline-flex}
+  .navbar.secmode .navright{margin-left:0}
+}
+@media(max-width:380px){.secchip .sc-k{display:none}}
 
 /* ===== microinteractions (audit idea 7) ===== */
 :root{--ease-out:cubic-bezier(.2,.7,.2,1)}

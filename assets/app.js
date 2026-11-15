@@ -72,7 +72,7 @@ function setLang(l){
   keepTogether();
   fitDesc();
   sizeTopBg();
-  if(typeof segSyncAll==='function') requestAnimationFrame(segSyncAll);
+  requestAnimationFrame(function(){ if(typeof segSyncAll==='function') segSyncAll(); if(window.navSecSync) navSecSync(); });
 }
 
 /* ----- race-detail page only (guards keep it safe elsewhere) ----- */
@@ -265,57 +265,90 @@ function initMarquee(){
     kick();
   }, {passive:true});
 }
-/* ----- event pages: sticky "jump to" bar built from the numbered sections (.seclabel .n);
-   the seg thumb slides to whichever section is in view ----- */
-function initJumpNav(){
-  var stat=document.querySelector('.statpanel'); if(!stat) return;   /* only race pages have the stat panel */
+/* ----- race pages: once the reader scrolls past the stat panel, the main nav's middle links
+   swap to this page's sections (one sticky bar, nothing added). Phones get a "section ▾" chip
+   with a dropdown instead. A mint pill slides to the section in view. ----- */
+function initNavSections(){
+  var stat=document.querySelector('.statpanel'), navbar=document.querySelector('.navbar');
+  var links0=navbar && navbar.querySelector('.navlinks');
+  if(!stat || !links0) return;                       /* only race pages have the stat panel */
   var secs=[].slice.call(document.querySelectorAll('.sec.banded')).filter(function(s){ return s.querySelector('.seclabel .n'); });
   if(secs.length<3) return;
   var RENAME={Why:['ภาพรวม','Overview']};          /* "ทำไม" reads oddly as a menu item */
-  var en0=document.documentElement.lang==='en';
+  var isEn=function(){ return document.documentElement.lang==='en'; };
   var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var bar=document.createElement('nav'); bar.className='jumpnav';
-  bar.setAttribute('data-th-aria','ส่วนต่างๆ ในหน้านี้'); bar.setAttribute('data-en-aria','On this page');
-  bar.setAttribute('aria-label', en0?'On this page':'ส่วนต่างๆ ในหน้านี้');
-  var track=document.createElement('div'); track.className='jn-track seg';
-  var links=secs.map(function(s){
+  var items=secs.map(function(s){
     var n=s.querySelector('.seclabel .n');
     var en=n.getAttribute('data-en')||n.textContent, th=n.getAttribute('data-th')||n.textContent;
     if(RENAME[en]){ th=RENAME[en][0]; en=RENAME[en][1]; }
     if(!s.id) s.id=en.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-    var a=document.createElement('a'); a.className='seg-item'; a.href='#'+s.id;
-    a.setAttribute('data-th',th); a.setAttribute('data-en',en); a.textContent=en0?en:th;
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      s.scrollIntoView({behavior:reduce?'auto':'smooth', block:'start'});
-      try{ history.replaceState(null,'','#'+s.id); }catch(_){}
-    });
-    track.appendChild(a); return a;
+    return {sec:s, th:th, en:en};
   });
-  bar.appendChild(track);
-  var band=stat.closest('.band')||stat; band.parentNode.insertBefore(bar, band.nextSibling);
+  function go(it, e){
+    if(e) e.preventDefault();
+    closeSm();
+    it.sec.scrollIntoView({behavior:reduce?'auto':'smooth', block:'start'});
+    try{ history.replaceState(null,'','#'+it.sec.id); }catch(_){}
+  }
+  function mkLink(it, cls){
+    var a=document.createElement('a'); a.href='#'+it.sec.id; if(cls) a.className=cls;
+    a.setAttribute('data-th',it.th); a.setAttribute('data-en',it.en); a.textContent=isEn()?it.en:it.th;
+    a.addEventListener('click', function(e){ go(it,e); }); return a;
+  }
+  function aria(el, th, en){ el.setAttribute('data-th-aria',th); el.setAttribute('data-en-aria',en); el.setAttribute('aria-label', isEn()?en:th); }
 
-  var de=document.documentElement, navEl=document.querySelector('.nav');
-  function measure(){
-    var nh=navEl?navEl.offsetHeight:0;
-    de.style.setProperty('--navh', nh+'px');
-    de.style.scrollPaddingTop=(nh+bar.offsetHeight+8)+'px';
+  /* desktop: both link sets share one grid cell and cross-fade */
+  var swap=document.createElement('div'); swap.className='navswap';
+  links0.parentNode.insertBefore(swap, links0); swap.appendChild(links0);
+  var secNav=document.createElement('nav'); secNav.className='navsecs'; aria(secNav,'ส่วนต่างๆ ในหน้านี้','On this page');
+  var pill=document.createElement('span'); pill.className='ns-pill'; pill.setAttribute('aria-hidden','true'); secNav.appendChild(pill);
+  var dl=items.map(function(it){ return secNav.appendChild(mkLink(it)); });
+  swap.appendChild(secNav);
+
+  /* phones: chip + dropdown */
+  var chip=document.createElement('button'); chip.type='button'; chip.className='secchip';
+  chip.setAttribute('aria-expanded','false'); chip.setAttribute('aria-controls','secmenu');
+  chip.innerHTML='<span class="sc-k" data-th="ส่วน" data-en="Section">'+(isEn()?'Section':'ส่วน')+'</span><span class="sc-l"></span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+  var chipL=chip.querySelector('.sc-l');
+  navbar.insertBefore(chip, navbar.querySelector('.navright'));
+  var sm=document.createElement('div'); sm.className='menu secmenu'; sm.id='secmenu';
+  var ml=items.map(function(it){ return sm.appendChild(mkLink(it)); });
+  navbar.parentNode.appendChild(sm);
+  function closeSm(){ sm.classList.remove('open'); chip.setAttribute('aria-expanded','false'); }
+  chip.addEventListener('click', function(e){
+    e.stopPropagation();
+    var m=document.getElementById('menu'); if(m && m.classList.contains('open')){ m.classList.remove('open'); var b=document.querySelector('.menubtn'); if(b) b.setAttribute('aria-expanded','false'); }
+    var open=sm.classList.toggle('open'); chip.setAttribute('aria-expanded', open?'true':'false');
+  });
+  document.addEventListener('click', function(e){ if(!e.target.closest('#secmenu')) closeSm(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeSm(); });
+  var mb=document.querySelector('.menubtn'); if(mb) mb.addEventListener('click', closeSm);
+
+  var de=document.documentElement, cur=-2, mode=null;
+  function placePill(){
+    var a=dl[cur]; if(!a){ pill.style.opacity='0'; return; }
+    pill.style.opacity='1'; pill.style.width=a.offsetWidth+'px'; pill.style.height=a.offsetHeight+'px';
+    pill.style.transform='translate('+a.offsetLeft+'px,'+a.offsetTop+'px)';
   }
-  var last=-2;
-  function spy(){
-    var line=(parseFloat(de.style.scrollPaddingTop)||0)+40, cur=-1;
-    secs.forEach(function(s,i){ if(s.getBoundingClientRect().top<=line) cur=i; });
-    bar.classList.toggle('stuck', bar.getBoundingClientRect().top<=(navEl?navEl.offsetHeight:0)+1);
-    if(cur===last) return; last=cur;
-    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); if(i===cur) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
-    segSyncAll();
-    var a=links[cur]; if(a && track.scrollWidth>track.clientWidth){
-      track.scrollTo({left:a.offsetLeft-(track.clientWidth-a.offsetWidth)/2, behavior:reduce?'auto':'smooth'});
+  window.navSecSync=function(){ placePill(); var it=items[Math.max(cur,0)]; chipL.textContent=isEn()?it.en:it.th; aria(chip,'ส่วนในหน้านี้: '+it.th,'On this page: '+it.en); };
+  function update(){
+    var nb=navbar.getBoundingClientRect().bottom;
+    de.style.scrollPaddingTop=(Math.round(nb)+12)+'px';
+    var on=stat.getBoundingClientRect().bottom < nb;
+    if(on!==mode){
+      mode=on; navbar.classList.toggle('secmode', on);
+      links0.inert=on; secNav.inert=!on;              /* hidden set is skipped by Tab and screen readers */
+      if(!on) closeSm();
     }
+    var line=nb+40, c=-1;
+    secs.forEach(function(s,i){ if(s.getBoundingClientRect().top<=line) c=i; });
+    if(c===cur) return; cur=c;
+    dl.concat(ml).forEach(function(a,i){ var hit=(i%items.length)===c; a.classList.toggle('active',hit); if(hit) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
+    window.navSecSync();
   }
-  measure(); spy();
-  var t=0; window.addEventListener('scroll', function(){ if(!t) t=requestAnimationFrame(function(){ t=0; spy(); }); }, {passive:true});
-  window.addEventListener('resize', function(){ measure(); last=-2; spy(); });
+  var t=0; window.addEventListener('scroll', function(){ if(!t) t=requestAnimationFrame(function(){ t=0; update(); }); }, {passive:true});
+  window.addEventListener('resize', function(){ cur=-2; update(); });
+  update();
 }
 function sizeTopBg(){
   var b=document.querySelector('.topbg'); if(!b) return;
@@ -391,7 +424,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var r=document.getElementById('races'); if(r) r.scrollIntoView();
   }
 
-  initJumpNav();
+  initNavSections();
   initSegments();
   initHeroVid();
   initMarquee();
