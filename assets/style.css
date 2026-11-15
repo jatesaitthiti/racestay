@@ -689,7 +689,7 @@ html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
 
 /* 3 · scroll reveal: app.js adds .rv only when motion is allowed, so content never hides without JS */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rv-d,0ms)}
-.rv.in{opacity:1;transform:none}
+.rv.rv-on{opacity:1;transform:none}
 
 /* 4 · cross-page View Transitions, fade + rise (Chrome/Edge 126+, Safari 18.2+; others just navigate) */
 @view-transition{navigation:auto}

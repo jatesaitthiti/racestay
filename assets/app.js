@@ -244,9 +244,9 @@ function initReveal(){
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(!e.isIntersecting) return;
-      var el=e.target; el.classList.add('in'); io.unobserve(el);
+      var el=e.target; el.classList.add('rv-on'); io.unobserve(el);
       /* hand the element back to its own transitions (card hover lift etc.) once it has landed */
-      setTimeout(function(){ el.classList.remove('rv','in'); el.style.removeProperty('--rv-d'); }, 1100);
+      setTimeout(function(){ el.classList.remove('rv','rv-on'); el.style.removeProperty('--rv-d'); }, 1100);
     });
   },{rootMargin:'0px 0px -8% 0px'});
   var fold=window.innerHeight;
