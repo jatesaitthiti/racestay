@@ -23,7 +23,7 @@ HOTELS_DIR = ROOT / "data" / "hotels"
 # on-foot routes hotel -> venue, cached by build/fetch_walks.py (the build itself stays offline)
 WALKS = json.loads((ROOT / "data" / "walks.json").read_text(encoding="utf-8")).get("routes", {}) if (ROOT / "data" / "walks.json").exists() else {}
 WALK_MAX_S = 30 * 60  # past a 30-minute walk the card says "by road" and drops the walk strip
-CSS_V, JS_V = "104", "33"
+CSS_V, JS_V = "105", "33"
 STAY22_AID = "affiliateid"  # placeholder until the real Stay22 partner ID is issued
 
 # athlete facilities the team confirms by phone; a card shows only those confirmed "yes"
