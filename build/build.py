@@ -76,9 +76,19 @@ def event_card(ev: dict) -> str:
     )
 
 
+def art_img(slug: str, sizes: str, indent: str = "          ") -> str:
+    """Decorative city vignette (the card's h3 names the city, so alt is empty). Empty string if no art yet."""
+    if not (ROOT / "assets" / "city" / f"{slug}-640.webp").exists():
+        return ""
+    return (f'{indent}<img class="art" src="assets/city/{slug}-640.webp" '
+            f'srcset="assets/city/{slug}-640.webp 640w, assets/city/{slug}-1200.webp 1200w" '
+            f'sizes="{sizes}" width="1200" height="800" loading="lazy" decoding="async" alt="">\n')
+
+
 def city_card(c: dict) -> str:
     return (
         f'        <a class="mqcity" href="{c["slug"]}.html">\n'
+        f'{art_img(c["slug"], "(max-width:700px) 60vw, 320px")}'
         f'          <h3 data-th="{place_th(c["name"])}" data-en="{c["name"]}">{place_th(c["name"])}</h3>\n'
         f'          <div class="desc" data-th="{c["blurbTh"]}" data-en="{c["blurbEn"]}">{c["blurbTh"]}</div>\n'
         f'          <span class="go btn ghost" data-th="ดูเมือง" data-en="View city">ดูเมือง</span>\n'
