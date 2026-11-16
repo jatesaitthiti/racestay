@@ -49,7 +49,7 @@ def sync(events, sort_key):
 
     for page in sorted(ROOT.glob("city-*.html")):
         h = page.read_text(encoding="utf-8")
-        i = h.find("01 / Events")
+        i = h.find('data-en="Events">')
         if i < 0:
             continue
         g = h.index('<div class="grid c3"', i)

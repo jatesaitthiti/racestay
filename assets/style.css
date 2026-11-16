@@ -556,23 +556,23 @@ html[lang="th"] :is(.hero h1,.phero h1,.feature h2,.faqhead h2){line-height:1.35
 .tone-mint .sf .same{box-shadow:var(--ring-strong)}
 .band.tone-dark{background:var(--charcoal);color:var(--white)}
 .tone-dark :is(h2,h3){color:var(--white)}
-.tone-dark .sec.banded .seclabel :is(.num,.n),.tone-dark th,.tone-dark .mapfoot{color:var(--on-dark-muted)}
+.tone-dark .seclabel :is(.num,.n),.tone-dark th,.tone-dark .mapfoot{color:var(--on-dark-muted)}
 .tone-dark :is(th,td,.mapfoot){border-color:var(--charcoal-3)}
 .tone-dark a{color:var(--mint-pale)}
 .tone-dark :focus-visible{outline-color:var(--mint)}
 .sec.banded{padding-top:0;padding-bottom:var(--space-64)}
-.sec.banded > .seclabel{display:block;border:0;padding:var(--space-56) 0 0}
-.sec.banded > .seclabel + *{margin-top:var(--space-24) !important}
-.sec.banded .seclabel :is(.num,.n){font-size:12px;font-weight:600;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--muted)}
-.sec.banded .seclabel .num{font-variant-numeric:tabular-nums}
-.sec.banded .seclabel .num::after{content:"·";margin:0 var(--space-6)}
-html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:uppercase}
-.sec.banded .seclabel h2{font-size:30px;line-height:1.35;margin-top:var(--space-6);text-wrap:balance}
+/* every section head stacks the same way on every page: "02 · label" on its own line, the title below */
+.seclabel{display:block;border:0;padding:var(--space-56) 0 0}
+.seclabel + *{margin-top:var(--space-24) !important}
+.seclabel :is(.num,.n){font-size:12px;font-weight:600;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--muted)}
+.seclabel .num{font-variant-numeric:tabular-nums}
+.seclabel .num::after{content:"·";margin:0 var(--space-6)}
+html[lang="en"] .seclabel .n{letter-spacing:.14em;text-transform:uppercase}
+.seclabel h2{margin-top:var(--space-6);text-wrap:balance}
 @media(max-width:640px){
   .sec.banded{padding-bottom:var(--space-48)}
-  .sec.banded > .seclabel{padding-top:var(--space-40)}
-  .sec.banded > .seclabel + *{margin-top:var(--space-20) !important}
-  .sec.banded .seclabel h2{font-size:20px}
+  .seclabel{padding-top:var(--space-40)}
+  .seclabel + *{margin-top:var(--space-20) !important}
 }
 
 /* footer: credit link flows inline with the sentence so both share one baseline */
@@ -671,15 +671,15 @@ html[lang="en"] .sec.banded .seclabel .n{letter-spacing:.14em;text-transform:upp
 .tone-mint :is(.official a,.staycap a,.allrow):hover{background:var(--white)}
 
 /* ===== motion + type pass (Awwwards audit ideas 1, 3, 4) ===== */
-/* 1 · section titles carry the page rhythm: display size on home sections, larger banded titles on event pages */
-.seclabel h2{font-size:clamp(34px,5.6vw,72px);font-weight:700;line-height:1.08}
-html[lang="th"] .seclabel h2{line-height:1.3}
-.seclabel{align-items:baseline}
-.sec.banded .seclabel h2{font-size:clamp(28px,3.8vw,46px);font-weight:700;line-height:1.25;max-width:880px}
-html[lang="th"] .sec.banded .seclabel h2{line-height:1.4}
+/* 1 · section titles carry the page rhythm. One size on every inner page (always below that page's h1);
+   only the homepage sections get the display size, still below the home hero */
+.seclabel h2{font-size:clamp(28px,3.8vw,46px);font-weight:700;line-height:1.25;max-width:880px}
+html[lang="th"] .seclabel h2{line-height:1.4}
+body:has(.hero.home) .seclabel h2{font-size:clamp(34px,5.6vw,72px);line-height:1.08;max-width:none}
+html[lang="th"] body:has(.hero.home) .seclabel h2{line-height:1.3}
 @media(max-width:640px){
-  .seclabel h2{font-size:32px}
-  .sec.banded .seclabel h2{font-size:26px}
+  .seclabel h2{font-size:26px}
+  body:has(.hero.home) .seclabel h2{font-size:32px}
 }
 
 /* the home hero stays the largest type on the page: 7.2vw vs the 5.6vw section titles at every width */
