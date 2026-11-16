@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Taviraj:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Sans:wght@600;700&family=Noto+Sans+Thai:wght@600;700&family=Taviraj:wght@300&display=swap');
   :root{
     /* ===== RaceStay Design System tokens (tokens.json v1, approved 2026-10-30) ===== */
     /* colour */
@@ -10,7 +10,9 @@
     --sport-trail:#c8f169; --sport-tri:#8fd6ff; --sport-bike:#ffbf7a; /* pastel-neon bands, all with ink text */
     /* type: no mono font, Plex digits are already equal-width, so labels and numbers use the sans */
     --sans:'IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,Arial,sans-serif;
-    --disp:var(--sans); --serif:'Taviraj',Georgia,serif; --data:var(--sans); --head-ls:-0.02em;
+    /* headings: Latin stays Plex (IBM Plex Sans has no Thai glyphs), Thai falls through to Noto Sans Thai,
+       whose tone marks clear the upper vowels (Plex Sans Thai bold sets ่ touching ื/ี) */
+    --disp:'IBM Plex Sans','Noto Sans Thai',-apple-system,BlinkMacSystemFont,Arial,sans-serif; --serif:'Taviraj',Georgia,serif; --data:var(--sans); --head-ls:-0.02em;
     /* spacing: 2px steps up to 20, then 4-16px steps */
     --space-2:2px; --space-4:4px; --space-6:6px; --space-8:8px; --space-10:10px; --space-12:12px; --space-14:14px;
     --space-16:16px; --space-18:18px; --space-20:20px; --space-24:24px; --space-28:28px; --space-32:32px; --space-36:36px;
@@ -771,3 +773,6 @@ a.evcard:active,a.mqcity:active,a.card:active{transform:translateY(-1px) scale(.
 .walk.on .w-s{transform:scale(1)}
 .w-max{flex:0 0 auto;font-family:var(--data);font-size:12px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.w-l{clip-path:none}.w-s{transform:none}}
+
+/* every heading uses the heading stack, including ones that only inherited the body font */
+h1,h2,h3{font-family:var(--disp)}
