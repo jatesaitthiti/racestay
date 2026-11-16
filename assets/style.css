@@ -776,3 +776,17 @@ a.evcard:active,a.mqcity:active,a.card:active{transform:translateY(-1px) scale(.
 
 /* every heading uses the heading stack, including ones that only inherited the body font */
 h1,h2,h3{font-family:var(--disp)}
+
+
+/* ===== event cards: each card filled with its sport colour ===== */
+.evcard[data-sport]{--card-bg:var(--white);--card-ink:var(--ink);--card-ink-2:var(--ink-2);--card-rule:rgba(23,23,24,.14);background:var(--card-bg);box-shadow:none}
+.evcard[data-sport="road"]{--card-bg:var(--mint)}
+.evcard[data-sport="trail"]{--card-bg:var(--sport-trail)}
+.evcard[data-sport="tri"]{--card-bg:var(--sport-tri)}
+.evcard[data-sport="bike"]{--card-bg:var(--sport-bike)}
+.evcard[data-sport="hyrox"]{--card-bg:var(--charcoal);--card-ink:var(--white);--card-ink-2:var(--on-dark-muted);--card-rule:rgba(255,255,255,.16)}
+.evcard[data-sport] .dcover{background:transparent;color:var(--card-ink);box-shadow:inset 0 -1px 0 var(--card-rule)}
+.evcard[data-sport="hyrox"] .dcover{color:var(--yellow)}
+.evcard[data-sport] .dbody h3{color:var(--card-ink)}
+.evcard[data-sport] .dbody .desc{color:var(--card-ink-2)}
+a.evcard[data-sport]:hover{box-shadow:var(--shadow-md)}
