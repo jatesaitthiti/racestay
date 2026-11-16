@@ -399,6 +399,9 @@ def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
         poi = [{"lat": d["finishLat"], "lng": d["finishLng"], "name": "FINISH", "size": 3,
                 "desc": f"เส้นชัย {place_th(finish)} · Finish {finish}"}]
         pins = "&amp;poi=" + quote(json.dumps(poi, ensure_ascii=False, separators=(",", ":"))) + "&amp;fitmaptopoi=true"
+    # course line: Stay22 fetches the GPX from the browser, so it must be an https URL with CORS (e.g. GitHub Pages)
+    if d.get("gpx"):
+        pins += "&amp;gpx=" + quote(d["gpx"], safe="") + "&amp;gpxlinecolor=1a1a1a&amp;gpxlinethickness=4"
     for i, m in enumerate(maps):
         vq = quote(f'{m["venue"]}, {city}')
         mid = "map-a" if i == 0 else f"map-{chr(98 + i - 1)}"
@@ -410,6 +413,9 @@ def staycard(ev, d, start, finish, same, finish_tbc, sf_same, city):
     cap_en = f"Live prices and availability from Stay22 · around {near}"
     link = (f' · <a href="{e(d["cityPage"])}" data-th="ดูที่พักทั้งหมดใน{e(place_th(city))} →" data-en="See all stays in {e(city)} →">ดูที่พักทั้งหมดใน{e(place_th(city))} →</a>'
             if d.get("cityPage") else "")
+    if d.get("gpxSample"):  # preview line only: say so plainly under the map
+        cap_th += " · เส้นสีดำบนแผนที่เป็นเส้นทางตัวอย่าง ไม่ใช่เส้นทางแข่งจริง"
+        cap_en += " · the black line is a sample, not the race course"
     out += f'  <p class="staycap">{bi("span", cap_th, cap_en)}{link}</p>\n'
     return out + hotel_cards(ev, d, same)
 

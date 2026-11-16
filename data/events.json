@@ -120,7 +120,9 @@
         "cityPage": "city-chiang-mai.html",
         "officialUrl": "https://www.chiangmaimarathon.com",
         "finishLat": 18.8853696,
-        "finishLng": 98.9553927
+        "finishLng": 98.9553927,
+        "gpx": "https://raw.githubusercontent.com/jatesaitthiti/racestay/gpx-sample/samples/chiang-mai-marathon-SAMPLE.gpx",
+        "gpxSample": true
       }
     },
     {
